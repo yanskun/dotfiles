@@ -1,0 +1,8 @@
+[user]
+	name = yasudanaoya
+	email = naoya.yasuda@seattleconsulting.co.jp
+
+[alias]
+ b = branch
+ s = status
+ co = checkout
