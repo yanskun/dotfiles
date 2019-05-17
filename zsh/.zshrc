@@ -12,16 +12,15 @@ export LANG=ja_JP.UTF-8
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"
 
-# java path 設定
-export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
-
 ########################################
 
 # brewfile を自動で更新する
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
+
+# brewfile の場所を変更する
+export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -69,6 +68,11 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*:default' menu select=1
 
+# ls でフォルダに色をつける
+export LSCOLORS=dxax
+
+alias ls="ls -GF"
+
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -77,7 +81,7 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+                    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
