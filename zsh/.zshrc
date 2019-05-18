@@ -50,7 +50,7 @@ setopt list_packed
 setopt correct
 
 # ls でフォルダに色をつける
-export LSCOLORS=dxax
+export LSCOLORS=dxbx
 alias ls="ls -GF"
 
 # cd後のlsの省略
