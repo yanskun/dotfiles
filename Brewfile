@@ -51,8 +51,4 @@ cask 'slack'
 
 # App Store applications
 mas 'com.apple.dt.Xcode (10.2.1)', id: 497799835
-mas 'com.apple.iMovieApp (10.1.11)', id: 408981434
-mas 'com.apple.iWork.Keynote (9.0.1)', id: 409183694
-mas 'com.apple.iWork.Numbers (6.0)', id: 409203825
-mas 'com.apple.iWork.Pages (8.0)', id: 409201541
 mas 'jp.naver.line.mac (5.16.2)', id: 539883307
