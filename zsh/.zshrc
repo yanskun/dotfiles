@@ -159,12 +159,18 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
+# docker
+alias d='docker'
+alias dc='docker-compose'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+########################################
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -178,7 +184,3 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
-
-# docker
-alias d='docker'
-alias dc='docker-compose'
