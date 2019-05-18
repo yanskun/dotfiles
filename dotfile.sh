@@ -6,7 +6,12 @@ brew bundle
 
 echo 'Paste symbolic link to home directory'
 ln -s ${DOT_DIR}/zsh/.zshenv ${HOME}/.zshenv
-ln -s ${DOT_DIR}/settings.json $HOME/Library/Application\ Support/Code/User
+
+if [ -e ${HOME}/Library/Application\ Support/Code/User ]; then
+  rm -f ${HOME}/Library/Application\ Support/Code/User/settings.json
+
+  ln -s ${DOT_DIR}/settings.json $HOME/Library/Application\ Support/Code/User
+fi
 
 echo '🎉Finish'
 echo 'Please restart the terminal'
