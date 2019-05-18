@@ -49,6 +49,10 @@ setopt list_packed
 # タイプミスした時に指摘してくれる
 setopt correct
 
+# ls でフォルダに色をつける
+export LSCOLORS=dxax
+alias ls="ls -GF"
+
 # cd後のlsの省略
 setopt auto_cd
 function chpwd() { ls }
@@ -67,11 +71,6 @@ zstyle ':zle:*' word-style unspecified
 autoload -Uz compinit
 compinit
 zstyle ':completion:*:default' menu select=1
-
-# ls でフォルダに色をつける
-export LSCOLORS=dxax
-
-alias ls="ls -GF"
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
