@@ -1,33 +1,27 @@
 {
-  "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 0,
-  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-  "editor.renderIndentGuides": false,
-  "workbench.colorTheme": "One Dark Pro Vivid",
-  "editor.tabSize": 2, // space(2)
-  "files.associations": {
-    "*.erb": "erb"
-  },
-  "emmet.includeLanguages": {
-    "erb": "html"
-  },
-  "editor.insertSpaces": true, // tabキーで space を入力
-  "explorer.confirmDragAndDrop": false, // drag & drop の無効
-  "editor.dragAndDrop": false, // コードの drag & drop 無効
-  "workbench.statusBar.feedback.visible": false, // twitter icon 無効
-  "editor.minimap.enabled": false, // minimap 無効
-  "editor.renderWhitespace": "boundary", // 半角スペースをドットで表示
+  "[markdown]": { "files.trimTrailingWhitespace": false },
   "breadcrumbs.enabled": true,
-  "gitlens.hovers.enabled": false, // マウスホバー時の表示 無効
+  "editor.dragAndDrop": false,
   "editor.formatOnSave": false,
-  "files.insertFinalNewline": true, // 保存時に文末に空行を一行追加する
-  "files.trimFinalNewlines": true, // 保存時に文末の不要な改行を削除
-  "files.trimTrailingWhitespace": true, // 保存時に行末のスペースを削除
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false // Markdown の場合は空白トリミングは実施しない
-  },
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.renderIndentGuides": false,
+  "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue", // 保存時に行末の不要なスペースを削除
+  "editor.tabSize": 2,
+  "emmet.includeLanguages": { "erb": "html" },
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": { "*.erb": "erb" },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
   "git.ignoreLimitWarning": true,
-  "sync.gist": "289feab5fa2139d00c2a6f0820daae04" // git の警告を無効化
+  "gitlens.hovers.enabled": false,
+  "sync.gist": "289feab5fa2139d00c2a6f0820daae04",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "One Dark Pro Vivid",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.feedback.visible": false,
 }
