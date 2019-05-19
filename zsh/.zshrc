@@ -1,11 +1,14 @@
-# 少し凝った zshrc
-# License : MIT
-# http://mollifier.mit-license.org/
-
 ########################################
-
 # 環境変数
 export LANG=ja_JP.UTF-8
+
+# ヒストリの設定
+HISTFILE=${HOME}/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+########################################
+# env
 
 # rbenvのpath設定
 [[ -d ~/.rbenv  ]] && \
@@ -13,6 +16,7 @@ export LANG=ja_JP.UTF-8
   eval "$(rbenv init -)"
 
 ########################################
+# brew
 
 # brewfile を自動で更新する
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
@@ -22,51 +26,26 @@ fi
 # brewfile の場所を変更する
 export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
 
+########################################
+# terminal color
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
 
-# emacs 風キーバインドにする
-bindkey -e
-
-# ヒストリの設定
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
-
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示 reset_color
-# PROMPT="%{${fg[green]}%}[%n@%m]%{${fg[yellow]}%} %~
-PROMPT="%{${fg[cyan]}%}[%*] %{${fg[yellow]}%} %~
-%{${fg[magenta]}%}% ==> # %{${reset_color}%}"
-# PS1='%c %#% >>> '
-
-# 表示を詰めてくれる
-setopt list_packed
-
-# タイプミスした時に指摘してくれる
-setopt correct
-
 # ls でフォルダに色をつける
+# フォルダを黄、シンボリックリンクを赤
 export LSCOLORS=dxbx
 alias ls="ls -GF"
 
-# cd後のlsの省略
-setopt auto_cd
-function chpwd() { ls }
-
-# 単語の区切り文字を指定する
-autoload -Uz select-word-style
-select-word-style default
-# ここで指定した文字は単語区切りとみなされる
-# / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
-zstyle ':zle:*' word-chars " /=;@:{},|"
-zstyle ':zle:*' word-style unspecified
+# プロンプトのレイアウト
+PROMPT="%{${fg[cyan]}%}[%*] %{${fg[yellow]}%} %~
+%{${fg[magenta]}%}% ==> # %{${reset_color}%}"
 
 ########################################
+
 # 補完
+
 # 補完機能を有効にする
 autoload -Uz compinit
 compinit
@@ -85,6 +64,28 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
+# 補完の表示を詰める
+setopt list_packed
+
+########################################
+
+# emacs 風キーバインドにする
+bindkey -e
+
+# タイプミス時の指摘
+setopt correct
+
+# cd後のlsの省略
+setopt auto_cd
+function chpwd() { ls }
+
+# 単語の区切り文字を指定する
+autoload -Uz select-word-style
+select-word-style default
+# ここで指定した文字は単語区切りとみなされる
+# / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
+zstyle ':zle:*' word-chars " /=;@:{},|"
+zstyle ':zle:*' word-style unspecified
 
 ########################################
 # vcs_info
@@ -100,9 +101,9 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-
 ########################################
 # オプション
+
 # 日本語ファイル名を表示可能にする
 setopt print_eight_bit
 
@@ -144,7 +145,7 @@ setopt extended_glob
 ########################################
 # キーバインド
 
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+# 履歴検索で *(ワイルドカード)を可能
 bindkey '^R' history-incremental-pattern-search-backward
 
 ########################################
@@ -159,10 +160,6 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
-# docker
-alias d='docker'
-alias dc='docker-compose'
-
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
@@ -170,10 +167,13 @@ alias sudo='sudo '
 alias -g L='| less'
 alias -g G='| grep'
 
+# docker
+alias d='docker'
+alias dc='docker-compose'
+
 ########################################
 
 # C で標準出力をクリップボードにコピーする
-# mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
     # Mac
     alias -g C='| pbcopy'
