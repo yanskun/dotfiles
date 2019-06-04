@@ -27,16 +27,17 @@ tap 'homebrew/cask-versions'
 cask 'sequel-pro-nightly'
 
 tap 'homebrew/cask'
-cask 'background-music'
-cask 'db-browser-for-sqlite'
-cask 'drawio'
-cask 'google-chrome'
-cask 'visual-studio-code'
+cask 'astah-professional'
+cask 'chromedriver'
+cask 'docker'
+cask 'evernote'
+cask 'slack'
+cask 'xmind'
 
 tap 'caskroom/cask'
-cask 'chromedriver'
-cask 'evernote'
-cask 'xmind'
+cask 'background-music'
+cask 'drawio'
+cask 'visual-studio-code'
 
 tap 'heroku/brew'
 brew 'heroku'
@@ -46,9 +47,9 @@ tap 'rcmdnk/file'
 brew 'brew-file'
 
 # Other Cask applications
-cask 'docker'
-cask 'slack'
+cask 'db-browser-for-sqlite'
+cask 'google-chrome'
 
 # App Store applications
-mas 'com.apple.dt.Xcode (10.2.1)', id: 497799835
-mas 'jp.naver.line.mac (5.16.2)', id: 539883307
+mas 'com.apple.dt.Xcode', id: id:
+mas 'jp.naver.line.mac', id: id:
