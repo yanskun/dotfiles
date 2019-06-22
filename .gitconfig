@@ -6,3 +6,6 @@
   b = branch
   s = status
   co = checkout
+
+[core]
+  excludesfile = ${HOME}/.gitignore_globals
