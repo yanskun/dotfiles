@@ -40,7 +40,7 @@ alias ls="ls -GF"
 
 # プロンプトのレイアウト
 PROMPT="%{${fg[cyan]}%}[%*] %{${fg[yellow]}%} %~
-%{${fg[magenta]}%}% ==> # %{${reset_color}%}"
+%{${fg[magenta]}%}% ==> %# %{${reset_color}%}"
 
 ########################################
 
