@@ -1,6 +1,7 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
+export PATH=~/.local/bin:$PATH
 
 # ヒストリの設定
 HISTFILE=${HOME}/.zsh_history
