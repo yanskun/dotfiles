@@ -15,7 +15,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git.ignoreLimitWarning": true,
+  "git.ignoreLimitWarning": false,
   "gitlens.hovers.enabled": false,
   "sync.gist": "289feab5fa2139d00c2a6f0820daae04",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -24,5 +24,5 @@
   "workbench.colorTheme": "One Dark Pro Vivid",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "git.confirmSync": false,
+  "git.confirmSync": false
 }

@@ -37,13 +37,13 @@ cask 'astah-professional'
 cask 'chromedriver'
 cask 'docker'
 cask 'evernote'
-cask 'notable'
-cask 'visual-studio-code'
+cask 'iterm2'
+cask 'slack'
 
 tap 'caskroom/cask'
 cask 'background-music'
 cask 'drawio'
-cask 'slack'
+cask 'notable'
 
 tap 'heroku/brew'
 brew 'heroku'
@@ -55,6 +55,7 @@ brew 'brew-file'
 # Other Cask applications
 cask 'db-browser-for-sqlite'
 cask 'google-chrome'
+cask 'visual-studio-code'
 
 # App Store applications
 mas 'com.apple.dt.Xcode', id: id:
