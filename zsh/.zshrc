@@ -3,6 +3,8 @@
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 
+setopt nonomatch
+setopt interactivecomments
 # ヒストリの設定
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=1000000
@@ -178,6 +180,9 @@ alias -g G='| grep'
 # docker
 alias d='docker'
 alias dc='docker-compose'
+
+# color 系
+alias grep='grep --color=auto'
 
 ########################################
 
