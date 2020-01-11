@@ -17,13 +17,46 @@
   "files.trimTrailingWhitespace": true,
   "git.ignoreLimitWarning": false,
   "gitlens.hovers.enabled": false,
-  "sync.gist": "289feab5fa2139d00c2a6f0820daae04",
+  "sync.gist": "c4d5e94125fe5dcb06e38ded5e9bb445",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "One Dark Pro Vivid",
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
   "git.confirmSync": false,
-  "explorer.confirmDelete": false
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "solargraph.definitions": true,
+  "solargraph.diagnostics": true,
+  "ruby.lint": {"rubocop": true},
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "type": "text",
+      "foreground": "#72a8ff"
+    },
+    "FIXME": {
+      "icon": "alert",
+      "type": "text",
+      "foreground": "#d6c61b",
+      "background": "white",
+      "opacity": 10
+    },
+    "HACK": {
+      "icon": "thumbsdown",
+      "type": "text",
+      "foreground": "#b70b0b",
+      "background": "white",
+      "opacity": 10
+    }
+  },
+  "todo-tree.tree.expanded": true,
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "HACK"
+  ],
+  "oneDarkPro.vivid": true,
+  "explorer.confirmDelete": false,
+  "diffEditor.ignoreTrimWhitespace": false
 }
