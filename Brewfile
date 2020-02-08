@@ -2,9 +2,11 @@
 # tap repositories and their packages
 
 tap 'homebrew/core'
+brew 'anyenv'
 brew 'autoconf'
 brew 'awscli'
 brew 'docker'
+brew 'docker-clean'
 brew 'gdbm'
 brew 'gettext'
 brew 'gist'
@@ -12,7 +14,6 @@ brew 'git'
 brew 'icu4c'
 brew 'mas'
 brew 'ncurses'
-brew 'openssl'
 brew 'pcre'
 brew 'pcre2'
 brew 'pkg-config'
@@ -33,17 +34,19 @@ tap 'homebrew/cask-versions'
 cask 'sequel-pro-nightly'
 
 tap 'homebrew/cask'
-cask 'astah-professional'
+cask 'background-music'
 cask 'chromedriver'
+cask 'db-browser-for-sqlite'
 cask 'docker'
+cask 'drawio'
 cask 'evernote'
+cask 'google-chrome'
 cask 'iterm2'
+cask 'notable'
 cask 'slack'
+cask 'visual-studio-code'
 
 tap 'caskroom/cask'
-cask 'background-music'
-cask 'drawio'
-cask 'notable'
 
 tap 'heroku/brew'
 brew 'heroku'
@@ -52,10 +55,8 @@ brew 'heroku-node'
 tap 'rcmdnk/file'
 brew 'brew-file'
 
-# Other Cask applications
-cask 'db-browser-for-sqlite'
-cask 'google-chrome'
-cask 'visual-studio-code'
+# Other Homebrew packages
+brew 'openssl'
 
 # App Store applications
 mas 'com.apple.dt.Xcode', id: id:
