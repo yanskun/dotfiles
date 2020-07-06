@@ -9,3 +9,5 @@
 
 [core]
   excludesfile = ${HOME}/.gitignore_globals
+[pager]
+	branch = cat

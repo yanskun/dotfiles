@@ -55,6 +55,10 @@ alias ls="ls -GF"
 PROMPT="%{${fg[cyan]}%}[%*] %{${fg[yellow]}%} %~
 %{${fg[magenta]}%}% ==> %# %{${reset_color}%}"
 
+# less command color
+export LESS='-R'
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
+
 ########################################
 
 # 補完

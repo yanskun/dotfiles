@@ -1,6 +1,9 @@
 {
   "[markdown]": { "files.trimTrailingWhitespace": false },
   "breadcrumbs.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.dragAndDrop": false,
   "editor.formatOnSave": false,
   "editor.insertSpaces": true,
@@ -9,6 +12,15 @@
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.autoFixOnSave": true,
+  "[css]": {
+    "editor.formatOnSave": false
+  },
+  "[scss]": {
+    "editor.formatOnSave": true
+  },
   "emmet.includeLanguages": { "erb": "html" },
   "explorer.confirmDragAndDrop": false,
   "files.associations": { "*.erb": "erb" },
@@ -58,5 +70,12 @@
   ],
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "todo-tree.tree.showScanModeButton": false,
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "cSpell.userWords": [
+    "Nuxt"
+  ]
 }
