@@ -77,5 +77,8 @@
   },
   "cSpell.userWords": [
     "Nuxt"
+  ],
+  "markdown.marp.themes": [
+    "./style/test.css"
   ]
 }
