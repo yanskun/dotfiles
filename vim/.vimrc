@@ -8,6 +8,4 @@ set cursorcolumn
 set virtualedit=onemore
 
 syntax on
-colorscheme molokai
 set t_Co=256
-
