@@ -212,6 +212,6 @@ fi
 ########################################
 # plugins
 
-source ${ZDOTDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
