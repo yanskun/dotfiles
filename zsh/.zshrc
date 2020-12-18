@@ -3,6 +3,8 @@
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
 setopt nonomatch
 setopt interactivecomments
 # ヒストリの設定
@@ -206,3 +208,11 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
+
+########################################
+# plugins
+
+source ./zsh-autosuggestions/zsh-autosuggestions.zsh
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
