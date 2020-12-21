@@ -3,6 +3,8 @@
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
 setopt nonomatch
 setopt interactivecomments
 # ヒストリの設定
