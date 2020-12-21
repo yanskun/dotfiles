@@ -4,3 +4,6 @@
 [submodule "zsh/zsh-autosuggestions"]
 	path = zsh/submodules/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/submodules/enhancd"]
+	path = zsh/submodules/enhancd
+	url = git@github.com:b4b4r07/enhancd.git
