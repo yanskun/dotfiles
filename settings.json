@@ -1,29 +1,31 @@
 {
   "[markdown]": { "files.trimTrailingWhitespace": false },
   "breadcrumbs.enabled": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
   "editor.dragAndDrop": false,
   "editor.formatOnSave": false,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
-  "editor.renderIndentGuides": false,
+  "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "css.validate": false,
-  "scss.validate": false,
-  "stylelint.autoFixOnSave": true,
-  "[css]": {
-    "editor.formatOnSave": false
-  },
-  "[scss]": {
-    "editor.formatOnSave": true
-  },
   "emmet.includeLanguages": { "erb": "html" },
   "explorer.confirmDragAndDrop": false,
-  "files.associations": { "*.erb": "erb" },
+  "files.associations": {
+    "*.erb": "erb",
+    "*.vue": "vue"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.fixAll": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -71,14 +73,27 @@
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "diffEditor.ignoreTrimWhitespace": false,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "todo-tree.tree.showScanModeButton": false,
-  "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.userWords": [
-    "Nuxt"
+    "Designpack",
+    "mixins",
+    "poplight"
   ],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+  "sync.autoUpload": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "markdown.marp.themes": [
-    "./style/test.css"
+    "./style/test.scss"
   ]
 }
