@@ -2,7 +2,7 @@
   "[markdown]": { "files.trimTrailingWhitespace": false },
   "breadcrumbs.enabled": true,
   "editor.dragAndDrop": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
   "editor.renderIndentGuides": true,
@@ -13,7 +13,7 @@
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.erb": "erb",
-    "*.vue": "vue"
+    "*.vue": "vue",
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
@@ -29,6 +29,9 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/node_modules/**": true
+  },
   "git.ignoreLimitWarning": false,
   "gitlens.hovers.enabled": false,
   "sync.gist": "c4d5e94125fe5dcb06e38ded5e9bb445",
@@ -83,17 +86,26 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "cSpell.userWords": [
     "Designpack",
+    "clsx",
     "mixins",
-    "poplight"
+    "poplight",
+    "stylelint",
+    "testid"
   ],
   "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
   "sync.autoUpload": true,
   "editor.quickSuggestions": {
     "strings": true
   },
-  "markdown.marp.themes": [
-    "./style/test.scss"
-  ]
+  "vscodeGoogleTranslate.preferredLanguage": "Japanese",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true
 }
