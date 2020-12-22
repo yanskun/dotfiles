@@ -124,7 +124,3 @@ brew 'brew-file'
 # Other Homebrew packages
 brew 'openssl'
 brew 'python'
-
-# App Store applications
-mas 'com.apple.dt.Xcode', id: id:
-mas 'jp.naver.line.mac', id: id:
