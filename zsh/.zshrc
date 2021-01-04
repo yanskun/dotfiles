@@ -13,17 +13,14 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 ########################################
-# env
-
-eval "$(anyenv init -)"
-
-########################################
 
 # zsh で ^ ハットを使えるようにする
 autoload -Uz git-escape-magic
 
 ########################################
 # env
+
+eval "$(anyenv init -)"
 
 # rbenvのpath設定
 [[ -d ~/.rbenv  ]] && \
