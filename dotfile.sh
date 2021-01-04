@@ -10,7 +10,7 @@ ln -s ${DOT_DIR}/zsh/.zshenv ${HOME}/.zshenv
 ln -s ${DOT_DIR}/.gitconfig ${HOME}/.gitconfig
 ln -s ${DOT_DIR}/.gitignore_global ${HOME}/.gitignore_global
 
-if [[ ! -e ${HOME}/.config/peco ]]; then
+if [[ ! -d ${HOME}/.config/peco ]]; then
   mkdir ${HOME}/.config/peco
 fi
 ln -s ${DOT_DIR}/peco/config.json ${HOME}/.config/peco/config.json
