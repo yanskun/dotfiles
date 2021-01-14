@@ -61,6 +61,7 @@ brew 'opus'
 brew 'p11-kit'
 brew 'pcre'
 brew 'pcre2'
+brew 'peco'
 brew 'pixman'
 brew 'pkg-config'
 brew 'python@3.8'
@@ -124,7 +125,6 @@ brew 'brew-file'
 # Other Homebrew packages
 brew 'openssl'
 brew 'python'
-brew 'peco'
 
 # App Store applications
 mas 'com.apple.dt.Xcode', id: 497799835
