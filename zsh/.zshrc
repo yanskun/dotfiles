@@ -28,6 +28,13 @@ eval "$(anyenv init -)"
   eval "$(rbenv init -)"
 
 ########################################
+
+# go
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+########################################
 # brew
 
 # brewfile を自動で更新する
