@@ -8,7 +8,7 @@
   bD = !git branch -D $(git b | peco)
   s = status
   co = checkout
-  cop = !git checkout $(git b | peco)
+  cop = !git checkout $(git b -a | peco)
 
 [core]
   excludesfile = ${HOME}/.gitignore_globals

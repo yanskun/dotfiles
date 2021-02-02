@@ -1,5 +1,5 @@
 {
-  "keymap": {
-    "Tab": "peco.ToggleSelectionAndSelectNext"
+  "Keymap": {
+    "Tab": "peco.ToggleSelection"
   }
 }
