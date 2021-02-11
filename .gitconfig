@@ -13,6 +13,8 @@
 [core]
   excludesfile = ${HOME}/.gitignore_globals
 	pager = less
-
+  ignorecase = false
 [pager]
 	branch = cat
+[pull]
+	rebase = false
