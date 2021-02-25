@@ -2,7 +2,6 @@
   "[markdown]": { "files.trimTrailingWhitespace": false },
   "breadcrumbs.enabled": true,
   "editor.dragAndDrop": false,
-  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
   "editor.renderIndentGuides": true,
@@ -40,12 +39,9 @@
   "window.zoomLevel": 0,
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false,
   "git.confirmSync": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
-  "solargraph.definitions": true,
-  "solargraph.diagnostics": true,
   "ruby.lint": {"rubocop": true},
   "todo-tree.highlights.customHighlight": {
     "TODO": {
@@ -70,6 +66,7 @@
   "todo-tree.tree.expanded": true,
   "todo-tree.general.tags": [
     "TODO",
+    "NOTE",
     "FIXME",
     "HACK"
   ],
@@ -94,18 +91,29 @@
   },
   "cSpell.userWords": [
     "Designpack",
+    "Zoomable",
     "clsx",
     "mixins",
+    "nuxt",
     "poplight",
     "stylelint",
     "testid"
   ],
-  "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
   "sync.autoUpload": true,
   "editor.quickSuggestions": {
     "strings": true
   },
   "vscodeGoogleTranslate.preferredLanguage": "Japanese",
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true
+  "workbench.activityBar.visible": true,
+  "workbench.editor.showTabs": true,
+  "openInGitHub.defaultBranch": "main",
+  "path-autocomplete.pathMappings": {
+    "/": "${folder}/",
+    "~": "${folder}/",
+  },
+  "formattingToggle.affects": [
+    "formatOnPaste",
+    "formatOnSave",
+    "formatOnType",
+  ],
 }
