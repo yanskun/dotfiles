@@ -73,22 +73,7 @@
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "todo-tree.tree.showScanModeButton": false,
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "cSpell.userWords": [
     "Designpack",
     "Zoomable",
@@ -111,9 +96,16 @@
     "/": "${folder}/",
     "~": "${folder}/",
   },
-  "formattingToggle.affects": [
-    "formatOnPaste",
-    "formatOnSave",
-    "formatOnType",
-  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
 }
