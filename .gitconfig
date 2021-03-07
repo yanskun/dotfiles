@@ -18,3 +18,5 @@
 	branch = cat
 [pull]
 	rebase = false
+[ghq]
+  root = ~/Projects
