@@ -51,21 +51,16 @@ fi
 ########################################
 # peco
 ## ghq
-function peco-ghq-look () {
-    local ghq_roots="$(git config --path --get-all ghq.root)"
-    local selected_dir=$(ghq list --full-path | \
-        xargs -I{} ls -dl --time-style=+%s {}/.git | sed 's/.*\([0-9]\{10\}\)/\1/' | sort -nr | \
-        sed "s,.*\(${ghq_roots/$'\n'/\|}\)/,," | \
-        sed 's/\/.git//' | \
-        peco --prompt="cd-ghq >" --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd $(ghq list --full-path | grep --color=never -E "/$selected_dir$")"
-        zle accept-line
-    fi
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screeni
 }
-
-zle -N peco-ghq-look
-bindkey '^]' peco-ghq-look
+zle -N peco-src
+bindkey '^]' peco-src
 
 ## history
 function peco-history-selection() {
