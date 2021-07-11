@@ -70,7 +70,7 @@ function peco-history-selection() {
 }
 
 zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+bindkey '^H' peco-history-selection
 
 ## cdr
 function peco-cdr () {
