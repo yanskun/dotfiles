@@ -70,7 +70,6 @@ brew 'mas'
 brew 'ncurses'
 brew 'nettle'
 brew 'nghttp2'
-brew 'node'
 brew 'opencore-amr'
 brew 'openjpeg'
 brew 'openssl@1.1'
@@ -141,13 +140,11 @@ cask 'visual-studio-code'
 cask 'zoom'
 
 tap 'heroku/brew'
-brew 'heroku'
-brew 'heroku-node'
 
 tap 'rcmdnk/file'
 brew 'brew-file'
 
 # App Store applications
-mas 'AS Timer (5.2)', id: 512464723
-mas 'LINE (6.5.1)', id: 539883307
-mas 'Xcode (12.3)', id: 497799835
+mas 'AS', id: (5.2)',
+mas 'LINE', id: id:
+mas 'Xcode', id: id:
