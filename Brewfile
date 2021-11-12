@@ -188,8 +188,6 @@ cask 'visual-studio-code'
 cask 'zoom'
 
 tap 'heroku/brew'
-brew 'heroku'
-brew 'heroku-node'
 
 tap 'rcmdnk/file'
 brew 'brew-file'
