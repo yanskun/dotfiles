@@ -2,6 +2,9 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
+export NODE_OPTIONS=--max_old_space_size=4096
+
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 setopt nonomatch
 setopt interactivecomments
@@ -270,5 +273,10 @@ fi
 # plugins
 
 source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${ZDOTDIR}/submodules/zsh-notify/notify.plugin.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
+
+zstyle ':notify:*' error-title "Command failed"
+zstyle ':notify:*' success-title "Command finished"
+zstyle ':notify:*' command-complete-timeout 15

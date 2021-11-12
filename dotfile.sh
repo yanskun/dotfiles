@@ -2,7 +2,7 @@ echo 'declare the variable'
 DOT_DIR=${HOME}/dotfiles
 
 echo 'Run app install on homeberw'
-# brew bundle
+brew bundle
 
 echo 'Paste symbolic link to home directory'
 ln -s ${DOT_DIR}/vim/.vimrc ${HOME}/.vimrc
@@ -21,6 +21,9 @@ if [ ! -e ${HOME}/Library/Application\ Support/Code/User ]; then
 
   ln -s ${DOT_DIR}/settings.json $HOME/Library/Application\ Support/Code/User
 fi
+
+echo 'wallpaper'
+wallpaper set ${DOT_DIR}/images/wallpaper.jpeg
 
 echo '🎉Finish'
 echo 'Please restart the terminal'
