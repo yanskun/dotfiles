@@ -3,6 +3,7 @@
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 export NODE_OPTIONS=--max_old_space_size=4096
+export GIT_EDITOR=vim
 
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
@@ -247,6 +248,9 @@ alias sudo='sudo '
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+# vim
+alias vim='nvim'
 
 # docker
 alias d='docker'
