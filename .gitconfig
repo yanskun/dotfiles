@@ -4,5 +4,19 @@
 
 [alias]
   b = branch
+  bd = !git branch -d $(git b | peco)
+  bD = !git branch -D $(git b | peco)
   s = status
   co = checkout
+  cop = !git checkout $(git b | peco)
+
+[core]
+  excludesfile = ${HOME}/.gitignore_globals
+	pager = less
+  ignorecase = false
+[pager]
+	branch = cat
+[pull]
+	rebase = false
+[ghq]
+  root = ~/Projects

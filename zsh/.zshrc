@@ -1,14 +1,28 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
+export PATH=~/.local/bin:$PATH
+export NODE_OPTIONS=--max_old_space_size=4096
+export GIT_EDITOR=vim
 
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+setopt nonomatch
+setopt interactivecomments
 # ヒストリの設定
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
 ########################################
+
+# zsh で ^ ハットを使えるようにする
+autoload -Uz git-escape-magic
+
+########################################
 # env
+
+eval "$(anyenv init -)"
 
 # rbenvのpath設定
 [[ -d ~/.rbenv  ]] && \
@@ -16,15 +30,66 @@ SAVEHIST=1000000
   eval "$(rbenv init -)"
 
 ########################################
-# brew
+# history
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=1000000
 
-# brewfile を自動で更新する
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
+# share .zshhistory
+setopt inc_append_history
+setopt share_history
+
+########################################
+# cdr
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    zstyle ':completion:*' recent-dirs-insert both
+    zstyle ':chpwd:*' recent-dirs-default true
+    zstyle ':chpwd:*' recent-dirs-max 1000
+    zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
 fi
 
-# brewfile の場所を変更する
-export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
+########################################
+# peco
+## ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screeni
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
+## history
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^H' peco-history-selection
+
+## cdr
+function peco-cdr () {
+    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+}
+zle -N peco-cdr
+bindkey '^E' peco-cdr
+
+########################################
+# go
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 
 ########################################
 # terminal color
@@ -40,7 +105,11 @@ alias ls="ls -GF"
 
 # プロンプトのレイアウト
 PROMPT="%{${fg[cyan]}%}[%*] %{${fg[yellow]}%} %~
-%{${fg[magenta]}%}% ==> # %{${reset_color}%}"
+%{${fg[magenta]}%}% ==> %# %{${reset_color}%}"
+
+# less command color
+export LESS='-R'
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
 
 ########################################
 
@@ -89,17 +158,19 @@ zstyle ':zle:*' word-style unspecified
 
 ########################################
 # vcs_info
+# git
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{red}[%b]<!%a>%f'
 
-function _update_vcs_info_msg() {
+function vcs_info_msg() {
     LANG=en_US.UTF-8 vcs_info
     RPROMPT="${vcs_info_msg_0_}"
 }
-add-zsh-hook precmd _update_vcs_info_msg
+add-zsh-hook precmd vcs_info_msg
 
 ########################################
 # オプション
@@ -167,9 +238,15 @@ alias sudo='sudo '
 alias -g L='| less'
 alias -g G='| grep'
 
+# vim
+alias vim='nvim'
+
 # docker
 alias d='docker'
 alias dc='docker-compose'
+
+# color 系
+alias grep='grep --color=auto'
 
 ########################################
 
@@ -184,3 +261,15 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
+
+########################################
+# plugins
+
+source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${ZDOTDIR}/submodules/zsh-notify/notify.plugin.zsh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
+
+zstyle ':notify:*' error-title "Command failed"
+zstyle ':notify:*' success-title "Command finished"
+zstyle ':notify:*' command-complete-timeout 15
