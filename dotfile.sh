@@ -5,7 +5,7 @@ echo 'Run app install on homeberw'
 # brew bundle
 
 echo 'Paste symbolic link to home directory'
-ln -s ${DOT_DIR}/vim/vimrc ${HOME}/.vimrc
+ln -s ${DOT_DIR}/vim/.vimrc ${HOME}/.vimrc
 ln -s ${DOT_DIR}/zsh/.zshenv ${HOME}/.zshenv
 ln -s ${DOT_DIR}/.gitconfig ${HOME}/.gitconfig
 ln -s ${DOT_DIR}/.gitignore_global ${HOME}/.gitignore_global
@@ -15,6 +15,7 @@ if [[ ! -d ${HOME}/.config/peco ]]; then
 fi
 ln -s ${DOT_DIR}/peco/config.json ${HOME}/.config/peco/config.json
 
+echo 'vim'
 nvim_path=$XDG_CONFIG_HOME/nvim
 
 if [ ! -e $XDG_CONFIG_HOME/nvim ]; then
