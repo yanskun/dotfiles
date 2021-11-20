@@ -1,3 +1,5 @@
+language en_US
+
 set expandtab
 set showcmd
 set tabstop=2
