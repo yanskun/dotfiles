@@ -92,17 +92,6 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 ########################################
-# brew
-
-# brewfile を自動で更新する
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
-
-# brewfile の場所を変更する
-export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
-
-########################################
 # terminal color
 
 # 色を使用出来るようにする
