@@ -64,4 +64,5 @@ endif
 " call map(dein#check_clean(), "delete(v:val, 'rf')")
 " after run => :call dein#recache_runtimepath()
 
-set t_Co=256
+colorscheme onedark
+

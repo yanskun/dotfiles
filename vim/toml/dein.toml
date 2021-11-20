@@ -5,8 +5,14 @@ repo = 'Shougo/dein.vim'
 repo = 'github/copilot.vim'
 
 [[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
 
