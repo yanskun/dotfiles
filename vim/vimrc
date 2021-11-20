@@ -18,6 +18,11 @@ noremap   <Down>   <nop>
 noremap   <Left>   <nop>
 noremap   <Right>  <nop>
 
+if has('nvim')
+  let g:loaded_python3_provider  = 0
+  let g:loaded_shada_plugin      = 1
+endif
+
 " setting pluins {{{
 " {{{ dein.vim settings
 let s:dein_dir = has('nvim') ? expand('~/.cache/dein/nvim') : expand('~/.cache/dein/vim')
@@ -43,6 +48,8 @@ if dein#load_state(s:dein_dir)
   " for development
   call dein#add('Shougo/dein.vim')
   call dein#add('Quramy/tsuquyomi')
+  call dein#add('github/copilot.vim')
+
   " for documentation
 
   " for develop vim/neovim plugin
@@ -74,5 +81,6 @@ command! CleanPlugins call DeinClean()
 " call map(dein#check_clean(), "delete(v:val, 'rf')")
 " after run => :call dein#recache_runtimepath()
 
+filetype plugin indent on
 syntax on
 set t_Co=256
