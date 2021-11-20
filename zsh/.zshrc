@@ -3,6 +3,7 @@
 export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 export NODE_OPTIONS=--max_old_space_size=4096
+export GIT_EDITOR=vim
 
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
@@ -89,17 +90,6 @@ bindkey '^E' peco-cdr
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
-
-########################################
-# brew
-
-# brewfile を自動で更新する
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
-
-# brewfile の場所を変更する
-export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
 
 ########################################
 # terminal color
@@ -247,6 +237,9 @@ alias sudo='sudo '
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+# vim
+alias vim='nvim'
 
 # docker
 alias d='docker'
