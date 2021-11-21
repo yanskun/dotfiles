@@ -18,3 +18,7 @@ repo = 'prettier/vim-prettier'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
+
+[[plugins]]
+repo = 'folke/which-key.nvim'
+
