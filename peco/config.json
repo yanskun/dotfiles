@@ -1,5 +1,9 @@
 {
   "Keymap": {
-    "Tab": "peco.ToggleSelection"
+    "Tab": "peco.ToggleSelection",
+    "C-j": "peco.SelectDown",
+    "C-k": "peco.SelectUp",
+    "C-f": "peco.ScrollPageDown",
+    "C-b": "peco.ScrollPageUp"
   }
 }

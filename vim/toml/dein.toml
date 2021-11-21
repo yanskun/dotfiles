@@ -16,3 +16,5 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'prettier/vim-prettier'
 
+[[plugins]]
+repo = 'lambdalisue/fern.vim'

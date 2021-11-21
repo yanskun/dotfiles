@@ -12,7 +12,7 @@ ln -s ${DOT_DIR}/.gitignore_global ${HOME}/.gitignore_global
 if [[ ! -d ${HOME}/.config/peco ]]; then
   mkdir ${HOME}/.config/peco
 fi
-ln -s ${DOT_DIR}/peco/config.json ${HOME}/.config/peco/config.json
+ln -s $PWD/peco/config.json $HOME/.config/peco/config.json
 
 echo 'vim'
 nvim_path=$XDG_CONFIG_HOME/nvim

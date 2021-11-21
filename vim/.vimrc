@@ -64,5 +64,15 @@ endif
 " call map(dein#check_clean(), "delete(v:val, 'rf')")
 " after run => :call dein#recache_runtimepath()
 
+let g:fern#drawer_keep = 1
+let g:fern#default_hidden = 1
+let g:fern#default_exclude = '.git$'
+
+let g:dein#auto_recache = 1
+
+let g:loaded_python3_provider=0
+
 colorscheme onedark
 
+nnoremap <silent> <Leader>f :Fern . -drawer<CR>
+tnoremap <Esc> <C-\><C-n>
