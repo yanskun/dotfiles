@@ -1,6 +1,5 @@
 ########################################
 # 環境変数
-export LANG=ja_JP.UTF-8
 export PATH=~/.local/bin:$PATH
 export NODE_OPTIONS=--max_old_space_size=4096
 export GIT_EDITOR=nvim
