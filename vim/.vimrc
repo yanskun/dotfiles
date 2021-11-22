@@ -73,6 +73,7 @@ let g:dein#auto_recache = 1
 let g:loaded_python3_provider=0
 
 colorscheme onedark
+hi Normal ctermbg=NONE guibg=NONE
 
 nnoremap <silent> <Leader>f :Fern . -drawer<CR>
 tnoremap <Esc> <C-\><C-n>

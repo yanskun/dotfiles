@@ -9,4 +9,6 @@ key_bindings:
   - { key: Right, mods: Alt, chars: "\x1BF" }
   - { key: Left,  mods: Alt, chars: "\x1BB" }
 
-background_opacity: 0.7
+background_opacity: 0.85
+
+color: black
