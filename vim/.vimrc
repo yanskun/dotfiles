@@ -72,6 +72,10 @@ let g:dein#auto_recache = 1
 
 let g:loaded_python3_provider=0
 
+let g:better_whitespace_guicolor='<desired_color>'
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE
 
