@@ -61,7 +61,9 @@ call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 let g:fern#drawer_keep = 1
 let g:fern#default_hidden = 1
-let g:fern#default_exclude = '.git$'
+let hide_dirs  = '^\%(\.git\|node_modules\)$'
+let hide_files = '\%(\.byebug\|\.ruby-\|\.DS_Store\)\+'
+let g:fern#default_exclude = hide_dirs . '\|' . hide_files
 
 let g:dein#auto_recache = 1
 
@@ -72,5 +74,5 @@ let g:strip_whitespace_on_save=1
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE
 
-nnoremap <silent> <Leader>f :Fern . -drawer<CR>
+nnoremap <silent> <Leader>f :Fern . -reveal=% -drawer -toggle -width=40<CR>
 tnoremap <Esc> <C-\><C-n>
