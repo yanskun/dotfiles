@@ -1,5 +1,5 @@
 echo 'Run app install on homeberw'
-# brew bundle
+brew bundle
 
 echo 'Paste symbolic link to home directory'
 ln -s ${PWD}/zsh/.zshenv ${HOME}/.zshenv

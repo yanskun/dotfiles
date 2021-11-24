@@ -14,6 +14,7 @@
   excludesfile = ${HOME}/.gitignore_globals
 	pager = less
   ignorecase = false
+  editor = neovim
 [pager]
 	branch = cat
 [pull]
