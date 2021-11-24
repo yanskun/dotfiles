@@ -6,4 +6,4 @@
 
 ## run shell
 
-curl -sf https://raw.githubusercontent.com/yasudanaoya/dotfiles/master/dotfile.sh | sh -s
+curl -sf https://raw.githubusercontent.com/yasudanaoya/dotfiles/main/dotfile.sh | sh -s
