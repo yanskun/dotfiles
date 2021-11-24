@@ -64,6 +64,13 @@ let g:fern#default_hidden = 1
 let hide_dirs  = '^\%(\.git\|node_modules\)$'
 let hide_files = '\%(\.byebug\|\.ruby-\|\.DS_Store\)\+'
 let g:fern#default_exclude = hide_dirs . '\|' . hide_files
+let g:fern#renderer = 'nerdfont'
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
+
 
 let g:dein#auto_recache = 1
 

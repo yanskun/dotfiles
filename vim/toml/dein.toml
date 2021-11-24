@@ -48,3 +48,12 @@ repo = 'nvim-treesitter/telescope.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/glyph-palette.vim'

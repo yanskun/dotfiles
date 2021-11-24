@@ -4,6 +4,8 @@ window:
 
 font:
   size: 12.5
+  normal:
+    family: "Hack Nerd Font Mono"
 
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
