@@ -30,3 +30,18 @@ repo = 'Shougo/ddc.vim'
 
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+
+[[plugins]]
+repo = 'nvim-treesitter/telescope.nvim'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope-symbols.nvim'

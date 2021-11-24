@@ -20,11 +20,6 @@ noremap   <Down>   <nop>
 noremap   <Left>   <nop>
 noremap   <Right>  <nop>
 
-if has('nvim')
-  let g:loaded_python3_provider  = 0
-  let g:loaded_shada_plugin      = 1
-endif
-
 " dein settings {{{
 let s:dein_dir = has('nvim') ? expand('~/.cache/dein/nvim') : expand('~/.cache/dein/vim')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -61,7 +56,7 @@ endif
 " }}}
 
 " uninstall dein pluin
-" call map(dein#check_clean(), "delete(v:val, 'rf')")
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 " after run => :call dein#recache_runtimepath()
 
 let g:fern#drawer_keep = 1
@@ -69,8 +64,6 @@ let g:fern#default_hidden = 1
 let g:fern#default_exclude = '.git$'
 
 let g:dein#auto_recache = 1
-
-let g:loaded_python3_provider=0
 
 let g:better_whitespace_guicolor='<desired_color>'
 let g:better_whitespace_enabled=1
