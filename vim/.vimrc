@@ -71,10 +71,6 @@ augroup my-glyph-palette
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
-let g:ctrlp_map = '<M-p>'
-
-
-
 let g:dein#auto_recache = 1
 
 let g:better_whitespace_guicolor='<desired_color>'
