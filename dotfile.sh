@@ -35,6 +35,10 @@ echo 'terminal'
 if [[ ! -e $HOME/.hammerspoon/init.lua ]]; then
   ln -s $PWD/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 fi
+if [[ ! -e $HOME/.hammerspoon/ctrlDoublePress.lua ]]; then
+  ln -s $PWD/hammerspoon/ctrlDoublePress.lua $HOME/.hammerspoon/ctrlDoublePress.lua
+fi
+
 if [[ ! -e $XDG_CONFIG_HOME/alacritty ]]; then
   mkdir -p $XDG_CONFIG_HOME/alacritty
 fi

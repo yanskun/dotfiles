@@ -1,14 +1,5 @@
-hs.hotkey.bind({"ctrl"}, "p", function()
-  alacritty = hs.application.find('alacritty')
-  if alacritty ~= nil and alacritty:isFrontmost() then
-    alacritty:hide()
-  else
-    hs.application.launchOrFocus("/Applications/Alacritty.app")
-    local alacritty = hs.application.find('alacritty')
-    alacritty.setFrontmost(alacritty)
-    alacritty.activate(alacritty)
-  end
-end)
+package.path = package.path..';~/hammerspoon/?.lua'
+ctrlDoublePress = require("ctrlDoublePress")
 
 hs.window.animationDuration = 0
 units = {
