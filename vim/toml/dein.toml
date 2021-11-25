@@ -57,3 +57,6 @@ repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
