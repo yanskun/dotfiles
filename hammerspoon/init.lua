@@ -1,4 +1,3 @@
-package.path = package.path..';~/hammerspoon/?.lua'
 ctrlDoublePress = require("ctrlDoublePress")
 
 hs.window.animationDuration = 0
