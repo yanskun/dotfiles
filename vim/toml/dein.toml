@@ -60,3 +60,9 @@ repo = 'lambdalisue/glyph-palette.vim'
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'

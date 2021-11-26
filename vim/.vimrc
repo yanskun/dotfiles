@@ -59,6 +59,11 @@ endif
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 " after run => :call dein#recache_runtimepath()
 
+let g:dein#auto_recache = 1
+
+" plugin settings
+
+" fern
 let g:fern#drawer_keep = 1
 let g:fern#default_hidden = 1
 let hide_dirs  = '^\%(\.git\|node_modules\)$'
@@ -71,11 +76,14 @@ augroup my-glyph-palette
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
-let g:dein#auto_recache = 1
-
+" vim-better-whitespace
 let g:better_whitespace_guicolor='<desired_color>'
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+" blamer.nvim
+let g:blamer_enabled=1
+let g:blamer_date_format = '%y/%m/%d %H:%M'
 
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE
