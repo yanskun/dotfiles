@@ -25,7 +25,7 @@ module.action = function()
         alacritty:hide()
     else
         hs.application.launchOrFocus("/Applications/Alacritty.app")
-        local alacritty = hs.application.find('alacritty')
+        local alacritty = hs.application.open('alacritty')
         alacritty.setFrontmost(alacritty)
         alacritty.activate(alacritty)
     end
