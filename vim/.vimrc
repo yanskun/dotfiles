@@ -81,9 +81,12 @@ let g:better_whitespace_guicolor='<desired_color>'
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
-" blamer.nvim
+" blamer
 let g:blamer_enabled=1
 let g:blamer_date_format = '%y/%m/%d %H:%M'
+
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git'
 
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE

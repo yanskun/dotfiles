@@ -287,10 +287,5 @@ fi
 # plugins
 
 source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ${ZDOTDIR}/submodules/zsh-notify/notify.plugin.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
-
-zstyle ':notify:*' error-title "Command failed"
-zstyle ':notify:*' success-title "Command finished"
-zstyle ':notify:*' command-complete-timeout 15

@@ -7,6 +7,3 @@
 [submodule "zsh/submodules/enhancd"]
 	path = zsh/submodules/enhancd
 	url = git@github.com:b4b4r07/enhancd.git
-[submodule "zsh/submodules/zsh-notify"]
-	path = zsh/submodules/zsh-notify
-	url = git@github.com:marzocchi/zsh-notify.git
