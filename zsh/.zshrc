@@ -108,8 +108,7 @@ bindkey '^E' peco-cdr
 
 ########################################
 # go
-
-export GOPATH=$HOME/go
+GOENV_DISABLE_GOPATH=1
 export PATH=$GOPATH/bin:$PATH
 
 ########################################
