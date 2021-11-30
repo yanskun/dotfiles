@@ -88,6 +88,10 @@ let g:blamer_date_format = '%y/%m/%d %H:%M'
 " ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git'
 
+" go
+let g:goimports_simplify = 1
+let g:goimports = 1
+
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE
 

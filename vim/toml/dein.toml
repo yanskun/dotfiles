@@ -44,9 +44,6 @@ repo = 'nvim-treesitter/nvim-treesitter'
 repo = 'nvim-telescope/telescope.nvim'
 
 [[plugins]]
-repo = 'nvim-treesitter/telescope.nvim'
-
-[[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
 
 [[plugins]]

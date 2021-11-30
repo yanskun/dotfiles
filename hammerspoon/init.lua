@@ -1,4 +1,4 @@
-ctrlDoublePress = require("ctrlDoublePress")
+-- ctrlDoublePress = require("ctrlDoublePress")
 
 hs.window.animationDuration = 0
 units = {

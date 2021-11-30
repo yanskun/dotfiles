@@ -3,38 +3,38 @@
 ##############################################################################
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
+on_ft = ['typescript']
 
 [[plugins]]
 repo = 'Quramy/tsuquyomi'
-on_ft = 'typescript'
+on_ft = ['typescript']
 
 ##############################################################################
 # vue
 ##############################################################################
 [[plugins]]
 repo = 'posva/vim-vue'
-on_ft = 'vue'
+on_ft = ['vue']
 
 [[plugins]]
 repo = 'albanm/vuetify-vim'
-on_ft = 'vue'
+on_ft = ['vue']
 
 ##############################################################################
 # golang
 ##############################################################################
 [[plugins]]
 repo = 'mattn/vim-goimports'
-on_ft = 'go'
+on_ft = ['go']
 
 ##############################################################################
 # document
 ##############################################################################
 [[plugins]]
 repo = 'stephpy/vim-yaml'
-on_ft = 'yaml'
+on_ft = ['yaml']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = 'toml'
+on_ft = ['toml']
 
