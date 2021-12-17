@@ -268,6 +268,14 @@ alias dc='docker-compose'
 # color 系
 alias grep='grep --color=auto'
 
+# boba proxy
+# alias sql:staging='/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/cloud_sql_proxy -instances=wed-staging:asia-northeast1:bellroy-db-master=tcp:35432'
+alias sql:production='cloud_sql_proxy -instances=wed-production:asia-northeast1:boba-db-master=tcp:5434'
+alias sql:staging='cloud_sql_proxy -instances=wed-staging:asia-northeast1:bellroy-db-master=tcp:35432'
+
+alias gcloud:staging='gcloud container clusters get-credentials tokyo-a --zone asia-northeast1-c --project wed-staging'
+alias gcloud:production='gcloud container clusters get-credentials tokyo-b --region asia-northeast1 --project wed-production'
+
 ########################################
 
 # C で標準出力をクリップボードにコピーする
