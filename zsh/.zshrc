@@ -4,7 +4,7 @@ export PATH=~/.local/bin:$PATH
 export NODE_OPTIONS=--max_old_space_size=4096
 export GIT_EDITOR=nvim
 
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 setopt nonomatch
 setopt interactivecomments
@@ -12,6 +12,10 @@ setopt interactivecomments
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+########################################
+# PATH
+export PATH=/opt/homebrew/bin:$PATH
 
 ########################################
 

@@ -10,6 +10,10 @@ set cursorcolumn
 set virtualedit=onemore
 set clipboard=unnamed
 
+" privider
+let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
+let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
+
 " disable cross key
 vnoremap  <Up>     <nop>
 vnoremap  <Down>   <nop>
@@ -24,7 +28,7 @@ noremap   <Right>  <nop>
 let s:dein_dir = has('nvim') ? expand('~/.cache/dein/nvim') : expand('~/.cache/dein/vim')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-let g:rc_dir    = expand('~/dotfiles/vim/toml')
+let g:rc_dir    = expand('~/Projects/github.com/yasudanaoya/dotfiles/vim/toml')
 let s:toml      = g:rc_dir . '/dein.toml'
 let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
