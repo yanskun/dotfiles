@@ -11,8 +11,8 @@
   cop = !git checkout $(git b | peco)
 
 [core]
-  excludesfile = ${HOME}/.gitignore_globals
-	pager = less
+  excludesfile = ~/.gitignore_global
+  pager = less
   ignorecase = false
   editor = neovim
 [pager]
