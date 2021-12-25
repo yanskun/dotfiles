@@ -38,3 +38,78 @@ on_ft = ['yaml']
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
+
+##############################################################################
+# development
+##############################################################################
+[[plugins]]
+ repo = 'Shougo/ddc.vim'
+ on_event = 'InsertEnter'
+ depends = ['denops.vim']
+ hook_source = '''
+ call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'vsnip'])
+ call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \ 'matchers': ['matcher_head'],
+      \ 'sorters': ['sorter_rank'],
+      \ 'converters': ['converter_remove_overlap'],
+      \ },
+      \ 'around': {'mark': 'A'},
+      \ 'nvim-lsp': {
+      \ 'mark': 'L',
+      \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+      \ },
+      \ })
+
+ call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
+
+ inoremap <silent><expr> <TAB>
+      \ ddc#map#pum_visible() ? '<C-n>' :
+      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+      \ '<TAB>' : ddc#map#manual_complete()
+ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+ call ddc#enable()
+'''
+
+[[plugins]]
+ repo = 'Shougo/ddc-around'
+ on_source = 'ddc.vim'
+
+[[plugins]]
+ repo = 'Shougo/ddc-matcher_head'
+ on_source = 'ddc.vim'
+
+[[plugins]]
+ repo = 'Shougo/ddc-sorter_rank'
+ on_source = 'ddc.vim'
+
+[[plugins]]
+ repo = 'Shougo/ddc-converter_remove_overlap'
+ on_source = 'ddc.vim'
+
+[[plugins]]
+ repo = 'Shougo/ddc-nvim-lsp'
+ on_source = 'ddc.vim'
+
+[[plugins]]
+ repo = 'hrsh7th/vim-vsnip'
+ on_event = 'InsertEnter'
+ depends = ['vim-vsnip-integ', 'friendly-snippets']
+ hook_add = '''
+ imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+ smap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+ imap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
+ smap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
+ imap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
+ smap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
+ let g:vsnip_filetypes = {}
+ '''
+
+[[plugins]]
+ repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
+ repo = 'rafamadriz/friendly-snippets'

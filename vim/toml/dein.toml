@@ -29,7 +29,7 @@ repo = 'folke/which-key.nvim'
 repo = 'dense-analysis/ale'
 
 [[plugins]]
-repo = 'Shougo/ddc.vim'
+repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
@@ -69,3 +69,14 @@ repo = 'prabirshrestha/vim-lsp'
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+  " Hide signcolumn.
+  let g:lsp_diagnostics_signs_enabled = 0
+'''
+hook_post_source = '''
+  " Highlight LSP warnings strongly (like errors)
+  highlight link LspWarningHighlight Error
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-icons'

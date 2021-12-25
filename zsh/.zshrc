@@ -16,6 +16,7 @@ SAVEHIST=1000000
 ########################################
 # PATH
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=$PATH:/usr/sbin/
 
 ########################################
 
@@ -46,6 +47,7 @@ fi
 # env
 
 eval "$(anyenv init -)"
+eval "$(goenv init -)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
