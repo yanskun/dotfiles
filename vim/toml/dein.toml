@@ -80,3 +80,6 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-icons'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
