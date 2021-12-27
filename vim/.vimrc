@@ -121,6 +121,7 @@ let g:blamer_date_format = '%y/%m/%d %H:%M'
 
 " ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|\.git'
+let g:ctrlp_show_hidden = 1
 
 colorscheme onedark
 hi Normal ctermbg=NONE guibg=NONE
