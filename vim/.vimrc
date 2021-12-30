@@ -90,6 +90,15 @@ function! s:on_lsp_buffer_enabled() abort
 
     " refer to doc to add more commands
 endfunction
+" typescript-language-server
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescriptreact'],
+        \ })
+endif
 
 augroup lsp_install
     au!

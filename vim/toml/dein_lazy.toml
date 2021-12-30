@@ -3,11 +3,11 @@
 ##############################################################################
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 [[plugins]]
 repo = 'Quramy/tsuquyomi'
-on_ft = ['typescript']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
 
 ##############################################################################
 # vue
