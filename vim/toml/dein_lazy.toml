@@ -3,11 +3,11 @@
 ##############################################################################
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact', 'typescriptreact.tsx', 'vue']
 
 [[plugins]]
 repo = 'Quramy/tsuquyomi'
-on_ft = ['typescript', 'typescript.tsx', 'typescriptreact']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact', 'typescriptreact.tsx', 'vue']
 
 ##############################################################################
 # vue
@@ -46,70 +46,24 @@ on_ft = ['markdown', 'md']
 # development
 ##############################################################################
 [[plugins]]
-repo = 'Shougo/ddc.vim'
-on_event = 'InsertEnter'
-depends = ['denops.vim']
-# hook_source = '''
-# call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'vsnip', 'copilot'])
-# call ddc#custom#patch_global('sourceOptions', {
-#      \ '_': {
-#      \ 'matchers': ['matcher_head'],
-#      \ 'sorters': ['sorter_rank'],
-#      \ 'converters': ['converter_remove_overlap'],
-#      \ },
-#      \ 'around': {'mark': 'A'},
-#      \ 'nvim-lsp': {
-#      \ 'mark': 'L',
-#      \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-#      \ },
-#      \ })
-#
-# call ddc#custom#patch_global('sourceParams', {
-#      \ 'around': {'maxSize': 500},
-#      \ })
-#
-# inoremap <silent><expr> <TAB>
-#      \ ddc#map#pum_visible() ? '<C-n>' :
-#      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-#      \ '<TAB>' : ddc#map#manual_complete()
-# inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
-#
-# call ddc#enable()
-# '''
+repo = 'hrsh7th/cmp-nvim-lsp'
+depends = ['nvim-cmp']
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
-on_source = 'ddc.vim'
+repo = 'hrsh7th/cmp-buffer'
+depends = ['nvim-cmp']
 
 [[plugins]]
-repo = 'Shougo/ddc-matcher_head'
-on_source = 'ddc.vim'
+repo = 'hrsh7th/cmp-path'
+depends = ['nvim-cmp']
 
 [[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
-on_source = 'ddc.vim'
+repo = 'hrsh7th/cmp-cmdline'
+depends = ['nvim-cmp']
 
 [[plugins]]
-repo = 'Shougo/ddc-converter_remove_overlap'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip'
-on_event = 'InsertEnter'
-depends = ['vim-vsnip-integ', 'friendly-snippets']
-hook_add = '''
-imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-smap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
-smap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
-imap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
-smap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
-let g:vsnip_filetypes = {}
-'''
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+depends = ['nvim-cmp', 'ultisnips']
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'

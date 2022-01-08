@@ -1,9 +1,11 @@
+# plugin manager
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'github/copilot.vim'
 
+# color theme
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 
@@ -16,6 +18,7 @@ repo = 'tpope/vim-rhubarb'
 [[plugins]]
 repo = 'prettier/vim-prettier'
 
+# explorer
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
 
@@ -28,9 +31,11 @@ repo = 'folke/which-key.nvim'
 [[plugins]]
 repo = 'dense-analysis/ale'
 
+# deno
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
+# clean code
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 
@@ -55,15 +60,18 @@ repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
 
+# fuzzy finder
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 
+# git
 [[plugins]]
 repo = 'APZelos/blamer.nvim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
+# lsp
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 
@@ -80,6 +88,67 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-icons'
+
+# auto completion
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+hook_source = '''
+set completeopt=menu,menuone,noselect
+" doc: https://github.com/hrsh7th/nvim-cmp#setup
+lua <<EOF
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body)
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable,
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'ultisnips' },
+      }, {
+      { name = 'buffer' },
+    })
+  })
+
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  nmp.setup {
+    sources = {
+      { name = 'copilot' },
+    }
+  }
+
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+    capabilities = capabilities
+  }
+EOF
+'''
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
