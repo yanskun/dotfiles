@@ -43,30 +43,7 @@ repo = 'kat0h/bufpreview.vim'
 on_ft = ['markdown', 'md']
 
 ##############################################################################
-# development
+# snippets
 ##############################################################################
-[[plugins]]
-repo = 'hrsh7th/cmp-nvim-lsp'
-depends = ['nvim-cmp']
-
-[[plugins]]
-repo = 'hrsh7th/cmp-buffer'
-depends = ['nvim-cmp']
-
-[[plugins]]
-repo = 'hrsh7th/cmp-path'
-depends = ['nvim-cmp']
-
-[[plugins]]
-repo = 'hrsh7th/cmp-cmdline'
-depends = ['nvim-cmp']
-
-[[plugins]]
-repo = 'quangnguyen30192/cmp-nvim-ultisnips'
-depends = ['nvim-cmp', 'ultisnips']
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
-
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'

@@ -139,6 +139,7 @@ lua <<EOF
 
   nmp.setup {
     sources = {
+      { name = 'vim-lsp' },
       { name = 'copilot' },
     }
   }
@@ -149,6 +150,24 @@ lua <<EOF
   }
 EOF
 '''
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
