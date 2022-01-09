@@ -73,21 +73,10 @@ repo = 'airblade/vim-gitgutter'
 
 # lsp
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
+repo = 'neovim/nvim-lspconfig'
 
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
-hook_add = '''
-  " Hide signcolumn.
-  let g:lsp_diagnostics_signs_enabled = 0
-'''
-hook_post_source = '''
-  " Highlight LSP warnings strongly (like errors)
-  highlight link LspWarningHighlight Error
-'''
-
-[[plugins]]
-repo = 'mattn/vim-lsp-icons'
+repo = 'williamboman/nvim-lsp-installer'
 
 # auto completion
 [[plugins]]
