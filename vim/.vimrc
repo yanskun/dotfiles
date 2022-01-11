@@ -66,6 +66,8 @@ call map(dein#check_clean(), "delete(v:val, 'rf')")
 let g:dein#auto_recache = 1
 
 " plugin settings
+
+" lsp
 " typescript-language-server
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
@@ -81,6 +83,16 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" test"
+let test#strategy = "dispatch"
+let test#go#runner = 'gotest'
+
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 " fern
 let g:fern#drawer_keep = 1
