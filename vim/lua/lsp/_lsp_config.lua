@@ -33,7 +33,11 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = { 'vimls', 'gopls', 'sumneko_lua' }
+local servers = {
+  'vimls',
+  'gopls',
+  'sumneko_lua'
+}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -51,11 +55,6 @@ end
 -- npm i -g vim-language-server
 -- npm i -g typescript-language-server
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = {
-  'gopls',
-  'vimls',
-  'sumneko_lua'
-}
 
 for _, server in ipairs(servers) do
 	nvim_lsp[server].setup({

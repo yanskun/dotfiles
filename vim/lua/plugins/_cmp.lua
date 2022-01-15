@@ -32,11 +32,3 @@ vim.cmd([[
   inoremap <C-x><C-o> <Cmd>lua vimrc.cmp.lsp()<CR>
   inoremap <C-x><C-s> <Cmd>lua vimrc.cmp.snippet()<CR>
 ]])
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'vimls', 'gopls', 'sumneko_lua' }
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-    capabilities = capabilities
-  }
-end
