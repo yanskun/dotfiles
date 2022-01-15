@@ -9,6 +9,7 @@ repo = 'github/copilot.vim'
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 
+# git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
@@ -16,7 +17,10 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
-repo = 'prettier/vim-prettier'
+repo = 'APZelos/blamer.nvim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 # explorer
 [[plugins]]
@@ -28,29 +32,36 @@ repo = 'lambdalisue/fern-git-status.vim'
 [[plugins]]
 repo = 'folke/which-key.nvim'
 
-[[plugins]]
-repo = 'dense-analysis/ale'
+# TBD
+# syntax
+# [[plugins]]
+# repo = 'dense-analysis/ale'
+
+# [[plugins]]
+# repo = 'prettier/vim-prettier'
 
 # deno
-[[plugins]]
-repo = 'vim-denops/denops.vim'
+# [[plugins]]
+# repo = 'vim-denops/denops.vim'
 
-# clean code
-[[plugins]]
-repo = 'ntpeters/vim-better-whitespace'
-
+# snippets
 [[plugins]]
 repo = 'SirVer/ultisnips'
 
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-
+# fuzzy finder
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
 
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+# font
 [[plugins]]
 repo = 'lambdalisue/nerdfont.vim'
 
@@ -59,17 +70,6 @@ repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
-
-# fuzzy finder
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-
-# git
-[[plugins]]
-repo = 'APZelos/blamer.nvim'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
 
 # lsp
 [[plugins]]
@@ -97,14 +97,19 @@ repo = 'hrsh7th/cmp-cmdline'
 [[plugins]]
 repo = 'quangnguyen30192/cmp-nvim-ultisnips'
 
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
+# testings
 [[plugins]]
 repo = 'vim-test/vim-test'
 
 [[plugins]]
 repo = 'tpope/vim-dispatch'
+
+# development
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
