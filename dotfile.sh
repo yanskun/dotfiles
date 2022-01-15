@@ -25,6 +25,9 @@ fi
 if [[ ! -e $nvim_path/init.vim ]]; then
   ln -s $PWD/vim/.vimrc $nvim_path/init.vim
 fi
+if [[ ! -d $nvim_path/lua ]]; then
+  ln -s $PWD/vim/lua $nvim_path/lua
+fi
 
 echo 'tmux'
 if [[ ! -e $HOME/.tmux.conf ]]; then

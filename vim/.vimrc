@@ -1,3 +1,5 @@
+" No maintenance from 16/01/2022
+
 language en_US
 
 set expandtab
