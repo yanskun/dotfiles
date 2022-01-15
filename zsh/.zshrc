@@ -302,3 +302,10 @@ fi
 source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
+
+########################################
+# functions
+
+function command_not_found_handler() {
+  cowsay "command not found: $1"
+}
