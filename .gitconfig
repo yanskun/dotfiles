@@ -22,4 +22,4 @@
 [ghq]
   root = ~/Projects
 [init]
-	defaultBranch = main
+  defaultBranch = main
