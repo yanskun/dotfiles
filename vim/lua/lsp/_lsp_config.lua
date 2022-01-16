@@ -33,10 +33,18 @@ local on_attach = function(client, bufnr)
 
 end
 
+-- Launguage Configs
+-- install command
+-- go install golang.org/x/tools/gopls@latest
+-- brew install lua-language-server
+-- npm i -g vim-language-server
+-- npm i -g typescript-language-server
+
 local servers = {
   'vimls',
   'gopls',
-  'sumneko_lua'
+  'sumneko_lua',
+  'tsserver'
 }
 
 for _, lsp in ipairs(servers) do
@@ -48,12 +56,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- Launguage Configs
--- install command
--- go install golang.org/x/tools/gopls@latest
--- brew install lua-language-server
--- npm i -g vim-language-server
--- npm i -g typescript-language-server
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, server in ipairs(servers) do
