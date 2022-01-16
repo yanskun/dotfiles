@@ -1,4 +1,13 @@
 local telescope = require('telescope')
+local utils = require('libraries/_set_mappings')
+
+utils.nnoremap('ff', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+utils.nnoremap('fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+utils.nnoremap('fb', "<cmd>lua require('telescope.builtin').buffers()<cr>")
+utils.nnoremap('fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+utils.nnoremap('fo', "<cmd>lua require('telescope.builtin').oldfiles()<cr>")
+utils.nnoremap('fc', "<cmd>lua require('telescope.builtin').commands()<cr>")
+utils.nnoremap('fk', "<cmd>lua require('telescope.builtin').keymaps()<cr>")
 
 telescope.setup{
   defaults = {
