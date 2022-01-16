@@ -32,8 +32,8 @@ repo = 'lambdalisue/fern-git-status.vim'
 [[plugins]]
 repo = 'folke/which-key.nvim'
 
-# TBD
 # syntax
+# TBD
 # [[plugins]]
 # repo = 'dense-analysis/ale'
 
@@ -74,6 +74,9 @@ repo = 'neovim/nvim-lspconfig'
 
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
+
+[[plugins]]
+repo = 'nvim-lua/lsp-status.nvim'
 
 # auto completion
 [[plugins]]

@@ -26,4 +26,5 @@ vim.cmd([[
   augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab
+  augroup END
 ]])

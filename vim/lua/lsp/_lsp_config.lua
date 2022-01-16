@@ -1,4 +1,4 @@
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -47,21 +47,17 @@ local servers = {
   'tsserver'
 }
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  lspconfig[lsp].setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
     }
   }
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-for _, server in ipairs(servers) do
-	nvim_lsp[server].setup({
-		capabilities = capabilities,
-	})
-end
-
+require('lsp._lsp_status')
 require('lsp._lua')
