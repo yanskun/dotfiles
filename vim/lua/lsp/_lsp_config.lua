@@ -59,5 +59,4 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('lsp._lsp_status')
 require('lsp._lua')
