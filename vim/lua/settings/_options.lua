@@ -18,8 +18,6 @@ bo.shiftwidth = 2
 vim.cmd([[
   language en_US
   filetype plugin indent on
-  syntax on
-  hi Normal ctermbg=NONE guibg=NONE
 ]])
 
 vim.cmd([[

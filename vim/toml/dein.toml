@@ -110,3 +110,10 @@ repo = 'ntpeters/vim-better-whitespace'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+
+# statusline
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
