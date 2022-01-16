@@ -1,19 +1,17 @@
 -- https://vim-jp.org/vimdoc-ja/options.html
 local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
 
 o.swapfile = true
 o.showcmd = true
 o.virtualedit = 'onemore'
 
-wo.number = true
-wo.cursorline = true
-wo.cursorcolumn = true
+o.number = true
+o.cursorline = true
+o.cursorcolumn = true
 
-bo.expandtab = true
-bo.tabstop = 2
-bo.shiftwidth = 2
+o.expandtab = true
+o.tabstop = 2
+o.shiftwidth = 2
 
 vim.cmd([[
   language en_US
