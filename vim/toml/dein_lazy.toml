@@ -3,11 +3,11 @@
 ##############################################################################
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact', 'typescriptreact.tsx', 'vue']
 
 [[plugins]]
 repo = 'Quramy/tsuquyomi'
-on_ft = ['typescript']
+on_ft = ['typescript', 'typescript.tsx', 'typescriptreact', 'typescriptreact.tsx', 'vue']
 
 ##############################################################################
 # vue
@@ -38,3 +38,12 @@ on_ft = ['yaml']
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+on_ft = ['markdown', 'md']
+
+##############################################################################
+# snippets
+##############################################################################
+[[plugins]]
+repo = 'rafamadriz/friendly-snippets'

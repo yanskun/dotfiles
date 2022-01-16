@@ -1,4 +1,4 @@
-export ZDOTDIR=${HOME}/dotfiles/zsh
+export ZDOTDIR=${HOME}/Projects/github.com/yasudanaoya/dotfiles/zsh
 
 export XDG_CONFIG_HOME=$HOME/.config
 

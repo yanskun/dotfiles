@@ -4,7 +4,7 @@ export PATH=~/.local/bin:$PATH
 export NODE_OPTIONS=--max_old_space_size=4096
 export GIT_EDITOR=nvim
 
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 setopt nonomatch
 setopt interactivecomments
@@ -12,6 +12,11 @@ setopt interactivecomments
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+########################################
+# PATH
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=$PATH:/usr/sbin/
 
 ########################################
 
@@ -42,6 +47,7 @@ fi
 # env
 
 eval "$(anyenv init -)"
+eval "$(goenv init -)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -296,3 +302,10 @@ fi
 source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
+
+########################################
+# functions
+
+function command_not_found_handler() {
+  cowsay "command not found: $1"
+}

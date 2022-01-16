@@ -1,12 +1,15 @@
+# plugin manager
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'github/copilot.vim'
 
+# color theme
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 
+# git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
@@ -14,8 +17,12 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
-repo = 'prettier/vim-prettier'
+repo = 'APZelos/blamer.nvim'
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# explorer
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
 
@@ -25,27 +32,33 @@ repo = 'lambdalisue/fern-git-status.vim'
 [[plugins]]
 repo = 'folke/which-key.nvim'
 
-[[plugins]]
-repo = 'dense-analysis/ale'
+# TBD
+# syntax
+# [[plugins]]
+# repo = 'dense-analysis/ale'
 
-[[plugins]]
-repo = 'Shougo/ddc.vim'
+# [[plugins]]
+# repo = 'prettier/vim-prettier'
 
-[[plugins]]
-repo = 'ntpeters/vim-better-whitespace'
+# deno
+# [[plugins]]
+# repo = 'vim-denops/denops.vim'
 
+# snippets
 [[plugins]]
 repo = 'SirVer/ultisnips'
 
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-
+# fuzzy finder
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
 
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+# font
 [[plugins]]
 repo = 'lambdalisue/nerdfont.vim'
 
@@ -55,17 +68,45 @@ repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
 
+# lsp
 [[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
+repo = 'neovim/nvim-lspconfig'
 
 [[plugins]]
-repo = 'APZelos/blamer.nvim'
+repo = 'williamboman/nvim-lsp-installer'
+
+# auto completion
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'hrsh7th/cmp-nvim-lsp'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
+repo = 'hrsh7th/cmp-buffer'
 
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+
+# testings
+[[plugins]]
+repo = 'vim-test/vim-test'
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+# development
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
