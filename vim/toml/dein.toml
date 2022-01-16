@@ -58,9 +58,6 @@ repo = 'nvim-telescope/telescope-symbols.nvim'
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-
 # font
 [[plugins]]
 repo = 'lambdalisue/nerdfont.vim'

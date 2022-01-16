@@ -31,7 +31,7 @@ end
 local removed_plugins = vim.fn['dein#check_clean']()
 if vim.fn.len(removed_plugins) > 0 then
   vim.fn.map(removed_plugins, "delete(v:val, 'rf')")
-  vim.fn['dein#recache_runtimepath;']()
+  vim.fn['dein#recache_runtimepath']()
 end
 
 vim.g['dein#auto_recache'] = 1

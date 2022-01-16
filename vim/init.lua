@@ -6,7 +6,6 @@ require('plugins._dein')
 
 require('plugins._blamer')
 require('plugins._cmp')
-require('plugins._ctrlp')
 require('plugins._fern')
 require('plugins._onedark')
 require('plugins._telescope')
