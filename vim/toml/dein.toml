@@ -7,7 +7,7 @@ repo = 'github/copilot.vim'
 
 # color theme
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'olimorris/onedarkpro.nvim'
 
 # git
 [[plugins]]
