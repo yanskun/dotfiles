@@ -30,11 +30,14 @@ repo = 'lambdalisue/fern.vim'
 repo = 'lambdalisue/fern-git-status.vim'
 
 [[plugins]]
-repo = 'folke/which-key.nvim'
+repo = 'lambdalisue/fern-hijack.vim'
 
-# syntax
+# treesitter
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
+
+[[plugins]]
+repo = 'romgrk/nvim-treesitter-context'
 
 # [[plugins]]
 # repo = 'prettier/vim-prettier'
@@ -109,6 +112,9 @@ repo = 'ntpeters/vim-better-whitespace'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'booperlv/nvim-gomove'
 
 # statusline
 [[plugins]]

@@ -1,7 +1,7 @@
 local utils = require('libraries._set_mappings')
 
 vim.cmd([[
-  let test#strategy = "dispatch"
+  let test#strategy = "neovim"
   let test#go#runner = 'gotest'
 ]])
 
