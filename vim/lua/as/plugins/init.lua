@@ -147,5 +147,12 @@ require'packer'.startup {function(use)
     },
     config = conf 'lualine'
   }
+
+  use {
+    'folke/todo-comments.nvim',
+    requires = "nvim-lua/plenary.nvim",
+    config = conf 'todocomments'
+  }
+
   end
 }
