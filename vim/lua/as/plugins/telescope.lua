@@ -1,14 +1,5 @@
 return function()
   local telescope = require('telescope')
-  local utils = require('libraries/_set_mappings')
-
-  utils.nnoremap('ff', "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>")
-  utils.nnoremap('fg', "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
-  utils.nnoremap('fb', "<cmd>lua require('telescope.builtin').buffers({ hidden = true })<cr>")
-  utils.nnoremap('fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-  utils.nnoremap('fo', "<cmd>lua require('telescope.builtin').oldfiles({ hidden = true })<cr>")
-  utils.nnoremap('fc', "<cmd>lua require('telescope.builtin').commands()<cr>")
-  utils.nnoremap('fk', "<cmd>lua require('telescope.builtin').keymaps()<cr>")
 
   telescope.setup{
     defaults = {
@@ -38,6 +29,18 @@ return function()
       --   extension_config_key = value,
       -- }
       -- please take a look at the readme of the extension you want to configure
+    }
+  }
+
+  require('which-key').register {
+    f = {
+      f = { "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>" },
+      g = { "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>" },
+      b = { "<cmd>lua require('telescope.builtin').buffers({ hidden = true })<cr>" },
+      h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>" },
+      o = { "<cmd>lua require('telescope.builtin').oldfiles({ hidden = true })<cr>" },
+      c = { "<cmd>lua require('telescope.builtin').commands()<cr>" },
+      k = { "<cmd>lua require('telescope.builtin').keymaps()<cr>" },
     }
   }
 end
