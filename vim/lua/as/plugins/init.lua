@@ -82,6 +82,7 @@ require'packer'.startup {function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-telescope/telescope-symbols.nvim',
+      'hrsh7th/nvim-cmp'
     },
     config = conf 'telescope'
   }
@@ -104,7 +105,7 @@ require'packer'.startup {function(use)
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     requires = {
-      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
+      { 'hrsh7th/cmp-nvim-lsp', after = { 'nvim-cmp', 'nvim-lspconfig' } },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
