@@ -3,6 +3,9 @@ return function()
   local cmp = require('cmp')
 
   cmp.setup = {
+    mapping = {
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'ultisnips' },

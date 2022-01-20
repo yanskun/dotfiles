@@ -12,9 +12,12 @@ require'packer'.startup {function(use)
   use 'github/copilot.vim'
 
   use {
-    'olimorris/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     config = function()
       require('onedarkpro').load()
+      require('onedarkpro').setup {
+        theme = 'onedark',
+      }
     end
   }
 
@@ -152,6 +155,15 @@ require'packer'.startup {function(use)
     'folke/todo-comments.nvim',
     requires = "nvim-lua/plenary.nvim",
     config = conf 'todocomments'
+  }
+
+  -- launguages support
+  use {
+    'ray-x/go.nvim',
+    ft = 'go',
+    config = function()
+      require('go').setup()
+    end,
   }
 
   end
