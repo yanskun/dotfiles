@@ -1,8 +1,14 @@
 return function()
-  vim.cmd([[
-    let test#strategy = "neovim"
-    let test#go#runner = 'gotest'
-  ]])
+  vim.cmd [[
+    function! ToggleTermStrategy(cmd) abort
+      call luaeval("require('toggleterm').exec(_A[1])", [a:cmd])
+    endfunction
+
+    let g:test#custom_strategies = {'toggleterm': function('ToggleTermStrategy')}
+  ]]
+
+  vim.g['test#strategy'] = 'toggleterm'
+  vim.g['test#go#runner'] = 'gotest'
 
   require('which-key').register {
     t = {

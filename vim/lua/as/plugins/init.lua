@@ -37,7 +37,7 @@ require'packer'.startup {function(use)
   }
 
   -- (vim script)
-  use 'tpope/vim-fugitive'
+  --use 'tpope/vim-fugitive'
 
   -- key mapping
   use {
@@ -64,6 +64,7 @@ require'packer'.startup {function(use)
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    commit = '668de0951a36ef17016074f1120b6aacbe6c4515',
     config = conf 'treesitter',
     requires = {
       {
@@ -98,9 +99,31 @@ require'packer'.startup {function(use)
       'hrsh7th/cmp-nvim-lsp',
     }
   }
+
   use {
     'williamboman/nvim-lsp-installer',
     requires = 'nvim-lspconfig'
+  }
+
+  use {
+    'jose-elias-alvarez/nvim-lsp-ts-utils',
+    requires = 'nvim-lspconfig'
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      local null_ls = require('null-ls')
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.completion.spell,
+        }
+      }
+    end
   }
 
   -- auto completion
@@ -122,10 +145,17 @@ require'packer'.startup {function(use)
   -- testings
   use {
     'vim-test/vim-test',
+    requires = {
+      'akinsho/toggleterm.nvim',
+    },
     config = conf 'vim-test'
   }
 
-  use 'rcarriga/vim-ultest'
+  use {
+    'rcarriga/vim-ultest',
+    requires = { 'vim-test/vim-test' },
+    run = ':UpdateRemotePlugins',
+  }
 
   -- development
   use {
@@ -138,6 +168,27 @@ require'packer'.startup {function(use)
     config = function()
       require('nvim-autopairs').setup {
         close_triple_quotes = true,
+      }
+    end
+  }
+
+  use {
+    'kassio/neoterm',
+  }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('toggleterm').setup {
+        direction = 'horizontal',
+        start_in_insert = false,
+        size = function(term)
+          if term.direction == 'horizontal' then
+            return 15
+          elseif term.direction == 'vertical' then
+            return math.floor(vim.o.columns * 0.4)
+          end
+        end
       }
     end
   }

@@ -61,4 +61,5 @@ return function()
   end
 
   require('as.lsp.lua')
+  require('as.lsp.typescript')
 end
