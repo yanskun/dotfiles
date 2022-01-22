@@ -36,8 +36,8 @@ require'packer'.startup {function(use)
     requires = { 'plenary.nvim' }
   }
 
-  -- (vim script)
-  --use 'tpope/vim-fugitive'
+  -- FIXME: vim script, switch when lua script comes out
+  use 'tpope/vim-fugitive'
 
   -- key mapping
   use {
