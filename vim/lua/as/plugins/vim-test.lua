@@ -11,6 +11,7 @@ return function()
   vim.g['test#go#runner'] = 'gotest'
 
   require('which-key').register {
+    name = 'test',
     t = {
       ['<C-n>'] = { '<Cmd>TestNearest<CR>', 'run test nearest to the cursor' },
       ['<C-f>'] = { '<Cmd>TestFile<CR>', 'run test file' },

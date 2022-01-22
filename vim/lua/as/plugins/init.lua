@@ -157,6 +157,24 @@ require'packer'.startup {function(use)
     run = ':UpdateRemotePlugins',
   }
 
+  use {
+    'mfussenegger/nvim-dap',
+    config = conf 'dap',
+    requires = {
+      {
+        'rcarriga/nvim-dap-ui',
+        requires = { 'mfussenegger/nvim-dap' },
+        config = conf 'dapui'
+      },
+      {
+        'leoluz/nvim-dap-go',
+        config = function()
+          require('dap-go').setup()
+        end
+      },
+    }
+  }
+
   -- development
   use {
     'McAuleyPenney/tidy.nvim',

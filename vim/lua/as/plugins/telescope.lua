@@ -33,6 +33,7 @@ return function()
   }
 
   require('which-key').register {
+    name = 'telescope',
     ['<leader>ff'] = { "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", 'telescope find file' },
     ['<leader>fg'] = { "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>", 'telescope live grep' },
     ['<leader>fb'] = { "<cmd>lua require('telescope.builtin').buffers({ hidden = true })<cr>", 'telescope buffers' },
