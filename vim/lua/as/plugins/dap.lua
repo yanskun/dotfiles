@@ -10,6 +10,7 @@ return function ()
       o = { "<Cmd>lua require'dap'.step_over()<CR>", "dap step over" },
       l = { "<Cmd>lua require'dap'.run_last()<CR>", "dap run last" },
       s = { "<Cmd>lua require'dap'.list_breakpoints()<CR>", "dap show breakpoints" },
+      g = { "<Cmd>lua require('dap-go').debug_test()<CR>", "dap go debug test" }
     },
   }, {
       prefix = '<leader>'
