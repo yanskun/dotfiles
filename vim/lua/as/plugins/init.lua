@@ -126,7 +126,7 @@ require'packer'.startup {function(use)
     end
   }
 
-  -- auto completion
+  -- autocompletion
   use {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -138,6 +138,7 @@ require'packer'.startup {function(use)
       { 'f3fora/cmp-spell', after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'petertriho/cmp-git', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip' }
     },
     config = conf 'cmp'
   }

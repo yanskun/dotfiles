@@ -2,39 +2,24 @@ return function()
 
   local cmp = require('cmp')
 
-  cmp.setup = {
+  cmp.setup({
     mapping = {
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-q>'] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior }),
+      ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior })
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'ultisnips' },
+      { name = 'luasnip' },
       { name = 'buffer' },
-    })
-  }
-
-  _G.vimrc = _G.vimrc or {}
-  _G.vimrc.cmp = _G.vimrc.cmp or {}
-  _G.vimrc.cmp.lsp = function()
-    cmp.complete({
-      config = {
-        sources = {
-          { name = 'nvim_lsp' }
-        }
-      }
-    })
-  end
-  _G.vimrc.cmp.snippet = function()
-    cmp.complete({
-      config = {
-        sources = {
-          { name = 'ultisnips' },
-        }
-      }
-    })
-  end
-  vim.cmd([[
-    inoremap <C-x><C-o> <Cmd>lua vimrc.cmp.lsp()<CR>
-    inoremap <C-x><C-s> <Cmd>lua vimrc.cmp.snippet()<CR>
-  ]])
+    }),
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end
+    }
+  })
 end
