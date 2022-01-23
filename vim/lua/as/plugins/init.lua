@@ -22,13 +22,6 @@ require'packer'.startup {function(use)
   }
 
   --git
-  use {
-    'ruifm/gitlinker.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-
   use 'lewis6991/gitsigns.nvim'
 
   use {
@@ -36,8 +29,10 @@ require'packer'.startup {function(use)
     requires = { 'plenary.nvim' }
   }
 
-  -- FIXME: vim script, switch when lua script comes out
+  -- NOTE: vim script, switch when lua script comes out
   use 'tpope/vim-fugitive'
+
+  use 'tpope/vim-rhubarb'
 
   -- key mapping
   use {
