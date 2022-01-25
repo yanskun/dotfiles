@@ -191,12 +191,29 @@ require'packer'.startup {function(use)
     event = 'BufWritePre'
   }
 
+  -- brackets
   use {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup {
         close_triple_quotes = true,
       }
+    end
+  }
+
+  -- comment
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+
+  -- indent
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup()
     end
   }
 
