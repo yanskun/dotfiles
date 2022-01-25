@@ -7,6 +7,7 @@ return function()
     ['gD'] = { '<Cmd>BufferLinePickClose<CR>', 'bufferline: delete buffer' },
     ['gb'] = { '<Cmd>BufferLinePick<CR>', 'bufferline: pick buffer' },
     ['<leader><tab>'] = { '<Cmd>BufferLineCycleNext<CR>', 'bufferline: next' },
+    ['<leader><s-tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: previous' },
     ['<S-tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: prev' },
     ['[b'] = { '<Cmd>BufferLineMoveNext<CR>', 'bufferline: move next' },
     [']b'] = { '<Cmd>BufferLineMovePrev<CR>', 'bufferline: move prev' },

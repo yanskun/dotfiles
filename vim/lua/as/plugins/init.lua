@@ -22,7 +22,20 @@ require'packer'.startup {function(use)
   }
 
   --git
-  use 'lewis6991/gitsigns.nvim'
+  use {
+    'f-person/git-blame.nvim',
+    config = function()
+      vim.g.gitblame_message_template = '<summary> | <date> | <author>'
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 
   use {
     'sindrets/diffview.nvim',
