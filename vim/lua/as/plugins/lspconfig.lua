@@ -1,6 +1,12 @@
 return function()
   local lspconfig = require('lspconfig')
 
+  vim.diagnostic.config({
+    virtual_text = false
+  })
+  vim.o.updatetime = 250
+  vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local on_attach = function(client, bufnr)
