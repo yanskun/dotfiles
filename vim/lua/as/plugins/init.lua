@@ -126,7 +126,7 @@ require'packer'.startup {function(use)
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     requires = {
-      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
@@ -172,6 +172,7 @@ require'packer'.startup {function(use)
   }
 
   -- development
+  -- trim white space
   use {
     'McAuleyPenney/tidy.nvim',
     event = 'BufWritePre'
@@ -186,10 +187,7 @@ require'packer'.startup {function(use)
     end
   }
 
-  use {
-    'kassio/neoterm',
-  }
-
+  -- terminal
   use {
     'akinsho/toggleterm.nvim',
     config = function()
@@ -208,6 +206,21 @@ require'packer'.startup {function(use)
   }
 
   use {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require("scrollbar").setup()
+    end
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function ()
+      require('colorizer').setup()
+    end
+  }
+
+  -- status line
+  use {
     'nvim-lualine/lualine.nvim',
     requires = {
       { 'nvim-lualine/lualine.nvim', opt = true },
@@ -216,13 +229,22 @@ require'packer'.startup {function(use)
     config = conf 'lualine'
   }
 
+  -- search todo
   use {
     'folke/todo-comments.nvim',
     requires = "nvim-lua/plenary.nvim",
     config = conf 'todocomments'
   }
 
+  use {
+    'lewis6991/spellsitter.nvim',
+    config = function()
+      require('spellsitter').setup()
+    end
+  }
+
   -- launguages support
+  -- go
   use {
     'ray-x/go.nvim',
     ft = 'go',
@@ -230,6 +252,16 @@ require'packer'.startup {function(use)
       require('go').setup()
     end,
   }
+
+  -- javascript, typescript
+  use {
+    "prettier/vim-prettier",
+    ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    run = "yarn install",
+  }
+
+  -- markdown
+  use 'ellisonleao/glow.nvim'
 
   end
 }

@@ -40,12 +40,14 @@ return function()
   -- brew install lua-language-server
   -- npm i -g vim-language-server
   -- npm i -g typescript-language-server
+  -- npm i -g yaml-language-server
 
   local servers = {
     'vimls',
     'gopls',
     'sumneko_lua',
     'tsserver',
+    'yamlls',
   }
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
