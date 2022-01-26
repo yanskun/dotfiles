@@ -235,6 +235,7 @@ require'packer'.startup {function(use)
     end
   }
 
+  -- scrollbar
   use {
     'petertriho/nvim-scrollbar',
     config = function()
@@ -242,6 +243,7 @@ require'packer'.startup {function(use)
     end
   }
 
+  -- color
   use {
     'norcalli/nvim-colorizer.lua',
     config = function ()
@@ -266,6 +268,20 @@ require'packer'.startup {function(use)
     config = conf 'todocomments'
   }
 
+  -- quickfix
+  use {
+    'https://gitlab.com/yorickpeterse/nvim-pqf',
+    event = 'BufReadPre',
+    config = function()
+      require('pqf').setup {}
+    end
+  }
+
+  use {
+    'kevinhwang91/nvim-bqf',
+  }
+
+  -- spell check
   use {
     'lewis6991/spellsitter.nvim',
     config = function()
