@@ -273,7 +273,7 @@ require'packer'.startup {function(use)
     'https://gitlab.com/yorickpeterse/nvim-pqf',
     event = 'BufReadPre',
     config = function()
-      require('pqf').setup {}
+      require('pqf').setup()
     end
   }
 
