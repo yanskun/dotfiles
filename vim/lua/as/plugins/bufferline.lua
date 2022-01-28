@@ -4,11 +4,10 @@ return function()
   require('bufferline').setup {}
 
   require('which-key').register {
-    ['gD'] = { '<Cmd>BufferLinePickClose<CR>', 'bufferline: delete buffer' },
-    ['gb'] = { '<Cmd>BufferLinePick<CR>', 'bufferline: pick buffer' },
-    ['<leader><tab>'] = { '<Cmd>BufferLineCycleNext<CR>', 'bufferline: next' },
-    ['<leader><s-tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: previous' },
-    ['<S-tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: prev' },
+    ['<leader>gD'] = { '<Cmd>BufferLinePickClose<CR>', 'bufferline: delete buffer' },
+    ['<leader>gb'] = { '<Cmd>BufferLinePick<CR>', 'bufferline: pick buffer' },
+    ['<leader><Tab>'] = { '<Cmd>BufferLineCycleNext<CR>', 'bufferline: next' },
+    ['<leader><S-Tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: previous' },
     ['[b'] = { '<Cmd>BufferLineMoveNext<CR>', 'bufferline: move next' },
     [']b'] = { '<Cmd>BufferLineMovePrev<CR>', 'bufferline: move prev' },
     ['<leader>1'] = { '<Cmd>BufferLineGoToBuffer 1<CR>', 'which_key_ignore' },

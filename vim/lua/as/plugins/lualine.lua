@@ -7,9 +7,17 @@ return function()
     return path
   end
 
+  local gps = require("nvim-gps")
+
   require('lualine').setup({
     sections = {
-      lualine_c = { filepath, "require'lsp-status'.status()" },
+      lualine_c = {
+        filepath,
+        { gps.get_location, cond = gps.is_available },
+      },
+    },
+    options = {
+      theme = 'onedark',
     }
   })
 end

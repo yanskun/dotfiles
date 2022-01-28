@@ -21,7 +21,7 @@ require'packer'.startup {function(use)
     end
   }
 
-  --git
+  -- git
   use {
     'f-person/git-blame.nvim',
     config = function()
@@ -79,6 +79,7 @@ require'packer'.startup {function(use)
         'romgrk/nvim-treesitter-context',
         config = conf 'treesitter-context'
       },
+      'p00f/nvim-ts-rainbow',
     }
   }
 
@@ -105,6 +106,7 @@ require'packer'.startup {function(use)
     config = conf 'lspconfig',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
+      'ray-x/lsp_signature.nvim'
     }
   }
 
@@ -256,7 +258,17 @@ require'packer'.startup {function(use)
     'nvim-lualine/lualine.nvim',
     requires = {
       { 'nvim-lualine/lualine.nvim', opt = true },
-      { 'nvim-lua/lsp-status.nvim' }
+      {
+        'SmiteshP/nvim-gps',
+        requires = {'nvim-treesitter/nvim-treesitter' },
+        config = function()
+          require('nvim-gps').setup({
+            launguages = {
+              ['TelescopePrompt'] = false
+            }
+          })
+        end
+      }
     },
     config = conf 'lualine'
   }
@@ -296,6 +308,9 @@ require'packer'.startup {function(use)
     ft = 'go',
     config = function()
       require('go').setup()
+      vim.cmd([[
+        " autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+      ]])
     end,
   }
 

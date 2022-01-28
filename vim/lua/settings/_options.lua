@@ -13,6 +13,9 @@ o.expandtab = true
 o.tabstop = 2
 o.shiftwidth = 2
 
+o.foldmethod = 'indent'
+o.foldlevel = 99
+
 vim.cmd([[
   language en_US
   filetype plugin indent on
