@@ -310,6 +310,7 @@ require'packer'.startup {function(use)
 
   use {
     'kevinhwang91/nvim-bqf',
+    ft = 'qf',
   }
 
   -- spell check
