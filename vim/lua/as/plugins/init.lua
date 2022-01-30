@@ -265,7 +265,7 @@ require'packer'.startup {function(use)
         config = function()
           require('nvim-gps').setup({
             launguages = {
-              ['TelescopePrompt'] = false
+              ['TelescopePrompt'] = false,
             }
           })
         end

@@ -11,6 +11,9 @@ return function()
 
   require('lualine').setup({
     sections = {
+      lualine_b = {
+        'branch', 'diff', 'diagnostics', 'diff',
+      },
       lualine_c = {
         filepath,
         { gps.get_location, cond = gps.is_available },
@@ -18,6 +21,7 @@ return function()
     },
     options = {
       theme = 'onedark',
+      disabled_filetypes = {'NvimTree'}
     }
   })
 end
