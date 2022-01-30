@@ -273,6 +273,24 @@ require'packer'.startup {function(use)
     },
     config = conf 'lualine'
   }
+  -- use {
+  --   'windwp/windline.nvim',
+  --   requires = {
+  --     'nvim-lua/lsp-status.nvim',
+  --     {
+  --       'smiteshp/nvim-gps',
+  --       requires = {'nvim-treesitter/nvim-treesitter' },
+  --       config = function()
+  --         require('nvim-gps').setup({
+  --           launguages = {
+  --             ['telescopeprompt'] = false
+  --           }
+  --         })
+  --       end
+  --     }
+  --   },
+  --   config = conf 'windline',
+  -- }
 
   -- search todo
   use {
