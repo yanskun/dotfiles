@@ -44,6 +44,8 @@ return function()
         border = 'rounded'
       }
     }, bufnr)
+
+    require('illuminate').on_attach(client)
   end
 
   -- Launguage Configs

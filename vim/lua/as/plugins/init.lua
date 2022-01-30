@@ -106,7 +106,8 @@ require'packer'.startup {function(use)
     config = conf 'lspconfig',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
-      'ray-x/lsp_signature.nvim'
+      'ray-x/lsp_signature.nvim',
+      'RRethy/vim-illuminate',
     }
   }
 
