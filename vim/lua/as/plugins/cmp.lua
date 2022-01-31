@@ -22,4 +22,10 @@ return function()
       end
     }
   })
+
+  vim.cmd([[
+    autocmd FileType TelescopePrompt,NvimTree lua require'cmp'setup.buffer {
+    \   completion = { autocomplete = false }
+    \ }
+  ]])
 end
