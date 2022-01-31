@@ -39,7 +39,8 @@ require'packer'.startup {function(use)
 
   use {
     'sindrets/diffview.nvim',
-    requires = { 'plenary.nvim' }
+    requires = { 'plenary.nvim' },
+    config = conf 'diffview'
   }
 
   -- NOTE: vim script, switch when lua script comes out
@@ -326,10 +327,10 @@ require'packer'.startup {function(use)
     'ray-x/go.nvim',
     ft = 'go',
     config = function()
-      require('go').setup()
-      vim.cmd([[
-        " autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-      ]])
+      require('go').setup({
+        max_line_len = 999,
+      })
+      vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
   }
 

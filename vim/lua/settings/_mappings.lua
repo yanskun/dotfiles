@@ -11,3 +11,9 @@ utils.vnoremap('<Left>', '<nop>')
 utils.vnoremap('<Right>', '<nop>')
 
 utils.tnoremap('<Esc>', '<C-\\><C-n>')
+
+-- move line up/down
+utils.nnoremap('j', 'gj')
+utils.nnoremap('k', 'gk')
+utils.vnoremap('j', 'gj')
+utils.vnoremap('k', 'gk')

@@ -12,11 +12,12 @@ return function()
   require('lualine').setup({
     sections = {
       lualine_b = {
-        'branch', 'diff', 'diagnostics',
+        'branch', 'diagnostics',
       },
       lualine_c = {
         filepath,
         { gps.get_location, cond = gps.is_available },
+        'diff'
       },
     },
     options = {
