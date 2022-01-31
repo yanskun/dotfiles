@@ -12,7 +12,7 @@ return function()
   require('lualine').setup({
     sections = {
       lualine_b = {
-        'branch', 'diff', 'diagnostics', 'diff',
+        'branch', 'diff', 'diagnostics',
       },
       lualine_c = {
         filepath,
