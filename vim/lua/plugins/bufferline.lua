@@ -1,7 +1,12 @@
 return function()
   vim.opt.termguicolors = true
 
-  require('bufferline').setup {}
+  require('bufferline').setup({
+    options = {
+      show_buffer_close_icons = false,
+      show_close_icon = false,
+    }
+  })
 
   require('which-key').register {
     ['<leader>gD'] = { '<Cmd>BufferLinePickClose<CR>', 'bufferline: delete buffer' },

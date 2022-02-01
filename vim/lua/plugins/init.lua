@@ -26,6 +26,7 @@ require'packer'.startup {function(use)
     'f-person/git-blame.nvim',
     config = function()
       vim.g.gitblame_message_template = '<summary> | <date> | <author>'
+      vim.g.gitblame_ignored_filetypes = { 'NvimTree' }
     end
   }
 
@@ -73,6 +74,7 @@ require'packer'.startup {function(use)
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    commit = '668de0951a36ef17016074f1120b6aacbe6c4515',
     config = conf 'treesitter',
     requires = {
       {
