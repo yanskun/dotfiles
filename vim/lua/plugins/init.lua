@@ -82,6 +82,7 @@ require'packer'.startup {function(use)
         config = conf 'treesitter-context'
       },
       'p00f/nvim-ts-rainbow',
+      'SmiteshP/nvim-gps',
     }
   }
 
@@ -97,7 +98,15 @@ require'packer'.startup {function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-telescope/telescope-symbols.nvim',
-      'hrsh7th/nvim-cmp'
+      'hrsh7th/nvim-cmp',
+      {
+        'folke/todo-comments.nvim',
+        requires = {
+          'nvim-lua/plenary.nvim',
+          'nvim-treesitter/nvim-treesitter',
+        },
+        config = conf 'todocomments',
+      },
     },
     config = conf 'telescope'
   }
@@ -275,31 +284,16 @@ require'packer'.startup {function(use)
     },
     config = conf 'lualine'
   }
-  -- use {
-  --   'windwp/windline.nvim',
-  --   requires = {
-  --     'nvim-lua/lsp-status.nvim',
-  --     {
-  --       'smiteshp/nvim-gps',
-  --       requires = {'nvim-treesitter/nvim-treesitter' },
-  --       config = function()
-  --         require('nvim-gps').setup({
-  --           launguages = {
-  --             ['telescopeprompt'] = false
-  --           }
-  --         })
-  --       end
-  --     }
-  --   },
-  --   config = conf 'windline',
-  -- }
 
   -- search todo
-  use {
-    'folke/todo-comments.nvim',
-    requires = "nvim-lua/plenary.nvim",
-    config = conf 'todocomments'
-  }
+  -- use {
+  --   'folke/todo-comments.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  --   config = conf 'todocomments'
+  -- }
 
   -- quickfix
   use {
