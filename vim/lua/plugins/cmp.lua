@@ -24,7 +24,7 @@ return function()
   })
 
   vim.cmd([[
-    autocmd FileType TelescopePrompt,NvimTree lua require'cmp'setup.buffer {
+    autocmd FileType TelescopePrompt,NvimTree,netrw lua require'cmp'setup.buffer {
     \   completion = { autocomplete = false }
     \ }
   ]])
