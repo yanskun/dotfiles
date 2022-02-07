@@ -9,6 +9,16 @@ return function()
 
   local gps = require("nvim-gps")
 
+  local custom_theme = require('lualine.themes.onedark')
+
+  custom_theme.command = {
+    a = {
+      fg = '#282C34',
+      bg = '#E5C07B',
+      gui = 'bold',
+    }
+  }
+
   require('lualine').setup({
     sections = {
       lualine_b = {
@@ -21,7 +31,7 @@ return function()
       },
     },
     options = {
-      theme = 'onedark',
+      theme = custom_theme,
       disabled_filetypes = {'NvimTree'}
     }
   })
