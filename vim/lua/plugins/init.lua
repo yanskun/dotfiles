@@ -231,6 +231,23 @@ require'packer'.startup {function(use)
     end
   }
 
+  -- formatter
+  use {
+    'mhartington/formatter.nvim',
+    config = function()
+      require('formatter').setup({
+        filetype = {
+          lua = {
+            function()
+              return { exe = "lua-format", stdin = true }
+            end
+          }
+
+        }
+      })
+    end
+  }
+
   -- terminal
   use {
     'akinsho/toggleterm.nvim',
@@ -280,7 +297,14 @@ require'packer'.startup {function(use)
             }
           })
         end
-      }
+      },
+      { 'lewis6991/spellsitter.nvim',
+        config = function()
+         require('spellsitter').setup {
+           enable = true,
+         }
+        end
+      },
     },
     config = conf 'lualine'
   }
@@ -307,14 +331,6 @@ require'packer'.startup {function(use)
   use {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
-  }
-
-  -- spell check
-  use {
-    'lewis6991/spellsitter.nvim',
-    config = function()
-      require('spellsitter').setup()
-    end
   }
 
   -- launguages support

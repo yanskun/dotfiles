@@ -1,7 +1,7 @@
 -- https://vim-jp.org/vimdoc-ja/options.html
-local o = vim.o
+local o = vim.opt
 
-o.swapfile = true
+o.swapfile = false
 o.showcmd = true
 o.virtualedit = 'onemore'
 
@@ -15,6 +15,12 @@ o.shiftwidth = 2
 
 o.foldmethod = 'indent'
 o.foldlevel = 99
+
+o.spell = true
+local xdg_cfg = os.getenv('XDG_CONFIG_HOME')
+if xdg_cfg then
+  o.spellfile = xdg_cfg..'/nvim/lua/spell/en.utf-8.add'
+end
 
 vim.cmd([[
   language en_US
