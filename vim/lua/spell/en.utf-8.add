@@ -6,3 +6,6 @@ Neovim
 config
 conf
 init
+
+dsl
+ocr
