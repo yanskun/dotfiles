@@ -52,18 +52,17 @@ return function()
   -- install command
   -- go install golang.org/x/tools/gopls@latest
   -- brew install lua-language-server
-  -- npm i -g vim-language-server
   -- npm i -g typescript-language-server
   -- npm i -g yaml-language-server
   -- brew install tflint
 
   local servers = {
-    'vimls',
+    'tflint',
+    'eslint',
     'gopls',
     'sumneko_lua',
     'tsserver',
     'yamlls',
-    'tflint',
   }
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
