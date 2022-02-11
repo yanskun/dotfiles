@@ -1,4 +1,7 @@
-vim.cmd([[
-  autocmd BufWritePre <buffer> <cmd>EslintFixAll<CR>
-]])
-require'lspconfig'.eslint.setup{}
+require'lspconfig'.eslint.setup{
+  on_attach = function()
+    vim.cmd([[
+      au BufWritePre <buffer> silent! EslintFixAll
+    ]])
+  end
+}
