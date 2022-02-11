@@ -57,10 +57,11 @@ return function()
   -- brew install tflint
 
   local servers = {
-    'tflint',
+    'denols',
     'eslint',
     'gopls',
     'sumneko_lua',
+    'tflint',
     'tsserver',
     'yamlls',
   }
@@ -77,6 +78,6 @@ return function()
     }
   end
 
-  require('lsp.lua')
-  require('lsp.typescript')
+  require('lsp.sumneko_lua')
+  require('lsp.tsserver')
 end
