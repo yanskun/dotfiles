@@ -1,4 +1,4 @@
-local utils = require('utils.plugins')
+local utils = require('libraries._set_plugins')
 
 local conf = utils.conf
 
