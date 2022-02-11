@@ -68,6 +68,9 @@ return function()
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+  local utils = require('libraries._set_config')
+  local conf_lsp = utils.conf_lsp
+
   for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
       on_attach = on_attach,
@@ -76,8 +79,7 @@ return function()
         debounce_text_changes = 150,
       }
     }
-  end
 
-  require('lsp.sumneko_lua')
-  require('lsp.tsserver')
+    conf_lsp(lsp)
+  end
 end
