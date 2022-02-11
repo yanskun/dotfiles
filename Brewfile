@@ -97,6 +97,7 @@ brew "neovim", args: ["HEAD"]
 brew "netlify-cli"
 brew "nghttp2"
 brew "peco"
+brew "pyenv"
 brew "pyenv-virtualenv"
 brew "python@3.8"
 brew "ruby-build"

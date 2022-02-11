@@ -18,6 +18,10 @@ SAVEHIST=1000000
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$PATH:/usr/sbin/
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT"
+export PATH="$PATH:$PYENV_ROOT/shims"
+
 ########################################
 
 # zsh で ^ ハットを使えるようにする
@@ -47,6 +51,7 @@ fi
 # env
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+eval "$(pyenv init -)"
 
 ########################################
 # history
@@ -301,5 +306,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 function command_not_found_handler() {
   cowsay "command not found: $1"
 }
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh

@@ -19,12 +19,8 @@ if [ ! -e $XDG_CONFIG_HOME/nvim ]; then
   mkdir -p $nvim_path
 fi
 
-if [[ ! -e $HOME/.vimrc ]]; then
-  ln -s $PWD/vim/.vimrc $HOME/.vimrc
-fi
-
-if [[ ! -e $nvim_path/init.vim ]]; then
-  ln -s $PWD/vim/.vimrc $nvim_path/init.vim
+if [[ ! -e $nvim_path/init.lua ]]; then
+  ln -s $PWD/vim/init.lua $nvim_path/init.lua
 fi
 if [[ ! -d $nvim_path/lua ]]; then
   ln -s $PWD/vim/lua $nvim_path/lua
