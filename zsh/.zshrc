@@ -22,6 +22,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT"
 export PATH="$PATH:$PYENV_ROOT/shims"
 
+export GOPATH=$(asdf where golang)/go
+export PATH="$PATH:$GOPATH"
+
 ########################################
 
 # zsh で ^ ハットを使えるようにする

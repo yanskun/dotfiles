@@ -7,11 +7,7 @@ function M.conf(name)
 end
 
 function M.conf_lsp(name)
-  if (package.loaded[fmt('lsp.%s', name)]) then
-    return require(fmt('lsp.%s', name))
-  else
-    vim.api.command(fmt('not found config file %s', name))
-  end
+  return require(fmt('lsp.%s', name))
 end
 
 return M
