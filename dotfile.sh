@@ -5,6 +5,7 @@ echo 'Paste symbolic link to home directory'
 ln -s ${PWD}/zsh/.zshenv ${HOME}/.zshenv
 ln -s ${PWD}/.gitconfig ${HOME}/.gitconfig
 ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${PWD}/asdf/.asdfrc ${HOME}/.asdfrc
 
 if [[ ! -d ${HOME}/.config/peco ]]; then
   mkdir ${HOME}/.config/peco

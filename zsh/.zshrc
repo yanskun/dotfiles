@@ -46,15 +46,7 @@ fi
 ########################################
 # env
 
-eval "$(anyenv init -)"
-eval "$(goenv init -)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# rbenvのpath設定
-[[ -d ~/.rbenv  ]] && \
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init -)"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 ########################################
 # history
@@ -309,3 +301,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 function command_not_found_handler() {
   cowsay "command not found: $1"
 }
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
