@@ -1,7 +1,8 @@
+-- asdf install deno latest
+
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
 }
-
 
 local lspconfig = require('lspconfig')
 

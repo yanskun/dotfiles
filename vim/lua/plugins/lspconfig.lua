@@ -29,11 +29,11 @@ return function()
   local conf_lsp = require('libraries._set_config.conf_lsp')
 
   for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-      on_attach = utils.on_attach,
-      capabilities = utils.capabilities,
-      flags = utils.flags,
-    }
+    -- lspconfig[lsp].setup {
+    --   on_attach = utils.on_attach,
+    --   capabilities = utils.capabilities,
+    --   flags = utils.flags,
+    -- }
 
     conf_lsp(lsp)
   end
