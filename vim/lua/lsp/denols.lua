@@ -8,6 +8,7 @@ if vim.fn.exepath('deno') ~= '' then
   local util = require('libraries._set_lsp')
 
   lspconfig.denols.setup{
+    cmd = { 'deno', 'lsp' },
     root_dir = lspconfig.util.root_pattern("deno.json"),
     init_optons = {
       enable = true,
