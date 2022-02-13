@@ -8,14 +8,6 @@ return function()
   vim.o.updatetime = 250
   vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-  -- Launguage Configs
-  -- install command
-  -- go install golang.org/x/tools/gopls@latest
-  -- brew install lua-language-server
-  -- npm i -g typescript-language-server
-  -- npm i -g yaml-language-server
-  -- brew install tflint
-
   local servers = {
     'denols',
     'eslint',
