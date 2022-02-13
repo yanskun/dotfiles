@@ -5,7 +5,10 @@ if vim.fn.exepath('vscode-json-languageserver') ~= '' then
 
   lspconfig.jsonls.setup {
     cmd = { 'vscode-json-languageserver', '--stdio' },
-    on_attach = util.on_attach,
+    on_attach = function(client, bufnr)
+      util.on_attach(client, bufnr)
+      util.null_ls_formatting(client)
+    end,
     capabilities = util.capabilities
   }
 else

@@ -1,10 +1,18 @@
 if vim.fn.exepath('yaml-language-server') ~= '' then
-  local util = require('libraries._set_lsp')
-
   require'lspconfig'.yamlls.setup{
-    on_attach = util.on_attach,
-    capabilities = util.capabilities,
-    flags = util.flags,
+    settings = {
+      yaml = {
+        schemas = {
+          -- https://www.schemastore.org/json/
+          ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*.{yml,yaml}',
+					['http://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
+					['http://json.schemastore.org/ansible-stable-2.9'] = 'roles/tasks/*.{yml,yaml}',
+					['http://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
+					['http://json.schemastore.org/stylelintrc'] = '.stylelintrc.{yml,yaml}',
+					['http://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
+        }
+      }
+    },
   }
 else
   print('npm i -g yaml-language-server')
