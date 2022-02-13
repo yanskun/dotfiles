@@ -1,6 +1,6 @@
 -- brew install lua-language-server
 
-local util = require('libraries._sett_lsp')
+local util = require('libraries._set_lsp')
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")

@@ -1,6 +1,6 @@
 -- npm i -g yaml-language-server
 
-local util = require('libraries._sett_lsp')
+local util = require('libraries._set_lsp')
 
 require'lspconfig'.yamlls.setup{
   on_attach = util.on_attach,

@@ -1,6 +1,6 @@
 return function()
-  local lspconfig = require('lspconfig')
-  local utils = require('libraries._sett_lsp')
+  local utils = require('libraries._set_config')
+  local conf_lsp = utils.conf_lsp
 
   vim.diagnostic.config({
     virtual_text = false
@@ -20,21 +20,14 @@ return function()
     'denols',
     'eslint',
     'gopls',
+    'jsonls',
     'sumneko_lua',
     'tflint',
     'tsserver',
     'yamlls',
   }
 
-  local conf_lsp = require('libraries._set_config.conf_lsp')
-
   for _, lsp in ipairs(servers) do
-    -- lspconfig[lsp].setup {
-    --   on_attach = utils.on_attach,
-    --   capabilities = utils.capabilities,
-    --   flags = utils.flags,
-    -- }
-
     conf_lsp(lsp)
   end
 end

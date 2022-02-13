@@ -1,6 +1,6 @@
 -- brew install tflint
 
-local util = require('libraries._sett_lsp')
+local util = require('libraries._set_lsp')
 
 require'lspconfig'.tflint.setup{
   on_attach = util.on_attach,

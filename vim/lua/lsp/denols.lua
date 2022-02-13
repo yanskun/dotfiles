@@ -6,6 +6,8 @@ vim.g.markdown_fenced_languages = {
 
 local lspconfig = require('lspconfig')
 
+local util = require('libraries._set_lsp')
+
 lspconfig.denols.setup{
   root_dir = lspconfig.util.root_pattern("deno.json"),
   init_optons = {
@@ -14,5 +16,8 @@ lspconfig.denols.setup{
     unstable = true,
     importMap = "./import_map.json",
     config = "./deno.json",
-  }
+  },
+  on_attach = util.on_attach,
+  capabilities = util.capabilities,
+  flags = util.flags,
 }

@@ -1,6 +1,6 @@
 -- go install golang.org/x/tools/gopls@latest
 
-local util = require('libraries._sett_lsp')
+local util = require('libraries._set_lsp')
 
 require'lspconfig'.gopls.setup{
   on_attach = util.on_attach,
