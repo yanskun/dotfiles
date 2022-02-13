@@ -1,18 +1,20 @@
--- npm i -g typescript-language-server
+if vim.fn.exepath('typescript-language-server') ~= '' then
+  local util = require('libraries._set_lsp')
 
-local util = require('libraries._set_lsp')
+  local lspconfig = require('lspconfig')
 
-local lspconfig = require('lspconfig')
-
-lspconfig.tsserver.setup {
-  root_dir = lspconfig.util.root_pattern('package.json'),
-  init_options = {
-    lint = true,
-  },
-  on_attach = function(client, bufnr)
-    util.on_attach(client, bufnr)
-    util.null_ls_formatting(client)
-  end,
-  capabilities = util.capabilities,
-  flags = util.flags
-}
+  lspconfig.tsserver.setup {
+    root_dir = lspconfig.util.root_pattern('package.json'),
+    init_options = {
+      lint = true,
+    },
+    on_attach = function(client, bufnr)
+      util.on_attach(client, bufnr)
+      util.null_ls_formatting(client)
+    end,
+    capabilities = util.capabilities,
+    flags = util.flags
+  }
+else
+  print('npm i -g typescript-language-server')
+end
