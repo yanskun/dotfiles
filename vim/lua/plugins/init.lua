@@ -225,18 +225,7 @@ require'packer'.startup {function(use)
   -- formatter
   use {
     'mhartington/formatter.nvim',
-    config = function()
-      require('formatter').setup({
-        filetype = {
-          lua = {
-            function()
-              return { exe = "lua-format", stdin = true }
-            end
-          }
-
-        }
-      })
-    end
+    config = conf 'formatter'
   }
 
   -- terminal
@@ -260,6 +249,7 @@ require'packer'.startup {function(use)
   -- scrollbar
   use {
     'petertriho/nvim-scrollbar',
+    commit = '5bd809f0b241bed7c30bc5e6d18a2a4f2a2d1a7a',
     config = function()
       require("scrollbar").setup()
     end
@@ -334,13 +324,6 @@ require'packer'.startup {function(use)
       })
       vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
-  }
-
-  -- javascript, typescript
-  use {
-    "prettier/vim-prettier",
-    ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    run = "yarn install",
   }
 
   -- markdown
