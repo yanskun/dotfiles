@@ -19,8 +19,9 @@ export PATH=/opt/homebrew/bin:$PATH
 export PATH=$PATH:/usr/sbin/
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$PYENV_ROOT"
-export PATH="$PATH:$PYENV_ROOT/shims"
+export PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 export GOPATH=$(asdf where golang)/go
 export PATH="$PATH:$GOPATH"
