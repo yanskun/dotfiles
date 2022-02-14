@@ -249,7 +249,6 @@ require'packer'.startup {function(use)
   -- scrollbar
   use {
     'petertriho/nvim-scrollbar',
-    commit = '5bd809f0b241bed7c30bc5e6d18a2a4f2a2d1a7a',
     config = function()
       require("scrollbar").setup()
     end
