@@ -9,7 +9,7 @@ if vim.fn.exepath('deno') ~= '' then
 
   lspconfig.denols.setup{
     cmd = { 'deno', 'lsp' },
-    root_dir = lspconfig.util.root_pattern("deno.json"),
+    -- root_dir = lspconfig.util.root_pattern("deno.json"),
     init_optons = {
       enable = true,
       lint = true,
@@ -17,7 +17,10 @@ if vim.fn.exepath('deno') ~= '' then
       importMap = "./import_map.json",
       config = "./deno.json",
     },
-    on_attach = util.on_attach,
+    on_attach = function(client, bufnr)
+      util.on_attach(client, bufnr)
+      util.null_ls_formatting(client)
+    end,
     capabilities = util.capabilities,
     flags = util.flags,
   }

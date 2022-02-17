@@ -117,7 +117,6 @@ require'packer'.startup {function(use)
     config = conf 'lspconfig',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
-      'ray-x/lsp_signature.nvim',
       'RRethy/vim-illuminate',
     }
   }
@@ -134,9 +133,17 @@ require'packer'.startup {function(use)
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+    },
     config = conf 'null-ls',
     after = 'nvim-lspconfig',
+  }
+
+  use {
+    'glepnir/lspsaga.nvim',
+    config = conf 'lspsaga',
   }
 
   -- autocompletion
