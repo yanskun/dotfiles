@@ -31,13 +31,6 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  require('lsp_signature').on_attach({
-    bind = true,
-    handler_opts = {
-      border = 'rounded'
-    }
-  }, bufnr)
-
   require('illuminate').on_attach(client)
 end
 
