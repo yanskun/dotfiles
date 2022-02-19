@@ -12,7 +12,10 @@ if vim.fn.exepath('lua-language-server') ~= '' then
         },
       },
     },
-    on_attach = util.on_attach,
+    on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      util.on_attach(client, bufnr)
+    end,
     capabilities = util.capabilities,
     flags = util.flags,
   }
