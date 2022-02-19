@@ -31,16 +31,15 @@ return function()
         ]])
       end
 
-      local wk = require('which-key')
-		  wk.register({
-			  q = {
-				  name = 'quick',
-				  f = { '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', 'Format Current Buffer' },
-			  },
-			  K = { '<Cmd>lua vim.lsp.buf.hover()<CR>', '(LSP) Symbol Definition / Documentation' },
-		  }, {
-			  buffer = bufnr,
-		  })
+		  require('which-key').register({
+        q = {
+          name = 'quick',
+          f = { '<cmd>lua vim.lsp.buf.formatting_sync()<cr>', 'Format Current Buffer' },
+        },
+        K = { '<Cmd>lua vim.lsp.buf.hover()<CR>', '(LSP) Symbol Definition / Documentation' },
+      }, {
+          buffer = bufnr,
+      })
     end,
   }
 end
