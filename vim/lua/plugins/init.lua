@@ -139,6 +139,7 @@ require'packer'.startup {function(use)
     },
     config = conf 'null-ls',
     after = 'nvim-lspconfig',
+    event = { 'VimEnter' },
   }
 
   use {
