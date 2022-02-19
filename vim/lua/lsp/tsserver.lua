@@ -3,7 +3,6 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
   local lspconfig = require('lspconfig')
 
   lspconfig.tsserver.setup {
-    root_dir = lspconfig.util.root_pattern('package.json'),
     init_options = {
       lint = true,
       preferences = {
@@ -12,13 +11,22 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
       }
     },
     on_attach = function(client, bufnr)
+      if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
+      end
       client.resolved_capabilities.document_formatting = false
-      util.on_attach(client, bufnr)
 
       local ts_utils = require("nvim-lsp-ts-utils")
-
-      ts_utils.setup {}
+      ts_utils.setup {
+        -- import all
+        enable_import_on_completion = true,
+        -- update imports on file move
+        update_imports_on_move = true,
+      }
+      -- required to fix code action ranges and filter diagnostics
       ts_utils.setup_client(client)
+
+      util.on_attach(client, bufnr)
 
       require('which-key').register({
         n = {
