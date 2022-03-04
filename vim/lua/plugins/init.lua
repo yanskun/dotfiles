@@ -81,7 +81,6 @@ require'packer'.startup {function(use)
         'romgrk/nvim-treesitter-context',
         config = conf 'treesitter-context'
       },
-      'p00f/nvim-ts-rainbow',
       'SmiteshP/nvim-gps',
     }
   }

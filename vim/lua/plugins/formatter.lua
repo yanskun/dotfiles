@@ -6,7 +6,27 @@ local prettierConfig = function()
   }
 end
 
+local gofmt = function()
+  return {
+    exe = "gofmt",
+    args = { '-w', vim.api.nvim_buf_get_name(0) },
+    stdin = false
+  }
+end
+
+local goimports = function()
+  return {
+    exe = "goimports",
+    args = { '-w', vim.api.nvim_buf_get_name(0) },
+    stdin = false
+  }
+end
+
 local formatterConfig = {
+  go = {
+    gofmt,
+    goimports
+  },
   lua = {
     function()
       return {
