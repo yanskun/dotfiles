@@ -33,3 +33,7 @@ vim.cmd([[
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab
   augroup END
 ]])
+
+vim.cmd([[
+  autocmd BufNewFile,BufRead *.golden set filetype=json
+]])
