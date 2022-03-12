@@ -4,6 +4,7 @@ local o = vim.opt
 o.swapfile = false
 o.showcmd = true
 o.virtualedit = 'onemore'
+o.splitright = true
 
 o.number = true
 o.cursorline = true

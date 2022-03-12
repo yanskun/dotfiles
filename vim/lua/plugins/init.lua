@@ -98,17 +98,18 @@ require'packer'.startup {function(use)
     requires = {
       'nvim-telescope/telescope-symbols.nvim',
       'hrsh7th/nvim-cmp',
-      {
-        'folke/todo-comments.nvim',
-        requires = {
-          'nvim-lua/plenary.nvim',
-          'nvim-treesitter/nvim-treesitter',
-        },
-        config = conf 'todocomments',
-      },
     },
     config = conf 'telescope'
   }
+
+  use {
+    'folke/todo-comments.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = conf 'todocomments',
+  }
+
 
   -- lsp
   use {
@@ -331,6 +332,8 @@ require'packer'.startup {function(use)
       vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
   }
+
+  use 'buoto/gotests-vim'
 
   -- markdown
   use 'ellisonleao/glow.nvim'
