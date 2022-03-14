@@ -333,7 +333,13 @@ require'packer'.startup {function(use)
     end,
   }
 
-  use 'buoto/gotests-vim'
+  use {
+    'yasudanaoya/gotests.nvim',
+    ft = 'go',
+    config = function()
+      require('gotests').setup()
+    end
+  }
 
   -- markdown
   use 'ellisonleao/glow.nvim'
