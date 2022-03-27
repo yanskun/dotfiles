@@ -23,6 +23,8 @@ if xdg_cfg then
   o.spellfile = xdg_cfg..'/nvim/lua/spell/en.utf-8.add'
 end
 
+o.laststatus = 3
+
 vim.cmd([[
   language en_US
   filetype plugin indent on

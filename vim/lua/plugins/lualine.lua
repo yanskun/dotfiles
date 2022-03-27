@@ -23,6 +23,7 @@ return function()
     options = {
       theme = 'onedark',
       disabled_filetypes = { 'NvimTree' },
+      globalstatus = true,
     }
   })
 end
