@@ -16,6 +16,10 @@ return function()
       open_file = {
         resize_window = true,
       }
+    },
+    git = {
+      enable = true,
+      ignore = false,
     }
   }
 

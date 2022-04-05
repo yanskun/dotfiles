@@ -326,9 +326,7 @@ require'packer'.startup {function(use)
     'ray-x/go.nvim',
     ft = 'go',
     config = function()
-      require('go').setup({
-        max_line_len = 999,
-      })
+      require('go').setup()
       vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
   }
