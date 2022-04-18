@@ -8,8 +8,6 @@ return function()
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-q>'] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior }),
-      ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior }),
       ['<UP>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior }),
       ['<DOWN>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior })
     },
