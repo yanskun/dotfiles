@@ -1,4 +1,4 @@
-if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('gopls') ~= '' then
+if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and vim.fn.exepath('gotests') then
   local util = require('libraries._set_lsp')
 
   require'lspconfig'.gopls.setup{
@@ -10,4 +10,5 @@ if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('gopls') ~= '' then
 else
   print('go install golang.org/x/tools/gopls@latest')
   print('go install github.com/go-delve/delve/cmd/dlv@latest')
+  print('go install github.com/cweill/gotests/...@latest')
 end
