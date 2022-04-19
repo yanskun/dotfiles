@@ -33,23 +33,23 @@ autoload -Uz git-escape-magic
 
 ########################################
 # tmux
-if [[ ! -n $TMUX && $- == *l* ]]; then
-    # get the IDs
-    ID="`tmux list-sessions`"
-    if [[ -z "$ID" ]]; then
-        tmux new-session
-    fi
-    create_new_session="Create New Session"
-    ID="$ID\n${create_new_session}:"
-    ID="`echo $ID | peco | cut -d: -f1`"
-    if [[ "$ID" = "${create_new_session}" ]]; then
-        tmux new-session
-    elif [[ -n "$ID" ]]; then
-        tmux attach-session -t "$ID"
-    else
-        :  # Start terminal normally
-    fi
-fi
+# if [[ ! -n $TMUX && $- == *l* ]]; then
+#     # get the IDs
+#     ID="`tmux list-sessions`"
+#     if [[ -z "$ID" ]]; then
+#         tmux new-session
+#     fi
+#     create_new_session="Create New Session"
+#     ID="$ID\n${create_new_session}:"
+#     ID="`echo $ID | peco | cut -d: -f1`"
+#     if [[ "$ID" = "${create_new_session}" ]]; then
+#         tmux new-session
+#     elif [[ -n "$ID" ]]; then
+#         tmux attach-session -t "$ID"
+#     else
+#         :  # Start terminal normally
+#     fi
+# fi
 
 ########################################
 # env
@@ -186,18 +186,18 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # vcs_info
 # git
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}[%b]<!%a>%f'
-
-function vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
-}
-add-zsh-hook precmd vcs_info_msg
+# autoload -Uz vcs_info
+# autoload -Uz add-zsh-hook
+#
+# zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
+# zstyle ':vcs_info:*' actionformats '%F{red}[%b]<!%a>%f'
+#
+# function vcs_info_msg() {
+#     LANG=en_US.UTF-8 vcs_info
+#     RPROMPT="${vcs_info_msg_0_}"
+# }
+# add-zsh-hook precmd vcs_info_msg
 
 ########################################
 # オプション
@@ -310,3 +310,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 function command_not_found_handler() {
   cowsay "command not found: $1"
 }
+
+
+########################################
+# starship
+
+eval "$(starship init zsh)"

@@ -12,6 +12,12 @@ if [[ ! -d ${HOME}/.config/peco ]]; then
 fi
 ln -s $PWD/peco/config.json $HOME/.config/peco/config.json
 
+# TODO: .config
+echo 'starship'
+if [ ! -e $XDG_CONFIG_HOME/starship.toml ]; then
+  ln -s $PWD/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
+fi
+
 echo 'vim'
 nvim_path=$XDG_CONFIG_HOME/nvim
 

@@ -1,0 +1,36 @@
+format = """
+$time$directory$golang$nodejs$python
+$character"""
+
+right_format = """
+$git_status$git_branch"""
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = 'bold cyan'
+
+[directory]
+truncate_to_repo = false
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = 'bold yellow'
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+disabled = false
+
+[git_status]
+disabled = false
+
+# languages
+[golang]
+format = "[$symbol($version )]($style)"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[python]
+format = "[$symbol($version )]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
