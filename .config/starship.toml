@@ -27,6 +27,7 @@ disabled = false
 # languages
 [golang]
 format = "[$symbol($version )]($style)"
+symbol = "ﳑ "
 
 [nodejs]
 format = "[$symbol($version )]($style)"
@@ -36,4 +37,4 @@ format = "[$symbol($version )]($style)"
 
 [character]
 success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
