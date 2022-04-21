@@ -18,6 +18,7 @@ truncation_length = 0
 
 [git_branch]
 format = "[$symbol$branch]($style) "
+symbol = "  "
 disabled = false
 
 [git_status]
