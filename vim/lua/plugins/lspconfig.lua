@@ -21,12 +21,12 @@ return function()
   local servers = {
     'denols',
     'eslint',
-    -- 'golangci_lint_ls',
     'gopls',
     'jsonls',
     'sumneko_lua',
     'tflint',
     'tsserver',
+    'vuels',
     'yamlls',
   }
 
