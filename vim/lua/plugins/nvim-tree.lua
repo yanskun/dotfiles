@@ -9,14 +9,9 @@ return function()
     disable_netrw = false,
     hijack_netrw = true,
     hijack_cursor = true,
-    update_to_buf_dir = {
-      enable = true,
-      auto_open = true
-    },
     update_focused_file = {
       enable = true,
       update_cwd = false,
-      auto_open = true,
     },
     actions = {
       open_file = {
