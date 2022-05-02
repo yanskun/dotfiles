@@ -38,5 +38,5 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  autocmd BufNewFile,BufRead *.golden set filetype=json
+  autocmd BufNewFile,BufRead *.golden,*textlintrc set filetype=json
 ]])
