@@ -14,7 +14,7 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
       if client.config.flags then
         client.config.flags.allow_incremental_sync = true
       end
-      client.resolved_capabilities.document_formatting = false
+      client.server_capabilities.document_formatting = false
 
       local ts_utils = require("nvim-lsp-ts-utils")
       ts_utils.setup {

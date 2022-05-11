@@ -22,7 +22,7 @@ return function()
   null_ls.setup {
     sources = sources,
     on_attach = function(client, bufnr)
-      if client.resolved_capabilities.document_formatting then
+      if client.server_capabilities.document_formatting then
         vim.cmd([[
           augroup LspFormatting
             autocmd! * <buffer>

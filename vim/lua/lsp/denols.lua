@@ -18,7 +18,7 @@ if vim.fn.exepath('deno') ~= '' then
       config = "./deno.json",
     },
     on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
+      client.server_capabilities.document_formatting = false
       util.on_attach(client, bufnr)
     end,
     capabilities = util.capabilities,
