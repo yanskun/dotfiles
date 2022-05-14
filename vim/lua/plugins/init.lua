@@ -157,9 +157,11 @@ require'packer'.startup {function(use)
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'f3fora/cmp-spell', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'petertriho/cmp-git', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip' }
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'onsails/lspkind.nvim' }
     },
     config = conf 'cmp'
   }

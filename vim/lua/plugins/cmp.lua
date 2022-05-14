@@ -1,6 +1,7 @@
 return function()
 
   local cmp = require('cmp')
+  local lspkind = require('lspkind')
 
   cmp.setup({
     mapping = {
@@ -15,11 +16,21 @@ return function()
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'buffer' },
+      { name = 'vsnip' },
     }),
     snippet = {
       expand = function(args)
         require('luasnip').lsp_expand(args.body)
       end
+    },
+    formatting = {
+      format = lspkind.cmp_format({
+        with_text = true,
+        maxwidth = 50,
+        before = function (entry, vim_item)
+          return vim_item
+        end
+      })
     }
   })
 
