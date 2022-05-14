@@ -298,16 +298,6 @@ require'packer'.startup {function(use)
     config = conf 'lualine'
   }
 
-  -- search todo
-  -- use {
-  --   'folke/todo-comments.nvim',
-  --   requires = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-treesitter/nvim-treesitter',
-  --   },
-  --   config = conf 'todocomments'
-  -- }
-
   -- quickfix
   use {
     'https://gitlab.com/yorickpeterse/nvim-pqf',
