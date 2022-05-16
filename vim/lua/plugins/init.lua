@@ -57,6 +57,24 @@ require'packer'.startup {function(use)
     end
   }
 
+  -- fuzzy finder
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-telescope/telescope-symbols.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    config = conf 'telescope'
+  }
+
+  use {
+    'folke/todo-comments.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = conf 'todo-comments',
+  }
+
   -- explorer
   use {
     'kyazdani42/nvim-tree.lua',
@@ -92,25 +110,6 @@ require'packer'.startup {function(use)
     config = conf 'luasnip'
   }
 
-  -- fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-telescope/telescope-symbols.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    config = conf 'telescope'
-  }
-
-  use {
-    'folke/todo-comments.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = conf 'todocomments',
-  }
-
-
   -- lsp
   use {
     'neovim/nvim-lspconfig',
@@ -145,6 +144,11 @@ require'packer'.startup {function(use)
   use {
     'glepnir/lspsaga.nvim',
     config = conf 'lspsaga',
+  }
+
+  use {
+    'akinsho/flutter-tools.nvim',
+    requires = 'nvim-lua/plenary.nvim',
   }
 
   -- autocompletion
