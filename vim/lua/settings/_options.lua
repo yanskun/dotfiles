@@ -17,6 +17,8 @@ o.shiftwidth = 2
 o.foldmethod = 'indent'
 o.foldlevel = 99
 
+o.clipboard = 'unnamedplus'
+
 o.spell = true
 local xdg_cfg = os.getenv('XDG_CONFIG_HOME')
 if xdg_cfg then
