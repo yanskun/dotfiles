@@ -314,6 +314,16 @@ function command_not_found_handler() {
 }
 
 
+function git() {
+  if [[ $1 == "clone" ]]; then
+    shift
+    ghq get $@
+  else
+    command git $@
+  fi
+}
+
+
 ########################################
 # starship
 
