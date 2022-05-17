@@ -7,6 +7,9 @@ ln -s ${PWD}/.gitconfig ${HOME}/.gitconfig
 ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
 ln -s ${PWD}/asdf/.asdfrc ${HOME}/.asdfrc
 
+config_path=$PWD/.config
+
+echo 'peco'
 if [[ ! -d ${HOME}/.config/peco ]]; then
   mkdir $XDG_CONFIG_HOME/peco
 fi
@@ -20,17 +23,15 @@ if [ ! -e $XDG_CONFIG_HOME/starship.toml ]; then
 fi
 
 echo 'vim'
-nvim_path=$XDG_CONFIG_HOME/nvim
-
 if [ ! -e $XDG_CONFIG_HOME/nvim ]; then
-  mkdir -p $nvim_path
+  mkdir -p $XDG_CONFIG_HOME/nvim
 fi
 
-if [[ ! -e $nvim_path/init.lua ]]; then
-  ln -s $PWD/vim/init.lua $nvim_path/init.lua
+if [[ ! -e $XDG_CONFIG_HOME/nvim/init.lua ]]; then
+  ln -s $config_path/vim/init.lua $XDG_CONFIG_HOME/nvim/init.lua
 fi
-if [[ ! -d $nvim_path/lua ]]; then
-  ln -s $PWD/vim/lua $nvim_path/lua
+if [[ ! -d $XDG_CONFIG_HOME/nvim/lua ]]; then
+  ln -s $config_path/vim/lua $XDG_CONFIG_HOME/nvim/lua
 fi
 
 echo 'tmux'
