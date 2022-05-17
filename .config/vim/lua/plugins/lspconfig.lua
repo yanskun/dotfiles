@@ -19,7 +19,6 @@ return function()
 
   local servers = {
     'denols',
-    -- 'golangci_lint_ls',
     'gopls',
     'jsonls',
     'sumneko_lua',
