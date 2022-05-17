@@ -10,7 +10,7 @@ ln -s ${PWD}/asdf/.asdfrc ${HOME}/.asdfrc
 if [[ ! -d ${HOME}/.config/peco ]]; then
   mkdir ${HOME}/.config/peco
 fi
-ln -s $PWD/peco/config.json $HOME/.config/peco/config.json
+ln -s $PWD/.config/peco/config.json $HOME/.config/peco/config.json
 
 # TODO: .config
 echo 'starship'
