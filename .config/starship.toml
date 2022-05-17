@@ -1,5 +1,5 @@
 format = """
-$time$directory$golang$nodejs$python
+$time$directory$golang$nodejs$python$dart$rust
 $character"""
 
 right_format = """
@@ -33,6 +33,12 @@ symbol = "ﳑ "
 format = "[$symbol($version )]($style)"
 
 [python]
+format = "[$symbol($version )]($style)"
+
+[dart]
+format = "[$symbol($version )]($style)"
+
+[rust]
 format = "[$symbol($version )]($style)"
 
 [character]
