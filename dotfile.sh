@@ -26,7 +26,6 @@ echo 'vim'
 if [ ! -e $XDG_CONFIG_HOME/nvim ]; then
   mkdir -p $XDG_CONFIG_HOME/nvim
 fi
-
 if [[ ! -e $XDG_CONFIG_HOME/nvim/init.lua ]]; then
   ln -s $config_path/vim/init.lua $XDG_CONFIG_HOME/nvim/init.lua
 fi
@@ -39,7 +38,7 @@ if [[ ! -e $HOME/.tmux.conf ]]; then
   ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 fi
 
-echo 'terminal'
+echo 'hammerspoon'
 if [[ ! -e $HOME/.hammerspoon/init.lua ]]; then
   ln -s $PWD/hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 fi
@@ -47,13 +46,15 @@ if [[ ! -e $HOME/.hammerspoon/ctrlDoublePress.lua ]]; then
   ln -s $PWD/hammerspoon/ctrlDoublePress.lua $HOME/.hammerspoon/ctrlDoublePress.lua
 fi
 
+echo 'alacritty'
 if [[ ! -e $XDG_CONFIG_HOME/alacritty ]]; then
   mkdir -p $XDG_CONFIG_HOME/alacritty
 fi
 if [[ ! -e $XDG_CONFIG_HOME/alacritty/alacritty.yml ]]; then
-  ln -s $PWD/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+  ln -s $config_path/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 fi
 
+echo 'vscode'
 if [ ! -e ${HOME}/Library/Application\ Support/Code/User ]; then
   echo 'vscode'
   rm -f ${HOME}/Library/Application\ Support/Code/User/settings.json
