@@ -129,16 +129,9 @@ require'packer'.startup {function(use)
     'jose-elias-alvarez/null-ls.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
     },
     config = conf 'null-ls',
     after = 'nvim-lspconfig',
-  }
-
-  use {
-    'jose-elias-alvarez/nvim-lsp-ts-utils',
-    want = { 'null-ls.nvim' },
-    requires = 'nvim-lspconfig'
   }
 
   use {
