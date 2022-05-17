@@ -23,7 +23,7 @@ if [ ! -e $XDG_CONFIG_HOME/starship.toml ]; then
 fi
 
 echo 'vim'
-if [ ! -e $XDG_CONFIG_HOME/nvim ]; then
+if [[ ! -e $XDG_CONFIG_HOME/nvim ]]; then
   mkdir -p $XDG_CONFIG_HOME/nvim
 fi
 if [[ ! -e $XDG_CONFIG_HOME/nvim/init.lua ]]; then
