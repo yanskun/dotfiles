@@ -8,11 +8,12 @@ ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
 ln -s ${PWD}/asdf/.asdfrc ${HOME}/.asdfrc
 
 if [[ ! -d ${HOME}/.config/peco ]]; then
-  mkdir ${HOME}/.config/peco
+  mkdir $XDG_CONFIG_HOME/peco
 fi
-ln -s $PWD/.config/peco/config.json $HOME/.config/peco/config.json
+if [[ ! -d ${HOME}/.config/peco/config.d ]]; then
+  ln -s $PWD/.config/peco/config.json $XDG_CONFIG_HOME/peco/config.json
+fi
 
-# TODO: .config
 echo 'starship'
 if [ ! -e $XDG_CONFIG_HOME/starship.toml ]; then
   ln -s $PWD/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
