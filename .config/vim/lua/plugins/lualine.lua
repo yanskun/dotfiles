@@ -8,8 +8,6 @@ return function()
     return path
   end
 
-  local gps = require("nvim-gps")
-
   require('lualine').setup({
     sections = {
       lualine_b = {
@@ -17,7 +15,6 @@ return function()
       },
       lualine_c = {
         filepath,
-        { gps.get_location, cond = gps.is_available },
         'diff'
       },
     },
