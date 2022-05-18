@@ -23,9 +23,6 @@ export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-export GOPATH=$(asdf where golang)/go
-export PATH="$PATH:$GOPATH"
-
 ########################################
 
 # zsh で ^ ハットを使えるようにする
