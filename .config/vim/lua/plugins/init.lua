@@ -99,7 +99,6 @@ require'packer'.startup {function(use)
         'romgrk/nvim-treesitter-context',
         config = conf 'treesitter-context'
       },
-      'SmiteshP/nvim-gps',
     }
   }
 
@@ -276,17 +275,6 @@ require'packer'.startup {function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
-      {
-        'SmiteshP/nvim-gps',
-        requires = {'nvim-treesitter/nvim-treesitter' },
-        config = function()
-          require('nvim-gps').setup({
-            launguages = {
-              ['TelescopePrompt'] = false,
-            }
-          })
-        end
-      },
       { 'lewis6991/spellsitter.nvim',
         config = function()
          require('spellsitter').setup {
