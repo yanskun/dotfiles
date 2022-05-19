@@ -1,6 +1,7 @@
 window:
   decolations: buttonless
   startup_mode: SimpleFullscreen
+  opacity: 0.85
 
 font:
   size: 12.5
@@ -86,9 +87,6 @@ key_bindings:
   - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                       } # Alt + |
   - { key: Right, mods: Alt, chars: "\x1BF" }
   - { key: Left,  mods: Alt, chars: "\x1BB" }
-
-background_opacity: 0.85
-
 
 colors:
   # Default colors
