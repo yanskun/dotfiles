@@ -313,7 +313,6 @@ require'packer'.startup {function(use)
       vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
   }
-
   use {
     'yasudanaoya/gotests.nvim',
     ft = 'go',
@@ -321,6 +320,9 @@ require'packer'.startup {function(use)
       require('gotests').setup()
     end
   }
+
+  -- deno
+  use 'vim-denops/denops.vim'
 
   -- markdown
   use 'ellisonleao/glow.nvim'
