@@ -1,7 +1,8 @@
 if vim.fn.exepath('lsp_name') ~= '' then
+  local lspconfig = require('lspconfig')
   local util = require('libraries._set_lsp')
 
-  require'lspconfig'.template.setup {
+  lspconfig.template.setup {
     on_attach = util.on_attach,
     capabilities = util.capabilities,
     flags = util.flags,
