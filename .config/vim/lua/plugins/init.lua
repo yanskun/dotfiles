@@ -323,6 +323,7 @@ require'packer'.startup {function(use)
 
   -- deno
   use 'vim-denops/denops.vim'
+  use 'yasudanaoya/dps-translate.nvim'
 
   -- markdown
   use 'ellisonleao/glow.nvim'

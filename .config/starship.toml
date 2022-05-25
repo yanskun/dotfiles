@@ -1,5 +1,5 @@
 format = """
-$time$directory$golang$nodejs$python$dart$rust
+$time$directory$golang$nodejs$python$dart$rust$deno
 $character"""
 
 right_format = """
@@ -39,6 +39,9 @@ format = "[$symbol($version )]($style)"
 format = "[$symbol($version )]($style)"
 
 [rust]
+format = "[$symbol($version )]($style)"
+
+[deno]
 format = "[$symbol($version )]($style)"
 
 [character]
