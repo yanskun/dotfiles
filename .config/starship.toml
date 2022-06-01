@@ -48,6 +48,9 @@ format = "[$symbol($version )]($style)"
 [deno]
 format = "[$symbol($version )]($style)"
 
+[ruby]
+format = "[$symbol($version )]($style)"
+
 [character]
 success_symbol = "[-❯](bold green)"
 error_symbol = "[-❯](bold red)"
