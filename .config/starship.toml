@@ -1,5 +1,5 @@
 format = """
-$time$directory$golang$nodejs$python$dart$rust$deno
+$time$directory$golang$nodejs$python$dart$rust$deno$ruby$cmd_duration
 $character"""
 
 right_format = """
@@ -23,6 +23,10 @@ disabled = false
 
 [git_status]
 disabled = false
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = 'bold cyan'
 
 # languages
 [golang]
