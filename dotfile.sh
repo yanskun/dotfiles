@@ -65,5 +65,11 @@ fi
 echo 'wallpaper'
 wallpaper set ${PWD}/images/wallpaper.jpeg
 
+echo 'screenshot'
+if [[ ! -e $HOME/Pictures/screenshot ]]; then
+  mkdir -p $HOME/Pictures/screenshot
+fi
+defaults write com.apple.screencapture location $HOME/Pictures/screenshot
+
 echo '🎉Finish'
 echo 'Please restart the terminal'
