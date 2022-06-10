@@ -20,7 +20,7 @@ return function()
     },
     options = {
       theme = 'onedark',
-      disabled_filetypes = { 'NvimTree' },
+      disabled_filetypes = { 'NvimTree', 'neo-tree' },
       globalstatus = true,
     }
   })
