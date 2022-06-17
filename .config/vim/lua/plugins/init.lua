@@ -26,7 +26,7 @@ require'packer'.startup {function(use)
     'f-person/git-blame.nvim',
     config = function()
       vim.g.gitblame_message_template = '<summary> | <date> | <author>'
-      vim.g.gitblame_ignored_filetypes = { 'NvimTree' }
+      vim.g.gitblame_ignored_filetypes = { 'NvimTree', 'neo-tree' }
     end
   }
 
@@ -88,6 +88,11 @@ require'packer'.startup {function(use)
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+      { 
+        's1n7ax/nvim-window-picker',
+        tag = "1.*",
+        config = conf 'nvim-window-picker',
+      }
     },
     config = conf 'neo-tree',
   }
