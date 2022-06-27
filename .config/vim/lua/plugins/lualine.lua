@@ -10,12 +10,15 @@ return function()
 
   require('lualine').setup({
     sections = {
+      lualine_a = {'mode'},
       lualine_b = {
-        'branch', 'diagnostics',
+        'branch',
+        filepath,
       },
       lualine_c = {
-        filepath,
-        'diff'
+        "require'lsp-status'.status()",
+        'diagnostics',
+        'diff',
       },
     },
     options = {

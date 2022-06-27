@@ -300,6 +300,7 @@ require'packer'.startup {function(use)
          }
         end
       },
+      'nvim-lua/lsp-status.nvim'
     },
     config = conf 'lualine'
   }
