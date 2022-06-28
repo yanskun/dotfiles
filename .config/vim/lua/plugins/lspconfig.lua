@@ -23,6 +23,7 @@ return function()
     'jsonls',
     'sumneko_lua',
     'tflint',
+    'tsserver',
     'yamlls',
   }
 
