@@ -9,5 +9,5 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
     flags = util.flags,
   }
 else
-  print('lsp install command')
+  print('npm install -g typescript-language-server')
 end
