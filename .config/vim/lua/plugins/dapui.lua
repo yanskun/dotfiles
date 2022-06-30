@@ -10,7 +10,7 @@ return function()
       }
     }
   }, {
-      prefix = '<leader>',
-    }
+    prefix = '<leader>',
+  }
   )
 end

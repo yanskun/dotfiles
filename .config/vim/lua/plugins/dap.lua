@@ -1,4 +1,4 @@
-return function ()
+return function()
   require('which-key').register({
     name = 'dap',
     d = {
@@ -14,8 +14,8 @@ return function ()
       C = { "<Cmd>lua require'dap'.clear_breakpoints()<CR>", "dap remove all breakpoints" }
     },
   }, {
-      prefix = '<leader>'
-    })
+    prefix = '<leader>'
+  })
 
   local fn = vim.fn
 

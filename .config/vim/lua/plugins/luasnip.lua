@@ -27,7 +27,7 @@ return function()
   if err != nil {
     <>
   }
-  ]],
+  ]]     ,
         { i(0) }
       )
     ),

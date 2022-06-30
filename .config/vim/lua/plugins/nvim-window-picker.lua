@@ -1,5 +1,5 @@
-return function ()
-  require'window-picker'.setup {
+return function()
+  require 'window-picker'.setup {
     autoselect_one = true,
     include_current = false,
     filter_rules = {

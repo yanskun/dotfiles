@@ -2,7 +2,7 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
   local lspconfig = require('lspconfig')
   local util = require('libraries._set_lsp')
 
-  local ts_utils = require'nvim-lsp-ts-utils'
+  local ts_utils = require 'nvim-lsp-ts-utils'
 
   ts_utils.setup {
     debug = false,

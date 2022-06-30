@@ -6,6 +6,6 @@ return function()
     }
   }, {
     prefix = '<leader>',
-    }
+  }
   )
 end

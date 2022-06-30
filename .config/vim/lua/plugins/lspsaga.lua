@@ -7,6 +7,6 @@ return function()
     }
   }, {
     silent = true,
-    }
+  }
   )
 end
