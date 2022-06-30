@@ -165,8 +165,6 @@ require 'packer'.startup { function(use)
     module = 'flutter-tools'
   }
 
-  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-
   -- autocompletion
   use {
     'hrsh7th/nvim-cmp',
