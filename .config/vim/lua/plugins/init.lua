@@ -1,10 +1,11 @@
 local utils = require('libraries._set_config')
 
 local conf = utils.conf
+local conf_lsp = utils.conf_lsp
 
 vim.cmd [[packadd packer.nvim]]
 
-require'packer'.startup {function(use)
+require 'packer'.startup { function(use)
   use 'wbthomason/packer.nvim'
 
   use 'nvim-lua/plenary.nvim'
@@ -88,7 +89,7 @@ require'packer'.startup {function(use)
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
-      { 
+      {
         's1n7ax/nvim-window-picker',
         tag = "1.*",
         config = conf 'nvim-window-picker',
@@ -147,7 +148,7 @@ require'packer'.startup {function(use)
     requires = {
       'nvim-lua/plenary.nvim',
     },
-    config = conf 'null-ls',
+    config = conf_lsp 'null-ls',
     after = 'nvim-lspconfig',
   }
 
@@ -163,6 +164,8 @@ require'packer'.startup {function(use)
     ft = 'dart',
     module = 'flutter-tools'
   }
+
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
   -- autocompletion
   use {
@@ -240,7 +243,7 @@ require'packer'.startup {function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end
   }
 
@@ -287,7 +290,7 @@ require'packer'.startup {function(use)
   -- color
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function ()
+    config = function()
       require('colorizer').setup()
     end
   }
@@ -298,9 +301,9 @@ require'packer'.startup {function(use)
     requires = {
       { 'lewis6991/spellsitter.nvim',
         config = function()
-         require('spellsitter').setup {
-           enable = true,
-         }
+          require('spellsitter').setup {
+            enable = true,
+          }
         end
       },
       'nvim-lua/lsp-status.nvim'
@@ -347,5 +350,5 @@ require'packer'.startup {function(use)
   -- markdown
   use 'ellisonleao/glow.nvim'
 
-  end
+end
 }

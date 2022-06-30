@@ -18,7 +18,6 @@ return function()
   }
 
   local servers = {
-    'efm',
     'denols',
     'gopls',
     'jsonls',
