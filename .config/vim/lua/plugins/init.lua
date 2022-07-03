@@ -247,12 +247,6 @@ require 'packer'.startup { function(use)
     end
   }
 
-  -- formatter
-  use {
-    'mhartington/formatter.nvim',
-    config = conf 'formatter'
-  }
-
   -- terminal
   use {
     'akinsho/toggleterm.nvim',
