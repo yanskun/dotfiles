@@ -23,7 +23,6 @@ return function()
       end
     end
     if next(client_names) then
-      local prefix = " LSP: "
       local names = ""
       for k, _ in pairs(client_names) do
         if names == "" then
@@ -32,7 +31,7 @@ return function()
           names = names .. "," .. k
         end
       end
-      return prefix .. names
+      return names
     end
     return msg
   end
@@ -41,13 +40,29 @@ return function()
     sections = {
       lualine_a = { 'mode' },
       lualine_b = {
-        'branch',
+        {
+          'branch',
+          color = { fg = '#c678dd', gui = 'bold' }
+        },
         filepath,
       },
       lualine_c = {
         'diagnostics',
         'diff',
-        client_name,
+      },
+      lualine_x = {
+        {
+          client_name,
+          icon = '',
+          color = { fg = "#a9a1e1", gui = "bold" }
+        },
+        'filetype',
+      },
+      lualine_y = {
+        'progress',
+      },
+      lualine_z = {
+        'location',
       },
     },
     options = {
