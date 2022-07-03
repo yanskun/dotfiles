@@ -336,5 +336,9 @@ require("packer").startup({
 
     -- markdown
     use("ellisonleao/glow.nvim")
+
+    use({
+      "yasudanaoya/change-case.nvim",
+    })
   end,
 })

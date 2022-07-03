@@ -1,3 +1,7 @@
+-- stylua
+-- cmd: cargo install stylua
+-- src: https://github.com/JohnnyMorganz/StyLua
+
 return function()
   local nls = require("null-ls")
 
