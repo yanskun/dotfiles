@@ -221,12 +221,6 @@ require 'packer'.startup { function(use)
   }
 
   -- development
-  -- trim white space
-  use {
-    'McAuleyPenney/tidy.nvim',
-    event = 'BufWritePre'
-  }
-
   -- brackets
   use {
     'windwp/nvim-autopairs',
