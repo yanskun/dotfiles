@@ -20,6 +20,7 @@ return function()
       filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
     }),
     nls.builtins.formatting.eslint_d,
+    nls.builtins.formatting.prettier,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.black,
