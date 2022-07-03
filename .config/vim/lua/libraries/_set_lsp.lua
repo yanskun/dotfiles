@@ -33,10 +33,6 @@ M.on_attach = function(client, bufnr)
     buffer = 0,
   })
 
-  if client.server_capabilities.documentFormattingProvider then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-  end
-
   require('illuminate').on_attach(client)
 end
 
