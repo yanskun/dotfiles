@@ -14,15 +14,18 @@ return function()
 
 	require("formatter").setup({
 		filetype = {
-			lua = f("stylua", "./*/*.lua"),
+			lua = f("stylua", vim.api.nvim_buf_get_name(0)),
+			go = {
+				f("gofmt", "-w", vim.api.nvim_buf_get_name(0)),
+			},
 		},
 	})
 
 	vim.api.nvim_exec(
 		[[
 	   augroup FormatAutogroup
-	     autocmd!
-	     autocmd BufWritePost * FormatWrite
+       autocmd!
+	     autocmd BufWrite * FormatWrite
 	   augroup END
 	  ]],
 		true
