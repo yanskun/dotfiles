@@ -1,4 +1,4 @@
-if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
+if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
     vim.fn.exepath('gotests') then
   local util = require('libraries._set_lsp')
 
