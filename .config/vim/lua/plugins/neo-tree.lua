@@ -1,5 +1,5 @@
 return function()
-  local ok, neo_tree = pcall(require, 'neo-tree')
+  local ok, neo_tree = pcall(require, "neo-tree")
 
   if not ok then
     return
@@ -7,23 +7,19 @@ return function()
 
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-  vim.fn.sign_define("DiagnosticSignError",
-    { text = " ", texthl = "DiagnosticSignError" })
-  vim.fn.sign_define("DiagnosticSignWarn",
-    { text = " ", texthl = "DiagnosticSignWarn" })
-  vim.fn.sign_define("DiagnosticSignInfo",
-    { text = " ", texthl = "DiagnosticSignInfo" })
-  vim.fn.sign_define("DiagnosticSignHint",
-    { text = "", texthl = "DiagnosticSignHint" })
+  vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+  vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+  vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
-  neo_tree.setup {
+  neo_tree.setup({
     close_if_last_window = true,
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
     default_component_configs = {
       container = {
-        enable_character_fade = true
+        enable_character_fade = true,
       },
       indent = {
         indent_size = 2,
@@ -46,7 +42,7 @@ return function()
         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
         -- then these will never be used.
         default = "*",
-        highlight = "NeoTreeFileIcon"
+        highlight = "NeoTreeFileIcon",
       },
       modified = {
         symbol = "[+]",
@@ -60,17 +56,17 @@ return function()
       git_status = {
         symbols = {
           -- Change type
-          added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "✖", -- this can only be used in the git_status source
-          renamed   = "", -- this can only be used in the git_status source
+          added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted = "✖", -- this can only be used in the git_status source
+          renamed = "", -- this can only be used in the git_status source
           -- Status type
           untracked = "",
-          ignored   = "",
-          unstaged  = "",
-          staged    = "",
-          conflict  = "",
-        }
+          ignored = "",
+          unstaged = "",
+          staged = "",
+          conflict = "",
+        },
       },
     },
     window = {
@@ -98,8 +94,8 @@ return function()
           "add",
           -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
-            show_path = "none" -- "none", "relative", "absolute"
-          }
+            show_path = "none", -- "none", "relative", "absolute"
+          },
         },
         ["A"] = "add_directory", -- also accepts the config.show_path option.
         ["d"] = "delete",
@@ -112,7 +108,7 @@ return function()
         ["q"] = "close_window",
         ["R"] = "refresh",
         ["?"] = "show_help",
-      }
+      },
     },
     nesting_rules = {},
     filesystem = {
@@ -153,8 +149,8 @@ return function()
           ["<c-x>"] = "clear_filter",
           ["[g"] = "prev_git_modified",
           ["]g"] = "next_git_modified",
-        }
-      }
+        },
+      },
     },
     buffers = {
       follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -166,28 +162,28 @@ return function()
           ["bd"] = "buffer_delete",
           ["<bs>"] = "navigate_up",
           ["."] = "set_root",
-        }
+        },
       },
     },
     git_status = {
       window = {
         position = "float",
         mappings = {
-          ["A"]  = "git_add_all",
+          ["A"] = "git_add_all",
           ["gu"] = "git_unstage_file",
           ["ga"] = "git_add_file",
           ["gr"] = "git_revert_file",
           ["gc"] = "git_commit",
           ["gp"] = "git_push",
           ["gg"] = "git_commit_and_push",
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  })
 
   -- vim.cmd Your <leader> key ([[nnoremap \ :Neotree reveal<cr>]])
-  require('which-key').register {
-    ['<leader>t'] = { '<Cmd>Neotree toggle<cr>', 'Neotree toggle open / close' },
-    ['<leader>e'] = { '<Cmd>Neotree reveal<cr>', 'Neotree focus explorer' },
-  }
+  require("which-key").register({
+    ["<leader>t"] = { "<Cmd>Neotree toggle<cr>", "Neotree toggle open / close" },
+    ["<leader>e"] = { "<Cmd>Neotree reveal<cr>", "Neotree focus explorer" },
+  })
 end
