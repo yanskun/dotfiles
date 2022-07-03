@@ -23,11 +23,11 @@ return function()
 
 	vim.api.nvim_exec(
 		[[
-	   augroup FormatAutogroup
-       autocmd!
-	     autocmd BufWrite * FormatWrite
-	   augroup END
-	  ]],
+      augroup FormatAutogroup
+        autocmd!
+        autocmd BufWrite * FormatWrite
+      augroup END
+    ]],
 		true
 	)
 end
