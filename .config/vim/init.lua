@@ -1,8 +1,8 @@
-require('settings._options')
-require('settings._mappings')
-require('settings._provider')
+require("settings._options")
+require("settings._mappings")
+require("settings._provider")
 
-local ok, reload = pcall(require, 'plenary.reload')
+local ok, reload = pcall(require, "plenary.reload")
 RELOAD = ok and reload.reload_module or function(...)
   return ...
 end
@@ -11,4 +11,4 @@ function R(name)
   return require(name)
 end
 
-R 'plugins'
+R("plugins")

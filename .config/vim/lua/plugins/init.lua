@@ -77,11 +77,6 @@ require("packer").startup({
     })
 
     -- explorer
-    -- use {
-    --   'kyazdani42/nvim-tree.lua',
-    --   requires = { 'kyazdani42/nvim-web-devicons' },
-    --   config = conf 'nvim-tree'
-    -- }
     use({
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
@@ -98,7 +93,7 @@ require("packer").startup({
       config = conf("neo-tree"),
     })
 
-    -- tabline
+    -- buffer
     use({
       "akinsho/bufferline.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
@@ -281,18 +276,29 @@ require("packer").startup({
       end,
     })
 
+    -- spell check
+    use({
+      "lewis6991/spellsitter.nvim",
+      config = function()
+        vim.cmd([[
+          syntax on
+          set spell spelllang=en_us
+        ]])
+        require("spellsitter").setup({
+          highlight = {
+            enable = true,
+          },
+        })
+      end,
+    })
+
+    -- match info
+    use({ "kevinhwang91/nvim-hlslens" })
+
     -- status line
     use({
       "nvim-lualine/lualine.nvim",
       requires = {
-        {
-          "lewis6991/spellsitter.nvim",
-          config = function()
-            require("spellsitter").setup({
-              enable = true,
-            })
-          end,
-        },
         "nvim-lua/lsp-status.nvim",
       },
       config = conf("lualine"),

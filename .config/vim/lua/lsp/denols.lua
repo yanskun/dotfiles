@@ -1,13 +1,13 @@
-if vim.fn.exepath('deno') ~= '' then
+if vim.fn.exepath("deno") ~= "" then
   vim.g.markdown_fenced_languages = {
-    'ts=typescript'
+    "ts=typescript",
   }
 
-  local lspconfig = require('lspconfig')
-  local util = require('libraries._set_lsp')
+  local lspconfig = require("lspconfig")
+  local util = require("libraries._set_lsp")
 
-  lspconfig.denols.setup {
-    cmd = { 'deno', 'lsp' },
+  lspconfig.denols.setup({
+    cmd = { "deno", "lsp" },
     root_dir = lspconfig.util.root_pattern("deno.json", "denops"),
     on_attach = function(client, bufnr)
       client.server_capabilities.document_formatting = false
@@ -15,7 +15,7 @@ if vim.fn.exepath('deno') ~= '' then
     end,
     capabilities = util.capabilities,
     flags = util.flags,
-  }
+  })
 else
-  print('asdf install deno latest')
+  print("asdf install deno latest")
 end
