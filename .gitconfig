@@ -1,6 +1,6 @@
 [user]
 	name = yasudanaoya
-	email = 43776161+yasudanaoya@users.noreply.github.com
+	email = tamago.708@gmail.com
 
 [alias]
   b = branch
@@ -24,3 +24,5 @@
   root = ~/Projects
 [init]
   defaultBranch = main
+[push]
+	autoSetupRemote = true
