@@ -1,6 +1,6 @@
 -- https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
 
-if vim.fn.exepath("rust-analyzer") ~= "" then
+if vim.fn.exepath("rust-analyzer") ~= "" and vim.fn.exepath("rustfmt") ~= "" then
   local lspconfig = require("lspconfig")
   local util = require("libraries._set_lsp")
 
@@ -30,4 +30,5 @@ if vim.fn.exepath("rust-analyzer") ~= "" then
 else
   print("curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer")
   print("chmod +x ~/.local/bin/rust-analyzer")
+  print("rustup component add rustfmt")
 end

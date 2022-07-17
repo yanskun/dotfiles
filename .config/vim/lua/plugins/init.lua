@@ -336,6 +336,13 @@ require("packer").startup({
       end,
     })
 
+    -- Rust
+    use({
+      "rust-lang/rust.vim",
+      ft = "rust",
+      config = conf('rust'),
+    })
+
     -- deno
     use("vim-denops/denops.vim")
     use("yasudanaoya/dps-translate.nvim")
