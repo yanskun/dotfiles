@@ -103,7 +103,7 @@ require("packer").startup({
     -- treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
+      -- commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
       config = conf("treesitter"),
       requires = {
         {
@@ -148,7 +148,7 @@ require("packer").startup({
     })
 
     use({
-      "glepnir/lspsaga.nvim",
+      "kkharji/lspsaga.nvim",
       config = conf("lspsaga"),
     })
 
@@ -341,6 +341,15 @@ require("packer").startup({
       "rust-lang/rust.vim",
       ft = "rust",
       config = conf('rust'),
+    })
+    use({
+      "simrat39/rust-tools.nvim",
+      ft = "rust",
+      config = function()
+        require('rust-tools').setup({
+          hover_with_actions = false,
+        })
+      end,
     })
 
     -- deno
