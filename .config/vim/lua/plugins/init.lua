@@ -110,6 +110,7 @@ require("packer").startup({
           "romgrk/nvim-treesitter-context",
           config = conf("treesitter-context"),
         },
+        "p00f/nvim-ts-rainbow"
       },
     })
 
