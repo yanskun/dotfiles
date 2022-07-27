@@ -132,11 +132,11 @@ require("packer").startup({
     })
 
     use({
-      "williamboman/nvim-lsp-installer",
-      requires = "nvim-lspconfig",
-      config = function()
-        require("nvim-lsp-installer").setup({})
-      end,
+      "williamboman/mason.nvim",
+      config = conf("mason"),
+      requires = {
+        "williamboman/mason-lspconfig.nvim",
+      }
     })
 
     use({
