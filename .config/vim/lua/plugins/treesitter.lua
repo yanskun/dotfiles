@@ -1,6 +1,19 @@
 return function()
   if vim.fn.exepath('tree-sitter') ~= '' then
     require('nvim-treesitter.configs').setup {
+      ensure_installed = {
+        "css",
+        "dart",
+        "go",
+        "html",
+        "lua",
+        "rust",
+        "scss",
+        "tsx",
+        "typescript",
+        "vue",
+        "yaml",
+      },
       highlight = {
         enable = true,
         disable = { "TelescopePrompt" },
