@@ -12,6 +12,7 @@ return function()
       "rust-analyzer",
       "tflint",
       "yaml-language-server",
+      "zls"
     },
     ui = {
       icons = {

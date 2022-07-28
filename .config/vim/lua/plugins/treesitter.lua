@@ -13,6 +13,7 @@ return function()
         "typescript",
         "vue",
         "yaml",
+        "zig",
       },
       highlight = {
         enable = true,
