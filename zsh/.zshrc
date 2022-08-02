@@ -116,6 +116,10 @@ GOENV_DISABLE_GOPATH=1
 export PATH=$GOPATH/bin:$PATH
 
 ########################################
+# zig
+export PATH=$PATH:$HOME/zls/zig-out/bin
+
+########################################
 # terminal color
 
 # 色を使用出来るようにする

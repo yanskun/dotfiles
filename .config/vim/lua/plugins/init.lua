@@ -353,6 +353,12 @@ require("packer").startup({
       end,
     })
 
+    -- Zig
+    use({
+      "ziglang/zig.vim",
+      ft = { "zig", "zir" },
+    })
+
     -- deno
     use("vim-denops/denops.vim")
     use("yasudanaoya/dps-translate.nvim")

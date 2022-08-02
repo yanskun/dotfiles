@@ -29,6 +29,7 @@ return function()
     "tflint",
     "tsserver",
     "yamlls",
+    "zls",
   }
 
   for _, lsp in ipairs(servers) do
