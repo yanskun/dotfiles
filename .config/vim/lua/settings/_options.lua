@@ -44,10 +44,10 @@ vim.cmd([[
 ]])
 
 -- denops
--- set runtimepath-=~/Projects/github.com/yasudanaoya/dps-translate
--- set runtimepath^=~/Projects/github.com/yasudanaoya/dps-change-case.nvim
+-- set runtimepath-=~/Projects/github.com/yanskun/dps-translate
+-- set runtimepath^=~/Projects/github.com/yanskun/dps-change-case.nvim
 vim.cmd([[
-  set runtimepath-=~/Projects/github.com/yasudanaoya/dps-translate
-  set runtimepath-=~/Projects/github.com/yasudanaoya/dps-change-case.nvim
+  set runtimepath-=~/Projects/github.com/yanskun/dps-translate
+  set runtimepath-=~/Projects/github.com/yanskun/dps-change-case.nvim
   let g:denops#debug = 0
 ]])

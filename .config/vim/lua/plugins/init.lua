@@ -330,7 +330,7 @@ require("packer").startup({
       end,
     })
     use({
-      "yasudanaoya/gotests.nvim",
+      "yanskun/gotests.nvim",
       ft = "go",
       config = function()
         require("gotests").setup()
@@ -361,13 +361,13 @@ require("packer").startup({
 
     -- deno
     use("vim-denops/denops.vim")
-    use("yasudanaoya/dps-translate.nvim")
+    use("yanskun/dps-translate.nvim")
 
     -- markdown
     use("ellisonleao/glow.nvim")
 
     use({
-      "yasudanaoya/change-case.nvim",
+      "yanskun/change-case.nvim",
     })
   end,
 })
