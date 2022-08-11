@@ -4,7 +4,6 @@
   "editor.dragAndDrop": false,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
-  "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -108,4 +107,9 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "editor.guides.indentation": true,
+  "editor.inlineSuggest.enabled": true,
 }

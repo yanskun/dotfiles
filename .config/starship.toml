@@ -7,13 +7,15 @@ $git_status$git_branch"""
 
 [time]
 disabled = false
-format = "[\\[$time\\]]($style) "
+format = "[祥$time]($style) "
 style = 'bold cyan'
 
 [directory]
 truncate_to_repo = false
 format = "[$path]($style)[$read_only]($read_only_style) "
 style = 'bold yellow'
+read_only_style = 'bold red'
+home_symbol = ' ~'
 truncation_length = 0
 
 [git_branch]
