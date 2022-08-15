@@ -112,4 +112,5 @@
   },
   "editor.guides.indentation": true,
   "editor.inlineSuggest.enabled": true,
+  "npm.keybindingsChangedWarningShown": true,
 }
