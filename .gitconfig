@@ -22,6 +22,7 @@
 	rebase = false
 [ghq]
   root = ~/Projects
+  user = yanskun
 [init]
   defaultBranch = main
 [push]
