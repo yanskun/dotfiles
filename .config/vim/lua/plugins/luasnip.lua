@@ -5,10 +5,10 @@ return function()
     return
   end
 
-
   local s = ls.snippet
   local f = ls.function_node
   local i = ls.insert_node
+  local fmt = require("luasnip.extras.fmt").fmt
   local fmta = require("luasnip.extras.fmt").fmta
 
   local comment = function()
@@ -29,6 +29,30 @@ return function()
   }
   ]]     ,
         { i(0) }
+      )
+    ),
+  })
+
+  ls.add_snippets("typescriptreact", {
+    s(
+      "fr",
+      fmt([[
+/** @jsx h */
+import { h } from "preact";
+
+export default function []() {
+  return (
+    <div>
+      []
+    </div>
+  );
+}
+  ]],   {
+          i(1, "func name"), i(2, "text")
+        },
+        {
+          delimiters = "[]"
+        }
       )
     ),
   })
