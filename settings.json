@@ -7,6 +7,7 @@
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.stickyScroll.enabled": true,
   "emmet.includeLanguages": { "erb": "html" },
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
@@ -39,6 +40,7 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
   "git.confirmSync": false,
+  "git.mergeEditor": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
   "ruby.lint": {"rubocop": true},
@@ -74,14 +76,15 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "todo-tree.tree.showScanModeButton": false,
   "cSpell.userWords": [
-    "Designpack",
-    "Zoomable",
     "clsx",
+    "Designpack",
     "mixins",
     "nuxt",
     "poplight",
     "stylelint",
-    "testid"
+    "testid",
+    "yanskun",
+    "Zoomable"
   ],
   "sync.autoUpload": true,
   "editor.quickSuggestions": {
@@ -113,4 +116,10 @@
   "editor.guides.indentation": true,
   "editor.inlineSuggest.enabled": true,
   "npm.keybindingsChangedWarningShown": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
+  },
 }
