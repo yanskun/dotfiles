@@ -362,6 +362,7 @@ require("packer").startup({
     -- deno
     use("vim-denops/denops.vim")
     use("yanskun/dps-translate.nvim")
+    use("skanehira/denops-silicon.vim")
 
     -- markdown
     use("ellisonleao/glow.nvim")
