@@ -1,6 +1,6 @@
 window:
-  decolations: buttonless
-  startup_mode: SimpleFullscreen
+  decorations: None
+  startup_mode: Maximized
   opacity: 0.85
 
 font:
