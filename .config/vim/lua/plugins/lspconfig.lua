@@ -28,6 +28,7 @@ return function()
     "sumneko_lua",
     "tflint",
     -- "tsserver",
+    "volar",
     "yamlls",
     "zls",
   }
