@@ -5,6 +5,7 @@ o.swapfile = false
 o.showcmd = true
 o.virtualedit = "onemore"
 o.splitright = true
+o.mouse = ""
 
 o.number = true
 o.cursorline = true

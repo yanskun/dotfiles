@@ -35,8 +35,8 @@ require("packer").startup({
       "lewis6991/gitsigns.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("gitsigns").setup()
-      end,
+        require('gitsigns').setup()
+      end
     })
 
     use({
@@ -79,14 +79,12 @@ require("packer").startup({
     -- explorer
     use({
       "nvim-neo-tree/neo-tree.nvim",
-      branch = "v2.x",
       requires = {
         "nvim-lua/plenary.nvim",
         "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
         {
           "s1n7ax/nvim-window-picker",
-          tag = "1.*",
           config = conf("nvim-window-picker"),
         },
       },
@@ -110,7 +108,7 @@ require("packer").startup({
           "romgrk/nvim-treesitter-context",
           config = conf("treesitter-context"),
         },
-        "p00f/nvim-ts-rainbow"
+        -- "p00f/nvim-ts-rainbow"
       },
     })
 

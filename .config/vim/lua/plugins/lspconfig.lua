@@ -27,7 +27,7 @@ return function()
     "rust_analyzer",
     "sumneko_lua",
     "tflint",
-    "tsserver",
+    -- "tsserver",
     "yamlls",
     "zls",
   }

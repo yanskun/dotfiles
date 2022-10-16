@@ -1,5 +1,7 @@
 {
-  "[markdown]": { "files.trimTrailingWhitespace": false },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
   "breadcrumbs.enabled": true,
   "editor.dragAndDrop": false,
   "editor.insertSpaces": true,
@@ -8,7 +10,9 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.stickyScroll.enabled": true,
-  "emmet.includeLanguages": { "erb": "html" },
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.erb": "erb",
@@ -43,7 +47,9 @@
   "git.mergeEditor": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
-  "ruby.lint": {"rubocop": true},
+  "ruby.lint": {
+    "rubocop": true
+  },
   "todo-tree.highlights.customHighlight": {
     "TODO": {
       "type": "text",
@@ -93,6 +99,7 @@
   "vscodeGoogleTranslate.preferredLanguage": "Japanese",
   "workbench.activityBar.visible": true,
   "workbench.editor.showTabs": true,
+  "workbench.experimental.settingsProfiles.enabled": true,
   "openInGitHub.defaultBranch": "main",
   "path-autocomplete.pathMappings": {
     "/": "${folder}/",
