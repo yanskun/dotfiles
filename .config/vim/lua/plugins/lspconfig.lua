@@ -26,6 +26,7 @@ return function()
     "jsonls",
     "rust_analyzer",
     "sumneko_lua",
+    "svelte",
     "tflint",
     -- "tsserver",
     "volar",
