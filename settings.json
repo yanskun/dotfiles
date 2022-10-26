@@ -13,6 +13,7 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.erb": "erb",
@@ -40,7 +41,6 @@
   "sync.gist": "c4d5e94125fe5dcb06e38ded5e9bb445",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 0,
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
   "git.confirmSync": false,
@@ -83,6 +83,8 @@
   "todo-tree.tree.showScanModeButton": false,
   "cSpell.userWords": [
     "clsx",
+    "denormalize",
+    "Denormalized",
     "Designpack",
     "mixins",
     "nuxt",
@@ -105,9 +107,9 @@
     "/": "${folder}/",
     "~": "${folder}/",
   },
-  "editor.formatOnPaste": false,
-  "editor.formatOnType": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -129,4 +131,5 @@
     "plaintext": false,
     "markdown": true
   },
+  "svelte.plugin.svelte.note-new-transformation": false,
 }
