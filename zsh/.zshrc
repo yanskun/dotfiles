@@ -267,7 +267,13 @@ alias -g L='| less'
 alias -g G='| grep'
 
 # vim
-alias vim='nvim'
+if type nvim > /dev/null; then
+  alias vim='nvim'
+fi
+
+if type bat > /dev/null; then
+    alias cat='bat'
+fi
 
 # docker
 alias d='docker'
