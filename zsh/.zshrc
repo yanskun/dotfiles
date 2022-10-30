@@ -271,6 +271,7 @@ if type nvim > /dev/null; then
   alias vim='nvim'
 fi
 
+# cat
 if type bat > /dev/null; then
     alias cat='bat'
 fi
