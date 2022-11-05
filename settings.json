@@ -82,6 +82,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "todo-tree.tree.showScanModeButton": false,
   "cSpell.userWords": [
+    "Bugsnag",
     "clsx",
     "denormalize",
     "Denormalized",
@@ -132,4 +133,6 @@
     "markdown": true
   },
   "svelte.plugin.svelte.note-new-transformation": false,
+  "editor.inlayHints.fontSize": 2,
+  "editor.inlayHints.enabled": "offUnlessPressed",
 }
