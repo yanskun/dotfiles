@@ -9,7 +9,6 @@
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "editor.stickyScroll.enabled": true,
   "emmet.includeLanguages": {
     "erb": "html"
   },
@@ -87,6 +86,7 @@
     "denormalize",
     "Denormalized",
     "Designpack",
+    "DSLs",
     "mixins",
     "nuxt",
     "poplight",
@@ -135,4 +135,7 @@
   "svelte.plugin.svelte.note-new-transformation": false,
   "editor.inlayHints.fontSize": 2,
   "editor.inlayHints.enabled": "offUnlessPressed",
+  "markdown.updateLinksOnFileMove.enabled": "always",
+  "markdown.validate.enabled": true,
+  "editor.stickyScroll.enabled": true
 }
