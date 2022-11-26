@@ -1,12 +1,13 @@
 [user]
-	name = yanskun
+	name = Naoya Yasuda
 	email = 43776161+yanskun@users.noreply.github.com
 
 [alias]
   b = branch
   bd = !git branch -d $(git b | peco)
-  bD = !git branch -D $(git b | peco)
   s = status
+  sw = switch
+  swp = !git switch $(git b | peco)
   co = checkout
   cop = !git checkout $(git b | peco)
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
@@ -27,3 +28,8 @@
   defaultBranch = main
 [push]
 	autoSetupRemote = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
