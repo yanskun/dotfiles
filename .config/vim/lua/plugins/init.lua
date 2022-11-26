@@ -292,7 +292,12 @@ require("packer").startup({
     })
 
     -- match info
-    use({ "kevinhwang91/nvim-hlslens" })
+    use({
+      "kevinhwang91/nvim-hlslens",
+      config = function()
+        require("hlslens").setup()
+      end,
+    })
 
     -- status line
     use({
