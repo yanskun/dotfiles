@@ -373,5 +373,8 @@ require("packer").startup({
     use({
       "yanskun/change-case.nvim",
     })
+
+    -- WakaTime
+    use 'wakatime/vim-wakatime'
   end,
 })
