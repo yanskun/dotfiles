@@ -10,6 +10,7 @@ o.mouse = ""
 o.number = true
 o.cursorline = true
 o.cursorcolumn = true
+o.termguicolors = true
 
 o.expandtab = true
 o.tabstop = 2

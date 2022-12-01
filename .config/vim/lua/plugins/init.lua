@@ -22,6 +22,13 @@ require("packer").startup({
       end,
     })
 
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.notify = require("notify")
+      end,
+    })
+
     -- git
     use({
       "f-person/git-blame.nvim",

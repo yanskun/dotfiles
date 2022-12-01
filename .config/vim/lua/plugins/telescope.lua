@@ -26,18 +26,23 @@ return function()
   }
 
   local find_command = "{ 'rg', '--files', '--hidden', '-g', '!node_modules/**', '-g', '!.git/**', }"
-  require('which-key').register {
+  require('which-key').register({
     name = 'telescope',
-    ['<leader>ff'] = { "<cmd>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<cr>",
-      'telescope find file' },
-    ['<leader>fg'] = { "<cmd>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<cr>",
-      'telescope live grep' },
-    ['<leader>fb'] = { "<cmd>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<cr>",
-      'telescope buffers' },
-    ['<leader>fh'] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", 'telescope help tags' },
-    ['<leader>fo'] = { "<cmd>lua require('telescope.builtin').oldfiles({find_command = " .. find_command .. " })<cr>",
-      'telescope old files' },
-    ['<leader>fc'] = { "<cmd>lua require('telescope.builtin').commands()<cr>", 'telescope commands' },
-    ['<leader>fk'] = { "<cmd>lua require('telescope.builtin').keymaps()<cr>", 'telescope key maps' },
-  }
+    f = {
+      f = { "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<CR>",
+        "telescope find file" },
+      g = { "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",
+        'telescope live grep' },
+      b = { "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<CR>",
+        'telescope buffers' },
+      h = { "<CMD>lua require('telescope.builtin').help_tags()<CR>", 'telescope help tags' },
+      o = { "<CMD>lua require('telescope.builtin').oldfiles({find_command = " .. find_command .. " })<CR>",
+        'telescope old files' },
+      c = { "<CMD>lua require('telescope.builtin').commands()<CR>", 'telescope commands' },
+      k = { "<CMD>lua require('telescope.builtin').keymaps()<CR>", 'telescope key maps' },
+      n = { "<CMD>lua require('telescope').extensions.notify.notify()<CR>", 'telescope notify' }
+    },
+  }, {
+    prefix = "<leader>"
+  })
 end
