@@ -231,6 +231,7 @@ require("packer").startup({
         })
       end,
     })
+    use({ "tpope/vim-surround" })
 
     -- comment
     use({
