@@ -231,7 +231,10 @@ require("packer").startup({
         })
       end,
     })
-    use({ "tpope/vim-surround" })
+    use({
+      "kylechui/nvim-surround",
+      -- :h nvim-surround.usage
+    })
 
     -- comment
     use({
@@ -280,22 +283,6 @@ require("packer").startup({
       "norcalli/nvim-colorizer.lua",
       config = function()
         require("colorizer").setup()
-      end,
-    })
-
-    -- spell check
-    use({
-      "lewis6991/spellsitter.nvim",
-      config = function()
-        vim.cmd([[
-          syntax on
-          set spell spelllang=en_us
-        ]])
-        require("spellsitter").setup({
-          highlight = {
-            enable = true,
-          },
-        })
       end,
     })
 
