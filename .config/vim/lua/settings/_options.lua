@@ -21,10 +21,11 @@ o.foldlevel = 99
 
 o.clipboard = "unnamed"
 
-local xdg_cfg = os.getenv("XDG_CONFIG_HOME")
-if xdg_cfg then
-  o.spellfile = xdg_cfg .. "/nvim/lua/spell/en.utf-8.add"
-end
+-- local xdg_cfg = os.getenv("XDG_CONFIG_HOME")
+-- if xdg_cfg then
+--   o.spell = true
+--   o.spellfile = xdg_cfg .. "/nvim/lua/spell/en.utf-8.add"
+-- end
 
 o.laststatus = 3
 
