@@ -11,6 +11,7 @@ return function()
       q = { '<cmd>Gitsigns setqflist<CR>', 'Set quickfix list' },
     }
   }, {
-    prefix = '<leader>'
+    prefix = '<leader>',
+    mode = { 'n', 'v' },
   })
 end
