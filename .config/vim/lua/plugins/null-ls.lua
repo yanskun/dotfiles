@@ -3,8 +3,8 @@
 -- src: https://github.com/JohnnyMorganz/StyLua
 
 return function()
-  if vim.fn.exepath("prettier") ~= "" then
-    print("npm install -g prettier")
+  if vim.fn.exepath("prettier") == "" then
+    vim.notify("npm install -g prettier", vim.log.levels.WARN, { title = "Not Enough" })
   end
 
   local nls = require("null-ls")
