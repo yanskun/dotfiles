@@ -31,6 +31,16 @@ return function()
           return vim_item
         end
       })
+    },
+    window = {
+      completion = {
+        border = 'rounded',
+        scrollbar = '║',
+      },
+      documentation = {
+        border = 'rounded',
+        scrollbar = '',
+      },
     }
   })
 
