@@ -14,12 +14,7 @@ require("packer").startup({
 
     use({
       "olimorris/onedarkpro.nvim",
-      config = function()
-        require("onedarkpro").load()
-        require("onedarkpro").setup({
-          theme = "onedark",
-        })
-      end,
+      config = conf("onedarkpro"),
     })
 
     use({
