@@ -3,6 +3,10 @@
 -- src: https://github.com/JohnnyMorganz/StyLua
 
 return function()
+  if vim.fn.exepath("prettier") ~= "" then
+    print("npm install -g prettier")
+  end
+
   local nls = require("null-ls")
 
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -20,9 +24,9 @@ return function()
   end
 
   local sources = {
-    nls.builtins.formatting.prettierd.with({
-      filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
-    }),
+    -- nls.builtins.formatting.prettierd.with({
+    --   filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
+    -- }),
     nls.builtins.formatting.eslint_d,
     nls.builtins.formatting.prettier,
     nls.builtins.diagnostics.shellcheck,
