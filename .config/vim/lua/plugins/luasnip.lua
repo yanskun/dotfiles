@@ -5,22 +5,26 @@ return function()
     return
   end
 
-  local s = ls.snippet
-  local f = ls.function_node
-  local i = ls.insert_node
+  local helper = require("../libraries/_snippets")
+  local snip = ls.snippet
+  local func = ls.function_node
+  local insert = ls.insert_node
   local fmt = require("luasnip.extras.fmt").fmt
   local fmta = require("luasnip.extras.fmt").fmta
 
-  local comment = function()
-    return string.format(vim.bo.commentstring, " TODO: ")
-  end
-
   ls.add_snippets("all", {
-    s("td", f(comment, { i(0) })),
+    snip(
+      "td",
+      {
+        func(function(_)
+          return string.format(vim.bo.commentstring, ' TODO: ')
+        end, { 1 }), helper.visual_insert(1)
+      }
+    )
   })
 
   ls.add_snippets("go", {
-    s(
+    snip(
       "ife",
       fmta(
         [[
@@ -28,13 +32,13 @@ return function()
     <>
   }
   ]]     ,
-        { i(0) }
+        { insert(0) }
       )
     ),
   })
 
   ls.add_snippets("typescriptreact", {
-    s(
+    snip(
       "fr",
       fmt([[
 /** @jsx h */
@@ -48,7 +52,7 @@ export default function []() {
   );
 }
       ]], {
-        i(1, "func name"), i(2, "text")
+        insert(1, "func name"), insert(2, "text")
       },
         {
           delimiters = "[]"
