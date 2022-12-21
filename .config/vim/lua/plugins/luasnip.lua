@@ -47,9 +47,9 @@ export default function []() {
     </div>
   );
 }
-  ]],   {
-          i(1, "func name"), i(2, "text")
-        },
+      ]], {
+        i(1, "func name"), i(2, "text")
+      },
         {
           delimiters = "[]"
         }
