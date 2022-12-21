@@ -164,6 +164,11 @@ require("packer").startup({
       module = "flutter-tools",
     })
 
+    use({
+      "onsails/diaglist.nvim",
+      config = conf("diaglist"),
+    })
+
     -- autocompletion
     use({
       "hrsh7th/nvim-cmp",
