@@ -13,8 +13,13 @@ require("packer").startup({
     use("github/copilot.vim")
 
     use({
-      "olimorris/onedarkpro.nvim",
-      config = conf("onedarkpro"),
+      "navarasu/onedark.nvim",
+      config = function()
+        require('onedark').setup {
+          style = 'darker'
+        }
+        require('onedark').load()
+      end
     })
 
     use({
