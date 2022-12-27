@@ -137,5 +137,6 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "markdown.updateLinksOnFileMove.enabled": "always",
   "markdown.validate.enabled": true,
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospac"
 }
