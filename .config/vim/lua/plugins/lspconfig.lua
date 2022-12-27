@@ -20,20 +20,7 @@ return function()
     ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Add buffer diagnostics to the location list" },
   })
 
-  local servers = {
-    "denols",
-    "gopls",
-    "jsonls",
-    "rust_analyzer",
-    "sumneko_lua",
-    "sqlls",
-    "svelte",
-    "tflint",
-    -- "tsserver",
-    "volar",
-    "yamlls",
-    "zls",
-  }
+  local servers = require("lsp.servers")
 
   for _, lsp in ipairs(servers) do
     conf_lsp(lsp)
