@@ -30,7 +30,7 @@ o.clipboard = "unnamed"
 o.laststatus = 3
 
 vim.cmd([[
-  language en_US
+  language en_US.UTF-8
   filetype plugin indent on
 ]])
 
