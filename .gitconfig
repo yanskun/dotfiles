@@ -7,9 +7,10 @@
   bd = !git branch -d $(git b | fzf --multi)
   s = status
   sw = switch
-  swp = !git switch $(git b | fzf)
+  swp = !"git switch $(git b --format='%(refname:short)' | fzf --preview 'git show --color=always {}')"
+  ; git switch $(git b | sed -e 's/\(^\* \|^  \)//g' | fzf) 
   co = checkout
-  cop = !git checkout $(git b | fzf)
+  cop = !"git switch $(git b --format='%(refname:short)' | fzf --preview 'git show --color=always {}')"
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
   lof = !"git log --oneline | fzf --preview 'a={}; git show ${(@)${=a}[1]}'"
 
