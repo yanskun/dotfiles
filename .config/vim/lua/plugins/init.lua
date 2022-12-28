@@ -369,5 +369,8 @@ require("packer").startup({
 
     -- WakaTime
     use 'wakatime/vim-wakatime'
+
+    -- props
+    use 'dstein64/vim-startuptime'
   end,
 })
