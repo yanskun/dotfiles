@@ -4,13 +4,14 @@
 
 [alias]
   b = branch
-  bd = !git branch -d $(git b | peco)
+  bd = !git branch -d $(git b | fzf --multi)
   s = status
   sw = switch
-  swp = !git switch $(git b | peco)
+  swp = !git switch $(git b | fzf)
   co = checkout
-  cop = !git checkout $(git b | peco)
+  cop = !git checkout $(git b | fzf)
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
+  lof = !"git log --oneline | fzf --preview 'a={}; git show ${(@)${=a}[1]}'"
 
 [core]
   excludesfile = ~/.gitignore_global
