@@ -2,375 +2,386 @@ local utils = require("libraries._set_config")
 
 local conf = utils.conf
 
-vim.cmd([[packadd packer.nvim]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
+end
+vim.opt.runtimepath:prepend(lazypath)
 
-require("packer").startup({
-  function(use)
-    use("wbthomason/packer.nvim")
+-- vim.cmd([[packadd packer.nvim]])
 
-    use("nvim-lua/plenary.nvim")
+require("lazy").setup({
+  "nvim-lua/plenary.nvim",
 
-    use("github/copilot.vim")
+  "github/copilot.vim",
 
-    use({
-      "navarasu/onedark.nvim",
-      config = conf("onedark"),
-    })
+  {
+    "navarasu/onedark.nvim",
+    config = conf("onedark"),
+    lazy = false,
+    priority = 999,
+  },
 
-    use({
-      "rcarriga/nvim-notify",
-      config = function()
-        vim.notify = require("notify")
-      end,
-    })
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require("notify")
+    end,
+  },
 
-    -- git
-    use({
-      "f-person/git-blame.nvim",
-      config = function()
-        vim.g.gitblame_message_template = "<summary> | <date> | <author>"
-        vim.g.gitblame_ignored_filetypes = { "NvimTree", "neo-tree" }
-      end,
-    })
+  -- git
+  {
+    "f-person/git-blame.nvim",
+    config = function()
+      vim.g.gitblame_message_template = "<summary> | <date> | <author>"
+      vim.g.gitblame_ignored_filetypes = { "NvimTree", "neo-tree" }
+    end,
+  },
 
-    use({
-      "lewis6991/gitsigns.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = conf("gitsigns"),
-    })
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = conf("gitsigns"),
+  },
 
-    use({
-      "sindrets/diffview.nvim",
-      requires = { "plenary.nvim" },
-      config = conf("diffview"),
-    })
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "plenary.nvim" },
+    config = conf("diffview"),
+  },
 
-    -- NOTE: vim script, switch when lua script comes out
-    use("tpope/vim-fugitive")
+  "tpope/vim-fugitive",
 
-    use("tpope/vim-rhubarb")
+  "tpope/vim-rhubarb",
 
-    -- key mapping
-    use({
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup()
-      end,
-    })
+  -- key mapping
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup()
+    end,
+  },
 
-    -- fuzzy finder
-    use({
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        "nvim-telescope/telescope-symbols.nvim",
-        "hrsh7th/nvim-cmp",
-      },
-      config = conf("telescope"),
-    })
-
-    use({
-      "folke/todo-comments.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-      config = conf("todo-comments"),
-    })
-
-    -- explorer
-    use({
-      "nvim-neo-tree/neo-tree.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-        {
-          "s1n7ax/nvim-window-picker",
-          config = conf("nvim-window-picker"),
-        },
-      },
-      config = conf("neo-tree"),
-    })
-
-    -- buffer
-    use({
-      "akinsho/bufferline.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = conf("bufferline"),
-    })
-
-    -- treesitter
-    use({
-      "nvim-treesitter/nvim-treesitter",
-      -- commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
-      config = conf("treesitter"),
-      requires = {
-        {
-          "romgrk/nvim-treesitter-context",
-          config = conf("treesitter-context"),
-        },
-        -- "p00f/nvim-ts-rainbow"
-      },
-    })
-
-    -- snippets
-    use({
-      "L3MON4D3/LuaSnip",
-      requires = { "rafamadriz/friendly-snippets" },
-      config = conf("luasnip"),
-    })
-
-    -- lsp
-    use({
-      "neovim/nvim-lspconfig",
-      config = conf("lspconfig"),
-      requires = {
-        "hrsh7th/cmp-nvim-lsp",
-        "RRethy/vim-illuminate",
-      },
-    })
-
-    use({
-      "williamboman/mason.nvim",
-      config = conf("mason"),
-      requires = {
-        "williamboman/mason-lspconfig.nvim",
-      }
-    })
-
-    use({
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-      config = conf("null-ls"),
-      after = "nvim-lspconfig",
-    })
-
-    use({
-      "kkharji/lspsaga.nvim",
-      config = conf("lspsaga"),
-    })
-
-    use({
-      "akinsho/flutter-tools.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = conf("flutter-tools"),
-      ft = "dart",
-      module = "flutter-tools",
-    })
-
-    use({
-      "onsails/diaglist.nvim",
-      config = conf("diaglist"),
-    })
-
-    -- autocompletion
-    use({
+  -- fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-symbols.nvim",
       "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      requires = {
-        { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
-        { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-        { "hrsh7th/cmp-path", after = "nvim-cmp" },
-        { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-        { "f3fora/cmp-spell", after = "nvim-cmp" },
-        { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-        { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-        { "petertriho/cmp-git", after = "nvim-cmp" },
-        { "saadparwaiz1/cmp_luasnip" },
-        { "onsails/lspkind.nvim" },
+    },
+    config = conf("telescope"),
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = conf("todo-comments"),
+  },
+
+  -- explorer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+      {
+        "s1n7ax/nvim-window-picker",
+        config = conf("nvim-window-picker"),
       },
-      config = conf("cmp"),
-    })
+    },
+    config = conf("neo-tree"),
+  },
 
-    -- testings
-    use({
-      "vim-test/vim-test",
-      requires = {
-        "akinsho/toggleterm.nvim",
+  -- buffer
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = conf("bufferline"),
+  },
+
+  -- treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    -- commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
+    config = conf("treesitter"),
+    dependencies = {
+      {
+        "romgrk/nvim-treesitter-context",
+        config = conf("treesitter-context"),
       },
-      config = conf("vim-test"),
-    })
+      -- "p00f/nvim-ts-rainbow"
+    },
+  },
 
-    use({
-      "nvim-neotest/neotest",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim",
-      },
-    })
+  -- snippets
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = conf("luasnip"),
+  },
 
-    use({
-      "mfussenegger/nvim-dap",
-      config = conf("dap"),
-      requires = {
-        {
-          "rcarriga/nvim-dap-ui",
-          requires = { "mfussenegger/nvim-dap" },
-          config = conf("dapui"),
-        },
-        {
-          "leoluz/nvim-dap-go",
-          config = function()
-            require("dap-go").setup()
-          end,
-        },
-      },
-    })
+  -- lsp
+  {
+    "neovim/nvim-lspconfig",
+    config = conf("lspconfig"),
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "RRethy/vim-illuminate",
+    },
+  },
 
-    -- development
-    -- brackets
-    use({
-      "windwp/nvim-autopairs",
-      config = function()
-        require("nvim-autopairs").setup({
-          close_triple_quotes = true,
-        })
-      end,
-    })
-    use({
-      "kylechui/nvim-surround",
-      -- :h nvim-surround.usage
-    })
+  {
+    "williamboman/mason.nvim",
+    config = conf("mason"),
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    }
+  },
 
-    -- comment
-    use({
-      "numToStr/Comment.nvim",
-      config = function()
-        require("Comment").setup()
-      end,
-    })
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = conf("null-ls"),
+    -- after = "nvim-lspconfig",
+  },
 
-    -- indent
-    use({
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("indent_blankline").setup()
-      end,
-    })
+  {
+    "kkharji/lspsaga.nvim",
+    config = conf("lspsaga"),
+  },
 
-    -- terminal
-    use({
+  {
+    "akinsho/flutter-tools.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = conf("flutter-tools"),
+    ft = "dart",
+    -- module = "flutter-tools",
+  },
+
+  {
+    "onsails/diaglist.nvim",
+    config = conf("diaglist"),
+  },
+
+  -- autocompletion
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
+      { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+      { "hrsh7th/cmp-path", after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+      { "f3fora/cmp-spell", after = "nvim-cmp" },
+      { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+      { "petertriho/cmp-git", after = "nvim-cmp" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "onsails/lspkind.nvim" },
+    },
+    config = conf("cmp"),
+  },
+
+  -- testings
+  {
+    "vim-test/vim-test",
+    dependencies = {
       "akinsho/toggleterm.nvim",
-      config = function()
-        require("toggleterm").setup({
-          direction = "horizontal",
-          start_in_insert = false,
-          size = function(term)
-            if term.direction == "horizontal" then
-              return 15
-            elseif term.direction == "vertical" then
-              return math.floor(vim.o.columns * 0.4)
-            end
-          end,
-        })
-      end,
-    })
+    },
+    config = conf("vim-test"),
+  },
 
-    -- scrollbar
-    use({
-      "petertriho/nvim-scrollbar",
-      config = function()
-        require("scrollbar").setup()
-      end,
-    })
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+    },
+  },
 
-    -- color
-    use({
-      "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("colorizer").setup()
-      end,
-    })
-
-    -- match info
-    use({
-      "kevinhwang91/nvim-hlslens",
-      config = function()
-        require("hlslens").setup()
-      end,
-    })
-
-    -- status line
-    use({
-      "nvim-lualine/lualine.nvim",
-      requires = {
-        "nvim-lua/lsp-status.nvim",
+  {
+    "mfussenegger/nvim-dap",
+    config = conf("dap"),
+    dependencies = {
+      {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap" },
+        config = conf("dapui"),
       },
-      config = conf("lualine"),
-    })
+      {
+        "leoluz/nvim-dap-go",
+        config = function()
+          require("dap-go").setup()
+        end,
+      },
+    },
+  },
 
-    -- quickfix
-    use({
-      "https://gitlab.com/yorickpeterse/nvim-pqf",
-      event = "BufReadPre",
-      config = function()
-        require("pqf").setup()
-      end,
-    })
+  -- development
+  -- brackets
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({
+        close_triple_quotes = true,
+      })
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    -- :h nvim-surround.usage
+  },
 
-    use({
-      "kevinhwang91/nvim-bqf",
-      ft = "qf",
-    })
+  -- comment
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
 
-    -- launguages support
-    -- go
-    use({
-      "ray-x/go.nvim",
-      ft = "go",
-      config = function()
-        require("go").setup()
-        vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-      end,
-    })
-    use({
-      "yanskun/gotests.nvim",
-      ft = "go",
-      config = function()
-        require("gotests").setup()
-      end,
-    })
+  -- indent
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup()
+    end,
+  },
 
-    -- Rust
-    use({
-      "rust-lang/rust.vim",
-      ft = "rust",
-      config = conf('rust'),
-    })
-    use({
-      "simrat39/rust-tools.nvim",
-      ft = "rust",
-      config = function()
-        require('rust-tools').setup({
-          hover_with_actions = false,
-        })
-      end,
-    })
+  -- terminal
+  {
+    "akinsho/toggleterm.nvim",
+    config = function()
+      require("toggleterm").setup({
+        direction = "horizontal",
+        start_in_insert = false,
+        size = function(term)
+          if term.direction == "horizontal" then
+            return 15
+          elseif term.direction == "vertical" then
+            return math.floor(vim.o.columns * 0.4)
+          end
+        end,
+      })
+    end,
+  },
 
-    -- Zig
-    use({
-      "ziglang/zig.vim",
-      ft = { "zig", "zir" },
-    })
+  -- scrollbar
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end,
+  },
 
-    -- deno
-    use("vim-denops/denops.vim")
-    use("yanskun/dps-translate.nvim")
-    use("skanehira/denops-silicon.vim")
+  -- color
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 
-    -- markdown
-    use("ellisonleao/glow.nvim")
+  -- match info
+  {
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("hlslens").setup()
+    end,
+  },
 
-    use({
-      "yanskun/change-case.nvim",
-    })
+  -- status line
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "nvim-lua/lsp-status.nvim",
+    },
+    config = conf("lualine"),
+  },
 
-    -- WakaTime
-    use 'wakatime/vim-wakatime'
+  -- quickfix
+  -- {
+  -- "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+  -- "https://gitlab.com/yorickpeterse/nvim-pqf",
+  --   event = "BufReadPre",
+  --   config = function()
+  --     require("pqf").setup()
+  --   end,
+  -- },
 
-    -- props
-    use 'dstein64/vim-startuptime'
-  end,
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+  },
+
+  -- launguages support
+  -- go
+  {
+    "ray-x/go.nvim",
+    ft = "go",
+    config = function()
+      require("go").setup()
+      -- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+    end,
+  },
+  {
+    "yanskun/gotests.nvim",
+    ft = "go",
+    config = function()
+      require("gotests").setup()
+    end,
+  },
+
+  -- Rust
+  {
+    "rust-lang/rust.vim",
+    ft = "rust",
+    config = conf('rust'),
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    config = function()
+      require('rust-tools').setup({
+        hover_with_actions = false,
+      })
+    end,
+  },
+
+  -- Zig
+  {
+    "ziglang/zig.vim",
+    ft = { "zig", "zir" },
+  },
+
+  -- deno
+  "vim-denops/denops.vim",
+  "yanskun/dps-translate.nvim",
+  "skanehira/denops-silicon.vim",
+
+  -- markdown
+  "ellisonleao/glow.nvim",
+
+  "yanskun/change-case.nvim",
+
+  -- WakaTime
+  'wakatime/vim-wakatime',
+
+  -- props
+  'dstein64/vim-startuptime',
 })
