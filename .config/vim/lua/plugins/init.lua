@@ -157,7 +157,6 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
     },
     config = conf("null-ls"),
-    -- after = "nvim-lspconfig",
   },
 
   {
@@ -170,7 +169,6 @@ require("lazy").setup({
     dependencies = "nvim-lua/plenary.nvim",
     config = conf("flutter-tools"),
     ft = "dart",
-    -- module = "flutter-tools",
   },
 
   {
