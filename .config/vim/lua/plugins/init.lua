@@ -314,16 +314,6 @@ require("lazy").setup({
     config = conf("lualine"),
   },
 
-  -- quickfix
-  -- {
-  -- "https://gitlab.com/yorickpeterse/nvim-pqf.git",
-  -- "https://gitlab.com/yorickpeterse/nvim-pqf",
-  --   event = "BufReadPre",
-  --   config = function()
-  --     require("pqf").setup()
-  --   end,
-  -- },
-
   {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
