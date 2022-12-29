@@ -26,7 +26,7 @@ require("lazy").setup({
     "navarasu/onedark.nvim",
     config = conf("onedark"),
     lazy = false,
-    priority = 999,
+    priority = 1000,
   },
 
   {
@@ -91,7 +91,7 @@ require("lazy").setup({
   {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = false,
-    priority = 1000,
+    priority = 100,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
