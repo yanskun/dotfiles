@@ -21,13 +21,12 @@ o.foldlevel = 99
 
 o.clipboard = "unnamed"
 
--- local xdg_cfg = os.getenv("XDG_CONFIG_HOME")
--- if xdg_cfg then
---   o.spell = true
---   o.spellfile = xdg_cfg .. "/nvim/lua/spell/en.utf-8.add"
--- end
-
 o.laststatus = 3
+
+vim.api.nvim_create_autocmd(
+  "FileType",
+  { pattern = "qf", command = [[ nnoremap <buffer> <CR> <CR>:cclose<CR> ]] }
+)
 
 vim.cmd([[
   language en_US.UTF-8
