@@ -79,11 +79,11 @@ fi
 # fzf
 ## ghq
 function fzf-src () {
-  local selected_dir=$(ghq root)/$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
+    BUFFER="cd $(ghq root)/${selected_dir}"
   fi
+  zle accept-line
 }
 zle -N fzf-src
 bindkey '^]' fzf-src
