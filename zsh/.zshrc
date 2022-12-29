@@ -88,6 +88,16 @@ function fzf-src () {
 zle -N fzf-src
 bindkey '^]' fzf-src
 
+function fzf-open () {
+  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="open https://${selected_dir}"
+  fi
+  zle accept-line
+}
+zle -N fzf-open
+bindkey '^o' fzf-open
+
 ## history
 function fzf-history-selection() {
     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf --reverse --height 40%`
