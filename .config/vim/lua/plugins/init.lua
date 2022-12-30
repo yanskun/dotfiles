@@ -151,13 +151,13 @@ require("lazy").setup({
     }
   },
 
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = conf("null-ls"),
-  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  -- config = conf("null-ls"),
+  -- },
 
   {
     "kkharji/lspsaga.nvim",

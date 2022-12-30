@@ -9,9 +9,10 @@ return function()
     vim.lsp.buf.format({
       filter = function(client)
         -- apply whatever logic you want (in this example, we'll only use null-ls)
-        return client.name == "null-ls"
+        return client.name == "null-ls" or client.name ~= "tsserver"
       end,
       bufnr = bufnr,
+      timeout = 1000,
     })
   end
 
