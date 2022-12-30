@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 'Run app install on homeberw'
 # brew bundle
 
@@ -24,6 +25,7 @@ if [[ ! -e $XDG_CONFIG_HOME/nvim ]]; then
 fi
 ln -f -s $config_path/vim/init.lua $XDG_CONFIG_HOME/nvim/init.lua
 ln -f -s $config_path/vim/lua $XDG_CONFIG_HOME/nvim/lua
+ln -f -s $config_path/vim/lazy-lock.json $XDG_CONFIG_HOME/nvim/lazy-lock.json
 
 echo 'tmux'
 ln -f -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
