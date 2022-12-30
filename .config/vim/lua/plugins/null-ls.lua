@@ -3,10 +3,6 @@
 -- src: https://github.com/JohnnyMorganz/StyLua
 
 return function()
-  if vim.fn.exepath("prettier") == "" then
-    vim.notify("npm install -g prettier", vim.log.levels.WARN, { title = "Not Enough" })
-  end
-
   local nls = require("null-ls")
 
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
