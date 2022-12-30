@@ -20,5 +20,9 @@ if vim.fn.exepath('lua-language-server') ~= '' then
     flags = util.flags,
   }
 else
-  print('brew install lua-language-server')
+  vim.notify(
+    'brew install lua-language-server',
+    vim.log.levels.WARN,
+    { title = 'sumneko_lua' }
+  )
 end

@@ -17,5 +17,9 @@ if vim.fn.exepath("deno") ~= "" then
     flags = util.flags,
   })
 else
-  print("asdf install deno latest")
+  vim.notify(
+    'asdf install deno latest',
+    vim.log.levels.WARN,
+    { title = 'denols' }
+  )
 end

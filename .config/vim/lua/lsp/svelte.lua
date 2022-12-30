@@ -8,5 +8,9 @@ if vim.fn.exepath('svelteserver') ~= '' then
     flags = util.flags,
   }
 else
-  print('npm install -g svelte-language-server')
+  vim.notify(
+    'npm install -g svelte-language-server',
+    vim.log.levels.WARN,
+    { title = 'svelte' }
+  )
 end

@@ -7,5 +7,9 @@ if vim.fn.exepath('tflint') ~= '' then
     flags = util.flags,
   }
 else
-  print('brew install tflint')
+  vim.notify(
+    'brew install tflint',
+    vim.log.levels.WARN,
+    { title = 'tflint' }
+  )
 end

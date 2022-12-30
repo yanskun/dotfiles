@@ -8,5 +8,9 @@ if vim.fn.exepath('sql-language-server') ~= '' then
     flags = util.flags,
   }
 else
-  print('npm install -g sql-language-server')
+  vim.notify(
+    'npm install -g sql-language-server',
+    vim.log.levels.WARN,
+    { title = 'sqlls' }
+  )
 end

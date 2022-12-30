@@ -8,5 +8,9 @@ if vim.fn.exepath('lsp_name') ~= '' then
     flags = util.flags,
   }
 else
-  print('lsp install command')
+  vim.notify(
+    'lsp install command',
+    vim.log.levels.WARN,
+    { title = 'servername' }
+  )
 end

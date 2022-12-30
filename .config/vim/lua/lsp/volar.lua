@@ -8,5 +8,9 @@ if vim.fn.exepath('vue-language-server') ~= '' then
     flags = util.flags,
   }
 else
-  print('npm install -g @volar/vue-language-server')
+  vim.notify(
+    'npm install -g @volar/vue-language-server',
+    vim.log.levels.WARN,
+    { title = 'volar' }
+  )
 end

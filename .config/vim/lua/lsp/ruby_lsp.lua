@@ -8,5 +8,9 @@ if vim.fn.exepath('ruby-lsp') ~= '' then
     flags = util.flags,
   }
 else
-  vim.notify('gem install ruby-lsp', vim.log.levels.WARN, { title = 'LSP not found' })
+  vim.notify(
+    'gem install ruby-lsp',
+    vim.log.levels.WARN,
+    { title = 'ruby-lsp' }
+  )
 end

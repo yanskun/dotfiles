@@ -12,5 +12,9 @@ if vim.fn.exepath('vscode-json-languageserver') ~= '' then
     capabilities = util.capabilities
   }
 else
-  print('npm i -g vscode-json-languageserver')
+  vim.notify(
+    'npm i -g vscode-json-languageserver',
+    vim.log.levels.WARN,
+    { title = 'jsonls' }
+  )
 end

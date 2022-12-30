@@ -9,7 +9,19 @@ if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
     flags = util.flags,
   }
 else
-  print('go install golang.org/x/tools/gopls@latest')
-  print('go install github.com/go-delve/delve/cmd/dlv@latest')
-  print('go install github.com/cweill/gotests/...@latest')
+  vim.notify(
+    'go install golang.org/x/tools/gopls@latest',
+    vim.log.levels.WARN,
+    { title = 'gopls' }
+  )
+  vim.notify(
+    'go install github.com/go-delve/delve/cmd/dlv@latest',
+    vim.log.levels.WARN,
+    { title = 'gopls' }
+  )
+  vim.notify(
+    'go install github.com/cweill/gotests/...@latest',
+    vim.log.levels.WARN,
+    { title = 'gopls' }
+  )
 end

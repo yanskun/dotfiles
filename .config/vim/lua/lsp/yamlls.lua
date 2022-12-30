@@ -15,5 +15,9 @@ if vim.fn.exepath('yaml-language-server') ~= '' then
     },
   }
 else
-  print('npm i -g yaml-language-server')
+  vim.notify(
+    'npm i -g yaml-language-server',
+    vim.log.levels.WARN,
+    { title = 'yamlls' }
+  )
 end

@@ -9,5 +9,9 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
     flags = util.flags,
   }
 else
-  print('npm install -g typescript-language-server')
+  vim.notify(
+    'npm install -g typescript-language-server',
+    vim.log.levels.WARN,
+    { title = 'tsserver' }
+  )
 end

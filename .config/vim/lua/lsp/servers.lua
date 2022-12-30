@@ -11,5 +11,5 @@ return {
   "volar",
   "yamlls",
   "zls",
-  -- "tsserver",
+  "tsserver",
 }
