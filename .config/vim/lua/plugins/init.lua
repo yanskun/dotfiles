@@ -280,14 +280,6 @@ require("lazy").setup({
     end,
   },
 
-  -- scrollbar
-  {
-    "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-    end,
-  },
-
   -- color
   {
     "norcalli/nvim-colorizer.lua",
