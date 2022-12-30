@@ -1,4 +1,5 @@
 return {
+  "cssls",
   "denols",
   "gopls",
   "jsonls",
