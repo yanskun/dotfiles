@@ -146,6 +146,7 @@ require("lazy").setup({
     config = conf("mason"),
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      config = conf("mason-lspconfig"),
     }
   },
 
