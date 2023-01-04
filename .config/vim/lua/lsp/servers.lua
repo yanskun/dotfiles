@@ -3,7 +3,7 @@ return {
   "denols",
   "gopls",
   "jsonls",
-  "ruby-lsp",
+  "ruby_ls",
   "rust_analyzer",
   "sqlls",
   "sumneko_lua",
