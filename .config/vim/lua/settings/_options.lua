@@ -25,7 +25,11 @@ o.laststatus = 3
 
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = "qf", command = [[ nnoremap <buffer> <CR> <CR>:cclose<CR> ]] }
+  { pattern = "qf", command = [[ nnoremap <buffer><silent> <CR> <CR>:cclose<CR> ]] }
+)
+vim.api.nvim_create_autocmd(
+  "FileType",
+  { pattern = "qf", command = [[ nnoremap <buffer><silent>q <CR>:cclose<CR> ]] }
 )
 
 vim.cmd([[
