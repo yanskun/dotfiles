@@ -317,7 +317,11 @@ require("lazy").setup({
     ft = "go",
     config = function()
       require("go").setup()
-      -- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function()
+          require("go.format").goimport()
+        end,
+      })
     end,
   },
   {
