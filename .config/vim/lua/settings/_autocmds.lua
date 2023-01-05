@@ -8,11 +8,6 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.cmd([[
-  language en_US.UTF-8
-  filetype plugin indent on
-]])
-
-vim.cmd([[
   augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab
