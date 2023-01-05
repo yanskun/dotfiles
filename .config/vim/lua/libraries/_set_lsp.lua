@@ -36,8 +36,9 @@ M.on_attach = function(client, bufnr)
   require('illuminate').on_attach(client)
 end
 
-M.on_attach_fmt = function()
+M.on_attach_fmt = function(bufnr)
   vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+    buffer = bufnr,
     callback = function()
       vim.lsp.buf.format({ async = false })
     end,
