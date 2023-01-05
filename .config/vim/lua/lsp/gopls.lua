@@ -4,9 +4,17 @@ if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
 
   require 'lspconfig'.gopls.setup {
     cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod' },
     on_attach = util.on_attach,
     capabilities = util.capabilities,
     flags = util.flags,
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+    },
   }
 else
   vim.notify(
