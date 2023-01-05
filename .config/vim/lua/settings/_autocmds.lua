@@ -15,6 +15,10 @@ vim.cmd([[
 ]])
 
 -- change extension
-vim.cmd([[
-  autocmd BufNewFile,BufRead *.golden,*textlintrc set filetype=json
-]])
+vim.api.nvim_create_autocmd(
+  "BufNewFile,BufRead",
+  {
+    pattern = "*.golden,*textlintrc",
+    command = [[ set filetype=json ]],
+  }
+)
