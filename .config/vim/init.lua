@@ -1,6 +1,7 @@
 require("settings._options")
 require("settings._mappings")
 require("settings._provider")
+require("settings._lsp")
 
 local ok, reload = pcall(require, "plenary.reload")
 RELOAD = ok and reload.reload_module or function(...)
