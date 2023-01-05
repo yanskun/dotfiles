@@ -7,12 +7,15 @@ vim.api.nvim_create_autocmd(
   { pattern = "qf", command = [[ nnoremap <buffer><silent>q <CR>:cclose<CR> ]] }
 )
 
-vim.cmd([[
-  augroup fileTypeIndent
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab
-  augroup END
-]])
+vim.api.nvim_create_augroup("fileTypeIndent", {})
+vim.api.nvim_create_autocmd(
+  "BufNewFile,BufRead",
+  {
+    group = "fileTypeIndent",
+    pattern = "*.go",
+    command = [[ setlocal noexpandtab ]]
+  }
+)
 
 -- change filetype
 vim.api.nvim_create_autocmd(
