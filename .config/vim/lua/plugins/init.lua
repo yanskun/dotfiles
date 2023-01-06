@@ -354,8 +354,6 @@ require("lazy").setup({
   -- deno
   "vim-denops/denops.vim",
   "yanskun/dps-translate.nvim",
-  "skanehira/denops-silicon.vim",
-
   -- markdown
   "ellisonleao/glow.nvim",
 
