@@ -112,7 +112,6 @@ require("lazy").setup({
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    -- commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
     config = conf("treesitter"),
     build = ":TSUpdate",
     dependencies = {
@@ -120,7 +119,6 @@ require("lazy").setup({
         "romgrk/nvim-treesitter-context",
         config = conf("treesitter-context"),
       },
-      -- "p00f/nvim-ts-rainbow"
     },
   },
 
@@ -149,14 +147,6 @@ require("lazy").setup({
       config = conf("mason-lspconfig"),
     }
   },
-
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  -- config = conf("null-ls"),
-  -- },
 
   {
     "kkharji/lspsaga.nvim",
