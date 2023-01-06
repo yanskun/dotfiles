@@ -183,22 +183,6 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 ########################################
-# vcs_info
-# git
-# autoload -Uz vcs_info
-# autoload -Uz add-zsh-hook
-#
-# zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
-# zstyle ':vcs_info:*' actionformats '%F{red}[%b]<!%a>%f'
-#
-# function vcs_info_msg() {
-#     LANG=en_US.UTF-8 vcs_info
-#     RPROMPT="${vcs_info_msg_0_}"
-# }
-# add-zsh-hook precmd vcs_info_msg
-
-########################################
 # オプション
 
 # 日本語ファイル名を表示可能にする
