@@ -4,7 +4,7 @@
 [[ ! -f $DOTDIR/.config/alacritty/alacritty.yml ]] && \
     notify-send "alacritty.yml does not exist" && exit 0
 
-## Fetch background_opacity from alacritty.yml
+## Fetch opacity from alacritty.yml
 opacity=$(awk '$1 == "opacity:" {print $2; exit}' \
     $DOTDIR/.config/alacritty/alacritty.yml)
 
