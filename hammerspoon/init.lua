@@ -26,12 +26,7 @@ hs.hotkey.bind(mash, "m", function()
   hs.window.focusedWindow():move(units.maximum, nil, true)
 end)
 
--- Alacritty Hotkey
--- hs.hotkey.bind({ "ctrl" }, "t", function()
---   local alacritty = hs.application.find('alacritty')
---   if alacritty:isFrontmost() then
---     alacritty:hide()
---   else
---     hs.application.launchOrFocus("/Applications/Alacritty.app")
---   end
--- end)
+-- Alacritty command
+hs.hotkey.bind({ "cmd" }, "u", function()
+  hs.execute("toggle_opacity", true)
+end)

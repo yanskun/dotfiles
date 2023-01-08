@@ -23,6 +23,8 @@ export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+export PATH=$PATH:$DOTDIR/.config/alacritty/bin
+
 ########################################
 
 # zsh で ^ ハットを使えるようにする

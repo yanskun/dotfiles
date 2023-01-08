@@ -1,7 +1,7 @@
 window:
-  decorations: None
+  # decorations: None
   startup_mode: Maximized
-  opacity: 0.85
+  opacity: .85
 
 font:
   size: 12.5
