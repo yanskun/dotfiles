@@ -2,41 +2,36 @@ local alert    = require("hs.alert")
 local timer    = require("hs.timer")
 local eventtap = require("hs.eventtap")
 
+local spaces = require("hs.spaces")
 local events = eventtap.event.types
 
 local module = {}
 
--- Save this in your Hammerspoon configuration directiorn (~/.hammerspoon/)
--- You either override timeFrame and action here or after including this file from another, e.g.
---
--- ctrlDoublePress = require("ctrlDoublePress")
--- ctrlDoublePress.timeFrame = 2
--- ctrlDoublePress.action = function()
---    do something special
--- end
+function MoveFullScreenWindow(app)
+  local window = app:focusedWindow()
+
+  local focused = spaces.focusedSpace()
+
+  spaces.moveWindowToSpace(window:id(), focused)
+  window:focus()
+end
 
 -- how quickly must the two single ctrl taps occur?
 module.timeFrame = 1
 
 -- what to do when the double tap of ctrl occurs
 module.action = function()
-  local alacritty = hs.application.find('alacritty')
-  if alacritty:isFrontmost() then
-    alacritty:hide()
+  local appName = "alacritty"
+  local app = hs.application.find(appName)
+
+  if app == nil then
+    hs.application.launchOrFocus(appName)
+  elseif app:isFrontmost() then
+    app:hide()
   else
-    hs.application.launchOrFocus("/Applications/Alacritty.app")
+    MoveFullScreenWindow(app)
   end
 end
-
-
--- Synopsis:
-
--- what we're looking for is 4 events within a set time period and no intervening other key events:
---  flagsChanged with only ctrl = true
---  flagsChanged with all = false
---  flagsChanged with only ctrl = true
---  flagsChanged with all = false
-
 
 local timeFirstControl, firstDown, secondDown = 0, false, false
 
