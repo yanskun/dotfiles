@@ -1,4 +1,4 @@
-ctrlDoublePress = require("ctrlDoublePress")
+CtrlDoublePress = require("ctrlDoublePress")
 
 -- control window size
 hs.window.animationDuration = 0
