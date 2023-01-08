@@ -35,7 +35,7 @@ if [[ ! -d "$HOME"/.hammerspoon ]]; then
   mkdir "$HOME"/.hammerspoon
 fi
 ln -f -s "$PWD"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
-ln -f -s "$PWD"/hammerspoon/openAlacritty.lua "$HOME"/.hammerspoon/openAlacritty.lua
+ln -f -s "$PWD"/hammerspoon/alacritty.lua "$HOME"/.hammerspoon/alacritty.lua
 
 echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then

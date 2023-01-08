@@ -1,4 +1,4 @@
-OpenAlacritty = require("openAlacritty")
+Alacritty = require("alacritty")
 
 -- control window size
 hs.window.animationDuration = 0
@@ -29,4 +29,16 @@ end)
 -- Alacritty command
 hs.hotkey.bind({ "cmd" }, "u", function()
   hs.execute("toggle_opacity", true)
+end)
+
+-- Keycastr command
+hs.hotkey.bind({ "ctrl", "shift" }, "k", function()
+  local appName = "KeyCastr"
+  local app = hs.application.get(appName)
+
+  if app == nil then
+    hs.application.launchOrFocus(appName)
+  else
+    app:kill()
+  end
 end)
