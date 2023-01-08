@@ -1,4 +1,4 @@
-CtrlDoublePress = require("ctrlDoublePress")
+OpenAlacritty = require("openAlacritty")
 
 -- control window size
 hs.window.animationDuration = 0

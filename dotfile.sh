@@ -31,8 +31,11 @@ echo 'tmux'
 ln -f -s "$PWD"/tmux/tmux.conf "$HOME"/.tmux.conf
 
 echo 'hammerspoon'
+if [[ ! -d "$HOME"/.hammerspoon ]]; then
+  mkdir "$HOME"/.hammerspoon
+fi
 ln -f -s "$PWD"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
-ln -f -s "$PWD"/hammerspoon/ctrlDoublePress.lua "$HOME"/.hammerspoon/ctrlDoublePress.lua
+ln -f -s "$PWD"/hammerspoon/openAlacritty.lua "$HOME"/.hammerspoon/openAlacritty.lua
 
 echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
