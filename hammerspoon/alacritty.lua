@@ -1,4 +1,3 @@
-local alert    = require("hs.alert")
 local timer    = require("hs.timer")
 local eventtap = require("hs.eventtap")
 
@@ -38,7 +37,7 @@ local timeFirstControl, firstDown, secondDown = 0, false, false
 -- verify that no keyboard flags are being pressed
 local noFlags = function(ev)
   local result = true
-  for k, v in pairs(ev:getFlags()) do
+  for _, v in pairs(ev:getFlags()) do
     if v then
       result = false
       break
