@@ -7,7 +7,7 @@ local events = eventtap.event.types
 
 local module = {}
 
-function MoveFullScreenWindow(app)
+function MoveActiveScreen(app)
   local window = app:focusedWindow()
 
   local focused = spaces.focusedSpace()
@@ -29,7 +29,7 @@ module.action = function()
   elseif app:isFrontmost() then
     app:hide()
   else
-    MoveFullScreenWindow(app)
+    MoveActiveScreen(app)
   end
 end
 
