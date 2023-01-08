@@ -1,6 +1,7 @@
 local timer    = require("hs.timer")
 local eventtap = require("hs.eventtap")
 
+-- src: https://github.com/asmagill/hs._asm.spaces
 local spaces = require("hs.spaces")
 local events = eventtap.event.types
 
