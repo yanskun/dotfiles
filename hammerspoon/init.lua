@@ -26,12 +26,12 @@ hs.hotkey.bind(mash, "m", function()
   hs.window.focusedWindow():move(units.maximum, nil, true)
 end)
 
--- Alacritty command
+-- toggle Alacritty opacity
 hs.hotkey.bind({ "cmd" }, "u", function()
   hs.execute("toggle_opacity", true)
 end)
 
--- Keycastr command
+-- toggle Keycastr
 hs.hotkey.bind({ "ctrl", "shift" }, "k", function()
   local appName = "KeyCastr"
   local app = hs.application.get(appName)
