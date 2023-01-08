@@ -8,7 +8,7 @@ if vim.fn.exepath('lua-language-server') ~= '' then
     settings = {
       Lua = {
         diagnostics = {
-          globals = { 'vim', 'require' },
+          globals = { 'vim', 'require', 'hs' },
         },
       },
     },
