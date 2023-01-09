@@ -8,7 +8,7 @@
         "revision": "3bafe4edff4f53d895babe1bef0102d635c86a24"
       },
       "homebrew/cask": {
-        "revision": "880f5461347938a1d997387ad5742e2acd8b6084"
+        "revision": "59231f717d84cb269e6671843edf93bbb5f20de1"
       },
       "homebrew/cask-fonts": {
         "revision": "ea84fe986f222730527278fb6afa84c4809be411"
@@ -17,7 +17,7 @@
         "revision": "f75f495223d28c14ade3adb55d184039a84ef07f"
       },
       "homebrew/core": {
-        "revision": "be495f73a73b0d773b7f1e334da6a328be74603e"
+        "revision": "01e2f6d3b93eb63a00bf84dfbd1a0cfec4c19752"
       },
       "rcmdnk/file": {
         "revision": "1457c4a518f4b99571d1d776c906d5a51cf61e03"
@@ -6791,7 +6791,7 @@
         }
       },
       "zoom": {
-        "version": "5.13.3.14165",
+        "version": "5.13.4.14461",
         "options": {
           "full_name": "zoom"
         }
@@ -6957,7 +6957,7 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "be495f73a73b0d773b7f1e334da6a328be74603e",
+        "Homebrew/homebrew-core": "01e2f6d3b93eb63a00bf84dfbd1a0cfec4c19752",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.0"
