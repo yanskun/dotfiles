@@ -90,9 +90,11 @@
     "mixins",
     "nuxt",
     "poplight",
+    "qiita",
     "stylelint",
     "testid",
     "yanskun",
+    "zenn",
     "Zoomable"
   ],
   "sync.autoUpload": true,
