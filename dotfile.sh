@@ -41,6 +41,7 @@ echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
 fi
+chmod +x .config/alacritty/bin/toggle_opacity
 ln -f -s "$config_path"/alacritty/alacritty.yml "$XDG_CONFIG_HOME"/alacritty/alacritty.yml
 
 echo 'vscode'
