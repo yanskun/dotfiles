@@ -25,7 +25,7 @@
   "go.nvim": { "branch": "master", "commit": "26fd07ebada5035d54459f09813e8738d0517676" },
   "gotests.nvim": { "branch": "main", "commit": "44f6551adc34737a051a7d367d3158a2b693f003" },
   "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
-  "lazy.nvim": { "branch": "main", "commit": "8798ccc95031225e3b2241bd8b2d26c2452b06c4" },
+  "lazy.nvim": { "branch": "main", "commit": "4304035ef4eae2d9dfac4fc082a1b391e6cd928e" },
   "lsp-status.nvim": { "branch": "master", "commit": "54f48eb5017632d81d0fd40112065f1d062d0629" },
   "lspkind.nvim": { "branch": "master", "commit": "c68b3a003483cf382428a43035079f78474cd11e" },
   "lspsaga.nvim": { "branch": "main", "commit": "5faeec9f2508d2d49a66c0ac0d191096b4e3fa81" },
