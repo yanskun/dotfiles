@@ -2,13 +2,14 @@
 echo 'Run app install on homeberw'
 # brew bundle
 
+config_path="$PWD"/.config
+
 echo 'Paste symbolic link to home directory'
 ln -f -s "${PWD}"/zsh/.zshenv "${HOME}"/.zshenv
 ln -f -s "${PWD}"/.gitconfig "${HOME}"/.gitconfig
 ln -f -s "${PWD}"/.gitignore_global "${HOME}"/.gitignore_global
 ln -f -s "${PWD}"/asdf/.asdfrc "${HOME}"/.asdfrc
-
-config_path="$PWD"/.config
+ln -f -s "$config_path"/neofetch/config.conf "$XDG_CONFIG_HOME"/neofetch/config.conf
 
 echo 'peco'
 if [[ ! -d "${HOME}"/.config/peco ]]; then
@@ -56,6 +57,8 @@ if [[ ! -e "$HOME"/Pictures/screenshot ]]; then
   mkdir -p "$HOME"/Pictures/screenshot
 fi
 defaults write com.apple.screencapture location "$HOME"/Pictures/screenshot
+
+yes | rm .config/vim/lua/lua
 
 echo '🎉Finish'
 echo 'Please restart the terminal'
