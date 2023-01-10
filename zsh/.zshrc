@@ -26,8 +26,8 @@ eval "$(pyenv init -)"
 export PATH=$PATH:$DOTDIR/.config/alacritty/bin
 
 ########################################
-# open
-pfetch
+# start-up
+neofetch
 
 ########################################
 
