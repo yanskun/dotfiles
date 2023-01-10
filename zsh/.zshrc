@@ -62,39 +62,6 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
 fi
 
 ########################################
-# fzf
-## ghq
-function fzf-src () {
-  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd $(ghq root)/${selected_dir}"
-  fi
-  zle accept-line
-}
-zle -N fzf-src
-bindkey '^]' fzf-src
-
-function fzf-open () {
-  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="open https://${selected_dir}"
-  fi
-  zle accept-line
-}
-zle -N fzf-open
-bindkey '^o' fzf-open
-
-## history
-function fzf-history-selection() {
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf --reverse --height 40%`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N fzf-history-selection
-bindkey '^H' fzf-history-selection
-
-########################################
 # go
 GOENV_DISABLE_GOPATH=1
 export PATH=$GOPATH/bin:$PATH
@@ -283,6 +250,39 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 function command_not_found_handler() {
   cowsay "command not found: $1"
 }
+
+## fzf
+### ghq
+function fzf-src () {
+  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+  fi
+  zle accept-line
+}
+zle -N fzf-src
+bindkey '^]' fzf-src
+
+### open github
+function fzf-open () {
+  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="open https://${selected_dir}"
+  fi
+  zle accept-line
+}
+zle -N fzf-open
+bindkey '^o' fzf-open
+
+### history
+function fzf-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf --reverse --height 40%`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N fzf-history-selection
+bindkey '^H' fzf-history-selection
 
 ########################################
 # starship
