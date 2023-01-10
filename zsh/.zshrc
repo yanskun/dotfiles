@@ -26,6 +26,10 @@ eval "$(pyenv init -)"
 export PATH=$PATH:$DOTDIR/.config/alacritty/bin
 
 ########################################
+# open
+pfetch
+
+########################################
 
 # zsh で ^ ハットを使えるようにする
 autoload -Uz git-escape-magic
