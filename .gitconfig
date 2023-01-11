@@ -14,11 +14,20 @@
   sync = !"git fetch -p && git branch --merged | grep -v '*' | xargs git branch -d"
 
   lof = "!f() { \
-    git log --oneline | fzf --height 50% --reverse --preview 'a={}; git show --color=always ${(@)${=a}[1]}' |\
+    git log --oneline | \
+    fzf --height 50% --reverse --preview 'a={}; git show --color=always ${(@)${=a}[1]}' | \
     awk '{print \"{{.url}}/commit/\"$1}' | \
     xargs gh repo view --json url --template | \
     xargs echo $1 | \
-    awk '{if ($1 == \"-w\" || $1 == \"--web\") {system(sprintf(\"open %s\", $2))} else if ($2 == \"\") {system(sprintf(\"echo %s\", $1))} else {system(sprintf(\"echo %s\", $2))}}'; \
+    awk '{ \
+      if ($1 == \"-w\" || $1 == \"--web\") { \
+        system(sprintf(\"open %s\", $2)) \
+      } else if ($2 == \"\") { \
+        system(sprintf(\"echo %s\", $1)) \
+      } else { \
+        system(sprintf(\"echo %s\", $2)) \
+      } \
+    }'; \
   }; f"
 
 [core]
