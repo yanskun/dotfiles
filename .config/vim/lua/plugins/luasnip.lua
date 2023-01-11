@@ -20,6 +20,14 @@ return function()
           return string.format(vim.bo.commentstring, ' TODO: ')
         end, { 1 }), helper.visual_insert(1)
       }
+    ),
+    snip(
+      "co",
+      {
+        func(function(_)
+          return string.format(vim.bo.commentstring, '')
+        end, { 1 }), helper.visual_insert(1)
+      }
     )
   })
 
