@@ -315,6 +315,9 @@ require("lazy").setup({
   {
     "ray-x/go.nvim",
     ft = "go",
+    dependencies = {
+      "ray-x/guihua.lua"
+    },
     config = function()
       require("go").setup()
       vim.api.nvim_create_autocmd("BufWritePre", {
