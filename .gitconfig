@@ -30,7 +30,7 @@
   }; f"
   bd =  "!f() { \
     git branch | \
-    fzf --height 50% --reverse --preview 'git log --color=always --oneline -n 10 $(echo {} | sed \"s/ //g\")' | \
+    fzf --height 50% --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
     awk '{print $1}' | \
     awk '{ \
       if ($2 == \"-f\" || $2 == \"--force\") { \
