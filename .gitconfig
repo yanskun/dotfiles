@@ -4,7 +4,6 @@
 
 [alias]
   b = branch
-  bd = !"git branch -d $(git b | fzf --multi --height 50% --reverse --preview 'echo {} | xargs git log --color=always')"
   s = status
   sw = switch
   swp = !"git switch $(git b --format='%(refname:short)' | fzf --reverse --height 50% --preview 'git show --color=always {}')"
@@ -26,6 +25,18 @@
         system(sprintf(\"echo %s\", $1)) \
       } else { \
         system(sprintf(\"echo %s\", $2)) \
+      } \
+    }'; \
+  }; f"
+  bd =  "!f() { \
+    git branch | \
+    fzf --height 50% --reverse --preview 'git log --color=always --oneline -n 10 $(echo {} | sed \"s/ //g\")' | \
+    awk '{print $1}' | \
+    awk '{ \
+      if ($2 == \"-f\" || $2 == \"--force\") { \
+        system(sprintf(\"git branch -D %s\", $1)) \
+      } else { \
+        system(sprintf(\"git branch -d %s\", $1)) \
       } \
     }'; \
   }; f"
