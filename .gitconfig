@@ -23,8 +23,12 @@
         system(sprintf(\"open %s\", $2)) \
       } else if ($2 == \"\") { \
         system(sprintf(\"echo %s\", $1)) \
+        split($1, ary, \",\") \
+        system(sprintf(\"git show %s\", ary[n])) \
       } else { \
         system(sprintf(\"echo %s\", $2)) \
+        split($2, ary, \",\") \
+        system(sprintf(\"git show %s\", ary[n])) \
       } \
     }'; \
   }; f"
