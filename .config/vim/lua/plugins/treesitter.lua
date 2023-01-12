@@ -9,6 +9,7 @@ return function()
         "lua",
         "rust",
         "scss",
+        "terraform",
         "tsx",
         "typescript",
         "vue",
