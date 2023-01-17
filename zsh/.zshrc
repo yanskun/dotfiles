@@ -284,6 +284,19 @@ function fzf-history-selection() {
 zle -N fzf-history-selection
 bindkey '^H' fzf-history-selection
 
+## gcloud project swhich
+function gcloud_prj_switch () {
+    project="$(gcloud projects list | fzf --height 40% --reverse)"
+    project_name="$(echo $project | awk '{print $1}')"
+    project_id="$(echo $project | awk '{print $3}')"
+    gcloud config set project ${project_id}
+    export GOOGLE_PROJECT=${project_id}
+    echo "Switched to project: ${project_name}(${project_id})"
+}
+zle -N gcloud_prj_switch
+bindkey '^g' gcloud_prj_switch
+
+
 ########################################
 # starship
 
