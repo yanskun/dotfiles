@@ -38,6 +38,8 @@ return function()
     ['<leader>gb'] = { '<Cmd>BufferLinePick<CR>', 'bufferline: pick buffer' },
     ['<leader><Tab>'] = { '<Cmd>BufferLineCycleNext<CR>', 'bufferline: next' },
     ['<leader><S-Tab>'] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: previous' },
+    ['<leader>gt'] = { '<Cmd>BufferLineGroupToggle Tests<CR>', 'bufferline group toggle Tests' },
+    ['<leader>gd'] = { '<Cmd>BufferLineGroupToggle Docs<CR>', 'bufferline group toggle Docs' },
     ['[b'] = { '<Cmd>BufferLineMovePrev<CR>', 'bufferline: move prev' },
     [']b'] = { '<Cmd>BufferLineMoveNext<CR>', 'bufferline: move next' },
     ['<leader>1'] = { '<Cmd>BufferLineGoToBuffer 1<CR>', 'which_key_ignore' },
