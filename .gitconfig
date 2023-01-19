@@ -15,8 +15,8 @@
   lof = "!f() { \
     git log --oneline | \
     fzf --height 50% --reverse --preview 'a={}; git show --color=always ${(@)${=a}[1]}' | \
-    awk '{ \
-      if (\"'${@}'\" == \"-w\" || \"'${@}'\" == \"--web\") { \
+    awk -v arg=\"${@}\" '{ \
+      if (arg == \"-w\" || arg == \"--web\") { \
         system(sprintf(\"gh browse %s\", $1)) \
       } else { \
         system(sprintf(\"git show --color=always %s\", $1)) \
