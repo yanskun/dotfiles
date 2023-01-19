@@ -19,6 +19,7 @@
       if (\"'${@}'\" == \"-w\" || \"'${@}'\" == \"--web\") { \
         system(sprintf(\"gh browse %s\", $1)) \
       } else { \
+        system(sprintf(\"git show --color=always %s\", $1)) \
         system(sprintf(\"gh repo view --json url --template '{{.url}}/commit/%s'\", $1)) \
         system(sprintf(\"echo\")) \
       } \
