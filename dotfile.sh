@@ -30,6 +30,7 @@ ln -f -s "$config_path"/vim/lazy-lock.json "$XDG_CONFIG_HOME"/nvim/lazy-lock.jso
 
 echo 'tmux'
 ln -f -s "$PWD"/tmux/tmux.conf "$HOME"/.tmux.conf
+sh tmux/installer.sh
 
 echo 'hammerspoon'
 if [[ ! -d "$HOME"/.hammerspoon ]]; then
@@ -37,6 +38,12 @@ if [[ ! -d "$HOME"/.hammerspoon ]]; then
 fi
 ln -f -s "$PWD"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
 ln -f -s "$PWD"/hammerspoon/alacritty.lua "$HOME"/.hammerspoon/alacritty.lua
+
+echo 'sheldon'
+if [[ ! -d "$XDG_CONFIG_HOME"/sheldon ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/sheldon
+fi
+ln -f -s "$config_path"/sheldon/plugins.toml "$XDG_CONFIG_HOME"/sheldon/plugins.toml
 
 echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
