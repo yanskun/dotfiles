@@ -239,8 +239,7 @@ fi
 
 ########################################
 # plugins
-
-source ${ZDOTDIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(sheldon source)"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 
