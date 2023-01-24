@@ -13,4 +13,9 @@ else
     vim.log.levels.WARN,
     { title = 'cssls' }
   )
+  vim.notify(
+    'npm i -g cssmodules-language-server',
+    vim.log.levels.WARN,
+    { title = 'cssls' }
+  )
 end
