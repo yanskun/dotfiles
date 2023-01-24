@@ -28,7 +28,11 @@ end)
 
 -- toggle Alacritty opacity
 hs.hotkey.bind({ "cmd" }, "u", function()
-  hs.execute("toggle_opacity", true)
+  local appName = "alacritty"
+  local app = hs.application.find(appName)
+  if app.isFrontmost(app) then
+    hs.execute("toggle_opacity", true)
+  end
 end)
 
 -- toggle Keycastr
