@@ -2,7 +2,7 @@
 echo 'Run app install on homeberw'
 # brew bundle
 
-config_path="$PWD"/.config
+config_path="$DOTDIR"/.config
 
 echo 'Paste symbolic link to home directory'
 ln -f -s "${PWD}"/zsh/.zshenv "${HOME}"/.zshenv
