@@ -5,7 +5,6 @@ return function()
       "denols",
       "gopls",
       "jsonls",
-      "ruby-ls",
       "rust_analyzer",
       "sqlls",
       "sumneko_lua",

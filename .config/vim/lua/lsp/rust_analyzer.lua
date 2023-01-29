@@ -29,18 +29,10 @@ if vim.fn.exepath("rust-analyzer") ~= "" and vim.fn.exepath("rustfmt") ~= "" the
   })
 else
   vim.notify(
-    'curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer'
-    ,
-    vim.log.levels.WARN,
-    { title = 'rust-analyzer' }
-  )
-  vim.notify(
-    'chmod +x ~/.local/bin/rust-analyzer',
-    vim.log.levels.WARN,
-    { title = 'rust-analyzer' }
-  )
-  vim.notify(
-    'rustup component add rustfmt',
+    [[mkdir -p ~/.local/bin
+curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+rustup component add rustfmt]],
     vim.log.levels.WARN,
     { title = 'rust-analyzer' }
   )
