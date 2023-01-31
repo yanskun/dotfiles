@@ -14,6 +14,7 @@ function MoveActiveScreen(app)
 
   spaces.moveWindowToSpace(window:id(), focused)
   window:focus()
+  hs.window.focusedWindow():move({ x = 0.00, y = 0.00, w = 1.00, h = 1.00 }, nil, true)
 end
 
 -- how quickly must the two single ctrl taps occur?

@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd(
   "BufNewFile,BufRead",
   {
-    pattern = "*.golden,*textlintrc",
+    pattern = "*.golden, *textlintrc",
     command = [[ set filetype=json ]],
   }
 )
