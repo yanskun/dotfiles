@@ -10,7 +10,7 @@
   co = checkout
   cop = !"git switch $(git b --format='%(refname:short)' | fzf --reverse --height 50% --preview 'git show --color=always {}')"
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
-  sync = !"git fetch -p && git branch --merged | grep -v '*' | xargs git branch -d"
+  sync = !"git fetch -p && git branch --merged | grep -v '*' | grep -v 'main' | xargs git branch -d"
 
   lof = "!f() { \
     git log --oneline | \
