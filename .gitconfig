@@ -27,7 +27,7 @@
   }; f"
   bd =  "!f() { \
     git branch | \
-    fzf --height 50% --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
+    fzf --height 50% --multi --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
     awk -v arg=\"${@}\" '{ \
       if (arg == \"-f\" || arg == \"--force\") { \
         system(sprintf(\"git branch -D %s\", $1)) \
