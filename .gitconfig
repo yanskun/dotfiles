@@ -28,9 +28,8 @@
   bd =  "!f() { \
     git branch | \
     fzf --height 50% --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
-    awk '{print $1}' | \
-    awk '{ \
-      if ($2 == \"-f\" || $2 == \"--force\") { \
+    awk -v arg=\"${@}\" '{ \
+      if (arg == \"-f\" || arg == \"--force\") { \
         system(sprintf(\"git branch -D %s\", $1)) \
       } else { \
         system(sprintf(\"git branch -d %s\", $1)) \
