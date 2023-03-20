@@ -6,7 +6,7 @@ return {
   "ruby-ls",
   "rust_analyzer",
   "sqlls",
-  "sumneko_lua",
+  "lua_ls",
   "svelte",
   "tflint",
   "volar",
