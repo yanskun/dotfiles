@@ -6,7 +6,6 @@ return function()
     virtual_text = false,
   })
   vim.o.updatetime = 250
-  vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
   -- mapping
   require("which-key").register({
@@ -25,4 +24,12 @@ return function()
   for _, lsp in ipairs(servers) do
     conf_lsp(lsp)
   end
+
+  vim.api.nvim_create_autocmd(
+    "CursorHold,CursorHoldI",
+    {
+      pattern = "*",
+      command = [[ lua vim.diagnostic.open_float(nil, {focus=false}) ]],
+    }
+  )
 end

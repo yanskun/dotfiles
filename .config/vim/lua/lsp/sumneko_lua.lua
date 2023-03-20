@@ -4,7 +4,7 @@ if vim.fn.exepath('lua-language-server') ~= '' then
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  require 'lspconfig'.sumneko_lua.setup {
+  require 'lspconfig'.lua_ls.setup {
     settings = {
       Lua = {
         diagnostics = {
@@ -20,6 +20,6 @@ else
   vim.notify(
     'brew install lua-language-server',
     vim.log.levels.WARN,
-    { title = 'sumneko_lua' }
+    { title = 'lua_ls' }
   )
 end
