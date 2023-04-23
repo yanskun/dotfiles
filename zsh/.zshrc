@@ -300,3 +300,6 @@ bindkey '^g' gcloud_prj_switch
 # starship
 
 eval "$(starship init zsh)"
+
+# copilot CLI
+eval "$(github-copilot-cli alias -- "$0")"
