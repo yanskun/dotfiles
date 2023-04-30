@@ -14,7 +14,7 @@ return function()
             priority = 2, -- determines where it will appear relative to other groups (Optional)
             icon = "", -- Optional
             matcher = function(buf) -- Mandatory
-              return buf.filename:match('%_test') or buf.filename:match('%_spec')
+              return buf.path:match('%_test') or buf.path:match('%_spec')
             end,
           },
           {
@@ -22,7 +22,7 @@ return function()
             highlight = { undercurl = true, sp = "green" },
             auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
             matcher = function(buf)
-              return buf.filename:match('%.md') or buf.filename:match('%.txt')
+              return buf.path:match('%.md') or buf.path:match('%.txt')
             end,
             separator = { -- Optional
               style = require('bufferline.groups').separator.tab
