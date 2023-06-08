@@ -46,3 +46,14 @@ hs.hotkey.bind({ "ctrl", "shift" }, "k", function()
     app:kill()
   end
 end)
+
+screenWatcher = hs.screen.watcher.new(
+  function()
+    if not hs.fnutils.some(hs.screen.allScreens(), function(scr) return scr:name():find("Built%-in .*") end) then
+      hs.execute("yabai --start-service", true)
+    else
+      hs.execute("yabai --stop-service", true)
+    end
+  end
+)
+screenWatcher:start()
