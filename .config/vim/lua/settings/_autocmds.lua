@@ -18,9 +18,11 @@ vim.api.nvim_create_autocmd(
 )
 
 -- change filetype
+vim.api.nvim_create_augroup("fileTypeSet", {})
 vim.api.nvim_create_autocmd(
   "BufNewFile,BufRead",
   {
+    group = "fileTypeSet",
     pattern = "*.golden, *textlintrc",
     command = [[ set filetype=json ]],
   }
