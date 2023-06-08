@@ -53,6 +53,12 @@ fi
 chmod +x .config/alacritty/bin/toggle_opacity
 ln -f -s "$config_path"/alacritty/alacritty.yml "$XDG_CONFIG_HOME"/alacritty/alacritty.yml
 
+echo 'yabai'
+if [[ ! -e "$XDG_CONFIG_HOME"/yabai ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/yabai
+fi
+ln -f -s "$config_path"/yabai/yabairc "$XDG_CONFIG_HOME"/yabai/yabairc
+
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
 ln -f -s "${PWD}"/settings.json "$HOME"/Library/Application\ Support/Code/User
