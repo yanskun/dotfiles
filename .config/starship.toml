@@ -7,7 +7,7 @@ $git_status$git_branch"""
 
 [time]
 disabled = false
-format = "[祥$time]($style) "
+format = "[ $time]($style) "
 style = 'bold cyan'
 
 [directory]
