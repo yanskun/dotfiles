@@ -37,7 +37,6 @@
   },
   "git.ignoreLimitWarning": false,
   "gitlens.hovers.enabled": false,
-  "sync.gist": "c4d5e94125fe5dcb06e38ded5e9bb445",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
   "workbench.colorTheme": "One Dark Pro",
@@ -79,7 +78,6 @@
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "todo-tree.tree.showScanModeButton": false,
   "cSpell.userWords": [
     "Bugsnag",
     "clsx",
@@ -97,14 +95,11 @@
     "zenn",
     "Zoomable"
   ],
-  "sync.autoUpload": true,
   "editor.quickSuggestions": {
     "strings": true
   },
-  "vscodeGoogleTranslate.preferredLanguage": "Japanese",
   "workbench.activityBar.visible": true,
   "workbench.editor.showTabs": true,
-  "workbench.experimental.settingsProfiles.enabled": true,
   "openInGitHub.defaultBranch": "main",
   "path-autocomplete.pathMappings": {
     "/": "${folder}/",
@@ -112,7 +107,7 @@
   },
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -127,14 +122,12 @@
   },
   "editor.guides.indentation": true,
   "editor.inlineSuggest.enabled": true,
-  "npm.keybindingsChangedWarningShown": true,
   "github.copilot.enable": {
     "*": true,
     "yaml": false,
     "plaintext": false,
     "markdown": true
   },
-  "svelte.plugin.svelte.note-new-transformation": false,
   "editor.inlayHints.fontSize": 2,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "markdown.updateLinksOnFileMove.enabled": "always",
