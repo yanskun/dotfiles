@@ -12,19 +12,15 @@
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
   sync = !"git fetch -p && git branch --merged | grep -v '*' | grep -v 'main' | xargs git branch -d"
 
-  lof = "!f() { \
-    git log --oneline | \
-    fzf --height 50% --reverse --preview 'a={}; git show --color=always ${(@)${=a}[1]}' | \
-    awk -v arg=\"${@}\" '{ \
-      if (arg == \"-w\" || arg == \"--web\") { \
-        system(sprintf(\"gh browse --commit=%s\", $1)) \
-      } else { \
-        system(sprintf(\"git show --color=always %s\", $1)) \
-        system(sprintf(\"gh repo view --json url --template '{{.url}}/commit/%s'\", $1)) \
-        system(sprintf(\"echo\")) \
-      } \
-    }'; \
-  }; f"
+  select-commit = "!sh -c 'git log --oneline --decorate --color=always \"$@\" | \
+    fzf --ansi --height 50% --reverse -m \
+    --bind \"enter:become(git rev-parse {+1}),ctrl-o:execute-silent(gh browse \\$(git rev-parse {1}))\" \
+    --preview \"git show --color=always {1}\"' ."
+
+  lof = "!sh -c 'set -- $(git select-commit \"$@\"); \
+    git show \"$@\"; for c; do gh browse -n \"$c\"; \
+    done' ."
+
   bd =  "!f() { \
     git branch | \
     fzf --height 50% --multi --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
