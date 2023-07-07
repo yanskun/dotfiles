@@ -33,7 +33,7 @@ style = 'bold cyan'
 # languages
 [golang]
 format = "[$symbol($version )]($style)"
-symbol = "ﳑ "
+symbol = " "
 
 [nodejs]
 format = "[$symbol($version )]($style)"
