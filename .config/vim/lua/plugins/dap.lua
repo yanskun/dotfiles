@@ -25,7 +25,7 @@ return function()
   vim.api.nvim_set_hl(0, 'DapStopped', { fg = '#e2b86b' })
   vim.api.nvim_set_hl(0, 'DapLogPoint', { fg = '#4fa6ed' })
 
-  fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+  fn.sign_define('DapBreakpoint', { text = '󰄳', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
   fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = '', numhl = '' })
   fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint', linehl = '', numhl = '' })
 end
