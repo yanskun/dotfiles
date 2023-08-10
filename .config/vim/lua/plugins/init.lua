@@ -28,6 +28,11 @@ require("lazy").setup({
   },
 
   {
+    "petertriho/nvim-scrollbar",
+    config = conf("nvim-scrollbar"),
+  },
+
+  {
     "rcarriga/nvim-notify",
     config = function()
       require("notify").setup({
