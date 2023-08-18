@@ -16,9 +16,6 @@ o.expandtab = true
 o.tabstop = 2
 o.shiftwidth = 2
 
-o.foldmethod = "indent"
-o.foldlevel = 99
-
 o.clipboard = "unnamed"
 
 o.laststatus = 3

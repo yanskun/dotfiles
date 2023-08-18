@@ -29,6 +29,11 @@ return function()
         max_file_lines = nil,
       }
     }
+    local vim = vim
+    local opt = vim.opt
+
+    opt.foldmethod = "expr"
+    opt.foldexpr = "nvim_treesitter#foldexpr()"
   else
     print('brew install tree-sitter')
   end
