@@ -20,6 +20,8 @@ require("lazy").setup({
 
   "github/copilot.vim",
 
+  "folke/zen-mode.nvim",
+
   {
     "navarasu/onedark.nvim",
     config = conf("onedark"),
@@ -104,6 +106,8 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
       {
         "s1n7ax/nvim-window-picker",
+        -- "yanskun/nvim-window-picker",
+        commit = "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5",
         config = conf("nvim-window-picker"),
       },
     },
