@@ -12,12 +12,6 @@ ln -f -s "${PWD}"/asdf/.asdfrc "${HOME}"/.asdfrc
 ln -f -s "$config_path"/neofetch/config.conf "$XDG_CONFIG_HOME"/neofetch/config.conf
 ln -f -s "${DOTDIR}"/.tool-versions "${HOME}"/.tool-versions
 
-echo 'peco'
-if [[ ! -d "${HOME}"/.config/peco ]]; then
-  mkdir "$XDG_CONFIG_HOME"/peco
-fi
-ln -f -s "$PWD"/.config/peco/config.json "$XDG_CONFIG_HOME"/peco/config.json
-
 echo 'starship'
 ln -f -s "$PWD"/.config/starship.toml "$XDG_CONFIG_HOME"/starship.toml
 
