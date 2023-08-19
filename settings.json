@@ -133,5 +133,9 @@
   "markdown.updateLinksOnFileMove.enabled": "always",
   "markdown.validate.enabled": true,
   "editor.stickyScroll.enabled": true,
-  "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospac"
+  "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospac",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "redhat.telemetry.enabled": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false
 }
