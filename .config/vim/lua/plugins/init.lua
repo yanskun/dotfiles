@@ -20,7 +20,16 @@ require("lazy").setup({
 
   "github/copilot.vim",
 
-  "folke/zen-mode.nvim",
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        plugins = {
+          tmux = { enabled = true },
+        }
+      }
+    end
+  },
 
   {
     "navarasu/onedark.nvim",
