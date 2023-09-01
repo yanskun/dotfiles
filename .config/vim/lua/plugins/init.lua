@@ -379,7 +379,11 @@ require("lazy").setup({
   "vim-denops/denops.vim",
   "yanskun/dps-translate.nvim",
   -- markdown
-  "ellisonleao/glow.nvim",
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow"
+  },
 
   "yanskun/change-case.nvim",
 
