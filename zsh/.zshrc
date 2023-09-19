@@ -42,8 +42,8 @@ autoload -Uz git-escape-magic
 ########################################
 # env
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-eval "$(pyenv init -)"
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+eval "$(rtx activate zsh)"
 
 ########################################
 # history
@@ -230,9 +230,8 @@ zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
 
 ########################################
-# starship
-
-eval "$(starship init zsh)"
-
 # copilot CLI
-eval "$(github-copilot-cli alias -- "$0")"
+# eval "$(github-copilot-cli alias -- "$0")"
+
+# starship
+eval "$(starship init zsh)"
