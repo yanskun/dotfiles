@@ -5,7 +5,6 @@ export NODE_OPTIONS=--max_old_space_size=4096
 export GIT_EDITOR=nvim
 
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
 
 # history
 HISTFILE=${HOME}/.zsh_history
@@ -84,7 +83,6 @@ colors
 
 # ls color
 export LSCOLORS=dxbx
-alias ls="ls -GF"
 
 # less command color
 export LESS='-R'
@@ -140,39 +138,10 @@ setopt share_history
 
 ########################################
 # alias
-
-alias la='ls -a'
-alias ll='ls -l'
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias mkdir='mkdir -p'
-
-alias sudo='sudo '
-
-alias -g L='| less'
-alias -g G='| grep'
-
 # vim
 if type nvim > /dev/null; then
   alias vim='nvim'
 fi
-
-# docker
-alias d='docker'
-alias dc='docker-compose'
-
-# color
-alias grep='grep --color=auto'
-
-# upstairs
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-
 ########################################
 # import
 . $ZDOTDIR/.zshrc_secret

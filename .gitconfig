@@ -3,15 +3,6 @@
 	email = 43776161+yanskun@users.noreply.github.com
 
 [alias]
-  b = branch
-  s = status
-  sw = switch
-  swp = !"git switch $(git b --format='%(refname:short)' | fzf --reverse --height 50% --preview 'git show --color=always {}')"
-  co = checkout
-  cop = !"git switch $(git b --format='%(refname:short)' | fzf --reverse --height 50% --preview 'git show --color=always {}')"
-	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
-  sync = !"git fetch -p && git branch --merged | grep -v '*' | grep -v 'main' | xargs git branch -d"
-
   select-commit = "!sh -c 'git log --oneline --decorate --color=always \"$@\" | \
     fzf --ansi --height 50% --reverse -m \
     --bind \"enter:become(git rev-parse {+1}),ctrl-o:execute-silent(gh browse \\$(git rev-parse {1}))\" \

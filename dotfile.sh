@@ -40,6 +40,11 @@ if [[ ! -d "$XDG_CONFIG_HOME"/sheldon ]]; then
 fi
 ln -f -s "$config_path"/sheldon/plugins.toml "$XDG_CONFIG_HOME"/sheldon/plugins.toml
 
+if [[ ! -d "$XDG_CONFIG_HOME"/zsh-abbr ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/zsh-abbr
+fi
+ln -f -s "$config_path"/zsh-abbr/user-abbreviations "$XDG_CONFIG_HOME"/zsh-abbr/user-abbreviations
+
 echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
