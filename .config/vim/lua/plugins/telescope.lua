@@ -32,7 +32,19 @@ return function()
         end
       },
     },
+    extensions = {
+      egrepify = {
+        prefixes = {
+          ["!"] = {
+            flag = "invert-match",
+          },
+        }
+      }
+    }
   }
+
+  -- extensions
+  telescope.load_extension "egrepify"
 
   --  see: https://github.com/nvim-telescope/telescope.nvim/issues/605#issuecomment-790805956
   local previewers = require('telescope.previewers')
@@ -66,7 +78,7 @@ return function()
     f = {
       f = { "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<CR>",
         "telescope find file" },
-      g = { "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",
+      g = { "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>",
         'telescope live grep' },
       b = { "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<CR>",
         'telescope buffers' },

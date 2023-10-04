@@ -97,6 +97,14 @@ require("lazy").setup({
   },
 
   {
+    "fdschmidt93/telescope-egrepify.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    }
+  },
+
+  {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
