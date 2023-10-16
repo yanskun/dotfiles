@@ -49,5 +49,6 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 yabai -m rule --add app="^Alacritty$" manage=off
+yabai -m rule --add app="^Dash$" manage=off
 
 echo "yabai configuration loaded.."
