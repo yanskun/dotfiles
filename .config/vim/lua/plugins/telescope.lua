@@ -78,8 +78,10 @@ return function()
     f = {
       f = { "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<CR>",
         "telescope find file" },
-      g = { "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>",
+      g = { "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",
         'telescope live grep' },
+      -- g = { "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>",
+      --   'telescope live grep' },
       b = { "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<CR>",
         'telescope buffers' },
       h = { "<CMD>lua require('telescope.builtin').help_tags()<CR>", 'telescope help tags' },

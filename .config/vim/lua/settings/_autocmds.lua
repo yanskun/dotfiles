@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd(
 
 vim.api.nvim_create_augroup("fileTypeIndent", {})
 vim.api.nvim_create_autocmd(
-  "BufNewFile,BufRead",
+  { "BufNewFile", "BufRead" },
   {
     group = "fileTypeIndent",
     pattern = "*.go",
@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd(
 -- change filetype
 vim.api.nvim_create_augroup("fileTypeSet", {})
 vim.api.nvim_create_autocmd(
-  "BufNewFile,BufRead",
+  { "BufNewFile", "BufRead" },
   {
     group = "fileTypeSet",
     pattern = "*.golden, *textlintrc",
