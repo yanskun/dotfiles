@@ -1,6 +1,6 @@
 abbr ls="ls -GF"
-abbr la='ls -a'
-abbr ll='ls -l'
+abbr la='ls -GF -a'
+abbr ll='ls -GF -l'
 
 abbr rm='rm -i'
 abbr cp='cp -i'
