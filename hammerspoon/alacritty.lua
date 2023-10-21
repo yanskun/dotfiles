@@ -2,10 +2,10 @@ local timer    = require("hs.timer")
 local eventtap = require("hs.eventtap")
 
 -- src: https://github.com/asmagill/hs._asm.spaces
-local spaces = require("hs.spaces")
-local events = eventtap.event.types
+local spaces   = require("hs.spaces")
+local events   = eventtap.event.types
 
-local module = {}
+local module   = {}
 
 function MoveActiveScreen(app)
   local window = app:focusedWindow()
@@ -77,7 +77,7 @@ module.eventWatcher = eventtap.new({ events.flagsChanged, events.keyDown }, func
       timeFirstControl = timer.secondsSinceEpoch()
     elseif onlyCtrl(ev) and firstDown then -- ctrl down and it's the second
       secondDown = true
-    elseif not noFlags(ev) then -- otherwise reset and start over
+    elseif not noFlags(ev) then            -- otherwise reset and start over
       timeFirstControl, firstDown, secondDown = 0, false, false
     end
   else -- it was a key press, so not a lone ctrl char -- we don't care about it

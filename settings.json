@@ -41,7 +41,6 @@
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
-  "git.confirmSync": false,
   "git.mergeEditor": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
@@ -137,5 +136,7 @@
   "terminal.integrated.defaultProfile.linux": "zsh",
   "redhat.telemetry.enabled": true,
   "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "editor.stickyScroll.scrollWithEditor": false
 }
