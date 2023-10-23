@@ -9,6 +9,7 @@ return {
   "rust_analyzer",
   "sqlls",
   "svelte",
+  "tailwindcss",
   "tflint",
   "tsserver",
   "volar",
