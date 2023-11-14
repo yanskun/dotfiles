@@ -5,7 +5,9 @@ if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
   require 'lspconfig'.gopls.setup {
     cmd = { 'gopls' },
     filetypes = { 'go', 'gomod' },
-    on_attach = util.on_attach,
+    on_attach = function(client, bufnr)
+      util.on_attach(client, bufnr, { no_format = true })
+    end,
     capabilities = util.capabilities,
     flags = util.flags,
     gopls = {

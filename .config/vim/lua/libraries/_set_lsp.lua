@@ -2,7 +2,9 @@ local M = {}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-M.on_attach = function(client, bufnr)
+-- @param opts table
+-- @usage opts.no_format boolean (default: false) Disable formatting on save
+M.on_attach = function(client, bufnr, opts)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -33,7 +35,7 @@ M.on_attach = function(client, bufnr)
     buffer = 0,
   })
 
-  if client.server_capabilities.documentFormattingProvider then
+  if not opts.no_format and client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
       buffer = bufnr,
       callback = function()
