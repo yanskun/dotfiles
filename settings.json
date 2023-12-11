@@ -19,9 +19,9 @@
     "*.vue": "vue",
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.tslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll": "explicit"
   },
   "eslint.validate": [
     "javascript",
@@ -41,6 +41,7 @@
   "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
+  "git.confirmSync": false,
   "git.mergeEditor": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
@@ -76,7 +77,6 @@
   ],
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
-  "diffEditor.ignoreTrimWhitespace": false,
   "cSpell.userWords": [
     "Bugsnag",
     "clsx",
@@ -97,8 +97,7 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "workbench.activityBar.visible": true,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": "multiple",
   "openInGitHub.defaultBranch": "main",
   "path-autocomplete.pathMappings": {
     "/": "${folder}/",
@@ -138,5 +137,8 @@
   "zenMode.fullScreen": false,
   "zenMode.hideLineNumbers": false,
   "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "editor.stickyScroll.scrollWithEditor": false
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "remoteHub.commitDirectlyWarning": "off",
+  "terminal.integrated.stickyScroll.enabled": true
 }
