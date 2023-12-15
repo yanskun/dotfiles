@@ -284,7 +284,11 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("ibl").setup()
+      require("ibl").setup {
+        scope = {
+          show_start = false,
+        }
+      }
     end,
   },
 
@@ -384,8 +388,8 @@ require("lazy").setup({
   },
 
   -- deno
-  "vim-denops/denops.vim",
-  "yanskun/dps-translate.nvim",
+  -- "vim-denops/denops.vim",
+  -- "yanskun/dps-translate.nvim",
   -- markdown
   {
     "ellisonleao/glow.nvim",
