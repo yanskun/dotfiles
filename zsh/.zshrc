@@ -42,7 +42,7 @@ autoload -Uz git-escape-magic
 # env
 
 # . /opt/homebrew/opt/asdf/libexec/asdf.sh
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
 ########################################
 # history
