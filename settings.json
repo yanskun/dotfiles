@@ -140,5 +140,9 @@
   "editor.stickyScroll.scrollWithEditor": false,
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "remoteHub.commitDirectlyWarning": "off",
-  "terminal.integrated.stickyScroll.enabled": true
+  "terminal.integrated.stickyScroll.enabled": true,
+  "jest.shell": {
+    "path": "/usr/bin/env",
+    "args": ["zsh", "--login"]
+  },
 }
