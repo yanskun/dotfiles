@@ -4,7 +4,7 @@ if vim.fn.exepath('lua-language-server') ~= '' then
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  require 'lspconfig'.lua_ls.setup {
+  require 'lspconfig'['lua_ls'].setup {
     settings = {
       Lua = {
         diagnostics = {

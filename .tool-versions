@@ -6,7 +6,7 @@ lua       5.4.4
 yarn      1.22.19
 flutter   3.0.0-stable
 ruby      3.2.0
-rust      1.67.0
+rust      latest
 dart      2.17.1
 zig       0.10.1
 direnv    2.32.3

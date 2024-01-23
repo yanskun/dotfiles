@@ -3,48 +3,55 @@
 -- src: https://github.com/JohnnyMorganz/StyLua
 
 return function()
-  local nls = require("null-ls")
+	if vim.fn.executable("stylua") == "" then
+		vim.notify("cargo install stylua", vim.log.levels.WARN, { title = "cargo install stylua" })
+	end
 
-  local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-      filter = function(client)
-        -- apply whatever logic you want (in this example, we'll only use null-ls)
-        return client.name == "null-ls" or client.name ~= "tsserver"
-      end,
-      bufnr = bufnr,
-      timeout = 1000,
-    })
-  end
+	local null_ls = require("null-ls")
 
-  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-  local on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          lsp_formatting(bufnr)
-        end,
-      })
-    end
-  end
+	local lsp_formatting = function(bufnr)
+		vim.lsp.buf.format({
+			filter = function(client)
+				-- apply whatever logic you want (in this example, we'll only use null-ls)
+				return client.name == "null-ls" or client.name ~= "tsserver"
+			end,
+			bufnr = bufnr,
+			timeout = 1000,
+		})
+	end
 
-  local sources = {
-    -- nls.builtins.formatting.prettierd.with({
-    --   filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
-    -- }),
-    nls.builtins.formatting.eslint_d,
-    nls.builtins.formatting.prettier,
-    nls.builtins.diagnostics.shellcheck,
-    nls.builtins.formatting.stylua,
-    nls.builtins.formatting.black,
-    nls.builtins.diagnostics.flake8,
-    nls.builtins.code_actions.gitsigns,
-  }
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	local on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					lsp_formatting(bufnr)
+				end,
+			})
+		end
+	end
 
-  nls.setup({
-    sources = sources,
-    on_attach = on_attach,
-  })
+	local sources = {
+		null_ls.builtins.formatting.prettierd.with({
+			filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
+		}),
+		null_ls.builtins.code_actions.gitsigns,
+		null_ls.builtins.completion.spell,
+		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.diagnostics.flake8,
+		null_ls.builtins.diagnostics.shellcheck,
+		null_ls.builtins.diagnostics.vacuum,
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.stylua,
+	}
+
+	null_ls.setup({
+		sources = sources,
+		on_attach = on_attach,
+	})
 end
