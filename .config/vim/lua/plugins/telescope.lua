@@ -85,6 +85,10 @@ return function()
 				"<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",
 				"telescope live grep",
 			},
+			d = {
+				"<CMD>lua require('telescope.builtin').diagnostics({find_command = " .. find_command .. "})<CR>",
+				"telescope diagnostics",
+			},
 			-- g = { "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>",
 			--   'telescope live grep' },
 			b = {
