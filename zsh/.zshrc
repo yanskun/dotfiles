@@ -156,7 +156,7 @@ function command_not_found_handler() {
 ## fzf
 ### ghq
 function fzf-src () {
-  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  local selected_dir=$(ghq list | fzf-tmux -p --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd $(ghq root)/${selected_dir}"
   fi
@@ -167,7 +167,7 @@ bindkey '^]' fzf-src
 
 ### open github
 function fzf-open () {
-  local selected_dir=$(ghq list | fzf --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  local selected_dir=$(ghq list | fzf-tmux -p --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$selected_dir" ]; then
     BUFFER="open https://${selected_dir}"
   fi
@@ -178,7 +178,7 @@ bindkey '^o' fzf-open
 
 ### history
 function fzf-history-selection() {
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf --reverse --height 40%`
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf-tmux -p --reverse --height 40%`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
@@ -188,7 +188,7 @@ bindkey '^H' fzf-history-selection
 
 ## gcloud project swhich
 function gcloud_prj_switch () {
-    project="$(gcloud projects list | fzf --height 40% --reverse)"
+    project="$(gcloud projects list | fzf-tmux -p --height 40% --reverse)"
     project_name="$(echo $project | awk '{print $1}')"
     project_id="$(echo $project | awk '{print $3}')"
     gcloud config set project ${project_id}

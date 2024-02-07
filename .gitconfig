@@ -4,7 +4,7 @@
 
 [alias]
   select-commit = "!sh -c 'git log --oneline --decorate --color=always \"$@\" | \
-    fzf --ansi --height 50% --reverse -m \
+    fzf-tmux -p --ansi --height 50% --reverse -m \
     --bind \"enter:become(git rev-parse {+1}),ctrl-o:execute-silent(gh browse \\$(git rev-parse {1}))\" \
     --preview \"git show --color=always {1}\"' ."
 
@@ -14,7 +14,7 @@
 
   bd =  "!f() { \
     git branch | \
-    fzf --height 50% --multi --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
+    fzf-tmux -p --height 50% --multi --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
     awk -v arg=\"${@}\" '{ \
       if (arg == \"-f\" || arg == \"--force\") { \
         system(sprintf(\"git branch -D %s\", $1)) \
