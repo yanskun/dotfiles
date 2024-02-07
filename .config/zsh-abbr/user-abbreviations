@@ -31,7 +31,7 @@ abbr g s=status
 abbr g sw=switch
 abbr g co=checkout
 
-abbr g swp="switch $(git branch --format='%(refname:short)' | fzf-tmux --reverse --height 50% --preview 'git show --color=always {}')"
-abbr g cop="switch $(git branch --format='%(refname:short)' | fzf-tmux --reverse --height 50% --preview 'git show --color=always {}')"
+abbr g swp="switch $(git branch --format='%(refname:short)' | fzf-tmux -p --reverse --height 50% --preview 'git show --color=always {}')"
+abbr g cop="switch $(git branch --format='%(refname:short)' | fzf-tmux -p --reverse --height 50% --preview 'git show --color=always {}')"
 abbr g tree="log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
 abbr g sync="fetch -p && git branch --merged | grep -v '*' | grep -v 'main' | xargs git branch -d"
