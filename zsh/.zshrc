@@ -143,9 +143,11 @@ if type nvim > /dev/null; then
   alias vim='nvim'
 fi
 ########################################
-# import
-. $ZDOTDIR/.zshrc_secret
-
+# Load seperated config files
+for conf in "$ZDOTDIR/config.d/"*.zsh; do
+  source "${conf}"
+done
+unset conf
 ########################################
 # functions
 
