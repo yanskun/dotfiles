@@ -136,6 +136,9 @@ setopt print_eight_bit
 setopt pushd_ignore_dups
 setopt share_history
 
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 ########################################
 # alias
 # vim
