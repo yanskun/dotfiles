@@ -205,12 +205,11 @@ bindkey '^H' fzf-history-selection
 
 ## gcloud project swhich
 function gcloud_prj_switch () {
-    project="$(gcloud projects list | fzf-tmux -p --height 40% --reverse)"
-    project_name="$(echo $project | awk '{print $1}')"
-    project_id="$(echo $project | awk '{print $3}')"
-    gcloud config set project ${project_id}
-    export GOOGLE_PROJECT=${project_id}
-    echo "Switched to project: ${project_name}(${project_id})"
+    local project="$(gcloud projects list | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
+    if [ -n "$project" ]; then
+        BUFFER="gcloud config set project ${project}"
+    fi
+    zle accept-line
 }
 zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
