@@ -5,6 +5,8 @@ $character"""
 right_format = """
 $git_status$git_branch"""
 
+command_timeout = 600
+
 [time]
 disabled = false
 format = "[ $time]($style) "
