@@ -1,1 +1,4 @@
 *.zsh
+
+!copilot.zsh
+
