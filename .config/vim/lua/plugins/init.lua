@@ -286,6 +286,18 @@ require("lazy").setup({
     -- :h nvim-surround.usage
   },
 
+  -- code snapshot
+  {
+    "ellisonleao/carbon-now.nvim",
+    lazy = true,
+    cmd = { "CarbonNow" },
+    config = function()
+      require("carbon-now").setup({
+        open_cmd = "open",
+      })
+    end,
+  },
+
   -- tag
   {
     "windwp/nvim-ts-autotag",
