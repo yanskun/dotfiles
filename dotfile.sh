@@ -27,6 +27,12 @@ echo 'tmux'
 ln -f -s "$PWD"/tmux/tmux.conf "$HOME"/.tmux.conf
 sh tmux/installer.sh
 
+echo 'zellij'
+if [[ ! -d "$XDG_CONFIG_HOME"/zellij ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/zellij
+fi
+ln -f -s "$config_path"/zellij/config.kdl "$XDG_CONFIG_HOME"/zellij/config.kdl
+
 echo 'hammerspoon'
 if [[ ! -d "$HOME"/.hammerspoon ]]; then
   mkdir "$HOME"/.hammerspoon
