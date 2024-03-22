@@ -12,7 +12,7 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
-  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+  "terminal.integrated.fontFamily": "'Monaspace Neon', monospace, 'Hack Nerd Font'",
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.erb": "erb",
@@ -131,7 +131,7 @@
   "markdown.updateLinksOnFileMove.enabled": "always",
   "markdown.validate.enabled": true,
   "editor.stickyScroll.enabled": true,
-  "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospac",
+  "editor.fontFamily": "'Monaspace Neon', monospace, 'Hack Nerd Font'",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "redhat.telemetry.enabled": true,
   "zenMode.fullScreen": false,
@@ -141,8 +141,11 @@
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "remoteHub.commitDirectlyWarning": "off",
   "terminal.integrated.stickyScroll.enabled": true,
-  "jest.shell": {
-    "path": "/usr/bin/env",
-    "args": ["zsh", "--login"]
-  },
+  // "accessibility.voice.keywordActivation": "inlineChat",
+  "github.copilot.chat.localeOverride": "ja",
+  // "jest.shell": {
+  //   // "path": "/usr/bin/env",
+  //   "args": ["zsh", "--login"]
+  // },
+  "jest.shell": "zsh",
 }
