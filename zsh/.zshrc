@@ -215,8 +215,6 @@ zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
 
 ########################################
-# copilot CLI
-# eval "$(github-copilot-cli alias -- "$0")"
 
 # starship
 eval "$(starship init zsh)"
