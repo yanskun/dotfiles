@@ -14,7 +14,7 @@ abbr -g L='| less'
 abbr -g G='| grep'
 
 abbr d='docker'
-abbr dc='docker-compose'
+abbr dc='docker compose'
 
 # color
 abbr grep='grep --color=auto'
