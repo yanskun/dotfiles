@@ -122,6 +122,16 @@ require("lazy").setup({
   },
 
   {
+    "simonmclean/triptych.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",    -- required
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+    config = conf("triptych"),
+  },
+
+  {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
