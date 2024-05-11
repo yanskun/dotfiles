@@ -193,7 +193,11 @@ require("lazy").setup({
       config = conf("mason-lspconfig"),
       {
         "nvimtools/none-ls.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvimtools/none-ls-extras.nvim",
+          "gbprod/none-ls-shellcheck.nvim",
+        },
         config = conf("null-ls"),
       },
     },
@@ -259,7 +263,10 @@ require("lazy").setup({
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap" },
+        dependencies = {
+          "mfussenegger/nvim-dap",
+          "nvim-neotest/nvim-nio"
+        },
         config = conf("dapui"),
       },
       {

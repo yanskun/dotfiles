@@ -40,13 +40,18 @@ return function()
 		}),
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.completion.spell,
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.diagnostics.flake8,
-		null_ls.builtins.diagnostics.shellcheck,
+		require("none-ls.diagnostics.eslint"),
+		require("none-ls.diagnostics.flake8"),
+		require("none-ls-shellcheck.diagnostics").with({ extra_filetypes = { "envrc", "env" } }),
+		require("none-ls-shellcheck.code_actions").with({ extra_filetypes = { "envrc", "env" } }),
 		null_ls.builtins.diagnostics.vacuum,
 		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.prettier,
+		require("none-ls.formatting.eslint_d").with({
+			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
+		}),
+		null_ls.builtins.formatting.prettier.with({
+			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
+		}),
 		null_ls.builtins.formatting.stylua,
 	}
 
