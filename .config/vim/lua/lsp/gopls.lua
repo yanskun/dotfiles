@@ -1,10 +1,9 @@
-if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
-    vim.fn.exepath('gotests') then
-  local util = require('libraries._set_lsp')
+if vim.fn.exepath("gopls") ~= "" and vim.fn.exepath("dlv") and vim.fn.exepath("gotests") then
+  local util = require("libraries._set_lsp")
 
-  require 'lspconfig'.gopls.setup {
-    cmd = { 'gopls' },
-    filetypes = { 'go', 'gomod' },
+  require("lspconfig").gopls.setup({
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod" },
     on_attach = function(client, bufnr)
       util.on_attach(client, bufnr, { no_format = true })
     end,
@@ -17,21 +16,13 @@ if vim.fn.exepath('gopls') ~= '' and vim.fn.exepath('dlv') and
         shadow = true,
       },
     },
-  }
+  })
 else
   vim.notify(
-    'go install golang.org/x/tools/gopls@latest',
+    [[go install golang.org/x/tools/gopls@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
+go install github.com/cweill/gotests/...@latest]],
     vim.log.levels.WARN,
-    { title = 'gopls' }
-  )
-  vim.notify(
-    'go install github.com/go-delve/delve/cmd/dlv@latest',
-    vim.log.levels.WARN,
-    { title = 'gopls' }
-  )
-  vim.notify(
-    'go install github.com/cweill/gotests/...@latest',
-    vim.log.levels.WARN,
-    { title = 'gopls' }
+    { title = "gopls" }
   )
 end
