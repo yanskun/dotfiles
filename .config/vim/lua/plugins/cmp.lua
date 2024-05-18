@@ -1,27 +1,26 @@
 return function()
-
-  local cmp = require('cmp')
-  local lspkind = require('lspkind')
+  local cmp = require("cmp")
+  local lspkind = require("lspkind")
 
   cmp.setup({
     mapping = {
-      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-q>'] = cmp.mapping.complete(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<UP>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior }),
-      ['<DOWN>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior })
+      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+      ["<C-q>"] = cmp.mapping.complete(),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<UP>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior }),
+      ["<DOWN>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior }),
     },
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'vsnip' },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "vsnip" },
     }),
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body)
-      end
+        require("luasnip").lsp_expand(args.body)
+      end,
     },
     formatting = {
       format = lspkind.cmp_format({
@@ -29,24 +28,27 @@ return function()
         maxwidth = 50,
         before = function(entry, vim_item)
           return vim_item
-        end
-      })
+        end,
+      }),
     },
     window = {
       completion = {
-        border = 'rounded',
-        scrollbar = '║',
+        border = "rounded",
+        scrollbar = "║",
       },
       documentation = {
-        border = 'rounded',
-        scrollbar = '',
+        border = "rounded",
+        scrollbar = "",
       },
-    }
+    },
   })
 
-  vim.cmd([[
-    autocmd FileType TelescopePrompt,NvimTree,netrw lua require'cmp'setup.buffer {
-    \   completion = { autocomplete = false }
-    \ }
-  ]])
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "TelescopePrompt", "NvimTree", "netrw" },
+    callback = function()
+      require("cmp").setup.buffer({
+        completion = { autocomplete = false },
+      })
+    end,
+  })
 end
