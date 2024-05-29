@@ -209,6 +209,14 @@ function gcloud_prj_switch () {
 zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
 
+function tmuxpopup {
+  local height='40%'
+  local session=$(tmux display-message -p -F "#{session_name}")
+  tmux popup -d '#{pane_current_path}' -h40%
+}
+zle -N tmuxpopup
+bindkey '^p' tmuxpopup
+
 ########################################
 
 # starship
