@@ -21,7 +21,8 @@ else
   vim.notify(
     [[go install golang.org/x/tools/gopls@latest
 go install github.com/go-delve/delve/cmd/dlv@latest
-go install github.com/cweill/gotests/...@latest]],
+go install github.com/cweill/gotests/...@latest
+go install golang.org/x/tools/cmd/goimports@latest]],
     vim.log.levels.WARN,
     { title = "gopls" }
   )
