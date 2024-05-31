@@ -149,4 +149,5 @@
   //   "args": ["zsh", "--login"]
   // },
   "jest.shell": "zsh",
+  "github.copilot.editor.enableAutoCompletions": true,
 }
