@@ -1,29 +1,29 @@
 -- REMOVE IF ADDED TO CORE APPLICATION
-repeat
-	-- add proper user dylib path if it doesn't already exist
-	if not package.cpath:match(hs.configdir .. "/%?.dylib") then
-		package.cpath = hs.configdir .. "/?.dylib;" .. package.cpath
-	end
+    repeat
+        -- add proper user dylib path if it doesn't already exist
+        if not package.cpath:match(hs.configdir .. "/%?.dylib") then
+            package.cpath = hs.configdir .. "/?.dylib;" .. package.cpath
+        end
 
-	-- load docs file if provided
-	local basePath, moduleName = debug.getinfo(1, "S").source:match("^@(.*)/([%w_]+).lua$")
-	if basePath and moduleName then
-		if moduleName == "init" then
-			moduleName = moduleName:match("/([%w_]+)$")
-		end
+        -- load docs file if provided
+        local basePath, moduleName = debug.getinfo(1, "S").source:match("^@(.*)/([%w_]+).lua$")
+        if basePath and moduleName then
+            if moduleName == "init" then
+                moduleName = moduleName:match("/([%w_]+)$")
+            end
 
-		local docsFileName = basePath .. "/" .. moduleName .. ".docs.json"
-		if require("hs.fs").attributes(docsFileName) then
-			require("hs.doc").registerJSONFile(docsFileName)
-		end
-	end
+            local docsFileName = basePath .. "/" .. moduleName .. ".docs.json"
+            if require"hs.fs".attributes(docsFileName) then
+                require"hs.doc".registerJSONFile(docsFileName)
+            end
+        end
 
-	-- setup loaders for submodules (if any)
-	--     copy into Hammerspoon/setup.lua before removing
-	package.preload["hs.spaces.watcher"] = function()
-		return require("hs.libspaces_watcher")
-	end
-until true -- executes once and hides any local variables we create
+        -- setup loaders for submodules (if any)
+        --     copy into Hammerspoon/setup.lua before removing
+        package.preload['hs.spaces.watcher'] = function()
+            return require("hs.libspaces_watcher")
+        end
+    until true -- executes once and hides any local variables we create
 -- END REMOVE IF ADDED TO CORE APPLICATION
 
 --- === hs.spaces ===
@@ -52,24 +52,24 @@ until true -- executes once and hides any local variables we create
 -- +      ids of windows on other spaces     -- partial; see hs.window.filter comment above
 
 local USERDATA_TAG = "hs.spaces"
-local module = require(table.concat({ USERDATA_TAG:match("^([%w%._]+%.)([%w_]+)$") }, "lib"))
-module.watcher = require(USERDATA_TAG .. ".watcher")
+local module       = require(table.concat({ USERDATA_TAG:match("^([%w%._]+%.)([%w_]+)$") }, "lib"))
+module.watcher     = require(USERDATA_TAG .. ".watcher")
 
 -- settings with periods in them can't be watched via KVO with hs.settings.watchKey, so
 -- in general it's a good idea not to include periods
 local SETTINGS_TAG = USERDATA_TAG:gsub("%.", "_")
-local settings = require("hs.settings")
+local settings     = require("hs.settings")
 -- local log          = require("hs.logger").new(USERDATA_TAG, settings.get(SETTINGS_TAG .. "_logLevel") or "warning")
 
 local axuielement = require("hs.axuielement")
 local application = require("hs.application")
-local screen = require("hs.screen")
-local inspect = require("hs.inspect")
-local timer = require("hs.timer")
+local screen      = require("hs.screen")
+local inspect     = require("hs.inspect")
+local timer       = require("hs.timer")
 
-local host = require("hs.host")
-local fs = require("hs.fs")
-local plist = require("hs.plist")
+local host        = require("hs.host")
+local fs          = require("hs.fs")
+local plist       = require("hs.plist")
 
 -- private variables and methods -----------------------------------------
 
@@ -77,134 +77,122 @@ local plist = require("hs.plist")
 
 local AXExitToDesktop, AXExitToFullscreenDesktop
 local getDockExitTemplates = function()
-	local localesToSearch = host.locale.preferredLanguages() or {}
-	-- make a copy since preferredLanguages uses ls.makeConstantsTable for "friendly" display in console
-	localesToSearch = table.move(localesToSearch, 1, #localesToSearch, 1, {})
-	table.insert(localesToSearch, host.locale.current())
-	local path = application.applicationsForBundleID("com.apple.dock")[1]:path() .. "/Contents/Resources"
+    local localesToSearch = host.locale.preferredLanguages() or {}
+    -- make a copy since preferredLanguages uses ls.makeConstantsTable for "friendly" display in console
+    localesToSearch = table.move(localesToSearch, 1, #localesToSearch, 1, {})
+    table.insert(localesToSearch, host.locale.current())
+    local path   = application.applicationsForBundleID("com.apple.dock")[1]:path() .. "/Contents/Resources"
 
-	local locale = ""
-	while #localesToSearch > 0 do
-		locale = table.remove(localesToSearch, 1):gsub("%-", "_")
-		while #locale > 0 do
-			if fs.attributes(path .. "/" .. locale .. ".lproj/Accessibility.strings") then
-				break
-			end
-			locale = locale:match("^(.-)_?[^_]+$")
-		end
-		if #locale > 0 then
-			break
-		end
-	end
+    local locale = ""
+    while #localesToSearch > 0 do
+        locale = table.remove(localesToSearch, 1):gsub("%-", "_")
+        while #locale > 0 do
+            if fs.attributes(path .. "/" .. locale .. ".lproj/Accessibility.strings") then break end
+            locale = locale:match("^(.-)_?[^_]+$")
+        end
+        if #locale > 0 then break end
+    end
 
-	if #locale == 0 then
-		locale = "en"
-	end -- fallback to english
+    if #locale == 0 then locale = "en" end -- fallback to english
 
-	local contents = plist.read(path .. "/" .. locale .. ".lproj/Accessibility.strings")
-	AXExitToDesktop = "^" .. contents.AXExitToDesktop:gsub("%%@", "(.-)") .. "$"
-	AXExitToFullscreenDesktop = "^" .. contents.AXExitToFullscreenDesktop:gsub("%%@", "(.-)") .. "$"
+    local contents = plist.read(path .. "/" .. locale .. ".lproj/Accessibility.strings")
+    AXExitToDesktop           = "^" .. contents.AXExitToDesktop:gsub("%%@", "(.-)") .. "$"
+    AXExitToFullscreenDesktop = "^" .. contents.AXExitToFullscreenDesktop:gsub("%%@", "(.-)") .. "$"
 end
 
 local localeChange_identifier = host.locale.registerCallback(getDockExitTemplates)
 getDockExitTemplates() -- set initial values
 
 local spacesNameFromButtonName = function(name)
-	return name:match(AXExitToFullscreenDesktop) or name:match(AXExitToDesktop) or name
+    return name:match(AXExitToFullscreenDesktop) or name:match(AXExitToDesktop) or name
 end
 
 -- now onto the rest of the local functions
 local _dockElement
 local getDockElement = function()
-	-- if the Dock is killed for some reason, its element will be invalid
-	if not (_dockElement and _dockElement:isValid()) then
-		_dockElement = axuielement.applicationElement(application("Dock"))
-	end
-	return _dockElement
+    -- if the Dock is killed for some reason, its element will be invalid
+    if not (_dockElement and _dockElement:isValid()) then
+        _dockElement = axuielement.applicationElement(application("Dock"))
+    end
+    return _dockElement
 end
 
 local _missionControlGroup
 local getMissionControlGroup = function()
-	if not (_missionControlGroup and _missionControlGroup:isValid()) then
-		_missionControlGroup = nil
-		local dockElement = getDockElement()
-		for _, v in ipairs(dockElement) do
-			if v.AXIdentifier == "mc" then
-				_missionControlGroup = v
-				break
-			end
-		end
-	end
-	return _missionControlGroup
+    if not (_missionControlGroup and _missionControlGroup:isValid()) then
+        _missionControlGroup = nil
+        local dockElement = getDockElement()
+        for _,v in ipairs(dockElement) do
+            if v.AXIdentifier == "mc" then
+                _missionControlGroup = v
+                break
+            end
+        end
+    end
+    return _missionControlGroup
 end
 
 local openMissionControl = function()
-	local missionControlGroup = getMissionControlGroup()
-	if not missionControlGroup then
-		module.toggleMissionControl()
-	end
+    local missionControlGroup = getMissionControlGroup()
+    if not missionControlGroup then module.toggleMissionControl() end
 end
 
 local closeMissionControl = function()
-	local missionControlGroup = getMissionControlGroup()
-	if missionControlGroup then
-		module.toggleMissionControl()
-	end
+    local missionControlGroup = getMissionControlGroup()
+    if missionControlGroup then module.toggleMissionControl() end
 end
 
 local findSpacesSubgroup = function(targetIdentifier, screenID)
-	local missionControlGroup, initialTime = nil, os.time()
-	while not missionControlGroup and (os.time() - initialTime) < 2 do
-		missionControlGroup = getMissionControlGroup()
-	end
-	if not missionControlGroup then
-		return nil, "unable to get Mission Control data from the Dock"
-	end
+    local missionControlGroup, initialTime = nil, os.time()
+    while not missionControlGroup and (os.time() - initialTime) < 2 do
+        missionControlGroup = getMissionControlGroup()
+    end
+    if not missionControlGroup then
+        return nil, "unable to get Mission Control data from the Dock"
+    end
 
-	local mcChildren = missionControlGroup:attributeValue("AXChildren") or {}
-	local mcDisplay = table.remove(mcChildren)
-	while mcDisplay do
-		if mcDisplay.AXIdentifier == "mc.display" and mcDisplay.AXDisplayID == screenID then
-			break
-		end
-		mcDisplay = table.remove(mcChildren)
-	end
-	if not mcDisplay then
-		return nil, "no display with specified id found"
-	end
+    local mcChildren = missionControlGroup:attributeValue("AXChildren") or {}
+    local mcDisplay = table.remove(mcChildren)
+    while mcDisplay do
+        if mcDisplay.AXIdentifier == "mc.display" and mcDisplay.AXDisplayID == screenID then
+            break
+        end
+        mcDisplay = table.remove(mcChildren)
+    end
+    if not mcDisplay then
+        return nil, "no display with specified id found"
+    end
 
-	local mcDisplayChildren = mcDisplay:attributeValue("AXChildren") or {}
-	local mcSpaces = table.remove(mcDisplayChildren)
-	while mcSpaces do
-		if mcSpaces.AXIdentifier == "mc.spaces" then
-			break
-		end
-		mcSpaces = table.remove(mcDisplayChildren)
-	end
-	if not mcSpaces then
-		return nil, "unable to locate mc.spaces group for display"
-	end
+    local mcDisplayChildren = mcDisplay:attributeValue("AXChildren") or {}
+    local mcSpaces = table.remove(mcDisplayChildren)
+    while mcSpaces do
+        if mcSpaces.AXIdentifier == "mc.spaces" then
+            break
+        end
+        mcSpaces = table.remove(mcDisplayChildren)
+    end
+    if not mcSpaces then
+        return nil, "unable to locate mc.spaces group for display"
+    end
 
-	local mcSpacesChildren = mcSpaces:attributeValue("AXChildren") or {}
-	local targetChild = table.remove(mcSpacesChildren)
-	while targetChild do
-		if targetChild.AXIdentifier == targetIdentifier then
-			break
-		end
-		targetChild = table.remove(mcSpacesChildren)
-	end
-	if not targetChild then
-		return nil, string.format("unable to find target %s for display", targetIdentifier)
-	end
-	return targetChild
+    local mcSpacesChildren = mcSpaces:attributeValue("AXChildren") or {}
+    local targetChild = table.remove(mcSpacesChildren)
+    while targetChild do
+        if targetChild.AXIdentifier == targetIdentifier then break end
+        targetChild = table.remove(mcSpacesChildren)
+    end
+    if not targetChild then
+        return nil, string.format("unable to find target %s for display", targetIdentifier)
+    end
+    return targetChild
 end
 
 local waitForMissionControl = function()
-	-- delay to make sure Mission Control has stabilized
-	local time = timer.secondsSinceEpoch()
-	while timer.secondsSinceEpoch() - time < module.MCwaitTime do
-		-- twiddle thumbs, calculate more digits of pi, whatever floats your boat...
-	end
+    -- delay to make sure Mission Control has stabilized
+    local time = timer.secondsSinceEpoch()
+    while timer.secondsSinceEpoch() - time < module.MCwaitTime do
+        -- twiddle thumbs, calculate more digits of pi, whatever floats your boat...
+    end
 end
 
 -- Public interface ------------------------------------------------------
@@ -225,29 +213,29 @@ end
 ---    * Note that the `hs.axuielement` objects within the table returned will be invalid by the time you can examine them -- this is why the attributes and values will also be contained in the resulting tree.
 ---    * Example usage: `hs.spaces.data_missionControlAXUIElementData(function(results) hs.console.clearConsole() ; print(hs.inspect(results)) end)`
 module.data_missionControlAXUIElementData = function(callback)
-	assert(
-		type(callback) == "nil" or type(callback) == "function" or (getmetatable(callback) or {}).__call,
-		"callback must be nil or a function"
-	)
+    assert(
+        type(callback) == "nil" or type(callback) == "function" or (getmetatable(callback) or {}).__call,
+        "callback must be nil or a function"
+    )
 
-	openMissionControl()
-	local missionControlGroup, initialTime = nil, os.time()
-	while not missionControlGroup and (os.time() - initialTime) < 2 do
-		missionControlGroup = getMissionControlGroup()
-	end
-	if not missionControlGroup then
-		return nil, "unable to get Mission Control data from the Dock"
-	end
+    openMissionControl()
+    local missionControlGroup, initialTime = nil, os.time()
+    while not missionControlGroup and (os.time() - initialTime) < 2 do
+        missionControlGroup = getMissionControlGroup()
+    end
+    if not missionControlGroup then
+        return nil, "unable to get Mission Control data from the Dock"
+    end
 
-	-- delay to make sure Mission Control has stabilized
-	waitForMissionControl()
+    -- delay to make sure Mission Control has stabilized
+    waitForMissionControl()
 
-	local tree -- luacheck:ignore
-	tree = missionControlGroup:buildTree(function(_, results)
-		tree = nil
-		closeMissionControl()
-		callback(results)
-	end)
+    local tree -- luacheck:ignore
+    tree = missionControlGroup:buildTree(function(_, results)
+        tree = nil
+        closeMissionControl()
+        callback(results)
+    end)
 end
 
 --- hs.spaces.MCwaitTime
@@ -273,9 +261,9 @@ module.MCwaitTime = settings.get(SETTINGS_TAG .. "_MCwaitTime") or 0.3
 --- Notes:
 ---  * this function uses the `hs.settings` module to store the default time in the key "hs_spaces_MCwaitTime".
 module.setDefaultMCwaitTime = function(qt)
-	qt = qt or module.MCwaitTime
-	assert(type(qt) == "number" and qt > 0, "default wait time must be a number greater than 0")
-	settings.set(SETTINGS_TAG .. "_MCwaitTime", qt)
+    qt = qt or module.MCwaitTime
+    assert(type(qt) == "number" and qt > 0, "default wait time must be a number greater than 0")
+    settings.set(SETTINGS_TAG .. "_MCwaitTime", qt)
 end
 
 --- hs.spaces.toggleShowDesktop() -> None
@@ -290,9 +278,7 @@ end
 ---
 --- Notes:
 ---  * this is the same functionality as provided by the System Preferences -> Mission Control -> Hot Corners... -> Desktop setting, the Show Desktop touchbar icon, or the Show Desktop trackpad swipe gesture (Spread with thumb and three fingers).
-module.toggleShowDesktop = function()
-	module._coreDesktopNotification("com.apple.showdesktop.awake")
-end
+module.toggleShowDesktop = function() module._coreDesktopNotification("com.apple.showdesktop.awake") end
 
 --- hs.spaces.toggleMissionControl() -> None
 --- Function
@@ -306,9 +292,7 @@ end
 ---
 --- Notes:
 ---  * this is the same functionality as provided by the System Preferences -> Mission Control -> Hot Corners... -> Mission Control setting, the Mission Control touchbar icon, or the Mission Control trackpad swipe gesture (3 or 4 fingers up).
-module.toggleMissionControl = function()
-	module._coreDesktopNotification("com.apple.expose.awake")
-end
+module.toggleMissionControl = function() module._coreDesktopNotification("com.apple.expose.awake") end
 
 --- hs.spaces.toggleAppExpose() -> None
 --- Function
@@ -322,9 +306,7 @@ end
 ---
 --- Notes:
 ---  * this is the same functionality as provided by the System Preferences -> Mission Control -> Hot Corners... -> Application Windows setting or the App Exposé trackpad swipe gesture (3 or 4 fingers down).
-module.toggleAppExpose = function()
-	module._coreDesktopNotification("com.apple.expose.front.awake")
-end
+module.toggleAppExpose = function() module._coreDesktopNotification("com.apple.expose.front.awake") end
 
 --- hs.spaces.toggleLaunchPad() -> None
 --- Function
@@ -338,9 +320,7 @@ end
 ---
 --- Notes:
 ---  * this is the same functionality as provided by the System Preferences -> Mission Control -> Hot Corners... -> Launch Pad setting, the Launch Pad touchbar icon, or the Launch Pad trackpad swipe gesture (Pinch with thumb and three fingers).
-module.toggleLaunchPad = function()
-	module._coreDesktopNotification("com.apple.launchpad.toggle")
-end
+module.toggleLaunchPad = function() module._coreDesktopNotification("com.apple.launchpad.toggle") end
 
 --- hs.spaces.openMissionControl() -> None
 --- Function
@@ -387,62 +367,56 @@ module.closeMissionControl = closeMissionControl
 --- Notes:
 ---  * the table returned has its __tostring metamethod set to `hs.inspect` to simplify inspecting the results when using the Hammerspoon Console.
 module.spacesForScreen = function(...)
-	local args, screenID = { ... }, nil
+    local args, screenID = { ... }, nil
 
-	assert(#args < 2, "expected no more than 1 argument")
-	if #args > 0 then
-		screenID = args[1]
-	end
-	if screenID == nil then
-		screenID = screen.mainScreen():getUUID()
-	elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
-		screenID = screenID:getUUID()
-	elseif math.type(screenID) == "integer" then
-		for _, v in ipairs(screen.allScreens()) do
-			if v:id() == screenID then
-				screenID = v:getUUID()
-				break
-			end
-		end
-		if math.type(screenID) == "integer" then
-			error("not a valid screen ID")
-		end
-	elseif type(screenID) == "string" then
-		if screenID:lower() == "main" then
-			screenID = screen.mainScreen():getUUID()
-		elseif screenID:lower() == "primary" then
-			screenID = screen.primaryScreen():getUUID()
-		end
-	end
+    assert(#args < 2, "expected no more than 1 argument")
+    if #args > 0 then screenID = args[1] end
+    if screenID == nil then
+        screenID = screen.mainScreen():getUUID()
+    elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
+        screenID = screenID:getUUID()
+    elseif math.type(screenID) == "integer" then
+        for _,v in ipairs(screen.allScreens()) do
+            if v:id() == screenID then
+                screenID = v:getUUID()
+                break
+            end
+        end
+        if math.type(screenID) == "integer" then error("not a valid screen ID") end
+    elseif type(screenID) == "string" then
+        if screenID:lower() == "main" then
+            screenID = screen.mainScreen():getUUID()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():getUUID()
+        end
+    end
 
-	if not (type(screenID) == "string" and #screenID == 36) then
-		error("screen must be specified as UUID, screen ID, or hs.screen object")
-	end
+    if not (type(screenID) == "string" and #screenID == 36) then
+        error("screen must be specified as UUID, screen ID, or hs.screen object")
+    end
 
-	local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
-	if not screensHaveSeparateSpaces then
-		for _, v in ipairs(screen.allScreens()) do
-			if screenID == v:getUUID() then
-				screenID = "Main"
-				break
-			end
-		end
-	end
+    local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
+    if not screensHaveSeparateSpaces then
+        for _,v in ipairs(screen.allScreens()) do
+            if screenID == v:getUUID() then
+                screenID = "Main"
+                break
+            end
+        end
+    end
 
-	local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
-	if managedDisplayData == nil then
-		return nil, errMsg
-	end
-	for _, managedDisplay in ipairs(managedDisplayData) do
-		if managedDisplay["Display Identifier"] == screenID then
-			local results = {}
-			for _, space in ipairs(managedDisplay.Spaces) do
-				table.insert(results, space.ManagedSpaceID)
-			end
-			return setmetatable(results, { __tostring = inspect })
-		end
-	end
-	return nil, "screen not found in managed displays"
+    local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
+    if managedDisplayData == nil then return nil, errMsg end
+    for _, managedDisplay in ipairs(managedDisplayData) do
+        if managedDisplay["Display Identifier"] == screenID then
+            local results = {}
+            for _, space in ipairs(managedDisplay.Spaces) do
+                table.insert(results, space.ManagedSpaceID)
+            end
+            return setmetatable(results, { __tostring = inspect })
+        end
+    end
+    return nil, "screen not found in managed displays"
 end
 
 --- hs.spaces.allSpaces() -> table | nil, error
@@ -458,20 +432,20 @@ end
 --- Notes:
 ---  * the table returned has its __tostring metamethod set to `hs.inspect` to simplify inspecting the results when using the Hammerspoon Console.
 module.allSpaces = function(...)
-	local args = { ... }
-	assert(#args == 0, "expected no arguments")
-	local results = {}
-	for _, v in ipairs(screen.allScreens()) do
-		local screenID = v:getUUID()
-		if screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
-			local spacesForScreen, errMsg = module.spacesForScreen(screenID)
-			if not spacesForScreen then
-				return nil, string.format("%s for %s", errMsg, screenID)
-			end
-			results[screenID] = spacesForScreen
-		end
-	end
-	return setmetatable(results, { __tostring = inspect })
+    local args = { ... }
+    assert(#args == 0, "expected no arguments")
+    local results = {}
+    for _, v in ipairs(screen.allScreens()) do
+        local screenID = v:getUUID()
+        if screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
+            local spacesForScreen, errMsg = module.spacesForScreen(screenID)
+            if not spacesForScreen then
+                return nil, string.format("%s for %s", errMsg, screenID)
+            end
+            results[screenID] = spacesForScreen
+        end
+    end
+    return setmetatable(results, { __tostring = inspect })
 end
 
 --- hs.spaces.activeSpaceOnScreen([screen]) -> integer | nil, error
@@ -484,63 +458,57 @@ end
 --- Returns:
 ---  * an integer specifying the ID of the space displayed, or nil and an error message if an error occurs.
 module.activeSpaceOnScreen = function(...)
-	local args, screenID = { ... }, nil
+    local args, screenID = { ... }, nil
 
-	assert(#args < 2, "expected no more than 1 argument")
-	if #args > 0 then
-		screenID = args[1]
-	end
-	if screenID == nil then
-		screenID = screen.mainScreen():getUUID()
-	elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
-		screenID = screenID:getUUID()
-	elseif math.type(screenID) == "integer" then
-		for _, v in ipairs(screen.allScreens()) do
-			if v:id() == screenID then
-				screenID = v:getUUID()
-				break
-			end
-		end
-		if math.type(screenID) == "integer" then
-			error("not a valid screen ID")
-		end
-	elseif type(screenID) == "string" then
-		if screenID:lower() == "main" then
-			screenID = screen.mainScreen():getUUID()
-		elseif screenID:lower() == "primary" then
-			screenID = screen.primaryScreen():getUUID()
-		end
-	end
+    assert(#args < 2, "expected no more than 1 argument")
+    if #args > 0 then screenID = args[1] end
+    if screenID == nil then
+        screenID = screen.mainScreen():getUUID()
+    elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
+        screenID = screenID:getUUID()
+    elseif math.type(screenID) == "integer" then
+        for _,v in ipairs(screen.allScreens()) do
+            if v:id() == screenID then
+                screenID = v:getUUID()
+                break
+            end
+        end
+        if math.type(screenID) == "integer" then error("not a valid screen ID") end
+    elseif type(screenID) == "string" then
+        if screenID:lower() == "main" then
+            screenID = screen.mainScreen():getUUID()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():getUUID()
+        end
+    end
 
-	if not (type(screenID) == "string" and #screenID == 36) then
-		error("screen must be specified as UUID, screen ID, or hs.screen object")
-	end
+    if not (type(screenID) == "string" and #screenID == 36) then
+        error("screen must be specified as UUID, screen ID, or hs.screen object")
+    end
 
-	local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
-	if not screensHaveSeparateSpaces then
-		for _, v in ipairs(screen.allScreens()) do
-			if screenID == v:getUUID() then
-				screenID = "Main"
-				break
-			end
-		end
-	end
+    local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
+    if not screensHaveSeparateSpaces then
+        for _,v in ipairs(screen.allScreens()) do
+            if screenID == v:getUUID() then
+                screenID = "Main"
+                break
+            end
+        end
+    end
 
-	local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
-	if managedDisplayData == nil then
-		return nil, errMsg
-	end
-	for _, managedDisplay in ipairs(managedDisplayData) do
-		if managedDisplay["Display Identifier"] == screenID then
-			for _, space in ipairs(managedDisplay.Spaces) do
-				if space.ManagedSpaceID == managedDisplay["Current Space"].ManagedSpaceID then
-					return space.ManagedSpaceID
-				end
-			end
-			return nil, "space not found in specified display"
-		end
-	end
-	return nil, "screen not found in managed displays"
+    local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
+    if managedDisplayData == nil then return nil, errMsg end
+    for _, managedDisplay in ipairs(managedDisplayData) do
+        if managedDisplay["Display Identifier"] == screenID then
+            for _, space in ipairs(managedDisplay.Spaces) do
+                if space.ManagedSpaceID == managedDisplay["Current Space"].ManagedSpaceID then
+                    return space.ManagedSpaceID
+                end
+            end
+            return nil, "space not found in specified display"
+        end
+    end
+    return nil, "screen not found in managed displays"
 end
 
 --- hs.spaces.activeSpaces() -> table | nil, error
@@ -556,20 +524,20 @@ end
 --- Notes:
 ---  * the table returned has its __tostring metamethod set to `hs.inspect` to simplify inspecting the results when using the Hammerspoon Console.
 module.activeSpaces = function(...)
-	local args = { ... }
-	assert(#args == 0, "expected no arguments")
-	local results = {}
-	for _, v in ipairs(screen.allScreens()) do
-		local screenID = v:getUUID()
-		if screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
-			local activeSpaceID, activeSpaceName = module.activeSpaceOnScreen(screenID)
-			if not activeSpaceID then
-				return nil, string.format("%s for %s", activeSpaceName, screenID)
-			end
-			results[screenID] = activeSpaceID
-		end
-	end
-	return setmetatable(results, { __tostring = inspect })
+    local args = { ... }
+    assert(#args == 0, "expected no arguments")
+    local results = {}
+    for _, v in ipairs(screen.allScreens()) do
+        local screenID = v:getUUID()
+        if screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
+            local activeSpaceID, activeSpaceName = module.activeSpaceOnScreen(screenID)
+            if not activeSpaceID then
+                return nil, string.format("%s for %s", activeSpaceName, screenID)
+            end
+            results[screenID] = activeSpaceID
+        end
+    end
+    return setmetatable(results, { __tostring = inspect })
 end
 
 --- hs.spaces.spaceDisplay(spaceID) -> string | nil, error
@@ -585,28 +553,24 @@ end
 --- Notes:
 ---  * the space does not have to be currently active (visible) to determine which screen the space belongs to.
 module.spaceDisplay = function(...)
-	local args = { ... }
-	assert(#args == 1, "expected 1 argument")
-	local spaceID = args[1]
-	assert(math.type(spaceID) == "integer", "space id must be an integer")
+    local args = { ... }
+    assert(#args == 1, "expected 1 argument")
+    local spaceID = args[1]
+    assert(math.type(spaceID) == "integer", "space id must be an integer")
 
-	local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
-	if managedDisplayData == nil then
-		return nil, errMsg
-	end
-	for _, managedDisplay in ipairs(managedDisplayData) do
-		for _, space in ipairs(managedDisplay.Spaces) do
-			if space.ManagedSpaceID == spaceID then
-				local answer = managedDisplay["Display Identifier"]
-				if answer == "Main" then
-					answer = screen.mainScreen():getUUID()
-				end
+    local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
+    if managedDisplayData == nil then return nil, errMsg end
+    for _, managedDisplay in ipairs(managedDisplayData) do
+        for _, space in ipairs(managedDisplay.Spaces) do
+            if space.ManagedSpaceID == spaceID then
+                local answer = managedDisplay["Display Identifier"]
+                if answer == "Main" then answer = screen.mainScreen():getUUID() end
 
-				return answer
-			end
-		end
-	end
-	return nil, "space not found in managed displays"
+                return answer
+            end
+        end
+    end
+    return nil, "space not found in managed displays"
 end
 
 --- hs.spaces.spaceType(spaceID) -> string | nil, error
@@ -619,78 +583,76 @@ end
 --- Returns:
 ---  * the string "user" if the space is a regular user space, or "fullscreen" if the space is a fullscreen or tiled window pair. Returns nil and an error message if the space does not refer to a valid managed space.
 module.spaceType = function(...)
-	local args = { ... }
-	assert(#args == 1, "expected 1 argument")
-	local spaceID = args[1]
-	assert(math.type(spaceID) == "integer", "space id must be an integer")
+    local args = { ... }
+    assert(#args == 1, "expected 1 argument")
+    local spaceID = args[1]
+    assert(math.type(spaceID) == "integer", "space id must be an integer")
 
-	local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
-	if managedDisplayData == nil then
-		return nil, errMsg
-	end
-	for _, managedDisplay in ipairs(managedDisplayData) do
-		for _, space in ipairs(managedDisplay.Spaces) do
-			if space.ManagedSpaceID == spaceID then
-				if space.type == 0 then
-					return "user"
-				elseif space.type == 4 then
-					return "fullscreen"
-				else
-					return nil, string.format("unknown space type %d", space.type)
-				end
-			end
-		end
-	end
-	return nil, "space not found in managed displays"
+    local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
+    if managedDisplayData == nil then return nil, errMsg end
+    for _, managedDisplay in ipairs(managedDisplayData) do
+        for _, space in ipairs(managedDisplay.Spaces) do
+            if space.ManagedSpaceID == spaceID then
+                if space.type == 0 then
+                    return "user"
+                elseif space.type == 4 then
+                    return "fullscreen"
+                else
+                    return nil, string.format("unknown space type %d", space.type)
+                end
+            end
+        end
+    end
+    return nil, "space not found in managed displays"
 end
 
 -- documented in libspaces.m where the core logic of the function resides
 local _moveWindowToSpace = module.moveWindowToSpace
 module.moveWindowToSpace = function(...)
-	local args = { ... }
-	if #args > 0 then
-		if getmetatable(args[1]) == hs.getObjectMetatable("hs.window") then
-			args[1] = args[1]:id()
-		end
-	end
-	return _moveWindowToSpace(table.unpack(args))
+    local args = { ... }
+    if #args > 0 then
+        if getmetatable(args[1]) == hs.getObjectMetatable("hs.window") then
+            args[1] = args[1]:id()
+        end
+    end
+    return _moveWindowToSpace(table.unpack(args))
 end
 
 -- documented in libspaces.m where the core logic of the function resides
 local _windowSpaces = module.windowSpaces
 module.windowSpaces = function(...)
-	local args = { ... }
-	if #args > 0 and getmetatable(args[1]) == hs.getObjectMetatable("hs.window") then
-		args[1] = args[1]:id()
-	end
-	return _windowSpaces(table.unpack(args))
+    local args = { ... }
+    if #args > 0 and getmetatable(args[1]) == hs.getObjectMetatable("hs.window") then
+        args[1] = args[1]:id()
+    end
+    return _windowSpaces(table.unpack(args))
 end
 
 -- documented in libspaces.m where the core logic of the function resides
 local _windowsForSpace = module.windowsForSpace
 module.windowsForSpace = function(...)
-	local results = { _windowsForSpace(...) }
-	local actual = results[1]
-	if actual then
-		-- prune known Hammerspoon "non-windows" (e.g. canvas)
-		local HS = application.applicationsForBundleID(hs.processInfo.bundleID)[1]
-		for _, vElement in ipairs(axuielement.applicationElement(HS)) do
-			if vElement.AXRole == "AXWindow" and vElement.AXSubrole:match("^AXUnknown") then
-				local asHSWindow = vElement:asHSWindow()
-				if asHSWindow then
-					local badID = asHSWindow:id()
-					for idx, vID in ipairs(actual) do
-						if vID == badID then
-							table.remove(actual, idx)
-							break
-						end
-					end
-				end
-			end
-		end
-	end
+    local results = { _windowsForSpace(...) }
+    local actual = results[1]
+    if actual then
+        -- prune known Hammerspoon "non-windows" (e.g. canvas)
+        local HS = application.applicationsForBundleID(hs.processInfo.bundleID)[1]
+        for _, vElement in ipairs(axuielement.applicationElement(HS)) do
+            if vElement.AXRole == "AXWindow" and vElement.AXSubrole:match("^AXUnknown") then
+                local asHSWindow = vElement:asHSWindow()
+                if asHSWindow then
+                    local badID = asHSWindow:id()
+                    for idx, vID in ipairs(actual) do
+                        if vID == badID then
+                            table.remove(actual, idx)
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
 
-	return table.unpack(results)
+    return table.unpack(results)
 end
 
 --- hs.spaces.missionControlSpaceNames([closeMC]) -> table | nil, error
@@ -716,41 +678,35 @@ end
 ---      * `hs.inspect(hs.host.locale.details())`
 ---      * `hs.spaces.screensHaveSeparateSpaces()`
 module.missionControlSpaceNames = function(...)
-	local args, closeMC = { ... }, true
-	assert(#args < 2, "expected no more than 1 arguments")
-	if #args == 1 then
-		closeMC = args[1]
-	end
-	assert(type(closeMC) == "boolean", "close flag must be boolean")
+    local args, closeMC = { ... }, true
+    assert(#args < 2, "expected no more than 1 arguments")
+    if #args == 1 then closeMC = args[1] end
+    assert(type(closeMC) == "boolean", "close flag must be boolean")
 
-	local results = {}
-	openMissionControl()
+    local results = {}
+    openMissionControl()
 
-	for _, vScreen in ipairs(screen.allScreens()) do
-		local screenUUID = vScreen:getUUID()
-		local screenID = vScreen:id()
-		if screenUUID and screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
-			local spacesForDisplay, mapping = module.spacesForScreen(screenUUID), {}
-			local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
-			if not mcSpacesList then
-				if closeMC then
-					closeMissionControl()
-				end
-				return nil, errMsg
-			end
+    for _, vScreen in ipairs(screen.allScreens()) do
+        local screenUUID = vScreen:getUUID()
+        local screenID   = vScreen:id()
+        if screenUUID and screenID then -- allScreens may still report a userdata for a screen that has been disconnected for a short while
+            local spacesForDisplay, mapping = module.spacesForScreen(screenUUID), {}
+            local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
+            if not mcSpacesList then
+                if closeMC then closeMissionControl() end
+                return nil, errMsg
+            end
 
-			for idx, child in ipairs(mcSpacesList) do
-				mapping[spacesForDisplay[idx]] = spacesNameFromButtonName(child.AXDescription)
-			end
+            for idx, child in ipairs(mcSpacesList) do
+                mapping[spacesForDisplay[idx]] = spacesNameFromButtonName(child.AXDescription)
+            end
 
-			results[screenUUID] = mapping
-		end
-	end
+            results[screenUUID] = mapping
+        end
+    end
 
-	if closeMC then
-		closeMissionControl()
-	end
-	return setmetatable(results, { __tostring = inspect })
+    if closeMC then closeMissionControl() end
+    return setmetatable(results, { __tostring = inspect })
 end
 
 --- hs.spaces.addSpaceToScreen([screen], [closeMC]) -> true | nil, errMsg
@@ -768,58 +724,54 @@ end
 ---  * This function creates a new space by opening up the Mission Control display and then programmatically invoking the button to add a new space. This is unavoidable. You can  minimize, but not entirely remove, the visual shift to the Mission Control display by by enabling "Reduce motion" in System Preferences -> Accessibility -> Display.
 ---  * If you intend to perform multiple actions which require the Mission Control display (([hs.spaces.missionControlSpaceNames](#missionControlSpaceNames), [hs.spaces.addSpaceToScreen](#addSpaceToScreen), [hs.spaces.removeSpace](#removeSpace), or [hs.spaces.gotoSpace](#gotoSpace)), you can pass in `false` as the final argument to prevent the automatic closure of the Mission Control display -- this will reduce the visual side-affects to one transition instead of many.
 module.addSpaceToScreen = function(...)
-	local args, screenID, closeMC = { ... }, nil, true
-	assert(#args < 3, "expected no more than 2 arguments")
-	if #args == 1 then
-		if type(args[1]) ~= "boolean" then
-			screenID = args[1]
-		else
-			closeMC = args[1]
-		end
-	elseif #args > 1 then
-		screenID, closeMC = table.unpack(args)
-	end
-	if screenID == nil then
-		screenID = screen.mainScreen():id()
-	elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
-		screenID = screenID:id()
-	elseif type(screenID) == "string" then
-		if #screenID == 36 then
-			for _, v in ipairs(screen.allScreens()) do
-				if v:getUUID() == screenID then
-					screenID = v:id()
-					break
-				end
-			end
-		elseif screenID:lower() == "main" then
-			screenID = screen.mainScreen():id()
-		elseif screenID:lower() == "primary" then
-			screenID = screen.primaryScreen():id()
-		end
-	end
+    local args, screenID, closeMC = { ... }, nil, true
+    assert(#args < 3, "expected no more than 2 arguments")
+    if #args == 1 then
+        if type(args[1]) ~= "boolean" then
+            screenID = args[1]
+        else
+            closeMC = args[1]
+        end
+    elseif #args > 1 then
+        screenID, closeMC = table.unpack(args)
+    end
+    if screenID == nil then
+        screenID = screen.mainScreen():id()
+    elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
+        screenID = screenID:id()
+    elseif type(screenID) == "string" then
+        if #screenID == 36 then
+            for _,v in ipairs(screen.allScreens()) do
+                if v:getUUID() == screenID then
+                    screenID = v:id()
+                    break
+                end
+            end
+        elseif screenID:lower() == "main" then
+            screenID = screen.mainScreen():id()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():id()
+        end
+    end
 
-	assert(math.type(screenID) == "integer", "screen id must be an integer")
-	assert(type(closeMC) == "boolean", "close flag must be boolean")
+    assert(math.type(screenID) == "integer", "screen id must be an integer")
+    assert(type(closeMC) == "boolean", "close flag must be boolean")
 
-	openMissionControl()
-	local mcSpacesAdd, errMsg = findSpacesSubgroup("mc.spaces.add", screenID)
-	if not mcSpacesAdd then
-		if closeMC then
-			closeMissionControl()
-		end
-		return nil, errMsg
-	end
+    openMissionControl()
+    local mcSpacesAdd, errMsg = findSpacesSubgroup("mc.spaces.add", screenID)
+    if not mcSpacesAdd then
+        if closeMC then closeMissionControl() end
+        return nil, errMsg
+    end
 
-	local status, errMsg2 = mcSpacesAdd:doAXPress()
+    local status, errMsg2 = mcSpacesAdd:doAXPress()
 
-	if closeMC then
-		closeMissionControl()
-	end
-	if status then
-		return true
-	else
-		return nil, errMsg2
-	end
+    if closeMC then closeMissionControl() end
+    if status then
+        return true
+    else
+        return nil, errMsg2
+    end
 end
 
 --- hs.spaces.gotoSpace(spaceID) -> true | nil, errMsg
@@ -837,49 +789,50 @@ end
 ---  * The action of changing to a new space automatically closes the Mission Control display, so unlike ([hs.spaces.missionControlSpaceNames](#missionControlSpaceNames), [hs.spaces.addSpaceToScreen](#addSpaceToScreen), and [hs.spaces.removeSpace](#removeSpace), there is no flag you can specify to leave Mission Control visible. When possible, you should generally invoke this function last if you are performing multiple actions and want to minimize the amount of time the Mission Control display is visible and reduce the visual side affects.
 ---  * The Accessibility elements required to change to a space are not created until the Mission Control display is fully visible. Because of this, there is a built in delay when invoking this function that can be adjusted by changing the value of [hs.spaces.MCwaitTime](#MCwaitTime).
 module.gotoSpace = function(...)
-	local args = { ... }
-	assert(#args == 1, "expected 1 argument")
-	local spaceID = args[1]
-	assert(math.type(spaceID) == "integer", "space id must be an integer")
+    local args = { ... }
+    assert(#args == 1, "expected 1 argument")
+    local spaceID = args[1]
+    assert(math.type(spaceID) == "integer", "space id must be an integer")
 
-	local screenUUID, screenID = module.spaceDisplay(spaceID), nil
-	if not screenUUID then
-		return nil, "space not found in managed displays"
-	end
-	for _, vScreen in ipairs(screen.allScreens()) do
-		if screenUUID == vScreen:getUUID() then
-			screenID = vScreen:id()
-			break
-		end
-	end
+    local screenUUID, screenID = module.spaceDisplay(spaceID), nil
+    if not screenUUID then
+        return nil, "space not found in managed displays"
+    end
+    for _, vScreen in ipairs(screen.allScreens()) do
+        if screenUUID == vScreen:getUUID() then
+            screenID = vScreen:id()
+            break
+        end
+    end
 
-	local count
-	for i, vSpace in ipairs(module.spacesForScreen(screenUUID)) do
-		if spaceID == vSpace then
-			count = i
-			break
-		end
-	end
+    local count
+    for i, vSpace in ipairs(module.spacesForScreen(screenUUID)) do
+        if spaceID == vSpace then
+            count = i
+            break
+        end
+    end
 
-	openMissionControl()
-	local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
-	if not mcSpacesList then
-		closeMissionControl()
-		return nil, errMsg
-	end
+    openMissionControl()
+    local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
+    if not mcSpacesList then
+        closeMissionControl()
+        return nil, errMsg
+    end
 
-	-- delay to make sure Mission Control has stabilized
-	waitForMissionControl()
+    -- delay to make sure Mission Control has stabilized
+    waitForMissionControl()
 
-	local child = mcSpacesList[count]
-	local status, errMsg2 = child:performAction("AXPress")
-	if status then
-		return true
-	else
-		closeMissionControl()
-		return nil, errMsg2
-	end
+    local child = mcSpacesList[count]
+    local status, errMsg2 = child:performAction("AXPress")
+    if status then
+        return true
+    else
+        closeMissionControl()
+        return nil, errMsg2
+    end
 end
+
 
 --- hs.spaces.removeSpace(spaceID, [closeMC]) -> true | nil, errMsg
 --- Function
@@ -899,80 +852,72 @@ end
 ---  * If you intend to perform multiple actions which require the Mission Control display (([hs.spaces.missionControlSpaceNames](#missionControlSpaceNames), [hs.spaces.addSpaceToScreen](#addSpaceToScreen), [hs.spaces.removeSpace](#removeSpace), or [hs.spaces.gotoSpace](#gotoSpace)), you can pass in `false` as the final argument to prevent the automatic closure of the Mission Control display -- this will reduce the visual side-affects to one transition instead of many.
 ---  * The Accessibility elements required to change to a space are not created until the Mission Control display is fully visible. Because of this, there is a built in delay when invoking this function that can be adjusted by changing the value of [hs.spaces.MCwaitTime](#MCwaitTime).
 module.removeSpace = function(...)
-	local args, closeMC = { ... }, true
-	assert(#args > 0 and #args < 3, "expected between 1 and 2 arguments")
-	local spaceID = args[1]
-	if #args > 1 then
-		closeMC = args[2]
-	end
+    local args, closeMC = { ... }, true
+    assert(#args > 0 and #args < 3, "expected between 1 and 2 arguments")
+    local spaceID = args[1]
+    if #args > 1 then closeMC = args[2] end
 
-	assert(type(closeMC) == "boolean", "close flag must be boolean")
-	assert(math.type(spaceID) == "integer", "space id must be an integer")
+    assert(type(closeMC) == "boolean", "close flag must be boolean")
+    assert(math.type(spaceID) == "integer", "space id must be an integer")
 
-	local screenUUID, screenID = module.spaceDisplay(spaceID), nil
-	if not screenUUID then
-		return nil, "space not found in managed displays"
-	end
-	for _, vScreen in ipairs(screen.allScreens()) do
-		if screenUUID == vScreen:getUUID() then
-			screenID = vScreen:id()
-			break
-		end
-	end
+    local screenUUID, screenID = module.spaceDisplay(spaceID), nil
+    if not screenUUID then
+        return nil, "space not found in managed displays"
+    end
+    for _, vScreen in ipairs(screen.allScreens()) do
+        if screenUUID == vScreen:getUUID() then
+            screenID = vScreen:id()
+            break
+        end
+    end
 
-	local spacesOnScreen = module.spacesForScreen(screenUUID)
-	if module.spaceType(spaceID) == "user" then
-		local userCount = 0
-		for _, vSpace in ipairs(spacesOnScreen) do
-			if module.spaceType(vSpace) == "user" then
-				userCount = userCount + 1
-			end
-		end
-		if userCount == 1 then
-			return nil, "unable to remove the only user space on a screen"
-		end
+    local spacesOnScreen = module.spacesForScreen(screenUUID)
+    if module.spaceType(spaceID) == "user" then
+        local userCount = 0
+        for _, vSpace in ipairs(spacesOnScreen) do
+            if module.spaceType(vSpace) == "user" then userCount = userCount + 1 end
+        end
+        if userCount == 1 then
+            return nil, "unable to remove the only user space on a screen"
+        end
 
-		if module.activeSpaceOnScreen(screenID) == spaceID then
-			return nil, "cannot remove a currently active user space"
-		end
-	end
+        if module.activeSpaceOnScreen(screenID) == spaceID then
+            return nil, "cannot remove a currently active user space"
+        end
+    end
 
-	local count
-	for i, vSpace in ipairs(spacesOnScreen) do
-		if spaceID == vSpace then
-			count = i
-			break
-		end
-	end
+    local count
+    for i, vSpace in ipairs(spacesOnScreen) do
+        if spaceID == vSpace then
+            count = i
+            break
+        end
+    end
 
-	openMissionControl()
-	local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
-	if not mcSpacesList then
-		if closeMC then
-			closeMissionControl()
-		end
-		return nil, errMsg
-	end
+    openMissionControl()
+    local mcSpacesList, errMsg = findSpacesSubgroup("mc.spaces.list", screenID)
+    if not mcSpacesList then
+        if closeMC then closeMissionControl() end
+        return nil, errMsg
+    end
 
-	-- delay to make sure Mission Control has stabilized
-	waitForMissionControl()
+    -- delay to make sure Mission Control has stabilized
+    waitForMissionControl()
 
-	local child = mcSpacesList[count]
-	local status, errMsg2 = child:performAction("AXRemoveDesktop")
-	if closeMC then
-		closeMissionControl()
-	end
-	if status then
-		return true
-	else
-		return nil, errMsg2
-	end
+    local child = mcSpacesList[count]
+    local status, errMsg2 = child:performAction("AXRemoveDesktop")
+    if closeMC then closeMissionControl() end
+    if status then
+        return true
+    else
+        return nil, errMsg2
+    end
 end
 
 -- Return Module Object --------------------------------------------------
 
 return setmetatable(module, {
-	__gc = function(_)
-		host.locale.unregisterCallback(localeChange_identifier)
-	end,
+    __gc = function(_)
+        host.locale.unregisterCallback(localeChange_identifier)
+    end
 })
