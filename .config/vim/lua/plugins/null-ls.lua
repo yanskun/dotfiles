@@ -52,7 +52,12 @@ return function()
     null_ls.builtins.formatting.prettier.with({
       filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
     }),
-    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.stylua.with({
+      config = {
+        indent_type = "Spaces",
+        indent_width = 4,
+      },
+    }),
     null_ls.builtins.diagnostics.markuplint.with({
       filetypes = { "html", "vue", "pug" },
     }),
