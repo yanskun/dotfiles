@@ -209,6 +209,21 @@ function gcloud_prj_switch () {
 zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
 
+## tmux window switcher
+function tmux-window-switcher () {
+    local window="$(tmux list-windows -a -F '#S:#W' | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
+
+    if [ -n "$window" ]; then
+      session_name="${window%%:*}"
+      window_name="${window#*:}"
+
+      BUFFER="tmux switch-client -t $session_name && tmux select-window -t $window_name"
+    fi
+    zle accept-line
+}
+zle -N tmux-window-switcher
+bindkey '^w' tmux-window-switcher
+
 function tmuxpopup {
   local height='40%'
   local session=$(tmux display-message -p -F "#{session_name}")
