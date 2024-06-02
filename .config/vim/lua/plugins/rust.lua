@@ -1,7 +1,7 @@
 return function()
-  vim.cmd([[
+	vim.cmd([[
     syntax enable
     filetype plugin indent on
   ]])
-  vim.g.rustfmt_autosave = 1
+	vim.g.rustfmt_autosave = 1
 end

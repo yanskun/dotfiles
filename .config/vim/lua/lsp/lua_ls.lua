@@ -1,25 +1,21 @@
-if vim.fn.exepath('lua-language-server') ~= '' then
-  local util = require('libraries._set_lsp')
-  local runtime_path = vim.split(package.path, ';')
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
+if vim.fn.exepath("lua-language-server") ~= "" then
+	local util = require("libraries._set_lsp")
+	local runtime_path = vim.split(package.path, ";")
+	table.insert(runtime_path, "lua/?.lua")
+	table.insert(runtime_path, "lua/?/init.lua")
 
-  require 'lspconfig'['lua_ls'].setup {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim', 'require', 'hs' },
-        },
-      },
-    },
-    on_attach = util.on_attach,
-    capabilities = util.capabilities,
-    flags = util.flags,
-  }
+	require("lspconfig")["lua_ls"].setup({
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim", "require", "hs" },
+				},
+			},
+		},
+		on_attach = util.on_attach,
+		capabilities = util.capabilities,
+		flags = util.flags,
+	})
 else
-  vim.notify(
-    'brew install lua-language-server',
-    vim.log.levels.WARN,
-    { title = 'lua_ls' }
-  )
+	vim.notify("brew install lua-language-server", vim.log.levels.WARN, { title = "lua_ls" })
 end

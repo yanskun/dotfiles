@@ -53,6 +53,9 @@ return function()
 			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
 		}),
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.markuplint.with({
+			filetypes = { "html", "vue" },
+		}),
 	}
 
 	null_ls.setup({
