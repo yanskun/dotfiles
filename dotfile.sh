@@ -66,7 +66,9 @@ ln -f -s "$config_path"/yabai/yabairc "$XDG_CONFIG_HOME"/yabai/yabairc
 
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
-ln -f -s "${PWD}"/settings.json "$HOME"/Library/Application\ Support/Code/User
+ln -f -s "${PWD}"/vscode/settings.json "$HOME"/Library/Application\ Support/Code/User
+rm -f "${HOME}"/Library/Application\ Support/Code/User/keybindings.json
+ln -f -s "${PWD}"/vscode/keybindings.json "$HOME"/Library/Application\ Support/Code/User
 
 echo 'wallpaper'
 wallpaper set "${PWD}"/images/wallpaper.jpeg
