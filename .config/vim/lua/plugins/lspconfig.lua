@@ -2,6 +2,8 @@ return function()
   local utils = require("libraries._set_config")
   local conf_lsp = utils.conf_lsp
 
+  local default_config = require("lsp.default")
+
   vim.diagnostic.config({
     virtual_text = false,
   })
@@ -19,10 +21,32 @@ return function()
     ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Add buffer diagnostics to the location list" },
   })
 
-  local servers = require("lsp.servers")
+  local servers = {
+    "biome",
+    "cssls",
+    "denols",
+    "gopls",
+    "jsonls",
+    "lua_ls",
+    "pylsp",
+    "ruby_lsp",
+    "rust_analyzer",
+    "sqlls",
+    "svelte",
+    "tailwindcss",
+    "tflint",
+    "tsserver",
+    "volar",
+    "yamlls",
+    "zls",
+  }
 
   for _, lsp in ipairs(servers) do
-    conf_lsp(lsp)
+    if utils.lsp_file_exists(lsp) then
+      conf_lsp(lsp)
+    else
+      default_config(lsp)
+    end
   end
 
   vim.api.nvim_create_autocmd(
