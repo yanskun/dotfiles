@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd(
   { "BufNewFile", "BufRead" },
   {
     group = "fileTypeIndent",
-    pattern = "*.go",
+    pattern = "*.go, Makefile",
     command = [[ setlocal noexpandtab ]]
   }
 )
