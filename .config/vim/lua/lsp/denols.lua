@@ -8,7 +8,10 @@ if vim.fn.exepath("deno") ~= "" then
 
   lspconfig.denols.setup({
     cmd = { "deno", "lsp" },
-    root_dir = lspconfig.util.root_pattern("deno.json", "denops"),
+    root_dir = function(filename)
+      return lspconfig.util.root_pattern("deno.json", "denops")(filename)
+          and not lspconfig.util.root_pattern("package.json")(filename)
+    end,
     on_attach = util.on_attach,
     capabilities = util.capabilities,
     flags = util.flags,
