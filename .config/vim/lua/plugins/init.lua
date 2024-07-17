@@ -57,7 +57,7 @@ require("lazy").setup({
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",    -- required
       {
         "sindrets/diffview.nvim", -- optional - Diff integration
         config = conf("diffview"),
@@ -65,7 +65,7 @@ require("lazy").setup({
 
       -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua",           -- optional
+      "ibhagwan/fzf-lua",              -- optional
     },
     config = true,
   },
@@ -126,7 +126,7 @@ require("lazy").setup({
     "simonmclean/triptych.nvim",
     event = "VeryLazy",
     dependencies = {
-      "nvim-lua/plenary.nvim",    -- required
+      "nvim-lua/plenary.nvim",       -- required
       "nvim-tree/nvim-web-devicons", -- optional
     },
     config = conf("triptych"),
