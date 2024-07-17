@@ -97,6 +97,7 @@ require("lazy").setup({
   -- key mapping
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     config = function()
       require("which-key").setup()
     end,
