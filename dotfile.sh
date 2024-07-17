@@ -10,7 +10,6 @@ ln -f -s "${PWD}"/.gitconfig "${HOME}"/.gitconfig
 ln -f -s "${PWD}"/.gitignore_global "${HOME}"/.gitignore_global
 ln -f -s "${PWD}"/asdf/.asdfrc "${HOME}"/.asdfrc
 ln -f -s "$config_path"/neofetch/config.conf "$XDG_CONFIG_HOME"/neofetch/config.conf
-ln -f -s "${DOTDIR}"/.tool-versions "${HOME}"/.tool-versions
 
 echo 'starship'
 ln -f -s "$PWD"/.config/starship.toml "$XDG_CONFIG_HOME"/starship.toml
