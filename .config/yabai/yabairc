@@ -52,4 +52,6 @@ yabai -m rule --add app="^Alacritty$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
 yabai -m rule --add app="^LINE$" manage=off
 
+yabai -m rule --add app='(^System Preferences$|^システム設定$)' manage=off
+
 echo "yabai configuration loaded.."
