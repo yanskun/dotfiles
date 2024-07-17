@@ -56,7 +56,7 @@ return function()
       git_status = {
         symbols = {
           -- Change type
-          added = "✚",  -- or "✚", but this is redundant info if you use git_status_colors on the name
+          added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
           modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
           deleted = "✖", -- this can only be used in the git_status source
           renamed = "󰁕", -- this can only be used in the git_status source
@@ -162,7 +162,7 @@ return function()
         enabled = true, -- This will find and focus the file in the active buffer every
       },
       -- time the current file is changed while the tree is open.
-      group_empty_dirs = true,    -- when true, empty folders will be grouped together
+      group_empty_dirs = true, -- when true, empty folders will be grouped together
       show_unloaded = true,
       window = {
         mappings = {
@@ -188,9 +188,8 @@ return function()
     },
   })
 
-  -- vim.cmd Your <leader> key ([[nnoremap \ :Neotree reveal<cr>]])
-  require("which-key").register({
-    ["<leader>t"] = { "<Cmd>Neotree toggle<cr>", "Neotree toggle open / close" },
-    ["<leader>e"] = { "<Cmd>Neotree reveal<cr>", "Neotree focus explorer" },
+  require("which-key").add({
+    { "<leader>e", "<Cmd>Neotree reveal<cr>", desc = "Neotree focus explorer" },
+    { "<leader>t", "<Cmd>Neotree toggle<cr>", desc = "Neotree toggle open / close" },
   })
 end

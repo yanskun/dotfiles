@@ -1,16 +1,10 @@
 return function()
-	require("dapui").setup()
+  require("dapui").setup()
 
-	require("which-key").register({
-		d = {
-			u = {
-				name = "dapui",
-				c = { "<Cmd>lua require'dapui'.close()<CR>", "dapui close" },
-				o = { "<Cmd>lua require'dapui'.open()<CR>", "dapui open" },
-				t = { "<Cmd>lua require'dapui'.toggle()<CR>", "dapui toggle" },
-			},
-		},
-	}, {
-		prefix = "<leader>",
-	})
+  require("which-key").add({
+    { "<leader>du",  group = "dapui" },
+    { "<leader>duc", "<Cmd>lua require'dapui'.close()<CR>",  desc = "dapui close" },
+    { "<leader>duo", "<Cmd>lua require'dapui'.open()<CR>",   desc = "dapui open" },
+    { "<leader>dut", "<Cmd>lua require'dapui'.toggle()<CR>", desc = "dapui toggle" },
+  })
 end

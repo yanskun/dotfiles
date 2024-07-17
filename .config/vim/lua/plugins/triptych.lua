@@ -1,8 +1,7 @@
 return function()
   require("triptych").setup()
 
-  require("which-key").register({
-    name = "triptych",
-    ["<leader>-"] = { "<Cmd>Triptych<CR>", "Open Triptych, Directory browser" },
+  require("which-key").add({
+    { "<leader>-", "<Cmd>Triptych<CR>", desc = "Open Triptych, Directory browser" }
   })
 end

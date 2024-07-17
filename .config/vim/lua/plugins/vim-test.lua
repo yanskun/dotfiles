@@ -10,14 +10,11 @@ return function()
   vim.g['test#strategy'] = 'toggleterm'
   vim.g['test#go#runner'] = 'gotest'
 
-  require('which-key').register {
-    name = 'test',
-    t = {
-      ['<C-n>'] = { '<Cmd>TestNearest<CR>', 'run test nearest to the cursor' },
-      ['<C-f>'] = { '<Cmd>TestFile<CR>', 'run test file' },
-      ['<C-s>'] = { '<Cmd>TestSuite<CR>', 'run test suite' },
-      ['<C-l>'] = { '<Cmd>TestLast<CR>', 'run test last' },
-      ['<C-g>'] = { '<Cmd>TestVisit<CR>', 'run test last run tests' },
-    }
+  require('which-key').add {
+    { "t<C-f>", "<Cmd>TestFile<CR>",    desc = "run test file" },
+    { "t<C-g>", "<Cmd>TestVisit<CR>",   desc = "run test last run tests" },
+    { "t<C-l>", "<Cmd>TestLast<CR>",    desc = "run test last" },
+    { "t<C-n>", "<Cmd>TestNearest<CR>", desc = "run test nearest to the cursor" },
+    { "t<C-s>", "<Cmd>TestSuite<CR>",   desc = "run test suite" },
   }
 end

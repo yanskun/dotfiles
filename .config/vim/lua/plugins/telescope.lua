@@ -74,39 +74,19 @@ return function()
   end
 
   local find_command = "{ 'rg', '--files', '--hidden', '-g', '!node_modules/**', '-g', '!.git/**', }"
-  require("which-key").register({
-    name = "telescope",
-    f = {
-      f = {
-        "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<CR>",
-        "telescope find file",
-      },
-      g = {
-        "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",
-        "telescope live grep",
-      },
-      d = {
-        "<CMD>lua require('telescope.builtin').diagnostics({find_command = " .. find_command .. "})<CR>",
-        "telescope diagnostics",
-      },
-      e = { "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>",
-        'telescope live grep by egrepify' },
-      b = {
-        "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<CR>",
-        "telescope buffers",
-      },
-      h = { "<CMD>lua require('telescope.builtin').help_tags()<CR>", "telescope help tags" },
-      o = {
-        "<CMD>lua require('telescope.builtin').oldfiles({find_command = " .. find_command .. " })<CR>",
-        "telescope old files",
-      },
-      c = { "<CMD>lua require('telescope.builtin').commands()<CR>", "telescope commands" },
-      k = { "<CMD>lua require('telescope.builtin').keymaps()<CR>", "telescope key maps" },
-      n = { "<CMD>lua require('telescope').extensions.notify.notify()<CR>", "telescope notify" },
-      s = { "<CMD>lua My_git_status()<CR>", "telescope git status" },
-      ["<leader>"] = { "<cmd>Telescope cmdline<cr>", "telescope cmdline" },
-    },
-  }, {
-    prefix = "<leader>",
+  require("which-key").add({
+    { "<leader>f",         group = "telescope" },
+    { "<leader>f<leader>", "<cmd>Telescope cmdline<cr>",                                                                               desc = "telescope cmdline" },
+    { "<leader>fb",        "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. " })<CR>",              desc = "telescope buffers" },
+    { "<leader>fc",        "<CMD>lua require('telescope.builtin').commands()<CR>",                                                     desc = "telescope commands" },
+    { "<leader>fd",        "<CMD>lua require('telescope.builtin').diagnostics({find_command = " .. find_command .. "})<CR>",           desc = "telescope diagnostics" },
+    { "<leader>fe",        "<CMD>lua require('telescope').extensions.egrepify.egrepify({find_command = " .. find_command .. " })<CR>", desc = "telescope live grep by egrepify" },
+    { "<leader>ff",        "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. " })<CR>",           desc = "telescope find file" },
+    { "<leader>fg",        "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. " })<CR>",            desc = "telescope live grep" },
+    { "<leader>fh",        "<CMD>lua require('telescope.builtin').help_tags()<CR>",                                                    desc = "telescope help tags" },
+    { "<leader>fk",        "<CMD>lua require('telescope.builtin').keymaps()<CR>",                                                      desc = "telescope key maps" },
+    { "<leader>fn",        "<CMD>lua require('telescope').extensions.notify.notify()<CR>",                                             desc = "telescope notify" },
+    { "<leader>fo",        "<CMD>lua require('telescope.builtin').oldfiles({find_command = " .. find_command .. " })<CR>",             desc = "telescope old files" },
+    { "<leader>fs",        "<CMD>lua My_git_status()<CR>",                                                                             desc = "telescope git status" },
   })
 end
