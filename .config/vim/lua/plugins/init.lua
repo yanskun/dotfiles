@@ -18,7 +18,15 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
 
-  "github/copilot.vim",
+  -- "github/copilot.vim",
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  },
 
   {
     "folke/zen-mode.nvim",
@@ -163,6 +171,13 @@ require("lazy").setup({
     config = conf("neo-tree"),
   },
 
+
+  -- wildmenu
+  {
+    "gelguy/wilder.nvim",
+    config = conf("wilder"),
+  },
+
   -- buffer
   {
     "akinsho/bufferline.nvim",
@@ -249,6 +264,13 @@ require("lazy").setup({
       { "hrsh7th/cmp-vsnip",        after = "nvim-cmp" },
       { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
       { "petertriho/cmp-git",       after = "nvim-cmp" },
+      {
+        "zbirenbaum/copilot-cmp",
+        after = { "nvim-cmp", "copilot.lua" },
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
       { "saadparwaiz1/cmp_luasnip" },
       { "onsails/lspkind.nvim" },
     },

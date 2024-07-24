@@ -16,6 +16,7 @@ return function()
       { name = "luasnip" },
       { name = "buffer" },
       { name = "vsnip" },
+      { name = "copilot" },
     }),
     snippet = {
       expand = function(args)
@@ -24,8 +25,10 @@ return function()
     },
     formatting = {
       format = lspkind.cmp_format({
-        with_text = true,
         maxwidth = 50,
+        symbol_map = {
+          Copilot = ""
+        },
         before = function(entry, vim_item)
           return vim_item
         end,
