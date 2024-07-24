@@ -1,3 +1,5 @@
+-- see: https://github.com/Hammerspoon/hammerspoon/pull/3638
+
 Alacritty = require("alacritty")
 
 -- control window size
