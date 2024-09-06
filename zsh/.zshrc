@@ -24,6 +24,8 @@ eval "$(sheldon source)"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 
+eval "$(atuin init zsh)"
+
 ########################################
 # start-up
 neofetch
