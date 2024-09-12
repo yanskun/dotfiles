@@ -64,18 +64,24 @@ require("lazy").setup({
   -- git
   {
     "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",    -- required
-      {
-        "sindrets/diffview.nvim", -- optional - Diff integration
-        config = conf("diffview"),
-      },
-
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
     config = true,
+  },
+  {
+    "nvim-lua/plenary.nvim", -- required
+    lazy = true,
+  },
+  {
+    "sindrets/diffview.nvim", -- optional - Diff integration
+    config = conf("diffview"),
+    lazy = true,
+  },
+  {
+    "nvim-telescope/telescope.nvim", -- optional
+    lazy = true,
+  },
+  {
+    "ibhagwan/fzf-lua", -- optional
+    lazy = true,
   },
 
   {
@@ -88,13 +94,11 @@ require("lazy").setup({
 
   {
     "lewis6991/gitsigns.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
     config = conf("gitsigns"),
   },
 
   -- {
   --   "sindrets/diffview.nvim",
-  --   dependencies = { "plenary.nvim" },
   --   config = conf("diffview"),
   -- },
 
@@ -106,49 +110,44 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    dependencies = {
-      "echasnovski/mini.icons",
-      "nvim-tree/nvim-web-devicons"
-    },
     config = function()
       require("which-key").setup()
     end,
+  },
+  {
+    "echasnovski/mini.icons",
+  },
+  {
+    "nvim-tree/nvim-web-devicons"
   },
 
   -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-symbols.nvim",
-      "hrsh7th/nvim-cmp",
-      "jonarrien/telescope-cmdline.nvim",
-    },
     config = conf("telescope"),
+  },
+  {
+    "nvim-telescope/telescope-symbols.nvim",
+  },
+  {
+    "hrsh7th/nvim-cmp",
+  },
+  {
+    "jonarrien/telescope-cmdline.nvim",
   },
 
   {
     "fdschmidt93/telescope-egrepify.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
   },
 
   {
     "simonmclean/triptych.nvim",
     event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",       -- required
-      "nvim-tree/nvim-web-devicons", -- optional
-    },
     config = conf("triptych"),
   },
 
   {
     "folke/todo-comments.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
     config = conf("todo-comments"),
   },
 
@@ -157,18 +156,19 @@ require("lazy").setup({
     "nvim-neo-tree/neo-tree.nvim",
     lazy = false,
     priority = 100,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-      {
-        "s1n7ax/nvim-window-picker",
-        -- "yanskun/nvim-window-picker",
-        commit = "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5",
-        config = conf("nvim-window-picker"),
-      },
-    },
     config = conf("neo-tree"),
+  },
+  {
+    "MunifTanjim/nui.nvim",
+  },
+  {
+    "kyazdani42/nvim-web-devicons",
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    -- "yanskun/nvim-window-picker",
+    commit = "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5",
+    config = conf("nvim-window-picker"),
   },
 
 
@@ -181,7 +181,6 @@ require("lazy").setup({
   -- buffer
   {
     "akinsho/bufferline.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
     config = conf("bufferline"),
   },
 
@@ -190,48 +189,51 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     config = conf("treesitter"),
     build = ":TSUpdate",
-    dependencies = {
-      {
-        dir = "~/Projects/github.com/yanskun/nvim-treesitter-context",
-        -- "yanskun/nvim-treesitter-context",
-        config = conf("treesitter-context"),
-      },
-    },
   },
+  {
+    dir = "~/Projects/github.com/yanskun/nvim-treesitter-context",
+    -- "yanskun/nvim-treesitter-context",
+    config = conf("treesitter-context"),
+  },
+
 
   -- snippets
   {
     "L3MON4D3/LuaSnip",
-    dependencies = { "rafamadriz/friendly-snippets" },
     config = conf("luasnip"),
   },
+  { "rafamadriz/friendly-snippets" },
+
 
   -- lsp
   {
     "neovim/nvim-lspconfig",
     config = conf("lspconfig"),
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "RRethy/vim-illuminate",
-    },
+  },
+  { "hrsh7th/cmp-nvim-lsp" },
+  {
+    "RRethy/vim-illuminate",
   },
 
   {
     "williamboman/mason.nvim",
     config = conf("mason"),
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      config = conf("mason-lspconfig"),
-      {
-        "nvimtools/none-ls.nvim",
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-          "nvimtools/none-ls-extras.nvim",
-          "gbprod/none-ls-shellcheck.nvim",
-        },
-        config = conf("null-ls"),
-      },
-    },
+  },
+  -- none-ls
+  {
+    "nvimtools/none-ls.nvim",
+    config = conf("null-ls"),
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = conf("mason-lspconfig"),
+  },
+  {
+    "nvimtools/none-ls-extras.nvim",
+
+  },
+  {
+    "gbprod/none-ls-shellcheck.nvim",
   },
 
   -- {
@@ -241,7 +243,6 @@ require("lazy").setup({
 
   {
     "akinsho/flutter-tools.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
     config = conf("flutter-tools"),
     ft = "dart",
   },
@@ -255,66 +256,58 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp",     after = "nvim-lspconfig" },
-      { "hrsh7th/cmp-cmdline",      after = "nvim-cmp" },
-      { "hrsh7th/cmp-path",         after = "nvim-cmp" },
-      { "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
-      { "f3fora/cmp-spell",         after = "nvim-cmp" },
-      { "hrsh7th/cmp-vsnip",        after = "nvim-cmp" },
-      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-      { "petertriho/cmp-git",       after = "nvim-cmp" },
-      {
-        "zbirenbaum/copilot-cmp",
-        after = { "nvim-cmp", "copilot.lua" },
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
-      { "saadparwaiz1/cmp_luasnip" },
-      { "onsails/lspkind.nvim" },
-    },
     config = conf("cmp"),
   },
+  { "hrsh7th/cmp-nvim-lsp",     after = "nvim-lspconfig" },
+  { "hrsh7th/cmp-cmdline",      after = "nvim-cmp" },
+  { "hrsh7th/cmp-path",         after = "nvim-cmp" },
+  { "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
+  { "f3fora/cmp-spell",         after = "nvim-cmp" },
+  { "hrsh7th/cmp-vsnip",        after = "nvim-cmp" },
+  { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+  { "petertriho/cmp-git",       after = "nvim-cmp" },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "nvim-cmp", "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "onsails/lspkind.nvim" },
 
   -- testings
   {
     "vim-test/vim-test",
-    dependencies = {
-      "akinsho/toggleterm.nvim",
-    },
     config = conf("vim-test"),
+  },
+  {
+    "akinsho/toggleterm.nvim",
   },
 
   {
     "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-    },
+  },
+  {
+    "antoinemadec/FixCursorHold.nvim",
   },
 
   {
     "mfussenegger/nvim-dap",
     config = conf("dap"),
-    dependencies = {
-      {
-        "rcarriga/nvim-dap-ui",
-        dependencies = {
-          "mfussenegger/nvim-dap",
-          "nvim-neotest/nvim-nio",
-        },
-        config = conf("dapui"),
-      },
-      {
-        "leoluz/nvim-dap-go",
-        config = function()
-          require("dap-go").setup()
-        end,
-      },
-    },
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = conf("dapui"),
+  },
+  {
+    "leoluz/nvim-dap-go",
+    config = function()
+      require("dap-go").setup()
+    end,
+  },
+  { "mfussenegger/nvim-dap" },
+  { "nvim-neotest/nvim-nio" },
 
   -- development
   -- brackets
@@ -408,10 +401,10 @@ require("lazy").setup({
   -- status line
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "nvim-lua/lsp-status.nvim",
-    },
     config = conf("lualine"),
+  },
+  {
+    "nvim-lua/lsp-status.nvim",
   },
 
   {
@@ -424,9 +417,6 @@ require("lazy").setup({
   {
     "ray-x/go.nvim",
     ft = "go",
-    dependencies = {
-      "ray-x/guihua.lua",
-    },
     config = function()
       require("go").setup()
       vim.api.nvim_create_autocmd("BufWritePre", {
@@ -443,6 +433,7 @@ require("lazy").setup({
       require("gotests").setup()
     end,
   },
+  { "ray-x/guihua.lua" },
 
   -- Rust
   {
