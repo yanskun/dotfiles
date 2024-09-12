@@ -234,10 +234,10 @@ require("lazy").setup({
     },
   },
 
-  {
-    "kkharji/lspsaga.nvim",
-    config = conf("lspsaga"),
-  },
+  -- {
+  --   "kkharji/lspsaga.nvim",
+  --   config = conf("lspsaga"),
+  -- },
 
   {
     "akinsho/flutter-tools.nvim",

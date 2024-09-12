@@ -1,5 +1,6 @@
 return function()
   local utils = require("libraries._set_config")
+  local lspUtils = require("libraries._set_lsp")
   local conf_lsp = utils.conf_lsp
 
   local default_config = require("lsp.default")
@@ -15,9 +16,13 @@ return function()
     { "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "Add buffer diagnostics to the location list" },
     { "[d",       "<cmd>lua vim.diagnostic.goto_prev()<CR>",  desc = "Move to the previous diagnostic in the current buffer" },
     { "]d",       "<cmd>lua vim.diagnostic.goto_next()<CR>",  desc = "Move to the next diagnostic" },
+    { "K",        "<cmd>lua vim.lsp.buf.hover()<CR>",         desc = "Show hover doc" },
+    { "ga",       "<cmd>lua vim.lsp.buf.code_action()<CR>",   desc = "Code Action" },
+    { "gsr",      "<cmd>lua vim.lsp.buf.rename()<CR>",        desc = "Rename" }
   })
 
   local servers = {
+    "bufls",
     "biome",
     "cssls",
     "denols",

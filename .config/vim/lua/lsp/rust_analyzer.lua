@@ -11,12 +11,18 @@ if vim.fn.exepath("rust-analyzer") ~= "" and vim.fn.exepath("rustfmt") ~= "" the
     -- https://rust-analyzer.github.io/manual.html#nvim-lsp
     settings = {
       ["rust-analyzer"] = {
-        assist = {
-          importGranularity = "module",
-          importPrefix = "self",
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
         },
         cargo = {
-          loadOutDirsFromCheck = true
+          -- loadOutDirsFromCheck = true,
+          buildScripts = {
+            enable = true,
+          },
+
         },
         procMacro = {
           enable = true
