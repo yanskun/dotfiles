@@ -84,6 +84,13 @@ if [[ ! -e "$HOME"/Pictures/screenshot ]]; then
 fi
 defaults write com.apple.screencapture location "$HOME"/Pictures/screenshot
 
+echo "dock"
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock orientation -string "left"
+defaults write com.apple.dock tilesize -int 45
+defaults write com.apple.dock magnification -bool false
+killall Dock
+
 yes | rm .config/vim/lua/lua
 
 echo '🎉Finish'
