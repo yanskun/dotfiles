@@ -57,6 +57,12 @@ fi
 chmod +x .config/alacritty/bin/toggle_opacity
 ln -f -s "$config_path"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
 
+echo "karabiner"
+if [[ ! -e "$XDG_CONFIG_HOME"/karabiner ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/karabiner
+fi
+ln -f -s "$config_path"/karabiner/karabiner.json "$XDG_CONFIG_HOME"/karabiner/karabiner.json
+
 echo 'yabai'
 if [[ ! -e "$XDG_CONFIG_HOME"/yabai ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/yabai
