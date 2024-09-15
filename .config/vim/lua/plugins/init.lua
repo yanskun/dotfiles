@@ -135,6 +135,9 @@ require("lazy").setup({
   {
     "fdschmidt93/telescope-egrepify.nvim",
   },
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+  },
 
   {
     "simonmclean/triptych.nvim",

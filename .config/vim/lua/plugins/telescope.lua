@@ -44,8 +44,9 @@ return function()
   })
 
   -- extensions
-  telescope.load_extension("egrepify")
-  telescope.load_extension("cmdline")
+  telescope.load_extension "egrepify"
+  telescope.load_extension "cmdline"
+  telescope.load_extension "frecency"
 
   --  see: https://github.com/nvim-telescope/telescope.nvim/issues/605#issuecomment-790805956
   local previewers = require("telescope.previewers")
@@ -88,5 +89,6 @@ return function()
     { "<leader>fn",        "<CMD>lua require('telescope').extensions.notify.notify()<CR>",                                             desc = "telescope notify" },
     { "<leader>fo",        "<CMD>lua require('telescope.builtin').oldfiles({find_command = " .. find_command .. " })<CR>",             desc = "telescope old files" },
     { "<leader>fs",        "<CMD>lua My_git_status()<CR>",                                                                             desc = "telescope git status" },
+    { "<leader>fr",        "<CMD>Telescope frecency workspace=CWD<CR>",                                                                desc = "telescope fine file by frecency" },
   })
 end
