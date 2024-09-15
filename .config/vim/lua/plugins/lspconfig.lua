@@ -36,7 +36,7 @@ return function()
     "svelte",
     "tailwindcss",
     "tflint",
-    "tsserver",
+    "ts_ls",
     "volar",
     "yamlls",
     "zls",

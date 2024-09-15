@@ -76,10 +76,6 @@ require("lazy").setup({
     lazy = true,
   },
   {
-    "nvim-telescope/telescope.nvim", -- optional
-    lazy = true,
-  },
-  {
     "ibhagwan/fzf-lua", -- optional
     lazy = true,
   },
