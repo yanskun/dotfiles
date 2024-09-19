@@ -24,7 +24,7 @@ eval "$(sheldon source)"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#008080'
 
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 ########################################
 # start-up
