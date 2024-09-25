@@ -11,5 +11,15 @@
   {
     "key": "ctrl+]",
     "command": "ghqProjectManager.openProject"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "versionlens.icons.hideVersionLenses",
+    "when": "versionlens.providerActive && versionlens.show && !textCompareEditorVisible && !versionlens.providerBusy && !versionlens.providerError"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "versionlens.icons.showVersionLenses",
+    "when": "versionlens.providerActive && !textCompareEditorVisible && !versionlens.providerBusy && !versionlens.providerError && !versionlens.show"
   }
 ]
