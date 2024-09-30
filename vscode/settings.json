@@ -153,5 +153,8 @@
     "**/.next": true,
     "**/.turbo": true
   },
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "remote.SSH.remotePlatform": {
+    "sandbox.t5v2dn.csb": "linux"
+  }
 }
