@@ -42,8 +42,11 @@ return function()
     "zls",
   }
 
+  local config_path = vim.fn.stdpath("config")
+
   for _, lsp in ipairs(servers) do
-    if utils.lsp_file_exists(lsp) then
+    local lsp_file = config_path .. "/lua/lsp/" .. lsp .. ".lua"
+    if utils.file_exists(lsp_file) then
       conf_lsp(lsp)
     else
       default_config(lsp)

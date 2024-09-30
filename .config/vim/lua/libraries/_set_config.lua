@@ -10,7 +10,7 @@ function M.conf_lsp(name)
   return require(fmt('lsp.%s', name))
 end
 
-function M.lsp_file_exists(name)
+function M.file_exists(name)
   local f = io.open(name, 'r')
   if f ~= nil then
     io.close(f)
