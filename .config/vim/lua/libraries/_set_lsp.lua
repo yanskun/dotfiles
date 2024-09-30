@@ -29,11 +29,12 @@ M.on_attach = function(client, bufnr, opts)
 
   -- if not opts.no_format and client.server_capabilities.documentFormattingProvider then
   if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format()
-      end,
+      end
     })
   end
 

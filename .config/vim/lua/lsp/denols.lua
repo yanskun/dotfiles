@@ -8,13 +8,23 @@ if vim.fn.exepath("deno") ~= "" then
 
   lspconfig.denols.setup({
     cmd = { "deno", "lsp" },
-    root_dir = function(filename)
-      return lspconfig.util.root_pattern("deno.json", "denops")(filename)
-          and not lspconfig.util.root_pattern("package.json")(filename)
-    end,
+    root_dir = lspconfig.util.root_pattern("deno.json"),
     on_attach = util.on_attach,
     capabilities = util.capabilities,
     flags = util.flags,
+    init_options = {
+      lint = true,
+      unstable = true,
+      suggest = {
+        imports = {
+          hosts = {
+            ["https://deno.land"] = true,
+            ["https://cdn.nest.land"] = true,
+            ["https://crux.land"] = true,
+          },
+        },
+      },
+    },
   })
 else
   vim.notify(
