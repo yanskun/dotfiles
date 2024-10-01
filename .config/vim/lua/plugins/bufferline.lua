@@ -28,6 +28,18 @@ return function()
               style = require("bufferline.groups").separator.tab,
             },
           },
+          {
+            name = "Story",
+            highlight = { undercurl = true, sp = "red" },
+            auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+            icon = "",
+            matcher = function(buf)
+              return buf.path:match("%.stories.tsx") or buf.path:match("%.stories.jsx")
+            end,
+            separator = { -- Optional
+              style = require("bufferline.groups").separator.tab,
+            },
+          },
         },
       },
     },
