@@ -29,6 +29,7 @@ return function()
     "gopls",
     "jsonls",
     "lua_ls",
+    "protols",
     "pylsp",
     "ruby_lsp",
     "rust_analyzer",
