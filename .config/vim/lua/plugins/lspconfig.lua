@@ -1,9 +1,6 @@
 return function()
   local utils = require("libraries._set_config")
-  local lspUtils = require("libraries._set_lsp")
   local conf_lsp = utils.conf_lsp
-
-  local default_config = require("lsp.default")
 
   vim.diagnostic.config({
     virtual_text = false,
@@ -43,15 +40,8 @@ return function()
     "zls",
   }
 
-  local config_path = vim.fn.stdpath("config")
-
   for _, lsp in ipairs(servers) do
-    local lsp_file = config_path .. "/lua/lsp/" .. lsp .. ".lua"
-    if utils.file_exists(lsp_file) then
-      conf_lsp(lsp)
-    else
-      default_config(lsp)
-    end
+    conf_lsp(lsp)
   end
 
   vim.api.nvim_create_autocmd(

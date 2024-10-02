@@ -2,21 +2,17 @@ local M = {}
 
 local fmt = string.format
 
+local default_config = require("lsp.default")
+
 function M.conf(name)
   return require(fmt("plugins.%s", name))
 end
 
 function M.conf_lsp(name)
-  return require(fmt('lsp.%s', name))
-end
+  local ok, _ = pcall(require, fmt('lsp.%s', name))
 
-function M.file_exists(name)
-  local f = io.open(name, 'r')
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
+  if not ok then
+    default_config(name)
   end
 end
 
