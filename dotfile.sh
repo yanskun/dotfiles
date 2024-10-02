@@ -57,11 +57,21 @@ fi
 chmod +x .config/alacritty/bin/toggle_opacity
 ln -f -s "$config_path"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
 
-echo "karabiner"
-if [[ ! -e "$XDG_CONFIG_HOME"/karabiner ]]; then
-  mkdir -p "$XDG_CONFIG_HOME"/karabiner
-fi
-ln -f -s "$config_path"/karabiner/karabiner.json "$XDG_CONFIG_HOME"/karabiner/karabiner.json
+# echo "karabiner"
+# if [[ ! -e "$XDG_CONFIG_HOME"/karabiner ]]; then
+#   mkdir -p "$XDG_CONFIG_HOME"/karabiner
+# fi
+# ln -f -s "$config_path"/karabiner/karabiner.json "$XDG_CONFIG_HOME"/karabiner/karabiner.json
+
+echo 'mise'
+find "${PWD}"/mise -type f -name ".default-*" | while read file; do
+  # ファイル名のみを取り出し
+  filename=$(basename "$file")
+  
+  # 対象ファイルを HOME にシンボリックリンク作成
+  ln -sf "$file" "$HOME/$filename"
+done
+
 
 echo 'yabai'
 if [[ ! -e "$XDG_CONFIG_HOME"/yabai ]]; then

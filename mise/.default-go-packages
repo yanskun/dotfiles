@@ -1,0 +1,4 @@
+golang.org/x/tools/gopls@latest
+github.com/go-delve/delve/cmd/dlv@latest
+github.com/cweill/gotests/...@latest
+golang.org/x/tools/cmd/goimports@latest

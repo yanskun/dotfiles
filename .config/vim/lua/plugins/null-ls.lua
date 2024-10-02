@@ -1,12 +1,4 @@
--- stylua
--- cmd: cargo install stylua
--- src: https://github.com/JohnnyMorganz/StyLua
-
 return function()
-  if vim.fn.executable("stylua") == "" then
-    vim.notify("cargo install stylua", vim.log.levels.WARN, { title = "cargo install stylua" })
-  end
-
   local null_ls = require("null-ls")
 
   local lsp_formatting = function(bufnr)
