@@ -300,10 +300,13 @@ require("lazy").setup({
 
   {
     "nvim-neotest/neotest",
+    config = conf("neotest"),
   },
   {
     "antoinemadec/FixCursorHold.nvim",
   },
+  -- Neotest Adapters
+  "marilari88/neotest-vitest",
 
   {
     "mfussenegger/nvim-dap",
@@ -313,14 +316,10 @@ require("lazy").setup({
     "rcarriga/nvim-dap-ui",
     config = conf("dapui"),
   },
-  {
-    "leoluz/nvim-dap-go",
-    config = function()
-      require("dap-go").setup()
-    end,
-  },
-  { "mfussenegger/nvim-dap" },
-  { "nvim-neotest/nvim-nio" },
+  "nvim-neotest/nvim-nio",
+  -- dap Adaptars
+  "mxsdev/nvim-dap-vscode-js",
+  "leoluz/nvim-dap-go",
 
   -- development
   -- brackets

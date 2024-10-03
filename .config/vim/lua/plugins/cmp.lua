@@ -13,10 +13,10 @@ return function()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
+      { name = "copilot" },
       { name = "luasnip" },
       { name = "buffer" },
       { name = "vsnip" },
-      { name = "copilot" },
     }),
     snippet = {
       expand = function(args)
