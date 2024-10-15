@@ -226,14 +226,6 @@ function tmux-window-switcher () {
 zle -N tmux-window-switcher
 bindkey '^w' tmux-window-switcher
 
-function tmuxpopup {
-  local height='40%'
-  local session=$(tmux display-message -p -F "#{session_name}")
-  tmux popup -d '#{pane_current_path}' -h40%
-}
-zle -N tmuxpopup
-bindkey '^p' tmuxpopup
-
 ########################################
 
 # starship
