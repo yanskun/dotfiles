@@ -29,11 +29,18 @@ hs.hotkey.bind(mash, "m", function()
 end)
 
 -- toggle Alacritty opacity
+local transparent = true
 hs.hotkey.bind({ "cmd" }, "u", function()
 	local appName = "alacritty"
 	local app = hs.application.find(appName)
 	if app.isFrontmost(app) then
-		hs.execute("toggle_opacity", true)
+		if transparent then
+			hs.execute("alacritty msg config window.opacity=1", true)
+			transparent = false
+		else
+			hs.execute("alacritty msg config --reset", true)
+			transparent = true
+		end
 	end
 end)
 

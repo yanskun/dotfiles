@@ -54,8 +54,6 @@ echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
 fi
-chmod +x .config/alacritty/bin/toggle_opacity
-ln -f -s "$config_path"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
 
 echo 'mise'
 find "${PWD}"/mise -type f -name ".default-*" | while read file; do
