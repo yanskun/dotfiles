@@ -46,6 +46,5 @@ startup_mode = "Maximized"
 
 [keyboard]
 bindings = [
-  { key = "N", mods = "Command", action = "None" },
   { key = "T", mods = "Command", action = "None" },
 ]
