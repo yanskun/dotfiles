@@ -9,31 +9,30 @@ local lspconfig = require("lspconfig")
 local util = require("libraries._set_lsp")
 
 lspconfig.rust_analyzer.setup({
-  cmd = { "rust-analyzer" },
-  filetypes = { "rust" },
-  root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json"),
-  -- https://rust-analyzer.github.io/manual.html#nvim-lsp
-  settings = {
-    ["rust-analyzer"] = {
-      imports = {
-        granularity = {
-          group = "module",
-        },
-        prefix = "self",
-      },
-      cargo = {
-        -- loadOutDirsFromCheck = true,
-        buildScripts = {
-          enable = true,
-        },
-
-      },
-      procMacro = {
-        enable = true
-      },
-    }
-  },
-  on_attach = util.on_attach,
-  capabilities = util.capabilities,
-  flags = util.flags,
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
+	root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json"),
+	-- https://rust-analyzer.github.io/manual.html#nvim-lsp
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				-- loadOutDirsFromCheck = true,
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true,
+			},
+		},
+	},
+	on_attach = util.on_attach,
+	capabilities = util.capabilities,
+	flags = util.flags,
 })
