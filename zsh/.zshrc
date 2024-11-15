@@ -228,6 +228,25 @@ function tmux-window-switcher () {
 zle -N tmux-window-switcher
 bindkey '^w' tmux-window-switcher
 
+## history by atuin
+function atuin-history-selection() {
+    if [ -z "${TMUX}" ]; then
+        output=$(RUST_LOG=error atuin search $* -i -- $BUFFER 3>&1 1>&2 2>&3)
+    else
+        tmpdir=$(mktemp -d)
+        mkfifo "$tmpdir/pipe"
+        trap "rm -rf '$tmpdir'" EXIT HUP INT TERM
+        output=$(
+            cat "$tmpdir/pipe" &;
+            tmux display-popup -d $(pwd) -B -E -E -h 40%  -- \
+                "$(printf "%q " RUST_LOG=error atuin search $* -i -- $BUFFER) 1>&2 2>$tmpdir/pipe"
+        )
+        rm -rf "$tmpdir"
+    fi
+}
+zle -N atuin-history-selection
+bindkey '^H' atuin-history-selection
+
 ########################################
 
 # starship
