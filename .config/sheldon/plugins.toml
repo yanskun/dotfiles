@@ -21,6 +21,12 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
 
+[plugins.F-Sy-H]
+github = "z-shell/F-Sy-H"
+
+[plugins.zsh-autopair]
+github = "hlissner/zsh-autopair"
+
 # For example:
 #
 # [plugins.base16]
