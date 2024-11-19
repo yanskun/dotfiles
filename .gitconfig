@@ -37,6 +37,9 @@
   navigate = true
   plus-style = "syntax \"#013A00\""
   plus-emph-style = "syntax \"#008102\""
+  line-numbers = true
+  side-by-side = true
+  syntax-theme = Monokai Extended
 [pager]
 	branch = cat
 [merge]
