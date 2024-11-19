@@ -65,6 +65,7 @@ return function()
   })
 
   require("which-key").add({
+    mode = { "n", "v" },
     {
       "<leader>ci",
       "<CMD>CopilotChat<CR>",
