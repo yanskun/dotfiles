@@ -28,11 +28,19 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  pager = less
+  pager = delta
   ignorecase = false
   editor = neovim
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  plus-style = "syntax \"#013A00\""
+  plus-emph-style = "syntax \"#008102\""
 [pager]
 	branch = cat
+[merge]
+  conflictstyle = zdiff3
 [pull]
 	rebase = false
 [ghq]
