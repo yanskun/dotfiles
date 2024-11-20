@@ -35,7 +35,6 @@ return function()
     "jsonls",
     "lua_ls",
     "prismals",
-    "protols",
     "pylsp",
     "ruby_lsp",
     "rust_analyzer",
