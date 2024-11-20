@@ -27,7 +27,7 @@ return function()
   })
 
   local servers = {
-    "bufls",
+    "buf_ls",
     "biome",
     "cssls",
     "denols",
