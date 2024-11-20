@@ -70,6 +70,11 @@ require("lazy").setup({
 	},
 
 	{
+		"mcauley-penney/visual-whitespace.nvim",
+		config = true,
+	},
+
+	{
 		"petertriho/nvim-scrollbar",
 		config = conf("nvim-scrollbar"),
 	},
