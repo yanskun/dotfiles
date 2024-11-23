@@ -239,18 +239,10 @@ require("lazy").setup({
 		"RRethy/vim-illuminate",
 	},
 
-	{
-		"williamboman/mason.nvim",
-		config = conf("mason"),
-	},
 	-- none-ls
 	{
 		"nvimtools/none-ls.nvim",
 		config = conf("null-ls"),
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = conf("mason-lspconfig"),
 	},
 	{
 		"nvimtools/none-ls-extras.nvim",
