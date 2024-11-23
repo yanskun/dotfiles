@@ -193,14 +193,14 @@ zle -N fzf-open
 bindkey '^o' fzf-open
 
 ### history
-function fzf-history-selection() {
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf-tmux -p --reverse --height 40%`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N fzf-history-selection
-bindkey '^H' fzf-history-selection
+# function fzf-history-selection() {
+#     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf-tmux -p --reverse --height 40%`
+#     CURSOR=$#BUFFER
+#     zle reset-prompt
+# }
+#
+# zle -N fzf-history-selection
+# bindkey '^H' fzf-history-selection
 
 ## gcloud project swhich
 function gcloud_prj_switch () {
@@ -243,6 +243,13 @@ function atuin-history-selection() {
         )
         rm -rf "$tmpdir"
     fi
+
+    if [[ -n $output ]]; then
+        RBUFFER=""
+        LBUFFER=$output
+    fi
+
+    zle accept-line
 }
 zle -N atuin-history-selection
 bindkey '^H' atuin-history-selection
