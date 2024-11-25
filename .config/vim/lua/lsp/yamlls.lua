@@ -9,7 +9,7 @@ require 'lspconfig'.yamlls.setup {
         ['http://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
         ['http://json.schemastore.org/stylelintrc'] = '.stylelintrc.{yml,yaml}',
         ['http://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
-      }
-    }
+      },
+    },
   },
 }

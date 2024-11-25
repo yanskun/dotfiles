@@ -8,5 +8,5 @@ lspconfig.jsonls.setup {
     client.server_capabilities.document_formatting = false
     util.on_attach(client, bufnr)
   end,
-  capabilities = util.capabilities
+  capabilities = util.capabilities,
 }

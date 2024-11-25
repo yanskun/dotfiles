@@ -3,9 +3,9 @@ local o = vim.opt
 
 o.swapfile = false
 o.showcmd = true
-o.virtualedit = "onemore"
+o.virtualedit = 'onemore'
 o.splitright = true
-o.mouse = ""
+o.mouse = ''
 
 o.number = true
 o.cursorline = true
@@ -16,7 +16,7 @@ o.expandtab = true
 o.tabstop = 2
 o.shiftwidth = 2
 
-o.clipboard = "unnamed"
+o.clipboard = 'unnamed'
 
 o.laststatus = 3
 

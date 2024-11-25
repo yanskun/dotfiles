@@ -11,10 +11,10 @@ return function()
   vim.g['test#go#runner'] = 'gotest'
 
   require('which-key').add {
-    { "t<C-f>", "<Cmd>TestFile<CR>",    desc = "run test file" },
-    { "t<C-g>", "<Cmd>TestVisit<CR>",   desc = "run test last run tests" },
-    { "t<C-l>", "<Cmd>TestLast<CR>",    desc = "run test last" },
-    { "t<C-n>", "<Cmd>TestNearest<CR>", desc = "run test nearest to the cursor" },
-    { "t<C-s>", "<Cmd>TestSuite<CR>",   desc = "run test suite" },
+    { 't<C-f>', '<Cmd>TestFile<CR>', desc = 'run test file' },
+    { 't<C-g>', '<Cmd>TestVisit<CR>', desc = 'run test last run tests' },
+    { 't<C-l>', '<Cmd>TestLast<CR>', desc = 'run test last' },
+    { 't<C-n>', '<Cmd>TestNearest<CR>', desc = 'run test nearest to the cursor' },
+    { 't<C-s>', '<Cmd>TestSuite<CR>', desc = 'run test suite' },
   }
 end

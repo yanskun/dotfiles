@@ -1,7 +1,7 @@
 return function()
   local function filepath()
-    local fullpath = vim.fn.expand("%")
-    local path = vim.fn.fnamemodify(fullpath, ":~:.")
+    local fullpath = vim.fn.expand('%')
+    local path = vim.fn.fnamemodify(fullpath, ':~:.')
     if vim.fn.winwidth(0) < 84 then
       path = vim.fn.pathshorten(path)
     end
@@ -9,8 +9,8 @@ return function()
   end
 
   local function client_name()
-    local msg = "No Active Lsp"
-    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
       return msg
@@ -23,12 +23,12 @@ return function()
       end
     end
     if next(client_names) then
-      local names = ""
+      local names = ''
       for k, _ in pairs(client_names) do
-        if names == "" then
+        if names == '' then
           names = k
         else
-          names = names .. "," .. k
+          names = names .. ',' .. k
         end
       end
       return names
@@ -42,7 +42,7 @@ return function()
       lualine_b = {
         {
           'branch',
-          color = { fg = '#c678dd', gui = 'bold' }
+          color = { fg = '#c678dd', gui = 'bold' },
         },
         filepath,
       },
@@ -54,7 +54,7 @@ return function()
         {
           client_name,
           icon = '',
-          color = { fg = "#a9a1e1", gui = "bold" }
+          color = { fg = '#a9a1e1', gui = 'bold' },
         },
         'filetype',
       },
@@ -69,6 +69,6 @@ return function()
       theme = 'onedark',
       disabled_filetypes = { 'NvimTree', 'neo-tree' },
       globalstatus = true,
-    }
+    },
   })
 end

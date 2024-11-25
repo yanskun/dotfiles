@@ -1,5 +1,5 @@
 return function()
-  require("scrollbar").setup({
+  require('scrollbar').setup({
     handlers = {
       cursor = false,
     },
