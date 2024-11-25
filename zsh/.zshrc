@@ -175,8 +175,8 @@ function fzf-src () {
   local selected_dir=$(ghq list | fzf-tmux -p --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
   fi
-  zle accept-line
 }
 zle -N fzf-src
 bindkey '^]' fzf-src
@@ -186,8 +186,8 @@ function fzf-open () {
   local selected_dir=$(ghq list | fzf-tmux -p --height 40% --reverse --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$selected_dir" ]; then
     BUFFER="open https://${selected_dir}"
+    zle accept-line
   fi
-  zle accept-line
 }
 zle -N fzf-open
 bindkey '^o' fzf-open
@@ -207,8 +207,8 @@ function gcloud_prj_switch () {
     local project="$(gcloud projects list | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
     if [ -n "$project" ]; then
         BUFFER="gcloud config set project ${project}"
+        zle accept-line
     fi
-    zle accept-line
 }
 zle -N gcloud_prj_switch
 bindkey '^g' gcloud_prj_switch
@@ -222,8 +222,8 @@ function tmux-window-switcher () {
       window_name="${window#*:}"
 
       BUFFER="tmux switch-client -t $session_name && tmux select-window -t $window_name"
+      zle accept-line
     fi
-    zle accept-line
 }
 zle -N tmux-window-switcher
 bindkey '^w' tmux-window-switcher
@@ -238,7 +238,7 @@ function atuin-history-selection() {
         trap "rm -rf '$tmpdir'" EXIT HUP INT TERM
         output=$(
             cat "$tmpdir/pipe" &;
-            tmux display-popup -d $(pwd) -B -E -E -h 40%  -- \
+            tmux display-popup -d $(pwd) -B -E -E -h 50%  -- \
                 "$(printf "%q " RUST_LOG=error atuin search $* -i -- $BUFFER) 1>&2 2>$tmpdir/pipe"
         )
         rm -rf "$tmpdir"
@@ -247,9 +247,9 @@ function atuin-history-selection() {
     if [[ -n $output ]]; then
         RBUFFER=""
         LBUFFER=$output
+        zle accept-line
     fi
 
-    zle accept-line
 }
 zle -N atuin-history-selection
 bindkey '^H' atuin-history-selection
