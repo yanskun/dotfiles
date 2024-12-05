@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "CopilotChat.nvim": { "branch": "main", "commit": "caf387f82f6c1c2d0ce26a0104accf08000e4e34" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
+  "LazyVim": { "branch": "main", "commit": "efc95dc6aaed3d09ea4eaefe21f668f24da2ae2e" },
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
   "bufferline.nvim": { "branch": "main", "commit": "261a72b90d6db4ed8014f7bda976bcdc9dd7ce76" },
   "carbon-now.nvim": { "branch": "main", "commit": "f13c3c611a6aa22cca028bfe2cec63c7f67f2c87" },

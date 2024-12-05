@@ -2,23 +2,15 @@ local utils = require('libraries._set_config')
 
 local conf = utils.conf
 
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    '--single-branch',
-    'https://github.com/folke/lazy.nvim.git',
-    lazypath,
-  })
-end
-vim.opt.runtimepath:prepend(lazypath)
-
-local hoge_fuga = ''
-
-require('lazy').setup({
+return {
   'nvim-lua/plenary.nvim',
+
+  {
+    'navarasu/onedark.nvim',
+    config = conf('onedark'),
+    lazy = false,
+    priority = 1000,
+  },
 
   {
     dir = '~/Projects/github.com/yanskun/ollama-cmp',
@@ -42,11 +34,11 @@ require('lazy').setup({
     branch = 'main',
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' },  -- for curl, log wrapper
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
-    build = 'make tiktoken',        -- Only on MacOS or Linux
+    build = 'make tiktoken', -- Only on MacOS or Linux
     opts = {
-      debug = true,                 -- Enable debugging
+      debug = true, -- Enable debugging
       -- See Configuration section for rest
     },
     config = conf('copilot-chat'),
@@ -70,13 +62,6 @@ require('lazy').setup({
         },
       })
     end,
-  },
-
-  {
-    'navarasu/onedark.nvim',
-    config = conf('onedark'),
-    lazy = false,
-    priority = 1000,
   },
 
   {
@@ -283,14 +268,14 @@ require('lazy').setup({
     event = 'InsertEnter',
     config = conf('cmp'),
   },
-  { 'hrsh7th/cmp-nvim-lsp',     after = 'nvim-lspconfig' },
-  { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-path',         after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
-  { 'f3fora/cmp-spell',         after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-vsnip',        after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
+  { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+  { 'f3fora/cmp-spell', after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
   { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-  { 'petertriho/cmp-git',       after = 'nvim-cmp' },
+  { 'petertriho/cmp-git', after = 'nvim-cmp' },
   {
     'zbirenbaum/copilot-cmp',
     after = { 'nvim-cmp', 'copilot.lua' },
@@ -499,4 +484,4 @@ require('lazy').setup({
 
   -- props
   'dstein64/vim-startuptime',
-})
+}

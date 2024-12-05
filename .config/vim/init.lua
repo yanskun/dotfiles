@@ -1,6 +1,4 @@
-require("settings")
-
-local ok, reload = pcall(require, "plenary.reload")
+local ok, reload = pcall(require, 'plenary.reload')
 RELOAD = ok and reload.reload_module or function(...)
   return ...
 end
@@ -9,4 +7,5 @@ function R(name)
   return require(name)
 end
 
-R("plugins")
+R('config.lazy')
+R('settings')
