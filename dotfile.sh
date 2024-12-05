@@ -14,13 +14,13 @@ ln -f -s "$config_path"/neofetch/config.conf "$XDG_CONFIG_HOME"/neofetch/config.
 echo 'starship'
 ln -f -s "$PWD"/.config/starship.toml "$XDG_CONFIG_HOME"/starship.toml
 
-echo 'vim'
+echo 'neovim'
 if [[ ! -e "$XDG_CONFIG_HOME"/nvim ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/nvim
 fi
-ln -f -s "$config_path"/vim/init.lua "$XDG_CONFIG_HOME"/nvim/init.lua
-ln -f -s "$config_path"/vim/lua "$XDG_CONFIG_HOME"/nvim/lua
-ln -f -s "$config_path"/vim/lazy-lock.json "$XDG_CONFIG_HOME"/nvim/lazy-lock.json
+ln -f -s "$config_path"/nvim/init.lua "$XDG_CONFIG_HOME"/nvim/init.lua
+ln -f -s "$config_path"/nvim/lua "$XDG_CONFIG_HOME"/nvim/lua
+ln -f -s "$config_path"/nvim/lazy-lock.json "$XDG_CONFIG_HOME"/nvim/lazy-lock.json
 
 echo 'tmux'
 ln -f -s "$PWD"/tmux/tmux.conf "$HOME"/.tmux.conf
