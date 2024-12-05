@@ -39,14 +39,14 @@ require('lazy').setup({
   },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
+    branch = 'main',
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+      { 'nvim-lua/plenary.nvim' },  -- for curl, log wrapper
     },
-    build = 'make tiktoken', -- Only on MacOS or Linux
+    build = 'make tiktoken',        -- Only on MacOS or Linux
     opts = {
-      debug = true, -- Enable debugging
+      debug = true,                 -- Enable debugging
       -- See Configuration section for rest
     },
     config = conf('copilot-chat'),
@@ -283,14 +283,14 @@ require('lazy').setup({
     event = 'InsertEnter',
     config = conf('cmp'),
   },
-  { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
-  { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-  { 'f3fora/cmp-spell', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp',     after = 'nvim-lspconfig' },
+  { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-path',         after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
+  { 'f3fora/cmp-spell',         after = 'nvim-cmp' },
+  { 'hrsh7th/cmp-vsnip',        after = 'nvim-cmp' },
   { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-  { 'petertriho/cmp-git', after = 'nvim-cmp' },
+  { 'petertriho/cmp-git',       after = 'nvim-cmp' },
   {
     'zbirenbaum/copilot-cmp',
     after = { 'nvim-cmp', 'copilot.lua' },
