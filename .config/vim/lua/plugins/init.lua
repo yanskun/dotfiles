@@ -20,31 +20,6 @@ return {
     end,
   },
 
-  -- "github/copilot.vim",
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup({})
-    end,
-  },
-  {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'main',
-    dependencies = {
-      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
-    },
-    build = 'make tiktoken', -- Only on MacOS or Linux
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    config = conf('copilot-chat'),
-    -- See Commands section for default commands if you want to lazy load on them
-  },
-
   -- TODO: suggest suport
   -- {
   -- 	"folke/noice.nvim",
@@ -84,47 +59,6 @@ return {
     end,
   },
 
-  -- git
-  {
-    'NeogitOrg/neogit',
-    config = true,
-  },
-  {
-    'nvim-lua/plenary.nvim', -- required
-    lazy = true,
-  },
-  {
-    'sindrets/diffview.nvim', -- optional - Diff integration
-    config = conf('diffview'),
-    lazy = true,
-  },
-  {
-    'ibhagwan/fzf-lua', -- optional
-    lazy = true,
-  },
-
-  {
-    'f-person/git-blame.nvim',
-    config = function()
-      vim.g.gitblame_message_template = '<summary> | <date> | <author>'
-      vim.g.gitblame_ignored_filetypes = { 'NvimTree', 'neo-tree' }
-    end,
-  },
-
-  {
-    'lewis6991/gitsigns.nvim',
-    config = conf('gitsigns'),
-  },
-
-  -- {
-  --   "sindrets/diffview.nvim",
-  --   config = conf("diffview"),
-  -- },
-
-  'tpope/vim-fugitive',
-
-  'tpope/vim-rhubarb',
-
   -- key mapping
   {
     'folke/which-key.nvim',
@@ -138,39 +72,6 @@ return {
   },
   {
     'nvim-tree/nvim-web-devicons',
-  },
-
-  -- fuzzy finder
-  {
-    'nvim-telescope/telescope.nvim',
-    config = conf('telescope'),
-  },
-  {
-    'nvim-telescope/telescope-symbols.nvim',
-  },
-  {
-    'hrsh7th/nvim-cmp',
-  },
-  {
-    'jonarrien/telescope-cmdline.nvim',
-  },
-
-  {
-    'fdschmidt93/telescope-egrepify.nvim',
-  },
-  {
-    'nvim-telescope/telescope-frecency.nvim',
-  },
-
-  {
-    'simonmclean/triptych.nvim',
-    event = 'VeryLazy',
-    config = conf('triptych'),
-  },
-
-  {
-    'folke/todo-comments.nvim',
-    config = conf('todo-comments'),
   },
 
   -- explorer
@@ -205,118 +106,12 @@ return {
     config = conf('bufferline'),
   },
 
-  -- treesitter
-  {
-    'nvim-treesitter/nvim-treesitter',
-    config = conf('treesitter'),
-    build = ':TSUpdate',
-  },
-  {
-    dir = '~/Projects/github.com/yanskun/nvim-treesitter-context',
-    -- "yanskun/nvim-treesitter-context",
-    config = conf('treesitter-context'),
-  },
-
   -- snippets
   {
     'L3MON4D3/LuaSnip',
     config = conf('luasnip'),
   },
   { 'rafamadriz/friendly-snippets' },
-
-  -- lsp
-  {
-    'neovim/nvim-lspconfig',
-    config = conf('lspconfig'),
-  },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  {
-    'RRethy/vim-illuminate',
-  },
-
-  -- none-ls
-  {
-    'nvimtools/none-ls.nvim',
-    config = conf('null-ls'),
-  },
-  {
-    'nvimtools/none-ls-extras.nvim',
-  },
-  {
-    'gbprod/none-ls-shellcheck.nvim',
-  },
-
-  -- {
-  --   "kkharji/lspsaga.nvim",
-  --   config = conf("lspsaga"),
-  -- },
-
-  {
-    'akinsho/flutter-tools.nvim',
-    config = conf('flutter-tools'),
-    ft = 'dart',
-  },
-
-  {
-    'onsails/diaglist.nvim',
-    config = conf('diaglist'),
-  },
-
-  -- autocompletion
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    config = conf('cmp'),
-  },
-  { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
-  { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-  { 'f3fora/cmp-spell', after = 'nvim-cmp' },
-  { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
-  { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-  { 'petertriho/cmp-git', after = 'nvim-cmp' },
-  {
-    'zbirenbaum/copilot-cmp',
-    after = { 'nvim-cmp', 'copilot.lua' },
-    config = function()
-      require('copilot_cmp').setup()
-    end,
-  },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'onsails/lspkind.nvim' },
-
-  -- testings
-  {
-    'vim-test/vim-test',
-    config = conf('vim-test'),
-  },
-  {
-    'akinsho/toggleterm.nvim',
-  },
-
-  {
-    'nvim-neotest/neotest',
-    config = conf('neotest'),
-  },
-  {
-    'antoinemadec/FixCursorHold.nvim',
-  },
-  -- Neotest Adapters
-  'marilari88/neotest-vitest',
-
-  {
-    'mfussenegger/nvim-dap',
-    config = conf('dap'),
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    config = conf('dapui'),
-  },
-  'nvim-neotest/nvim-nio',
-  -- dap Adaptars
-  'mxsdev/nvim-dap-vscode-js',
-  'leoluz/nvim-dap-go',
 
   -- development
   -- brackets
@@ -407,75 +202,9 @@ return {
     end,
   },
 
-  -- status line
-  {
-    'nvim-lualine/lualine.nvim',
-    config = conf('lualine'),
-  },
-  {
-    'nvim-lua/lsp-status.nvim',
-  },
-
-  {
-    'kevinhwang91/nvim-bqf',
-    ft = 'qf',
-  },
-
-  -- launguages support
-  -- go
-  {
-    'ray-x/go.nvim',
-    ft = 'go',
-    config = function()
-      require('go').setup()
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function()
-          require('go.format').goimport()
-        end,
-      })
-    end,
-  },
-  {
-    'yanskun/gotests.nvim',
-    ft = 'go',
-    config = function()
-      require('gotests').setup()
-    end,
-  },
-  { 'ray-x/guihua.lua' },
-
-  -- Rust
-  {
-    'rust-lang/rust.vim',
-    ft = 'rust',
-    config = conf('rust'),
-  },
-  {
-    'simrat39/rust-tools.nvim',
-    ft = 'rust',
-    config = function()
-      require('rust-tools').setup({
-        hover_with_actions = false,
-      })
-    end,
-  },
-
-  -- Zig
-  {
-    'ziglang/zig.vim',
-    ft = { 'zig', 'zir' },
-  },
-
   -- deno
   -- "vim-denops/denops.vim",
   -- "yanskun/dps-translate.nvim",
-
-  -- markdown
-  {
-    'ellisonleao/glow.nvim',
-    config = true,
-    cmd = 'Glow',
-  },
 
   'yanskun/change-case.nvim',
 
