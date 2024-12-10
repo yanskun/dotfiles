@@ -40,11 +40,6 @@ return {
   },
 
   {
-    'sphamba/smear-cursor.nvim',
-    opts = {},
-  },
-
-  {
     'mcauley-penney/visual-whitespace.nvim',
     config = true,
   },
