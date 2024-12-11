@@ -1,9 +1,6 @@
 format = """
-$time$directory$golang$nodejs$python$dart$rust$deno$ruby$cmd_duration
+$time$directory$golang$nodejs$python$dart$rust$deno$ruby$cmd_duration$fill$git_status$git_branch
 $character"""
-
-right_format = """
-$git_status$git_branch"""
 
 command_timeout = 600
 
