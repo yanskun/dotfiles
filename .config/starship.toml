@@ -10,18 +10,17 @@ format = "[ $time]($style) "
 style = 'bold cyan'
 
 [directory]
-truncate_to_repo = false
-format = "[$path]($style)[$read_only]($read_only_style) "
+format = "[ ]($style)[$path]($style)[$read_only]($read_only_style) "
 style = 'bold yellow'
-repo_root_style = 'bold fg:#FBB97A'
 read_only_style = 'bold red'
-home_symbol = ' ~'
 truncation_length = 0
 
 [git_branch]
 format = "[$symbol$branch]($style) "
 symbol = "  "
 disabled = false
+truncation_length = 20
+truncation_symbol = '…/'
 
 [git_status]
 disabled = false
