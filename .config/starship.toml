@@ -9,6 +9,9 @@ disabled = false
 format = "[ $time]($style) "
 style = 'bold cyan'
 
+[fill]
+symbol = " "
+
 [directory]
 format = "[ ]($style)[$path]($style)[$read_only]($read_only_style) "
 style = 'bold yellow'
@@ -19,7 +22,7 @@ truncation_length = 0
 format = "[$symbol$branch]($style) "
 symbol = "  "
 disabled = false
-truncation_length = 20
+# truncation_length = 20
 truncation_symbol = '…/'
 
 [git_status]
