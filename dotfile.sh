@@ -55,6 +55,9 @@ if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
 fi
 
+echo 'nix'
+ln -f -s "$config_path"/nix "$XDG_CONFIG_HOME"/nix
+
 echo 'mise'
 find "${PWD}"/mise -type f -name ".default-*" | while read file; do
   filename=$(basename "$file")
