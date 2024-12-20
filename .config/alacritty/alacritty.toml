@@ -33,6 +33,9 @@ background = "0x1e2127"
 bright_foreground = "0xe6efff"
 foreground = "0xabb2bf"
 
+[cursor.style]
+shape = 'Block'
+
 [font]
 size = 12
 
