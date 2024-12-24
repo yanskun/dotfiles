@@ -52,6 +52,10 @@ return function()
     conf_lsp(lsp)
   end
 
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded',
+  })
+
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     pattern = '*',
     command = [[ lua vim.diagnostic.open_float(nil, {focus=false}) ]],
