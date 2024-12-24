@@ -22,9 +22,9 @@ return {
 
   -- TODO: suggest suport
   -- {
-  -- 	"folke/noice.nvim",
-  -- 	event = "VeryLazy",
-  -- 	config = conf("noice"),
+  --   'folke/noice.nvim',
+  --   event = 'VeryLazy',
+  --   config = conf('noice'),
   -- },
 
   {

@@ -78,7 +78,7 @@ return function()
   require('which-key').add({
     { '<leader>f', group = 'telescope' },
     {
-      '<leader>f<leader>',
+      ':',
       '<cmd>Telescope cmdline<cr>',
       desc = 'telescope cmdline',
     },
