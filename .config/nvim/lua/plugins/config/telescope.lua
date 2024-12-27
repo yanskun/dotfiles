@@ -77,11 +77,11 @@ return function()
   local find_command = "{ 'rg', '--files', '--hidden', '-g', '!node_modules/**', '-g', '!.git/**', }"
   require('which-key').add({
     { '<leader>f', group = 'telescope' },
-    {
-      ':',
-      '<cmd>Telescope cmdline<cr>',
-      desc = 'telescope cmdline',
-    },
+    -- {
+    --   ':',
+    --   '<cmd>Telescope cmdline<cr>',
+    --   desc = 'telescope cmdline',
+    -- },
     {
       '<leader>fb',
       "<CMD>lua require('telescope.builtin').buffers({find_command = " .. find_command .. ' })<CR>',
