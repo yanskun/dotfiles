@@ -9,6 +9,7 @@ return function()
 
   vim.g['test#strategy'] = 'toggleterm'
   vim.g['test#go#runner'] = 'gotest'
+  vim.g['test#javascript#runner'] = 'vitest'
 
   require('which-key').add {
     { 't<C-f>', '<Cmd>TestFile<CR>', desc = 'run test file' },
