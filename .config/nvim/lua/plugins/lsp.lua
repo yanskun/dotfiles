@@ -7,6 +7,15 @@ return {
     'neovim/nvim-lspconfig',
     config = conf('lspconfig'),
   },
+  {
+    'williamboman/mason.nvim',
+    config = conf('mason'),
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = conf('mason-lspconfig'),
+  },
+
   { 'hrsh7th/cmp-nvim-lsp' },
   {
     'RRethy/vim-illuminate',

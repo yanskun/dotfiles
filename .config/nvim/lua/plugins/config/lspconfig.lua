@@ -48,9 +48,16 @@ return function()
     'zls',
   }
 
-  for _, lsp in ipairs(servers) do
-    conf_lsp(lsp)
-  end
+  -- for _, lsp in ipairs(servers) do
+  --   conf_lsp(lsp)
+  -- end
+
+  local mason_lspconfig = require('mason-lspconfig')
+  mason_lspconfig.setup_handlers({
+    function(server_name)
+      conf_lsp(server_name)
+    end,
+  })
 
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = 'rounded',
