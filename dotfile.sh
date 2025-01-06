@@ -19,7 +19,9 @@ if [[ ! -e "$XDG_CONFIG_HOME"/nvim ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/nvim
 fi
 ln -f -s "$config_path"/nvim/init.lua "$XDG_CONFIG_HOME"/nvim/init.lua
-ln -f -s "$config_path"/nvim/lua "$XDG_CONFIG_HOME"/nvim/lua
+if [[ ! -e "$XDG_CONFIG_HOME"/nvim/lua ]]; then
+  ln -f -s "$config_path"/nvim/lua "$XDG_CONFIG_HOME"/nvim/lua
+fi
 ln -f -s "$config_path"/nvim/lazy-lock.json "$XDG_CONFIG_HOME"/nvim/lazy-lock.json
 
 echo 'tmux'
@@ -54,12 +56,19 @@ echo 'alacritty'
 if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
 fi
+ln -f -s "$config_path"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
 
 echo 'nix'
-ln -f -s "$config_path"/nix "$XDG_CONFIG_HOME"/nix
+if [[ ! -e "$XDG_CONFIG_HOME"/nix ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/nix
+fi
+ln -f -s "$config_path"/nix/nix.conf "$XDG_CONFIG_HOME"/nix/nix.conf
 
 echo 'ghostty'
-ln -f -s "$config_path"/ghostty "$XDG_CONFIG_HOME"/ghostty
+if [[ ! -e "$XDG_CONFIG_HOME"/ghostty ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/ghostty
+fi
+ln -f -s "$config_path"/ghostty/config "$XDG_CONFIG_HOME"/ghostty/config
 
 echo 'mise'
 find "${PWD}"/mise -type f -name ".default-*" | while read file; do
