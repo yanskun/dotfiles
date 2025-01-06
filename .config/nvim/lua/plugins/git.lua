@@ -14,7 +14,6 @@ return {
   {
     'sindrets/diffview.nvim', -- optional - Diff integration
     config = conf('diffview'),
-    lazy = true,
   },
   {
     'ibhagwan/fzf-lua', -- optional
