@@ -137,6 +137,9 @@ setopt share_history
 
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+bindkey "^[b" backward-word
+bindkey "^[f" forward-word
+
 autoload -U select-word-style
 select-word-style bash
   # Alt+Backspace
