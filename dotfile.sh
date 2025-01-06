@@ -58,6 +58,9 @@ fi
 echo 'nix'
 ln -f -s "$config_path"/nix "$XDG_CONFIG_HOME"/nix
 
+echo 'ghostty'
+ln -f -s "$config_path"/ghostty "$XDG_CONFIG_HOME"/ghostty
+
 echo 'mise'
 find "${PWD}"/mise -type f -name ".default-*" | while read file; do
   filename=$(basename "$file")

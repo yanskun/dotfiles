@@ -1,0 +1,26 @@
+font-family = Hack Nerd Font Mono
+font-size = 12
+font-thicken = true
+
+background-opacity = 0.8
+background = 1C2021
+cursor-opacity = 0.7
+
+mouse-hide-while-typing = true
+macos-option-as-alt = true
+
+macos-titlebar-style = hidden
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+initial-command = /bin/zsh -c '/opt/homebrew/bin/tmux attach-session || /opt/homebrew/bin/tmux new-session -s default'
+
+window-decoration = false
+theme = GitHub Dark
+
+keybind = ctrl+r=reload_config
+keybind = global:ctrl+y=toggle_visibility
+keybind = cmd+t=unbind
+keybind = cmd+u=reset
