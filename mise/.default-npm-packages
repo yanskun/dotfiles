@@ -1,11 +1,2 @@
 @antfu/ni
-sql-language-server
-svelte-language-server
-typescript-language-server
-@vue/language-server
-yaml-language-server
-cssmodules-language-server
-vscode-langservers-extracted
-vscode-json-languageserver
-@prisma/language-server
 npm-check-updates
