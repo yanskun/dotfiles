@@ -207,7 +207,7 @@ bindkey '^o' fzf-open
 
 ## gcloud project swhich
 function gcloud_prj_switch () {
-    local project="$(gcloud projects list | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
+    local project="$(gcloud projects list | tail -n +2 | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
     if [ -n "$project" ]; then
         BUFFER="gcloud config set project ${project}"
         zle accept-line
