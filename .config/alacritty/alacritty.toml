@@ -55,6 +55,9 @@ bindings = [
   { key = "0", mods = "Command", action = "ResetFontSize" },
 ]
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["-c", "/opt/homebrew/bin/tmux attach-session || /opt/homebrew/bin/tmux new-session -s default"]
+
+[mouse]
+hide_when_typing = true
