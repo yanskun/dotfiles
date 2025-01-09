@@ -34,6 +34,12 @@ if [[ ! -d "$XDG_CONFIG_HOME"/zellij ]]; then
 fi
 ln -f -s "$config_path"/zellij/config.kdl "$XDG_CONFIG_HOME"/zellij/config.kdl
 
+echo 'atuin'
+if [[ ! -d "$XDG_CONFIG_HOME"/atuin ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/atuin
+fi
+ln -f -s "$config_path"/atuin/config.toml "$XDG_CONFIG_HOME"/atuin/config.toml
+
 echo 'hammerspoon'
 if [[ ! -d "$HOME"/.hammerspoon ]]; then
   mkdir "$HOME"/.hammerspoon
