@@ -68,6 +68,12 @@ return function()
           conflict = '',
         },
       },
+      type = {
+        enabled = false,
+      },
+      last_modified = {
+        enabled = false,
+      },
     },
     window = {
       position = 'left',
