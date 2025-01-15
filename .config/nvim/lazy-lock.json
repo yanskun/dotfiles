@@ -65,6 +65,7 @@
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "rust-tools.nvim": { "branch": "master", "commit": "676187908a1ce35ffcd727c654ed68d851299d3e" },
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
+  "screenkey.nvim": { "branch": "main", "commit": "16390931d847b1d5d77098daccac4e55654ac9e2" },
   "telescope-cmdline.nvim": { "branch": "main", "commit": "8b05928ac1b9f2b772cedde891faa6669b0ec59a" },
   "telescope-egrepify.nvim": { "branch": "master", "commit": "a8070970a661330c4e00450d25f874f6c2b00af9" },
   "telescope-frecency.nvim": { "branch": "master", "commit": "7b3f74cbd1006830dcc3ae59f4ec2f1a6a0b8a72" },
