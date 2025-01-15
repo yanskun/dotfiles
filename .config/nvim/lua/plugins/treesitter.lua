@@ -13,4 +13,6 @@ return {
     -- "yanskun/nvim-treesitter-context",
     config = conf('treesitter-context'),
   },
+
+  'm-demare/hlargs.nvim',
 }
