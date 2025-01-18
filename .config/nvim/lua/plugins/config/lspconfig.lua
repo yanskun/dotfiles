@@ -26,32 +26,6 @@ return function()
     { 'gsr',      '<cmd>lua vim.lsp.buf.rename()<CR>',        desc = 'Rename' },
   })
 
-  local servers = {
-    'buf_ls',
-    'biome',
-    'cssls',
-    'denols',
-    'gopls',
-    'jsonls',
-    'lua_ls',
-    'prismals',
-    'pylsp',
-    'ruby_lsp',
-    'rust_analyzer',
-    'sqlls',
-    'svelte',
-    'tailwindcss',
-    'tflint',
-    'ts_ls',
-    'volar',
-    'yamlls',
-    'zls',
-  }
-
-  -- for _, lsp in ipairs(servers) do
-  --   conf_lsp(lsp)
-  -- end
-
   local mason_lspconfig = require('mason-lspconfig')
   mason_lspconfig.setup_handlers({
     function(server_name)
