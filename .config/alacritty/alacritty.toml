@@ -46,6 +46,7 @@ family = "Hack Nerd Font Mono"
 decorations = "none"
 opacity = 0.85
 startup_mode = "Maximized"
+padding = { x = 8, y = 4 }
 
 [keyboard]
 bindings = [
