@@ -241,7 +241,7 @@ function atuin-history-selection() {
         trap "rm -rf '$tmpdir'" EXIT HUP INT TERM
         output=$(
             cat "$tmpdir/pipe" &;
-            tmux display-popup -d $(pwd) -B -E -E -h 50%  -- \
+            tmux display-popup -d $(pwd) -E -E -h 50%  -- \
                 "$(printf "%q " RUST_LOG=error atuin search $* -i -- $BUFFER) 1>&2 2>$tmpdir/pipe"
         )
         rm -rf "$tmpdir"
@@ -255,7 +255,7 @@ function atuin-history-selection() {
 
 }
 zle -N atuin-history-selection
-# bindkey '^H' atuin-history-selection
+bindkey '^H' atuin-history-selection
 
 ########################################
 
