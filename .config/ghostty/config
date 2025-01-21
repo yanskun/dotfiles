@@ -18,9 +18,14 @@ shell-integration-features = no-cursor
 initial-command = /bin/zsh -c '/opt/homebrew/bin/tmux attach-session || /opt/homebrew/bin/tmux new-session -s default'
 
 window-decoration = false
-theme = Dark Modern
+fullscreen = true
+macos-non-native-fullscreen = true
+window-padding-x = 8
+window-padding-y = 4
 
-keybind = ctrl+r=reload_config
+theme = original
+
+keybind = cmd+r=reload_config
 keybind = global:ctrl+y=toggle_visibility
-keybind = cmd+t=unbind
-keybind = cmd+u=reset
+
+background = "1e2127"

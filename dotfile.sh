@@ -75,6 +75,7 @@ if [[ ! -e "$XDG_CONFIG_HOME"/ghostty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/ghostty
 fi
 ln -f -s "$config_path"/ghostty/config "$XDG_CONFIG_HOME"/ghostty/config
+ln -f -s "$config_path"/ghostty/themes "$XDG_CONFIG_HOME"/ghostty/themes
 
 echo 'mise'
 find "${PWD}"/mise -type f -name ".default-*" | while read file; do
