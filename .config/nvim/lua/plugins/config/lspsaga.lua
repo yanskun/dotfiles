@@ -1,4 +1,12 @@
 return function()
+  require('lspsaga').setup({
+    rename = {
+      keys = {
+        quit = '<ESC>',
+      },
+    },
+  })
+
   require('which-key').add({
     { 'K', '<Cmd>Lspsaga hover_doc<CR>', desc = 'lspsaga show hover doc' },
     { 'gs', group = 'lspsaga' },

@@ -33,10 +33,10 @@ return {
     'gbprod/none-ls-shellcheck.nvim',
   },
 
-  -- {
-  --   "kkharji/lspsaga.nvim",
-  --   config = conf("lspsaga"),
-  -- },
+  {
+    'nvimdev/lspsaga.nvim',
+    config = conf('lspsaga'),
+  },
 
   {
     'akinsho/flutter-tools.nvim',

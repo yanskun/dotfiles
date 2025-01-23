@@ -20,10 +20,9 @@ return function()
       '<cmd>lua vim.diagnostic.goto_prev()<CR>',
       desc = 'Move to the previous diagnostic in the current buffer',
     },
-    { ']d',       '<cmd>lua vim.diagnostic.goto_next()<CR>',  desc = 'Move to the next diagnostic' },
-    { 'K',        '<cmd>lua vim.lsp.buf.hover()<CR>',         desc = 'Show hover doc' },
-    { 'ga',       '<cmd>lua vim.lsp.buf.code_action()<CR>',   desc = 'Code Action' },
-    { 'gsr',      '<cmd>lua vim.lsp.buf.rename()<CR>',        desc = 'Rename' },
+    { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Move to the next diagnostic' },
+    -- { 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', desc = 'Show hover doc' },
+    -- { 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', desc = 'Code Action' },
   })
 
   local mason_lspconfig = require('mason-lspconfig')
