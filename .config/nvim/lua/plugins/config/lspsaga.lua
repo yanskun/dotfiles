@@ -5,6 +5,12 @@ return function()
         quit = '<ESC>',
       },
     },
+    symbol_in_winbar = {
+      enable = false,
+    },
+    lightbulb = {
+      enable = false,
+    },
   })
 
   require('which-key').add({
