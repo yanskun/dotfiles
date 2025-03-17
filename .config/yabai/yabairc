@@ -58,5 +58,6 @@ yabai -m rule --add app="^Alcove$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 
 yabai -m rule --add app='(^System Preferences$|^システム設定$)' manage=off
+yabai -m rule --add app='^時計$' manage=off
 
 echo "yabai configuration loaded.."
