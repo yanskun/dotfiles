@@ -2,6 +2,10 @@ local utils = require('libraries._set_config')
 
 local conf = utils.conf
 
+if vim.g.vscode then
+  return
+end
+
 return {
   'nvim-lua/plenary.nvim',
 
