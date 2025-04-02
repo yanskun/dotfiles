@@ -22,7 +22,7 @@ M.on_attach = function(client, bufnr, opts)
     },
     {
       'K',
-      '<cmd>lua vim.lsp.buf.hover()<CR>',
+      '<cmd>lua vim.lsp.buf.hover({ border = "rounded" })<CR>',
       desc = 'Displays hover information about the symbol under the cursor in a floating window',
     },
     {
