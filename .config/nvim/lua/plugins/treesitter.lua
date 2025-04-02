@@ -9,8 +9,7 @@ return {
     build = ':TSUpdate',
   },
   {
-    dir = '~/Projects/github.com/yanskun/nvim-treesitter-context',
-    -- "yanskun/nvim-treesitter-context",
+    'nvim-treesitter/nvim-treesitter-context',
     config = conf('treesitter-context'),
   },
 
