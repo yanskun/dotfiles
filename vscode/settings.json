@@ -43,11 +43,6 @@
   "workbench.startupEditor": "newUntitledFile",
   "git.confirmSync": false,
   "git.mergeEditor": false,
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
-  "ruby.lint": {
-    "rubocop": true
-  },
   "todo-tree.highlights.customHighlight": {
     "TODO": {
       "type": "text",
@@ -135,9 +130,7 @@
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "editor.stickyScroll.scrollWithEditor": false,
   "editor.unicodeHighlight.ambiguousCharacters": false,
-  "remoteHub.commitDirectlyWarning": "off",
   "terminal.integrated.stickyScroll.enabled": true,
-  // "accessibility.voice.keywordActivation": "inlineChat",
   "github.copilot.chat.localeOverride": "ja",
   // "jest.shell": {
   //   // "path": "/usr/bin/env",
@@ -156,5 +149,8 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "remote.SSH.remotePlatform": {
     "sandbox.t5v2dn.csb": "linux"
-  }
+  },
+  "chat.agent.enabled": true,
+  "chat.mcp.discovery.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true
 }

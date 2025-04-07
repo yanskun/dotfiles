@@ -41,7 +41,6 @@ return {
   {
     'akinsho/flutter-tools.nvim',
     config = conf('flutter-tools'),
-    ft = 'dart',
   },
 
   {
