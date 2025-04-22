@@ -20,6 +20,8 @@ o.clipboard = 'unnamed'
 
 o.laststatus = 3
 
+-- vim.diagnostic.config({ virtual_text = true })
+
 vim.cmd([[
   language en_US.UTF-8
   filetype plugin indent on

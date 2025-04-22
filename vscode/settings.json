@@ -106,6 +106,20 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "go.formatTool": "gofmt",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },
