@@ -47,6 +47,12 @@ fi
 ln -f -s "$PWD"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
 ln -f -s "$PWD"/hammerspoon/alacritty.lua "$HOME"/.hammerspoon/alacritty.lua
 
+echo 'mcphub'
+if [[ ! -e "$XDG_CONFIG_HOME"/mcphub ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/mcphub
+fi
+ln -f -s "$config_path"/mcphub/servers.json "$XDG_CONFIG_HOME"/mcphub/servers.json
+
 echo 'sheldon'
 if [[ ! -d "$XDG_CONFIG_HOME"/sheldon ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/sheldon
