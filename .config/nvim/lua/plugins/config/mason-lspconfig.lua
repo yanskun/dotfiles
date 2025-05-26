@@ -17,7 +17,7 @@ return function()
       'tailwindcss',
       'tflint',
       'ts_ls',
-      'volar',
+      'vue_ls',
       'yamlls',
       'zls',
     },

@@ -26,7 +26,7 @@ return function()
   })
 
   local mason_lspconfig = require('mason-lspconfig')
-  mason_lspconfig.setup_handlers({
+  mason_lspconfig.setup({
     function(server_name)
       conf_lsp(server_name)
     end,
