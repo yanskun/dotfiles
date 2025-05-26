@@ -68,7 +68,6 @@
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "cSpell.userWords": [
-    "bufbuild",
     "Bugsnag",
     "clsx",
     "DATETIME",
@@ -78,12 +77,10 @@
     "DSLs",
     "mixins",
     "nuxt",
-    "picklist",
     "poplight",
     "qiita",
     "stylelint",
     "testid",
-    "valibot",
     "yanskun",
     "zenn",
     "Zoomable"
