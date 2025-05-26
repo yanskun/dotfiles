@@ -34,16 +34,6 @@ return function()
         end,
       }),
     },
-    window = {
-      completion = {
-        border = 'rounded',
-        scrollbar = '║',
-      },
-      documentation = {
-        border = 'rounded',
-        scrollbar = '',
-      },
-    },
   })
 
   vim.api.nvim_create_autocmd('FileType', {
