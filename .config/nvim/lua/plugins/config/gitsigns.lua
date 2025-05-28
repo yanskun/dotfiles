@@ -1,6 +1,4 @@
 return function()
-  require('gitsigns').setup()
-
   require('which-key').add({
     mode = { 'n', 'v' },
     { '<leader>g', group = 'git' },
