@@ -8,5 +8,8 @@ return {
     config = true,
     cmd = 'Glow',
   },
-  'OXY2DEV/markview.nvim',
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+  },
 }
