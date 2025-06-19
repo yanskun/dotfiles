@@ -28,7 +28,7 @@ eval "$(atuin init zsh --disable-up-arrow)"
 
 ########################################
 # start-up
-if [[ $TERM_PROGRAM != "tmux" ]]; then
+if [[ $TERM_PROGRAM != "tmux" && $TERM_PROGRAM != "vscode" ]]; then
   neofetch
 fi
 
