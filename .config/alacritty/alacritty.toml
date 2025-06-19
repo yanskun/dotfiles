@@ -58,3 +58,9 @@ bindings = [
 
 [mouse]
 hide_when_typing = true
+
+[bell]
+animation = "EaseOutExpo"
+[bell.command]
+program = "afplay"
+args = [" /System/Library/Sounds/Glass.aiff"]
