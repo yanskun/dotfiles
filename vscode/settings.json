@@ -170,18 +170,19 @@
   "editor.accessibilitySupport": "off",
   "mcp": {
     "servers": {
-      "lapras": {
-        "command": "npx",
-        "args": ["-y", "@lapras-inc/lapras-mcp-server"]
-      },
       "FinswerNotion": {
         "command": "npx",
         "args": ["-y", "@notionhq/notion-mcp-server"],
         "env": {
           "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
         }
+      },
+      "typescript": {
+        "command": "npx",
+        "args": ["typescript-mcp"]
       }
-    }
+    },
+    "inputs": []
   },
   "vim.useSystemClipboard": true
 }
