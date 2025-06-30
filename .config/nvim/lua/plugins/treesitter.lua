@@ -14,4 +14,9 @@ return {
   },
 
   'm-demare/hlargs.nvim',
+
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+  },
 }
