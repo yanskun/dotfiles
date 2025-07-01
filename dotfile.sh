@@ -84,7 +84,13 @@ ln -f -s "$config_path"/ghostty/config "$XDG_CONFIG_HOME"/ghostty/config
 ln -f -s "$config_path"/ghostty/themes "$XDG_CONFIG_HOME"/ghostty/themes
 
 echo 'mise'
-find "${PWD}"/mise -type f -name ".default-*" | while read file; do
+if [[ ! -e "$XDG_CONFIG_HOME"/mise ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/mise
+fi
+ln -f -s "$config_path"/mise/config.toml "$XDG_CONFIG_HOME"/mise/config.toml
+
+echo 'default packages'
+find "${PWD}"/default-packages -type f -name ".default-*" | while read file; do
   filename=$(basename "$file")
   ln -sf "$file" "$HOME/$filename"
 done
