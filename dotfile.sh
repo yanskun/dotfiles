@@ -105,11 +105,11 @@ echo 'gemini'
 rm -f "${HOME}/.gemini/settings.json"
 ln -f -s "${PWD}"/gemini/settings.json "${HOME}"/.gemini/settings.json
 
-# echo 'claude'
-# if [[ ! -e "$XDG_CONFIG_HOME"/claude ]]; then
-#   mkdir -p "$XDG_CONFIG_HOME"/claude
-# fi
-# ln -f -s "$config_path"/claude/settings.json "$XDG_CONFIG_HOME"/claude/settings.json
+echo 'claude'
+if [[ ! -e "$XDG_CONFIG_HOME"/claude ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/claude
+fi
+ln -f -s "$config_path"/claude/settings.json "$XDG_CONFIG_HOME"/claude/settings.json
 
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
