@@ -106,10 +106,8 @@ rm -f "${HOME}/.gemini/settings.json"
 ln -f -s "${PWD}"/gemini/settings.json "${HOME}"/.gemini/settings.json
 
 echo 'claude'
-if [[ ! -e "$XDG_CONFIG_HOME"/claude ]]; then
-  mkdir -p "$XDG_CONFIG_HOME"/claude
-fi
-ln -f -s "$config_path"/claude/settings.json "$XDG_CONFIG_HOME"/claude/settings.json
+ln -f -s "$PWD"/claude/settings.json "${HOME}"/.claude/settings.json
+ln -f -s "$PWD"/claude/commands "$HOME"/.claude/commands
 
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
@@ -133,7 +131,7 @@ defaults write com.apple.dock tilesize -int 45
 defaults write com.apple.dock magnification -bool false
 killall Dock
 
-yes | rm .config/vim/lua/lua
+yes | rm .config/nvim/lua/lua
 
 echo '🎉Finish'
 echo 'Please restart the terminal'
