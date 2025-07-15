@@ -1,3 +1,26 @@
+local function find_nearest_scaffdog_root(start_path)
+  local uv = vim.loop
+  local function is_scaffdog_root(path)
+    local config = uv.fs_stat(path .. '/scaffdog.config.ts')
+      or uv.fs_stat(path .. '/scaffdog.config.js')
+      or uv.fs_stat(path .. '/.scaffdog')
+    return config ~= nil
+  end
+
+  local function dirname(path)
+    return vim.fn.fnamemodify(path, ':h')
+  end
+
+  local current = vim.fn.fnamemodify(start_path, ':p')
+  while current ~= '/' do
+    if is_scaffdog_root(current) then
+      return current
+    end
+    current = dirname(current)
+  end
+  return nil
+end
+
 return function()
   local ok, neo_tree = pcall(require, 'neo-tree')
 
@@ -75,6 +98,49 @@ return function()
         enabled = false,
       },
     },
+    commands = {
+      scaffdog_generate = function(state)
+        local node = state.tree:get_node()
+        local path = node.path
+        local target_path = node.type == 'directory' and path or vim.fn.fnamemodify(path, ':h')
+
+        -- 🔍 scaffdog root を探す
+        local scaffdog_root = find_nearest_scaffdog_root(target_path)
+        if not scaffdog_root then
+          vim.notify('No .scaffdog or scaffdog.config.ts found in parent dirs', vim.log.levels.ERROR)
+          return
+        end
+        scaffdog_root = vim.fn.fnamemodify(scaffdog_root, ':p')
+        local relative_path = vim.fs.relpath(scaffdog_root, target_path)
+
+        -- ターミナルバッファ作成
+        local buf = vim.api.nvim_create_buf(false, true)
+        local width = math.floor(vim.o.columns * 0.8)
+        local height = math.floor(vim.o.lines * 0.8)
+        local row = math.floor((vim.o.lines - height) / 2)
+        local col = math.floor((vim.o.columns - width) / 2)
+
+        vim.api.nvim_open_win(buf, true, {
+          relative = 'editor',
+          row = row,
+          col = col,
+          width = width,
+          height = height,
+          style = 'minimal',
+          border = 'rounded',
+        })
+
+        -- scaffdog root に cd して実行
+        local cmd = string.format(
+          'cd %s && npx scaffdog generate -o %s',
+          vim.fn.shellescape(scaffdog_root),
+          vim.fn.shellescape(relative_path)
+        )
+        vim.fn.termopen({ 'sh', '-c', cmd })
+
+        vim.cmd('startinsert')
+      end,
+    },
     window = {
       position = 'left',
       width = 30,
@@ -114,6 +180,7 @@ return function()
         ['q'] = 'close_window',
         ['R'] = 'refresh',
         ['?'] = 'show_help',
+        ['G'] = 'scaffdog_generate',
       },
     },
     nesting_rules = {},
@@ -142,7 +209,7 @@ return function()
         enabled = false, -- This will find and focus the file in the active buffer every
       },
       -- time the current file is changed while the tree is open.
-      group_empty_dirs = false,               -- when true, empty folders will be grouped together
+      group_empty_dirs = false, -- when true, empty folders will be grouped together
       hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
       -- in whatever position is specified in window.position
       -- "open_current",  -- netrw disabled, opening a directory opens within the
