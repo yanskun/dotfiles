@@ -28,7 +28,7 @@ eval "$(atuin init zsh --disable-up-arrow)"
 
 ########################################
 # start-up
-if [[ $TERM_PROGRAM != "tmux" ]]; then
+if [[ $TERM_PROGRAM != "tmux" && $TERM_PROGRAM != "vscode" ]]; then
   neofetch
 fi
 
@@ -204,6 +204,17 @@ function fzf-history-selection() {
 
 zle -N fzf-history-selection
 bindkey '^H' fzf-history-selection
+
+## fzf directory selector
+function fzf-directory() {
+    local dir=$(cdr -l | awk '{print $2}' | fzf-tmux -p --reverse --height 40%)
+    if [ -n "$dir" ]; then
+        BUFFER="cd $dir"
+        zle accept-line
+    fi
+}
+zle -N fzf-directory
+bindkey '^D' fzf-directory
 
 ## gcloud project swhich
 function gcloud_prj_switch () {

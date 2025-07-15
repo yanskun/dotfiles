@@ -16,14 +16,6 @@ return {
     priority = 1000,
   },
 
-  {
-    dir = '~/Projects/github.com/yanskun/ollama-cmp',
-    dev = true,
-    config = function()
-      require('ollama_cmp').setup()
-    end,
-  },
-
   -- TODO: suggest suport
   -- {
   --   'folke/noice.nvim',

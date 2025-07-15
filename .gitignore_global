@@ -1,3 +1,8 @@
 .DS_Store
 __debug_bin
 .aider.*
+
+**/.null-ls_*
+
+**/.claude/settings.local.json
+

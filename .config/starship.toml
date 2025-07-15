@@ -1,5 +1,5 @@
 format = """
-$time$directory$golang$nodejs$python$dart$rust$deno$ruby$cmd_duration$fill$git_status$git_branch
+$time$directory$golang$nodejs$python$dart$rust$deno$ruby$bun$cmd_duration$fill$git_status$git_branch
 $character"""
 
 command_timeout = 600
@@ -54,6 +54,10 @@ format = "[$symbol($version )]($style)"
 
 [ruby]
 format = "[$symbol($version )]($style)"
+
+[bun]
+format = "[$symbol($version )]($style)"
+symbol = " "
 
 [character]
 success_symbol = "[-❯](bold green)"

@@ -84,7 +84,13 @@ ln -f -s "$config_path"/ghostty/config "$XDG_CONFIG_HOME"/ghostty/config
 ln -f -s "$config_path"/ghostty/themes "$XDG_CONFIG_HOME"/ghostty/themes
 
 echo 'mise'
-find "${PWD}"/mise -type f -name ".default-*" | while read file; do
+if [[ ! -e "$XDG_CONFIG_HOME"/mise ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/mise
+fi
+ln -f -s "$config_path"/mise/config.toml "$XDG_CONFIG_HOME"/mise/config.toml
+
+echo 'default packages'
+find "${PWD}"/default-packages -type f -name ".default-*" | while read file; do
   filename=$(basename "$file")
   ln -sf "$file" "$HOME/$filename"
 done
@@ -94,6 +100,14 @@ if [[ ! -e "$XDG_CONFIG_HOME"/yabai ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/yabai
 fi
 ln -f -s "$config_path"/yabai/yabairc "$XDG_CONFIG_HOME"/yabai/yabairc
+
+echo 'gemini'
+rm -f "${HOME}/.gemini/settings.json"
+ln -f -s "${PWD}"/gemini/settings.json "${HOME}"/.gemini/settings.json
+
+echo 'claude'
+ln -f -s "$PWD"/claude/settings.json "${HOME}"/.claude/settings.json
+ln -f -s "$PWD"/claude/commands "$HOME"/.claude/commands
 
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
@@ -117,7 +131,7 @@ defaults write com.apple.dock tilesize -int 45
 defaults write com.apple.dock magnification -bool false
 killall Dock
 
-yes | rm .config/vim/lua/lua
+yes | rm .config/nvim/lua/lua
 
 echo '🎉Finish'
 echo 'Please restart the terminal'

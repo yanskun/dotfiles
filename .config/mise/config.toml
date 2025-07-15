@@ -1,0 +1,7 @@
+[tools]
+bun = "latest"
+node = "24.2.0"
+python = "3.13.2"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]

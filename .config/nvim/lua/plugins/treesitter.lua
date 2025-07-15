@@ -7,6 +7,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     config = conf('treesitter'),
     build = ':TSUpdate',
+    dependencies = {
+      'OXY2DEV/markview.nvim',
+    },
   },
   {
     'nvim-treesitter/nvim-treesitter-context',

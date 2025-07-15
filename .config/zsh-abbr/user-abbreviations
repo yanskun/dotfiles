@@ -16,6 +16,8 @@ abbr -g G='| grep'
 abbr d='docker'
 abbr dc='docker compose'
 
+abbr cc='claude'
+
 # color
 abbr grep='grep --color=auto'
 
