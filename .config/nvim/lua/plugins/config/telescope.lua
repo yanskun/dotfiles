@@ -77,6 +77,7 @@ return function()
   telescope.load_extension 'egrepify'
   telescope.load_extension 'cmdline'
   telescope.load_extension 'frecency'
+  telescope.load_extension 'dir'
 
   --  see: https://github.com/nvim-telescope/telescope.nvim/issues/605#issuecomment-790805956
   local previewers = require('telescope.previewers')
@@ -133,6 +134,11 @@ return function()
       desc = 'telescope live grep by egrepify',
     },
     {
+      '<leader>fD',
+      "<CMD>lua require('telescope').extensions.dir.find_files({ find_command = " .. find_command .. ' })<CR>',
+      desc = 'telescope telescope find files in directory',
+    },
+    {
       '<leader>ff',
       "<CMD>lua require('telescope.builtin').find_files({find_command = " .. find_command .. ' })<CR>',
       desc = 'telescope find file',
@@ -141,6 +147,11 @@ return function()
       '<leader>fg',
       "<CMD>lua require('telescope.builtin').live_grep({find_command = " .. find_command .. ' })<CR>',
       desc = 'telescope live grep',
+    },
+    {
+      '<leader>fD',
+      "<CMD>lua require('telescope').extensions.dir.live_grep({ find_command = " .. find_command .. ' })<CR>',
+      desc = 'telescope telescope grep in directory',
     },
     {
       '<leader>fh',

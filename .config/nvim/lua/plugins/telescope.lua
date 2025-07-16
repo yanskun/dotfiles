@@ -18,6 +18,10 @@ return {
   },
 
   {
+    'princejoogie/dir-telescope.nvim',
+  },
+
+  {
     'fdschmidt93/telescope-egrepify.nvim',
   },
   {
