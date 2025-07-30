@@ -108,6 +108,8 @@ ln -f -s "${PWD}"/gemini/settings.json "${HOME}"/.gemini/settings.json
 echo 'claude'
 ln -f -s "$PWD"/claude/settings.json "${HOME}"/.claude/settings.json
 ln -f -s "$PWD"/claude/commands "$HOME"/.claude/commands
+ln -f -s "$PWD"/claude/agents "$HOME"/.claude/agents
+ln -f -s "$PWD"/claude/CLAUDE.md "$HOME"/.claude/CLAUDE.md
 
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
@@ -132,6 +134,8 @@ defaults write com.apple.dock magnification -bool false
 killall Dock
 
 yes | rm .config/nvim/lua/lua
+yes | rm claude/commands/commands
+yes | rm claude/agents/agents
 
 echo '🎉Finish'
 echo 'Please restart the terminal'
