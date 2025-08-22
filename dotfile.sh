@@ -111,6 +111,12 @@ ln -f -s "$PWD"/claude/commands "$HOME"/.claude/commands
 ln -f -s "$PWD"/claude/agents "$HOME"/.claude/agents
 ln -f -s "$PWD"/claude/CLAUDE.md "$HOME"/.claude/CLAUDE.md
 
+echo 'opencode'
+if [[ ! -e "${XDG_CONFIG_HOME}"/.opencode ]]; then
+  mkdir -p "${XDG_CONFIG_HOME}"/.opencode
+fi
+ln -f -s "$config_path"/opencode/opencode.json "${XDG_CONFIG_HOME}"/opencode/opencode.json
+
 echo 'vscode'
 rm -f "${HOME}"/Library/Application\ Support/Code/User/settings.json
 ln -f -s "${PWD}"/vscode/settings.json "$HOME"/Library/Application\ Support/Code/User

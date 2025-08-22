@@ -1,9 +1,8 @@
 {
-  "model": "sonnet",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
       "Read(~/.zshrc)",
-
       "Bash(go:*)",
       "Bash(gofmt:*)",
       "Bash(golint:*)",
@@ -47,7 +46,6 @@
       "Bash(export:*)",
       "Bash(history)",
       "Bash(alias:*)",
-
       "mcp__typescript__move_file",
       "mcp__typescript__move_directory",
       "mcp__typescript__rename_symbol",
@@ -61,7 +59,10 @@
       "mcp__typescript__get_symbols_in_scope",
       "mcp__typescript__lsp_find_references",
       "mcp__typescript__lsp_get_definitions",
-      "mcp__typescript__lsp_zget_diagnostics"
+      "mcp__typescript__lsp_zget_diagnostics",
+      "mcp__serena",
+      "mcp__context7",
+      "mcp__github"
     ],
     "deny": [
       "Bash(rm -rf /)",
@@ -110,5 +111,9 @@
       "Write(/etc/shadow)",
       "Write(/etc/sudoers)"
     ]
+  },
+  "model": "sonnet",
+  "feedbackSurveyState": {
+    "lastShownTime": 1754085492520
   }
 }

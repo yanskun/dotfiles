@@ -18,6 +18,8 @@ export PATH=$PATH:/usr/sbin/
 
 export PATH=$PATH:$DOTDIR/.config/alacritty/bin
 
+export PATH="$HOME/.orbstack/bin:$PATH"
+
 ########################################
 # plugins
 eval "$(sheldon source)"
