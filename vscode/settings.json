@@ -168,5 +168,6 @@
   "chat.mcp.discovery.enabled": true,
   "github.copilot.chat.agent.thinkingTool": true,
   "editor.accessibilitySupport": "off",
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "github.copilot.nextEditSuggestions.enabled": true
 }
