@@ -17,6 +17,7 @@ abbr d='docker'
 abbr dc='docker compose'
 
 abbr cc='claude'
+abbr cx='codex'
 
 # color
 abbr grep='grep --color=auto'
