@@ -272,5 +272,8 @@ bindkey '^H' atuin-history-selection
 
 ########################################
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # starship
 eval "$(starship init zsh)"

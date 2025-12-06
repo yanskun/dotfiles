@@ -13,3 +13,10 @@ If there is already at least one staged file, it will only be targeted and new `
 The following link is the absolute rule for commit messages.
 
 https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional
+
+## MCP 利用ルール
+
+### Playwright MCP
+
+コンテキストないに、localhost の URL が含まれていて、かつアクセスを要求された時
+Playwiright MCP が使える場合は利用してください。

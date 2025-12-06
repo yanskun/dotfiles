@@ -24,6 +24,9 @@ github = "z-shell/F-Sy-H"
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
 
+[plugins.zsh-npm-global-recorder]
+github = "yanskun/zsh-npm-global-recorder"
+
 # For example:
 #
 # [plugins.base16]

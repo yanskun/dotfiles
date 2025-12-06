@@ -64,7 +64,12 @@
     }
   },
   "todo-tree.tree.expanded": true,
-  "todo-tree.general.tags": ["TODO", "NOTE", "FIXME", "HACK"],
+  "todo-tree.general.tags": [
+    "TODO",
+    "NOTE",
+    "FIXME",
+    "HACK"
+  ],
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "cSpell.userWords": [
@@ -94,9 +99,9 @@
     "/": "${folder}/",
     "~": "${folder}/"
   },
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": false,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -165,9 +170,15 @@
     "sandbox.t5v2dn.csb": "linux"
   },
   "chat.agent.enabled": true,
-  "chat.mcp.discovery.enabled": true,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true,
+    "windsurf": true,
+    "cursor-global": true,
+    "cursor-workspace": true
+  },
   "github.copilot.chat.agent.thinkingTool": true,
   "editor.accessibilitySupport": "off",
   "vim.useSystemClipboard": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "remoteHub.commitDirectlyWarning": "off"
 }

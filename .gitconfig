@@ -66,3 +66,5 @@
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[coderabbit]
+	machineId = cli/298a479fac2c4fc28dee426313fb2eff
