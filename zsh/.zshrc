@@ -227,7 +227,22 @@ function gcloud_prj_switch () {
     fi
 }
 zle -N gcloud_prj_switch
-bindkey '^g' gcloud_prj_switch
+bindkey '^p' gcloud_prj_switch
+
+## gcloud auth account switch
+function gcloud_auth_switch () {
+    local account="$(
+        gcloud auth list --format="value(account)" \
+        | fzf-tmux -p --height 40% --reverse
+    )"
+
+    if [ -n "$account" ]; then
+        BUFFER="gcloud config set account ${account}"
+        zle accept-line
+    fi
+}
+zle -N gcloud_auth_switch
+bindkey '^g' gcloud_auth_switch
 
 ## tmux window switcher
 function tmux-window-switcher () {
