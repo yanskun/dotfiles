@@ -57,6 +57,7 @@ yabai -m rule --add app="^ChatGPT$" manage=off
 yabai -m rule --add app="^Alcove$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Chromium$" manage=off
+yabai -m rule --add app="^Nani$" manage=off
 
 yabai -m rule --add app='(^System Preferences$|^システム設定$)' manage=off
 yabai -m rule --add app='^時計$' manage=off

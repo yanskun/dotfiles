@@ -180,5 +180,9 @@
   "editor.accessibilitySupport": "off",
   "vim.useSystemClipboard": true,
   "github.copilot.nextEditSuggestions.enabled": true,
-  "remoteHub.commitDirectlyWarning": "off"
+  "remoteHub.commitDirectlyWarning": "off",
+  "chat.mcp.gallery.enabled": true,
+  "chat.tools.terminal.autoApprove": {
+    "cargo build": true
+  }
 }
