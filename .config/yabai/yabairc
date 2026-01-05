@@ -50,6 +50,7 @@ yabai -m config                                 \
 
 yabai -m rule --add app="^Alacritty$" manage=off
 yabai -m rule --add app="^Ghostty$" manage=off
+yabai -m rule --add app="^WezTerm$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
 yabai -m rule --add app="^LINE$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
