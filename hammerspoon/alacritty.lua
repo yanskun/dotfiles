@@ -63,31 +63,47 @@ end
 -- the actual workhorse
 
 module.eventWatcher = eventtap
-  .new({ events.flagsChanged, events.keyDown }, function(ev)
-    -- if it's been too long; previous state doesn't matter
-    if (timer.secondsSinceEpoch() - timeFirstControl) > module.timeFrame then
-      timeFirstControl, firstDown, secondDown = 0, false, false
-    end
-
-    if ev:getType() == events.flagsChanged then
-      if noFlags(ev) and firstDown and secondDown then -- ctrl up and we've seen two, so do action
-        if module.action then
-          module.action()
-        end
-        timeFirstControl, firstDown, secondDown = 0, false, false
-      elseif onlyCtrl(ev) and not firstDown then -- ctrl down and it's a first
-        firstDown = true
-        timeFirstControl = timer.secondsSinceEpoch()
-      elseif onlyCtrl(ev) and firstDown then -- ctrl down and it's the second
-        secondDown = true
-      elseif not noFlags(ev) then -- otherwise reset and start over
+    .new({ events.flagsChanged, events.keyDown }, function(ev)
+      -- if it's been too long; previous state doesn't matter
+      if (timer.secondsSinceEpoch() - timeFirstControl) > module.timeFrame then
         timeFirstControl, firstDown, secondDown = 0, false, false
       end
-    else -- it was a key press, so not a lone ctrl char -- we don't care about it
-      timeFirstControl, firstDown, secondDown = 0, false, false
+
+      if ev:getType() == events.flagsChanged then
+        if noFlags(ev) and firstDown and secondDown then -- ctrl up and we've seen two, so do action
+          if module.action then
+            module.action()
+          end
+          timeFirstControl, firstDown, secondDown = 0, false, false
+        elseif onlyCtrl(ev) and not firstDown then -- ctrl down and it's a first
+          firstDown = true
+          timeFirstControl = timer.secondsSinceEpoch()
+        elseif onlyCtrl(ev) and firstDown then -- ctrl down and it's the second
+          secondDown = true
+        elseif not noFlags(ev) then          -- otherwise reset and start over
+          timeFirstControl, firstDown, secondDown = 0, false, false
+        end
+      else -- it was a key press, so not a lone ctrl char -- we don't care about it
+        timeFirstControl, firstDown, secondDown = 0, false, false
+      end
+      return false
+    end)
+    :start()
+
+-- toggle Alacritty opacity
+local transparent = true
+hs.hotkey.bind({ 'cmd' }, 'u', function()
+  local appName = 'alacritty'
+  local app = hs.application.find(appName)
+  if app.isFrontmost(app) then
+    if transparent then
+      hs.execute('alacritty msg config window.opacity=1', true)
+      transparent = false
+    else
+      hs.execute('alacritty msg config --reset', true)
+      transparent = true
     end
-    return false
-  end)
-  :start()
+  end
+end)
 
 return module

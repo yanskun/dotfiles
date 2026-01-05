@@ -28,22 +28,6 @@ hs.hotkey.bind(mash, 'm', function()
   hs.window.focusedWindow():move(units.maximum, nil, true)
 end)
 
--- toggle Alacritty opacity
-local transparent = true
-hs.hotkey.bind({ 'cmd' }, 'u', function()
-  local appName = 'alacritty'
-  local app = hs.application.find(appName)
-  if app.isFrontmost(app) then
-    if transparent then
-      hs.execute('alacritty msg config window.opacity=1', true)
-      transparent = false
-    else
-      hs.execute('alacritty msg config --reset', true)
-      transparent = true
-    end
-  end
-end)
-
 -- toggle Keycastr
 hs.hotkey.bind({ 'ctrl', 'shift' }, 'k', function()
   local appName = 'KeyCastr'
@@ -58,8 +42,8 @@ end)
 
 local screenWatcher = hs.screen.watcher.new(function()
   if not hs.fnutils.some(hs.screen.allScreens(), function(scr)
-    return scr:name():find('Built%-in .*')
-  end) then
+        return scr:name():find('Built%-in .*')
+      end) then
     hs.execute('yabai --start-service', true)
   else
     hs.execute('yabai --stop-service', true)
