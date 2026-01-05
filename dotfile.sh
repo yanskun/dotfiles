@@ -41,11 +41,7 @@ fi
 ln -f -s "$config_path"/atuin/config.toml "$XDG_CONFIG_HOME"/atuin/config.toml
 
 echo 'hammerspoon'
-if [[ ! -d "$HOME"/.hammerspoon ]]; then
-  mkdir "$HOME"/.hammerspoon
-fi
-ln -f -s "$PWD"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
-ln -f -s "$PWD"/hammerspoon/alacritty.lua "$HOME"/.hammerspoon/alacritty.lua
+ln -snf "$PWD"/hammerspoon ~/.hammerspoon
 
 echo 'mcphub'
 if [[ ! -e "$XDG_CONFIG_HOME"/mcphub ]]; then
@@ -69,6 +65,12 @@ if [[ ! -e "$XDG_CONFIG_HOME"/alacritty ]]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacritty
 fi
 ln -f -s "$config_path"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
+
+echo 'wezterm'
+if [[ ! -e "$XDG_CONFIG_HOME"/wezterm ]]; then
+  mkdir -p "$XDG_CONFIG_HOME"/wezterm
+fi
+ln -f -s "$config_path"/wezterm/wezterm.lua "$XDG_CONFIG_HOME"/wezterm/wezterm.lua
 
 echo 'nix'
 if [[ ! -e "$XDG_CONFIG_HOME"/nix ]]; then

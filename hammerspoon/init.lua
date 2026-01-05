@@ -1,6 +1,10 @@
 -- see: https://github.com/Hammerspoon/hammerspoon/pull/3638
 
-Alacritty = require('alacritty')
+local home = os.getenv('HOME')
+package.path = package.path .. ';' .. home .. '/.hammerspoon/modules/?.lua'
+
+require('alacritty')
+-- require('wezterm')
 
 -- control window size
 hs.window.animationDuration = 0
