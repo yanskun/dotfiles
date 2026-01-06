@@ -64,12 +64,7 @@
     }
   },
   "todo-tree.tree.expanded": true,
-  "todo-tree.general.tags": [
-    "TODO",
-    "NOTE",
-    "FIXME",
-    "HACK"
-  ],
+  "todo-tree.general.tags": ["TODO", "NOTE", "FIXME", "HACK"],
   "oneDarkPro.vivid": true,
   "explorer.confirmDelete": false,
   "cSpell.userWords": [
@@ -183,6 +178,7 @@
   "remoteHub.commitDirectlyWarning": "off",
   "chat.mcp.gallery.enabled": true,
   "chat.tools.terminal.autoApprove": {
-    "cargo build": true
+    "cargo build": true,
+    "pnpm": true
   }
 }

@@ -1,2 +1,5 @@
 [dotfiles]
 enabled = true
+
+[sync]
+records = true
