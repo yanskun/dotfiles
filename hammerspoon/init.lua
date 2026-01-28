@@ -4,7 +4,7 @@ local home = os.getenv('HOME')
 package.path = package.path .. ';' .. home .. '/.hammerspoon/modules/?.lua'
 
 require('alacritty')
--- require('wezterm')
+-- require('ghostty')
 
 -- control window size
 hs.window.animationDuration = 0
