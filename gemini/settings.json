@@ -1,15 +1,23 @@
 {
-  "theme": "Default",
-  "selectedAuthType": "oauth-personal",
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "Default"
+  },
   "mcpServers": {
-    "playwright": {
-      "type": "stdio",
+    "chrome-devtools": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": ["chrome-devtools-mcp@latest", "--isolated=true"]
     },
     "deepWiki": {
-      "type": "sse",
       "url": "https://mcp.deepwiki.com/sse"
     }
+  },
+  "general": {
+    "vimMode": true,
+    "previewFeatures": true
   }
 }

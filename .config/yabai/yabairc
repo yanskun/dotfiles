@@ -53,7 +53,7 @@ yabai -m rule --add app="^Ghostty$" manage=off
 yabai -m rule --add app="^WezTerm$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
 yabai -m rule --add app="^LINE$" manage=off
-yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^1Password$" manage=off grid=10:10:3:3:3:3
 yabai -m rule --add app="^ChatGPT$" manage=off
 yabai -m rule --add app="^Alcove$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
