@@ -105,7 +105,9 @@ ln -f -s "$config_path"/yabai/yabairc "$XDG_CONFIG_HOME"/yabai/yabairc
 
 echo 'gemini'
 rm -f "${HOME}/.gemini/settings.json"
-ln -f -s "${PWD}"/gemini/settings.json "${HOME}"/.gemini/settings.json
+ln -f -sfn "$PWD"/gemini/settings.json "$HOME"/.gemini/settings.json
+ln -f -sfn "$PWD"/gemini/commands "$HOME"/.gemini/commands
+ln -f -sfn "$PWD"/gemini/skills "$HOME"/.gemini/skills
 
 echo 'claude'
 ln -f -s "$PWD"/claude/settings.json "${HOME}"/.claude/settings.json
