@@ -64,14 +64,14 @@ yabai -m rule --add app='(^System Preferences$|^システム設定$)' manage=off
 yabai -m rule --add app='^時計$' manage=off
 yabai -m rule --add app='(^Terminal$|^ターミナル$)' manage=off
 
-yabai -m rule --add app="^Notion$" space=2
-yabai -m rule --add app="^Spotify$" space=3
-yabai -m rule --add app="^Code$" space=4
-yabai -m rule --add app="^Notion Calendar$" space=5
-yabai -m rule --add app="^Slack$" space=6
-yabai -m rule --add app="^Arc$" space=7
-yabai -m rule --add app="^Linear$" space=8
-yabai -m rule --add app="^Postman$" space=9
-yabai -m rule --add app="^TablePlus$" space=10
+yabai -m rule --add app="^Notion$"
+yabai -m rule --add app="^Spotify$"
+yabai -m rule --add app="^Code$"
+yabai -m rule --add app="^Notion Calendar$"
+yabai -m rule --add app="^Slack$"
+yabai -m rule --add app="^Arc$"
+yabai -m rule --add app="^Linear$"
+yabai -m rule --add app="^Postman$"
+yabai -m rule --add app="^TablePlus$"
 
 echo "yabai configuration loaded.."
