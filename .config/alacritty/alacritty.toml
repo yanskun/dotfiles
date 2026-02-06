@@ -54,6 +54,7 @@ bindings = [
   { key = "=", mods = "Command", action = "IncreaseFontSize" },
   { key = "-", mods = "Command", action = "DecreaseFontSize" },
   { key = "0", mods = "Command", action = "ResetFontSize" },
+  { key = "u", mods = "Command", command = { program = "/opt/homebrew/bin/zsh", args = ["-c", "if [ -f /tmp/alacritty_opacity_full ]; then /opt/homebrew/bin/alacritty msg config window.opacity=0.85 && rm /tmp/alacritty_opacity_full; else /opt/homebrew/bin/alacritty msg config window.opacity=1 && touch /tmp/alacritty_opacity_full; fi"] } }
 ]
 
 [mouse]
