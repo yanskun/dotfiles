@@ -1,0 +1,6 @@
+#!/bin/bash
+# Hammerspoonは既存のdotfile.shと同じくディレクトリシンボリックリンク
+if [ -d "$HOME/.hammerspoon" ] && [ ! -L "$HOME/.hammerspoon" ]; then
+    rm -rf "$HOME/.hammerspoon"
+fi
+ln -snf "{{ .dotdir }}/hammerspoon" "$HOME/.hammerspoon"

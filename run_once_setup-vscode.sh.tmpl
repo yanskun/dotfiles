@@ -1,0 +1,6 @@
+#!/bin/bash
+# VS Code設定をシンボリックリンク
+VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+mkdir -p "$VSCODE_USER_DIR"
+ln -sf "{{ .dotdir }}/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"
+ln -sf "{{ .dotdir }}/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"

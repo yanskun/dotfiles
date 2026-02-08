@@ -1,0 +1,5 @@
+#!/bin/bash
+WALLPAPER="{{ .dotdir }}/images/wallpaper.jpeg"
+if command -v wallpaper &> /dev/null && [ -f "$WALLPAPER" ]; then
+    wallpaper set "$WALLPAPER"
+fi

@@ -1,0 +1,64 @@
+format = """
+$time$directory$golang$nodejs$python$dart$rust$deno$ruby$bun$cmd_duration$fill$git_status$git_branch
+$character"""
+
+command_timeout = 600
+
+[time]
+disabled = false
+format = "[ $time]($style) "
+style = 'bold cyan'
+
+[fill]
+symbol = " "
+
+[directory]
+format = "[ ]($style)[$path]($style)[$read_only]($read_only_style) "
+style = 'bold yellow'
+read_only_style = 'bold red'
+truncation_length = 0
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = "  "
+disabled = false
+# truncation_length = 20
+truncation_symbol = '…/'
+
+[git_status]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = 'bold cyan'
+
+# languages
+[golang]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[python]
+format = "[$symbol($version )]($style)"
+
+[dart]
+format = "[$symbol($version )]($style)"
+
+[rust]
+format = "[$symbol($version )]($style)"
+
+[deno]
+format = "[$symbol($version )]($style)"
+
+[ruby]
+format = "[$symbol($version )]($style)"
+
+[bun]
+format = "[$symbol($version )]($style)"
+symbol = " "
+
+[character]
+success_symbol = "[-❯](bold green)"
+error_symbol = "[-❯](bold red)"

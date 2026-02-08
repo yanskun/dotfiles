@@ -1,0 +1,5 @@
+#!/bin/bash
+# Gemini設定をシンボリックリンク
+mkdir -p "$HOME/.gemini"
+rm -f "$HOME/.gemini/settings.json"
+ln -sf "{{ .dotdir }}/gemini/settings.json" "$HOME/.gemini/settings.json"

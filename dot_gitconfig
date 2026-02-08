@@ -1,0 +1,70 @@
+[user]
+	name = yanskun
+	email = 43776161+yanskun@users.noreply.github.com
+
+[alias]
+  select-commit = "!sh -c 'git log --oneline --decorate --color=always \"$@\" | \
+    fzf-tmux -p --ansi --height 50% --reverse -m \
+    --bind \"enter:become(git rev-parse {+1}),ctrl-o:execute-silent(gh browse \\$(git rev-parse {1}))\" \
+    --preview \"git show --color=always {1}\"' ."
+
+  lof = "!sh -c 'set -- $(git select-commit \"$@\"); \
+    git show \"$@\"; for c; do gh browse -n \"$c\"; \
+    done' ."
+
+  bd =  "!f() { \
+    git branch | \
+    fzf-tmux -p --height 50% --multi --reverse --preview 'git log --color=always --oneline $(echo {} | sed \"s/ //g\")' | \
+    awk -v arg=\"${@}\" '{ \
+      if (arg == \"-f\" || arg == \"--force\") { \
+        system(sprintf(\"git branch -D %s\", $1)) \
+      } else { \
+        system(sprintf(\"git branch -d %s\", $1)) \
+      } \
+    }'; \
+  }; f"
+
+  tree = "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
+
+[core]
+  excludesfile = ~/.gitignore_global
+  pager = delta
+  ignorecase = false
+  editor = neovim
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  plus-style = "syntax \"#013A00\""
+  plus-emph-style = "syntax \"#008102\""
+  line-numbers = true
+  side-by-side = true
+  syntax-theme = Monokai Extended
+[pager]
+	branch = cat
+[merge]
+  conflictstyle = zdiff3
+[pull]
+	rebase = false
+[ghq]
+  root = ~/Projects
+  user = yanskun
+[init]
+  defaultBranch = main
+[push]
+	autoSetupRemote = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential "https://github.com"]
+  helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/opt/homebrew/bin/gh auth git-credential
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[coderabbit]
+	machineId = cli/298a479fac2c4fc28dee426313fb2eff
