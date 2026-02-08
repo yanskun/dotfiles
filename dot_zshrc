@@ -161,8 +161,8 @@ if type nvim > /dev/null; then
 fi
 ########################################
 # Load seperated config files
-if [ -d "$ZDOTDIR/config.d" ]; then
-  for conf in "$ZDOTDIR/config.d/"*.zsh; do
+if [ -d "$HOME/.zsh/config.d" ]; then
+  for conf in "$HOME/.zsh/config.d/"*.zsh; do
     [ -e "$conf" ] || break
     source "${conf}"
   done
