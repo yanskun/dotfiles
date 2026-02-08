@@ -114,6 +114,8 @@ ln -f -s "$PWD"/claude/settings.json "${HOME}"/.claude/settings.json
 ln -f -s "$PWD"/claude/commands "$HOME"/.claude/commands
 ln -f -s "$PWD"/claude/agents "$HOME"/.claude/agents
 ln -f -s "$PWD"/claude/CLAUDE.md "$HOME"/.claude/CLAUDE.md
+ln -f -s "$PWD"/claude/statusline-command.sh "${HOME}"/.claude/statusline-command.sh
+ln -f -s "$PWD"/claude/notify-completion.sh "${HOME}"/.claude/notify-completion.sh
 
 echo 'opencode'
 if [[ ! -e "${XDG_CONFIG_HOME}"/.opencode ]]; then

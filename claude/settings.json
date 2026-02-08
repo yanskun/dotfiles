@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Read(~/.zshrc)",
@@ -113,7 +116,27 @@
     ]
   },
   "model": "sonnet",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/yanskun/.claude/statusline-command.sh"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/yanskun/.claude/notify-completion.sh"
+          }
+        ]
+      }
+    ]
   }
 }
