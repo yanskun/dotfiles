@@ -1,0 +1,23 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "Default"
+  },
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest", "--isolated=true"]
+    },
+    "deepWiki": {
+      "url": "https://mcp.deepwiki.com/sse"
+    }
+  },
+  "general": {
+    "vimMode": true,
+    "previewFeatures": true
+  }
+}

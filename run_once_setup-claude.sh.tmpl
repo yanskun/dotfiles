@@ -1,9 +1,9 @@
 #!/bin/bash
 # Claude設定をシンボリックリンク
 mkdir -p "$HOME/.claude"
-ln -sf "{{ .dotdir }}/claude/settings.json" "$HOME/.claude/settings.json"
-ln -sf "{{ .dotdir }}/claude/commands" "$HOME/.claude/commands"
-ln -sf "{{ .dotdir }}/claude/agents" "$HOME/.claude/agents"
-ln -sf "{{ .dotdir }}/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-ln -sf "{{ .dotdir }}/claude/notify-completion.sh" "$HOME/.claude/notify-completion.sh"
-ln -sf "{{ .dotdir }}/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/settings.json" "$HOME/.claude/settings.json"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/commands" "$HOME/.claude/commands"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/agents" "$HOME/.claude/agents"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/notify-completion.sh" "$HOME/.claude/notify-completion.sh"
+ln -sf "{{ .chezmoi.sourceDir }}/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
