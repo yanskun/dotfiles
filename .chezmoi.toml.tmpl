@@ -1,6 +1,6 @@
 [data]
-    dotdir = "{{ .chezmoi.homeDir }}/Projects/github.com/yanskun/dotfiles"
-    zdotdir = "{{ .chezmoi.homeDir }}/.config/zsh"
+    dotdir = "{{ .chezmoi.sourceDir }}"
+    zdotdir = "{{ .dotdir }}/zsh"
 
 [diff]
     pager = "delta"

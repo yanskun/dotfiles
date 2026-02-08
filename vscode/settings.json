@@ -1,0 +1,184 @@
+{
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "breadcrumbs.enabled": true,
+  "editor.dragAndDrop": false,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+  "terminal.integrated.fontFamily": "'Monaspace Neon', monospace, 'Hack Nerd Font'",
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.erb": "erb",
+    "*.vue": "vue"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/node_modules/**": true
+  },
+  "git.ignoreLimitWarning": false,
+  "gitlens.hovers.enabled": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.startupEditor": "newUntitledFile",
+  "git.confirmSync": false,
+  "git.mergeEditor": false,
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "type": "text",
+      "foreground": "#72a8ff"
+    },
+    "FIXME": {
+      "icon": "alert",
+      "type": "text",
+      "foreground": "#d6c61b",
+      "background": "white",
+      "opacity": 10
+    },
+    "HACK": {
+      "icon": "thumbsdown",
+      "type": "text",
+      "foreground": "#b70b0b",
+      "background": "white",
+      "opacity": 10
+    }
+  },
+  "todo-tree.tree.expanded": true,
+  "todo-tree.general.tags": ["TODO", "NOTE", "FIXME", "HACK"],
+  "oneDarkPro.vivid": true,
+  "explorer.confirmDelete": false,
+  "cSpell.userWords": [
+    "Bugsnag",
+    "clsx",
+    "DATETIME",
+    "denormalize",
+    "Denormalized",
+    "Designpack",
+    "DSLs",
+    "mixins",
+    "nuxt",
+    "poplight",
+    "qiita",
+    "stylelint",
+    "testid",
+    "yanskun",
+    "zenn",
+    "Zoomable"
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "workbench.editor.showTabs": "multiple",
+  "openInGitHub.defaultBranch": "main",
+  "path-autocomplete.pathMappings": {
+    "/": "${folder}/",
+    "~": "${folder}/"
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "go.formatTool": "gofmt",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "editor.guides.indentation": true,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
+  },
+  "editor.inlayHints.fontSize": 2,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "markdown.updateLinksOnFileMove.enabled": "always",
+  "markdown.validate.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.fontFamily": "'Monaspace Neon', monospace, 'Hack Nerd Font'",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "redhat.telemetry.enabled": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "terminal.integrated.stickyScroll.enabled": true,
+  "github.copilot.chat.localeOverride": "ja",
+  // "jest.shell": {
+  //   // "path": "/usr/bin/env",
+  //   "args": ["zsh", "--login"]
+  // },
+  "jest.shell": "zsh",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "search.useIgnoreFiles": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.next": true,
+    "**/.turbo": true
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "remote.SSH.remotePlatform": {
+    "sandbox.t5v2dn.csb": "linux"
+  },
+  "chat.agent.enabled": true,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true,
+    "windsurf": true,
+    "cursor-global": true,
+    "cursor-workspace": true
+  },
+  "github.copilot.chat.agent.thinkingTool": true,
+  "editor.accessibilitySupport": "off",
+  "vim.useSystemClipboard": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "remoteHub.commitDirectlyWarning": "off",
+  "chat.mcp.gallery.enabled": true,
+  "chat.tools.terminal.autoApprove": {
+    "cargo build": true,
+    "pnpm": true
+  }
+}
