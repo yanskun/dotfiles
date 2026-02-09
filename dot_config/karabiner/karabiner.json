@@ -1,0 +1,16 @@
+{
+  "description": "Combined Config: Change Caps Lock to Control and Swap Spotlight/Input Source",
+  "manipulators": [
+    {
+      "from": {
+        "key_code": "caps_lock"
+      },
+      "to": [
+        {
+          "key_code": "left_control"
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
