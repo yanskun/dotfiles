@@ -19,10 +19,10 @@ if [ -f "$transcript_path" ]; then
       session_time="${minutes}m"
     fi
   else
-    session_time="N/A"
+    session_time=""
   fi
 else
-  session_time="N/A"
+  session_time=""
 fi
 
 # コンテキスト使用率を取得
@@ -30,15 +30,30 @@ used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 if [ -n "$used_pct" ]; then
   # 小数点以下を切り捨て
   used_pct_int=$(printf "%.0f" "$used_pct")
-  context_info="Ctx: ${used_pct_int}%"
+
+  # 残量を計算（100% - 使用率）
+  remaining=$((100 - used_pct_int))
+
+  # 残量に応じてバッテリーアイコンを選択
+  if [ $remaining -ge 75 ]; then
+    battery_icon="󰁹"  # battery_full
+  elif [ $remaining -ge 50 ]; then
+    battery_icon="󰂀"  # battery_three_quarters
+  elif [ $remaining -ge 25 ]; then
+    battery_icon="󰁾"  # battery_half
+  else
+    battery_icon="󰁻"  # battery_quarter
+  fi
+
+  context_info="$battery_icon ${used_pct_int}%"
 else
-  context_info="Ctx: 0%"
+  context_info="󰁹 0%"
 fi
 
 # エージェント名を取得（存在する場合）
 agent_name=$(echo "$input" | jq -r '.agent.name // empty')
 if [ -n "$agent_name" ]; then
-  agent_info="Agent: $agent_name"
+  agent_info="󰚩 $agent_name"
 else
   agent_info=""
 fi
@@ -49,21 +64,29 @@ model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"')
 # 出力スタイルを取得
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 if [ -n "$output_style" ] && [ "$output_style" != "default" ]; then
-  style_info="Style: $output_style"
+  style_info="󰏘 $output_style"
 else
   style_info=""
 fi
 
+# 現在時刻を取得
+current_timestamp=$(date +%H:%M:%S)
+
 # ステータスラインを構築（セパレータで区切る）
 status_parts=()
-status_parts+=("Session: $session_time")
+status_parts+=("󰥔 $current_timestamp")
+
+if [ -n "$session_time" ]; then
+  status_parts+=("󰔟 $session_time")
+fi
+
 status_parts+=("$context_info")
 
 if [ -n "$agent_info" ]; then
   status_parts+=("$agent_info")
 fi
 
-status_parts+=("$model_name")
+status_parts+=("󰧑 $model_name")
 
 if [ -n "$style_info" ]; then
   status_parts+=("$style_info")
