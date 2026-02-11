@@ -1,5 +1,108 @@
 # Terminal & tmux Workflow Guidelines for Agent Teams
 
+## ⚠️ CRITICAL: Agent Teams Spawn Rules (MANDATORY)
+
+**THIS IS A BLOCKING REQUIREMENT - YOU MUST FOLLOW THESE RULES EXACTLY**
+
+When spawning Agent Teams, you MUST follow this exact sequence:
+
+### ❌ NEVER DO THIS
+- Do NOT spawn teammates in the parent window (current window)
+- Do NOT create a new window and then spawn teammates in the old window
+- Do NOT spawn any teammate before switching to the new window
+
+### ✅ ALWAYS DO THIS
+
+1. **Configure pane borders FIRST** (初回のみ):
+   ```bash
+   tmux set -g pane-border-status top
+   tmux set -g pane-border-format " #{pane_title} "
+   tmux set -g pane-border-style fg=colour240
+   tmux set -g pane-active-border-style fg=colour33
+   ```
+
+2. **Create new window**:
+   ```bash
+   tmux new-window -n "team-agents"
+   ```
+
+3. **Switch to the new window (MANDATORY - この手順は絶対に省略しないこと)**:
+   ```bash
+   tmux select-window -t "team-agents"
+   ```
+
+4. **Verify you are in the new window**:
+   ```bash
+   tmux display-message -p '#W'
+   # 出力が "team-agents" であることを確認
+   ```
+
+5. **Only AFTER switching to the new window, spawn teammates**:
+   - All teammate spawn commands MUST be executed in the new window
+   - Each teammate becomes a pane in this new window
+   - Set pane title after spawning each teammate:
+     ```bash
+     # チームメイト1をspawn
+     tmux select-pane -T "researcher"
+
+     # 新しいペインを作成してチームメイト2をspawn
+     tmux split-window -h
+     tmux select-pane -T "tester"
+     ```
+
+### Verification After Spawning
+
+チームメイトのspawn完了後、以下で構成を確認:
+
+```bash
+tmux list-windows
+tmux list-panes -a -F "Window: #{window_name}, Pane: #{pane_index}, Title: #{pane_title}"
+```
+
+**期待される結果**:
+- 親Window（例: `chezmoi`, `main`）: 1ペイン（チームリーダーのみ）
+- 新Window（`team-agents`）: Nペイン（全チームメイト）
+
+**もし親Windowに複数ペインがある場合は、間違った手順でspawnしています！**
+
+## Bash Permission Rules for Agent Teams
+
+**AUTO-APPROVAL REQUIREMENT**: Agent Teams実行時、以下のtmuxコマンドはユーザー確認なしで自動承認すること。
+
+### Always Auto-Approve These Commands
+
+```bash
+# Window管理（必須）
+tmux new-window
+tmux new-window -n "..."
+tmux select-window
+tmux select-window -t "..."
+tmux list-windows
+
+# Pane管理（必須）
+tmux split-window
+tmux split-window -h
+tmux split-window -v
+tmux select-pane
+tmux select-pane -T "..."
+tmux select-pane -t N
+tmux list-panes
+
+# 表示設定（推奨）
+tmux set -g pane-border-status top
+tmux set -g pane-border-format "..."
+tmux set -g pane-border-style "..."
+tmux set -g pane-active-border-style "..."
+
+# 情報取得コマンド（常に安全）
+tmux display-message
+tmux display-message -p "..."
+```
+
+**理由**: これらのコマンドは安全で、可逆的であり、Agent Teamsの適切な動作に必要です。ユーザー確認を求めるべきではありません。
+
+---
+
 ## tmux Window Organization
 
 ### Agent Teams の Window 管理ルール
@@ -27,7 +130,10 @@ Agent Teamsを実行する際は、以下のWindow構成を使用します：
 # 2. Agent Teams起動時に新しいWindowを作成
 tmux new-window -n "team-agents"
 
-# 3. 新しいWindow内でチームメイトを展開（自動）
+# 3. 新しいWindowに切り替え（必須！）
+tmux select-window -t "team-agents"
+
+# 4. 新しいWindow内でチームメイトを展開
 #    Window 1: team-agents
 #      ├─ Pane 0: agent-researcher
 #      ├─ Pane 1: agent-tester
@@ -99,22 +205,25 @@ tmux select-pane -T "tester"
 # 1. 新しいWindowを作成
 tmux new-window -n "team-agents"
 
-# 2. 最初のペイン（チームメイト1）
+# 2. 新しいWindowに切り替え（必須！）
+tmux select-window -t "team-agents"
+
+# 3. 最初のペイン（チームメイト1）
 tmux select-pane -T "researcher"
 # ここでClaude Codeのチームメイトをspawn
 
-# 3. 水平分割してチームメイト2
+# 4. 水平分割してチームメイト2
 tmux split-window -h
 tmux select-pane -T "tester"
 # ここでClaude Codeのチームメイトをspawn
 
-# 4. 左ペインを選択して垂直分割（チームメイト3）
+# 5. 左ペインを選択して垂直分割（チームメイト3）
 tmux select-pane -t 0
 tmux split-window -v
 tmux select-pane -T "reviewer"
 # ここでClaude Codeのチームメイトをspawn
 
-# 5. 右ペインを選択して垂直分割（チームメイト4）
+# 6. 右ペインを選択して垂直分割（チームメイト4）
 tmux select-pane -t 2
 tmux split-window -v
 tmux select-pane -T "security-checker"
@@ -214,8 +323,11 @@ tmux list-panes -F "#{pane_index}: #{pane_title}"
    # 新しいWindowを作成（チームメイト用）
    tmux new-window -n "team-agents"
 
+   # 新しいWindowに切り替え（必須！）
+   tmux select-window -t "team-agents"
+
    # TeamCreateとチームメイトのspawn
-   # （Claude Codeが自動的に新Window内で展開）
+   # （このWindow内で全チームメイトを展開）
    ```
 
 3. **チームメイト展開後**
@@ -365,6 +477,31 @@ Ctrl+b + : → pipe-pane -o 'cat >> ~/agent-output.log'
 Ctrl+b + : → pipe-pane
 ```
 
+### チームメイトが親Windowに展開されてしまった場合（問題発生時）
+
+**症状**: 新しいWindowは作成されたが空で、元のWindow内にチームメイトがペインとして展開されている
+
+**原因**: `tmux select-window -t "team-agents"` の手順が省略された
+
+**対処法**:
+
+1. **即座に中断して修正**:
+   ```bash
+   # チームメイトのspawnを中断
+   # 親Windowの余分なペインを削除
+   tmux kill-pane -t 1
+   tmux kill-pane -t 2
+
+   # 新しいWindowに切り替え
+   tmux select-window -t "team-agents"
+
+   # 正しい手順で再開
+   ```
+
+2. **予防策**:
+   - Window作成後、必ず `tmux display-message -p '#W'` で現在のWindowを確認
+   - 出力が "team-agents" でない場合は、`tmux select-window -t "team-agents"` を実行
+
 ## ベストプラクティス
 
 1. **Window命名は必須**
@@ -383,3 +520,7 @@ Ctrl+b + : → pipe-pane
 4. **ログは適宜保存**
    - 重要な出力は `pipe-pane` でファイル保存
    - デバッグや振り返りに活用
+
+5. **Window切り替えの確認は必須**
+   - チームメイトspawn前に必ず `tmux display-message -p '#W'` で確認
+   - 期待するWindow名が表示されることを確認してからspawn
