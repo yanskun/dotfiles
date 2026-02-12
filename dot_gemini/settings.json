@@ -19,5 +19,8 @@
   "general": {
     "vimMode": true,
     "previewFeatures": true
+  },
+  "context": {
+    "fileName": ["AGENTS.md", "CONTEXT.md", "GEMINI.md"]
   }
 }
