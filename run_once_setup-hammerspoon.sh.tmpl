@@ -3,4 +3,4 @@
 if [ -d "$HOME/.hammerspoon" ] && [ ! -L "$HOME/.hammerspoon" ]; then
     rm -rf "$HOME/.hammerspoon"
 fi
-ln -snf "{{ .chezmoi.sourceDir }}/hammerspoon" "$HOME/.hammerspoon"
+ln -snf "{{ .chezmoi.sourceDir }}/dot_hammerspoon" "$HOME/.hammerspoon"

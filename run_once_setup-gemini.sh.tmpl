@@ -2,6 +2,6 @@
 # Gemini設定をシンボリックリンク
 mkdir -p "$HOME/.gemini"
 rm -f "$HOME/.gemini/settings.json"
-ln -sf "{{ .chezmoi.sourceDir }}/gemini/settings.json" "$HOME/.gemini/settings.json"
-ln -sf "{{ .chezmoi.sourceDir }}/gemini/commands" "$HOME/.gemini/commands"
-ln -sf "{{ .chezmoi.sourceDir }}/gemini/skills" "$HOME/.gemini/skills"
+ln -sf "{{ .chezmoi.sourceDir }}/dot_gemini/settings.json" "$HOME/.gemini/settings.json"
+ln -sf "{{ .chezmoi.sourceDir }}/dot_gemini/commands" "$HOME/.gemini/commands"
+ln -sf "{{ .chezmoi.sourceDir }}/dot_gemini/skills" "$HOME/.gemini/skills"
