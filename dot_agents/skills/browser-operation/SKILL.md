@@ -1,6 +1,7 @@
 ---
 name: Browswer Automation
 description: ブラウザ操作に関する要件
+allowed-tools: Bash(agent-browser:*)
 ---
 
 Use `agent-browser` for web automation. Run `agent-browser --help` for all commands.

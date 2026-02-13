@@ -1,6 +1,7 @@
 ---
 name: Chrome DevTools Debugging
 description: Webサイトの解析・デバッグ・ネットワーク監視に関する要件
+allowed-tools: Bash(agent-browser:*)
 ---
 
 Use `chrome-devtools` for deep technical inspection. Unlike `agent-browser`, this tool interacts with the browser's internal engine.
