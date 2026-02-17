@@ -1,0 +1,67 @@
+[colors.bright]
+black = "0x5c6370"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xe6efff"
+yellow = "0xd19a66"
+
+[colors.dim]
+black = "0x1e2127"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0x828791"
+yellow = "0xd19a66"
+
+[colors.normal]
+black = "0x1e2127"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0x828791"
+yellow = "0xd19a66"
+
+[colors.primary]
+background = "0x1e2127"
+bright_foreground = "0xe6efff"
+foreground = "0xabb2bf"
+
+[cursor.style]
+shape = 'Block'
+
+[font]
+size = 12
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+
+[window]
+decorations = "none"
+opacity = 0.85
+startup_mode = "Maximized"
+padding = { x = 8, y = 4 }
+
+[keyboard]
+bindings = [
+  { key = "T", mods = "Command", action = "None" },
+  { key = "=", mods = "Command", action = "IncreaseFontSize" },
+  { key = "-", mods = "Command", action = "DecreaseFontSize" },
+  { key = "0", mods = "Command", action = "ResetFontSize" },
+  { key = "u", mods = "Command", command = { program = "/opt/homebrew/bin/zsh", args = ["-c", "if [ -f /tmp/alacritty_opacity_full ]; then /opt/homebrew/bin/alacritty msg config window.opacity=0.85 && rm /tmp/alacritty_opacity_full; else /opt/homebrew/bin/alacritty msg config window.opacity=1 && touch /tmp/alacritty_opacity_full; fi"] } }
+]
+
+[mouse]
+hide_when_typing = true
+
+[bell]
+animation = "EaseOutExpo"
+[bell.command]
+program = "afplay"
+args = [" /System/Library/Sounds/Glass.aiff"]

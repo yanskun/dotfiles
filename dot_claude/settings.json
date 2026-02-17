@@ -7,6 +7,7 @@
   "permissions": {
     "allow": [
       "Read(~/.zshrc)",
+      "Read(~/Projects/**)",
       "Bash(go *)",
       "Bash(gofmt *)",
       "Bash(golint *)",

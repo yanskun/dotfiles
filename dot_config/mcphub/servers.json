@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "finswer-bank-api": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yanskun/Projects/github.com/Finswer/finswer-bank//backend2/bank-api/internal/protogen"
+      ],
+      "command": "npx",
+      "custom_instructions": {
+        "text": "GetApproval を実行するための curl コマンドを生成して"
+      }
+    }
+  },
+  "nativeMCPServers": [
+
+  ]
+}
