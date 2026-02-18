@@ -19,10 +19,34 @@ description: |
   <example>
   Context: The user has written custom hooks and wants to verify they follow React patterns.
   user: "I've created a custom hook for managing form state"
-  assistant: "I'll review your custom hook implementation using the react-best-practices-reviewer agent to ensure it aligns with React's official documentation"
+  assistant: "Here's the useFormState hook:"
+  <function call omitted for brevity>
   <commentary>
   Custom hooks should be reviewed to ensure they follow React's conventions and don't misuse built-in hooks.
   </commentary>
+  assistant: "Now let me use the react-best-practices-reviewer agent to review this hook implementation against React's official best practices"
+  </example>
+
+  <example>
+  Context: The user has edited an existing custom hook.
+  user: "Update the useAuth hook to handle token refresh"
+  assistant: "I've updated the useAuth hook:"
+  <function call omitted for brevity>
+  <commentary>
+  Editing existing custom hooks should also trigger a review, not just creating new ones. Any modification to hook logic may introduce anti-patterns.
+  </commentary>
+  assistant: "Now let me use the react-best-practices-reviewer agent to verify this hook edit follows React's best practices"
+  </example>
+
+  <example>
+  Context: The user has edited an existing React component.
+  user: "Add loading state to the UserList component"
+  assistant: "I've updated the UserList component:"
+  <function call omitted for brevity>
+  <commentary>
+  Editing existing React components should trigger a review to catch any newly introduced anti-patterns.
+  </commentary>
+  assistant: "Now let me use the react-best-practices-reviewer agent to review this component change against React's official best practices"
   </example>
 ---
 
