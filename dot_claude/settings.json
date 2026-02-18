@@ -6,23 +6,30 @@
   "language": "japanese",
   "permissions": {
     "allow": [
-      "Read(~/.zshrc)",
-      "Read(~/Projects/**)",
+      "Read(~/**)",
       "Bash(go *)",
       "Bash(gofmt *)",
       "Bash(golint *)",
       "Bash(golangci-lint *)",
+      "Bash(make)",
       "Bash(make *)",
+      "Bash(git diff)",
       "Bash(git diff *)",
+      "Bash(git show)",
       "Bash(git show *)",
+      "Bash(git log)",
       "Bash(git log *)",
+      "Bash(git status)",
       "Bash(git status *)",
+      "Bash(git branch)",
       "Bash(git branch *)",
       "Bash(gh *)",
       "Bash(npm *)",
+      "Bash(yarn)",
       "Bash(yarn *)",
       "Bash(pnpm *)",
       "Bash(bun *)",
+      "Bash(ls)",
       "Bash(ls *)",
       "Bash(cat *)",
       "Bash(bat *)",
@@ -37,6 +44,7 @@
       "Bash(which *)",
       "Bash(pwd)",
       "Bash(cd *)",
+      "Bash(tree)",
       "Bash(tree *)",
       "Bash(jq *)",
       "Bash(head *)",
@@ -45,6 +53,7 @@
       "Bash(sort *)",
       "Bash(awk *)",
       "Bash(sed *)",
+      "Bash(date)",
       "Bash(date *)",
       "Bash(whoami)",
       "Bash(env)",
@@ -116,18 +125,6 @@
       "Write(/etc/sudoers)"
     ]
   },
-  "model": "sonnet",
-  "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754085492520
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/yanskun/.claude/statusline-command.sh"
-  },
   "hooks": {
     "Stop": [
       {
@@ -139,5 +136,16 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754085492520
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/yanskun/.claude/statusline-command.sh"
   }
 }
