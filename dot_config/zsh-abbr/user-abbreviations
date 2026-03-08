@@ -19,6 +19,7 @@ abbr dc='docker compose'
 abbr cc='claude'
 abbr cx='codex'
 abbr co='copilot'
+abbr cch='claude-history'
 
 # color
 abbr grep='grep --color=auto'
