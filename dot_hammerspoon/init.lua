@@ -3,7 +3,7 @@
 local home = os.getenv('HOME')
 package.path = package.path .. ';' .. home .. '/.hammerspoon/modules/?.lua'
 
-require('alacritty')
+-- require('alacritty')
 -- require('ghostty')
 
 -- control window size
