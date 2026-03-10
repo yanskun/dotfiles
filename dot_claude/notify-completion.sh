@@ -24,7 +24,7 @@ case "$HOOK_TYPE" in
   notification)
     TITLE="Claude Code - 確認待ち"
     MESSAGE="入力を待っています"
-    SOUND="/System/Library/Sounds/Tink.aiff"
+    SOUND="/System/Library/Sounds/Blow.aiff"
     ;;
   *)
     TITLE="Claude Code"
