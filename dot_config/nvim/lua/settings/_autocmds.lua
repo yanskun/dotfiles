@@ -18,3 +18,16 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   pattern = '*.golden, *textlintrc',
   command = [[ set filetype=json ]],
 })
+
+-- strip .tmpl extension for chezmoi template files
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  group = 'fileTypeSet',
+  pattern = '*.tmpl',
+  callback = function()
+    local filename = vim.fn.expand('%:t:r') -- e.g. settings.json from settings.json.tmpl
+    local ft = vim.filetype.match({ filename = filename, buf = 0 })
+    if ft then
+      vim.bo.filetype = ft
+    end
+  end,
+})

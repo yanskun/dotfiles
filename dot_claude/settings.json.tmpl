@@ -162,7 +162,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/yanskun/.claude/notify-completion.sh"
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh"
           }
         ]
       }
@@ -177,6 +177,6 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/yanskun/.claude/statusline-command.sh"
+    "command": "bash {{ .chezmoi.homeDir }}/.claude/statusline-command.sh"
   }
 }
