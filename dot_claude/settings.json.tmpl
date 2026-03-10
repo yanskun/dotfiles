@@ -162,7 +162,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh"
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh stop"
           }
         ]
       }
@@ -172,7 +172,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh"
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh notification"
           }
         ]
       }
