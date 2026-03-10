@@ -1,6 +1,6 @@
 {
   "[markdown]": {
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
   },
   "breadcrumbs.enabled": true,
   "editor.dragAndDrop": false,
@@ -10,30 +10,30 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "emmet.includeLanguages": {
-    "erb": "html"
+    "erb": "html",
   },
   "terminal.integrated.fontFamily": "'Monaspace Neon', monospace, 'Hack Nerd Font'",
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.erb": "erb",
-    "*.vue": "vue"
+    "*.vue": "vue",
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.tslint": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
   },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   ],
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
   },
   "git.ignoreLimitWarning": false,
   "gitlens.hovers.enabled": false,
@@ -46,22 +46,22 @@
   "todo-tree.highlights.customHighlight": {
     "TODO": {
       "type": "text",
-      "foreground": "#72a8ff"
+      "foreground": "#72a8ff",
     },
     "FIXME": {
       "icon": "alert",
       "type": "text",
       "foreground": "#d6c61b",
       "background": "white",
-      "opacity": 10
+      "opacity": 10,
     },
     "HACK": {
       "icon": "thumbsdown",
       "type": "text",
       "foreground": "#b70b0b",
       "background": "white",
-      "opacity": 10
-    }
+      "opacity": 10,
+    },
   },
   "todo-tree.tree.expanded": true,
   "todo-tree.general.tags": ["TODO", "NOTE", "FIXME", "HACK"],
@@ -83,45 +83,45 @@
     "testid",
     "yanskun",
     "zenn",
-    "Zoomable"
+    "Zoomable",
   ],
   "editor.quickSuggestions": {
-    "strings": true
+    "strings": true,
   },
   "workbench.editor.showTabs": "multiple",
   "openInGitHub.defaultBranch": "main",
   "path-autocomplete.pathMappings": {
     "/": "${folder}/",
-    "~": "${folder}/"
+    "~": "${folder}/",
   },
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,
   "editor.formatOnSave": false,
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "go.formatTool": "gofmt",
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   "[go.mod]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
+    "FIG_NEW_SESSION": "1",
   },
   "editor.guides.indentation": true,
   "editor.inlineSuggest.enabled": true,
@@ -129,7 +129,7 @@
     "*": true,
     "yaml": false,
     "plaintext": false,
-    "markdown": true
+    "markdown": true,
   },
   "editor.inlayHints.fontSize": 2,
   "editor.inlayHints.enabled": "offUnlessPressed",
@@ -158,18 +158,18 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/.next": true,
-    "**/.turbo": true
+    "**/.turbo": true,
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "remote.SSH.remotePlatform": {
-    "sandbox.t5v2dn.csb": "linux"
+    "sandbox.t5v2dn.csb": "linux",
   },
   "chat.agent.enabled": true,
   "chat.mcp.discovery.enabled": {
     "claude-desktop": true,
     "windsurf": true,
     "cursor-global": true,
-    "cursor-workspace": true
+    "cursor-workspace": true,
   },
   "github.copilot.chat.agent.thinkingTool": true,
   "editor.accessibilitySupport": "off",
@@ -179,7 +179,7 @@
   "chat.mcp.gallery.enabled": true,
   "chat.tools.terminal.autoApprove": {
     "cargo build": true,
-    "pnpm": true
+    "pnpm": true,
   },
   "json.schemaDownload.trustedDomains": {
     "https://schemastore.azurewebsites.net/": true,
@@ -187,6 +187,8 @@
     "https://www.schemastore.org/": true,
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
-    "https://biomejs.dev": true
-  }
+    "https://biomejs.dev": true,
+  },
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
 }

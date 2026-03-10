@@ -166,6 +166,16 @@
           }
         ]
       }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh"
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
