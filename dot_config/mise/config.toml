@@ -3,6 +3,7 @@ bun = "latest"
 node = "24.2.0"
 pnpm = "10.14.0"
 python = "3.13.2"
+rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
