@@ -177,6 +177,16 @@
           }
         ]
       }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/log-subagent.sh"
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
