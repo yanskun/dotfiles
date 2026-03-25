@@ -5,6 +5,7 @@ __debug_bin
 **/.null-ls_*
 
 **/.claude/settings.local.json
+**/.claude/worktrees/
 
 **/.kiro
 **/.serena
