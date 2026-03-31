@@ -3,6 +3,7 @@ auto-update-channel = tip
 font-family = Hack Nerd Font Mono
 font-size = 12
 font-thicken = true
+font-family = Hiragino Kaku Gothic ProN
 
 background-opacity = 0.8
 background = 1C2021
