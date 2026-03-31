@@ -169,7 +169,7 @@
     "claude-desktop": true,
     "windsurf": true,
     "cursor-global": true,
-    "cursor-workspace": true,
+    "cursor-workspace": true
   },
   "github.copilot.chat.agent.thinkingTool": true,
   "editor.accessibilitySupport": "off",
