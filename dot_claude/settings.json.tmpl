@@ -157,6 +157,46 @@
       "Write(/etc/sudoers)"
     ]
   },
+  sandbox: {
+    "enabled": true,
+    "failIfUnavailable": true,
+    autoAllowBashIfSandboxed: true,
+    allowUnsandboxedCommands: false,
+    "excludedCommands": [
+      "docker *",
+      "git worktree *"
+    ],
+    "filesystem": {
+      "allowWrite": [
+        "~/.local/share/pnpm",
+        "./.claude/worktrees/**"
+      ],
+      "allowRead": [
+        "~/.config/gh", 
+        "./.claude/worktrees/**"
+      ],
+      "denyRead": [
+        "./secrets/**",
+        "./.env",
+        "./.env.*",
+        "**/.env",
+        "**/.env.*",
+        "**/credentials.json",
+        "**/.npmrc"
+      ],
+    },
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "*.githubusercontent.com",
+        "registry.npmjs.org",
+        "registry.yarnpkg.com"
+      ],
+      "allowLocalBinding": true
+    },
+    "enableWeakerNetworkIsolation": true
+  },
   "hooks": {
     "Stop": [
       {
@@ -184,6 +224,18 @@
           {
             "type": "command",
             "command": "bash {{ .chezmoi.homeDir }}/.claude/log-subagent.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Edit(*.ts)|Edit(*.tsx)|Write(*.ts)|Write(*.tsx)",
+            "command": "echo '[React Best Practices Review Required] .ts/.tsx ファイルが変更されました。react-best-practices-reviewer サブエージェントを起動して、変更されたコードが React 公式ドキュメントのベストプラクティスに準拠しているかレビューしてください。'"
           }
         ]
       }

@@ -1,5 +1,5 @@
 ---
-name: GitHub PR Create
+name: pr-create
 description: GitHub CLI を使った PR 作成
 allowed-tools: Bash(gh pr create -a @me:*), Bash(open https://github.com:*)
 ---
