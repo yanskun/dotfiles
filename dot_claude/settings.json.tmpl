@@ -157,14 +157,15 @@
       "Write(/etc/sudoers)"
     ]
   },
-  sandbox: {
+  "sandbox": {
     "enabled": true,
     "failIfUnavailable": true,
-    autoAllowBashIfSandboxed: true,
-    allowUnsandboxedCommands: false,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
     "excludedCommands": [
       "docker *",
-      "git worktree *"
+      "git worktree *",
+      "gcloud *"
     ],
     "filesystem": {
       "allowWrite": [
@@ -183,7 +184,7 @@
         "**/.env.*",
         "**/credentials.json",
         "**/.npmrc"
-      ],
+      ]
     },
     "network": {
       "allowedDomains": [
