@@ -199,12 +199,56 @@
     "enableWeakerNetworkIsolation": true
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-start"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-end"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude user-prompt-submit"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
           {
             "type": "command",
             "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh stop"
+          },
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop-failure"
           }
         ]
       }
@@ -215,6 +259,10 @@
           {
             "type": "command",
             "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh notification"
+          },
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude notification"
           }
         ]
       }
@@ -237,6 +285,14 @@
             "type": "command",
             "if": "Edit(*.ts)|Edit(*.tsx)|Write(*.ts)|Write(*.tsx)",
             "command": "echo '[React Best Practices Review Required] .ts/.tsx ファイルが変更されました。react-best-practices-reviewer サブエージェントを起動して、変更されたコードが React 公式ドキュメントのベストプラクティスに準拠しているかレビューしてください。'"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude activity-log"
           }
         ]
       }
