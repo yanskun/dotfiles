@@ -6,6 +6,14 @@ allowed-tools: Bash(gh pr create -a @me:*), Bash(open https://github.com:*)
 
 # PR 作成ルール
 
+## 0. Draft PR
+
+引数に `draft` が指定された場合、`gh pr create` に `--draft` フラグを付与すること。
+
+```bash
+gh pr create -a @me --draft
+```
+
 ## 1. セマンティックコミットメッセージに準拠
 
 PR タイトルは Conventional Commits の形式に従うこと。
