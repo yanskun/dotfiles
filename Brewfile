@@ -233,7 +233,6 @@ cask "tableplus"
 cask "visual-studio-code"
 cask "wezterm"
 cask "zoom"
-mas "Dockitty", id: 6743999434
 mas "Klack", id: 6446206067
 mas "LINE", id: 539883307
 mas "Pages", id: 409201541
