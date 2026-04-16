@@ -158,7 +158,7 @@
     ]
   },
   "sandbox": {
-    "enabled": true,
+    "enabled": false,
     "failIfUnavailable": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
@@ -276,6 +276,17 @@
           {
             "type": "command",
             "command": "bash {{ .chezmoi.homeDir }}/.claude/log-subagent.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash {{ .chezmoi.homeDir }}/.claude/hooks/block-outside-worktree.sh"
           }
         ]
       }
