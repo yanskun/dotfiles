@@ -196,6 +196,13 @@ return {
     end,
   },
 
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    config = function()
+      require('colorful-winsep').setup()
+    end
+  },
+
   -- match info
   {
     'kevinhwang91/nvim-hlslens',
