@@ -3,9 +3,7 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "language": "japanese",
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Read(~/**)",
       "Bash(go *)",
@@ -155,103 +153,16 @@
       "Write(/etc/passwd)",
       "Write(/etc/shadow)",
       "Write(/etc/sudoers)"
-    ]
-  },
-  "sandbox": {
-    "enabled": false,
-    "failIfUnavailable": true,
-    "autoAllowBashIfSandboxed": true,
-    "allowUnsandboxedCommands": false,
-    "excludedCommands": [
-      "docker *",
-      "git worktree *",
-      "gcloud *",
-      "tmux *",
-      "open *",
-      "make *"
     ],
-    "filesystem": {
-      "allowWrite": [
-        "~/.local/share/pnpm",
-        "./.claude/worktrees/**"
-      ],
-      "allowRead": [
-        "~/.config/gh", 
-        "./.claude/worktrees/**"
-      ],
-      "denyRead": [
-        "./secrets/**",
-        "./.env",
-        "./.env.*",
-        "**/.env",
-        "**/.env.*",
-        "**/credentials.json",
-        "**/.npmrc"
-      ]
-    },
-    "network": {
-      "allowedDomains": [
-        "github.com",
-        "api.github.com",
-        "*.githubusercontent.com",
-        "registry.npmjs.org",
-        "registry.yarnpkg.com"
-      ],
-      "allowLocalBinding": true
-    },
-    "enableWeakerNetworkIsolation": true
+    "defaultMode": "auto"
   },
   "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-start"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-end"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude user-prompt-submit"
-          }
-        ]
-      }
-    ],
     "Stop": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh stop"
-          },
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop-failure"
+            "command": "bash ~/.claude/notify-completion.sh stop"
           }
         ]
       }
@@ -261,11 +172,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/notify-completion.sh notification"
-          },
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude notification"
+            "command": "bash ~/.claude/notify-completion.sh notification"
           }
         ]
       }
@@ -275,7 +182,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/log-subagent.sh"
+            "command": "bash ~/.claude/log-subagent.sh"
           }
         ]
       }
@@ -286,7 +193,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.claude/hooks/block-outside-worktree.sh"
+            "command": "bash ~/.claude/hooks/block-outside-worktree.sh"
           }
         ]
       }
@@ -297,33 +204,80 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Edit(*.ts)|Edit(*.tsx)|Write(*.ts)|Write(*.tsx)",
-            "command": "echo '[React Best Practices Review Required] .ts/.tsx ファイルが変更されました。react-best-practices-reviewer サブエージェントを起動して、変更されたコードが React 公式ドキュメントのベストプラクティスに準拠しているかレビューしてください。'"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash {{ .chezmoi.homeDir }}/.tmux/plugins/tmux-agent-sidebar/hook.sh claude activity-log"
+            "command": "echo '[React Best Practices Review Required] .ts/.tsx ファイルが変更されました。react-best-practices-reviewer サブエージェントを起動して、変更されたコードが React 公式ドキュメントのベストプラクティスに準拠しているかレビューしてください。'",
+            "if": "Edit(*.ts)|Edit(*.tsx)|Write(*.ts)|Write(*.tsx)"
           }
         ]
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "tmux-agent-sidebar@hiroppy": true
   },
-  "voiceEnabled": true,
+  "extraKnownMarketplaces": {
+    "hiroppy": {
+      "source": {
+        "source": "directory",
+        "path": "~/.tmux/plugins/tmux-agent-sidebar"
+      }
+    }
+  },
+  "language": "japanese",
+  "sandbox": {
+    "enabled": false,
+    "failIfUnavailable": true,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "*.githubusercontent.com",
+        "registry.npmjs.org",
+        "registry.yarnpkg.com"
+      ],
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.local/share/pnpm",
+        "./.claude/worktrees/**"
+      ],
+      "denyRead": [
+        "./secrets/**",
+        "./.env",
+        "./.env.*",
+        "**/.env",
+        "**/.env.*",
+        "**/credentials.json",
+        "**/.npmrc"
+      ],
+      "allowRead": [
+        "~/.config/gh",
+        "./.claude/worktrees/**"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true,
+    "excludedCommands": [
+      "docker *",
+      "git worktree *",
+      "gcloud *",
+      "tmux *",
+      "open *",
+      "make *"
+    ]
+  },
+  "effortLevel": "xhigh",
   "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash {{ .chezmoi.homeDir }}/.claude/statusline-command.sh"
   }
 }
