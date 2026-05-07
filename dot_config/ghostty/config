@@ -28,10 +28,14 @@ window-padding-y = 4
 
 theme = original
 
+keybind = shift+enter=text:\x1b\r
+
 keybind = cmd+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 
 keybind = global:ctrl+y=toggle_visibility
 keybind = global:ctrl+backquote=toggle_quick_terminal
+
+quick-terminal-size = 100%,100%
 
 background = "1e2127"
