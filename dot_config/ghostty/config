@@ -28,8 +28,6 @@ window-padding-y = 4
 
 theme = original
 
-keybind = shift+enter=text:\x1b\r
-
 keybind = cmd+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 
