@@ -63,6 +63,7 @@ yabai -m rule --add app="^Nani$" manage=off
 yabai -m rule --add app='(^System Preferences$|^システム設定$)' manage=off
 yabai -m rule --add app='^時計$' manage=off
 yabai -m rule --add app='(^Terminal$|^ターミナル$)' manage=off
+yabai -m rule --add app='(^スティッキーズ$|^Stickies$)' manage=off
 
 yabai -m rule --add app="^Notion$"
 yabai -m rule --add app="^Spotify$"
