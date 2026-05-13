@@ -277,6 +277,7 @@
   "effortLevel": "xhigh",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
+  "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
   }
