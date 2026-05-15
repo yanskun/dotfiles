@@ -9,3 +9,14 @@ ln -sf "{{ .chezmoi.sourceDir }}/dot_claude/rules" "$HOME/.claude/rules"
 ln -sf "{{ .chezmoi.sourceDir }}/dot_claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 ln -sf "{{ .chezmoi.sourceDir }}/dot_claude/notify-completion.sh" "$HOME/.claude/notify-completion.sh"
 ln -sf "{{ .chezmoi.sourceDir }}/dot_claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+
+# Disable Claude Code PR status polling (anthropics/claude-code#37583).
+# The key currently only takes effect when set in ~/.claude.json (the global
+# config the CLI itself writes). Add it idempotently if missing.
+if [ -f "$HOME/.claude.json" ]; then
+  current=$(jq -r '.prStatusFooterEnabled // empty' "$HOME/.claude.json")
+  if [ "$current" != "false" ]; then
+    jq '. + {"prStatusFooterEnabled": false}' "$HOME/.claude.json" \
+      > "$HOME/.claude.json.tmp" && mv "$HOME/.claude.json.tmp" "$HOME/.claude.json"
+  fi
+fi
