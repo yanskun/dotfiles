@@ -8,6 +8,8 @@ __debug_bin
 **/.claude/worktrees/
 **/.claude/plans/
 
+**/.codex/
+
 **/.kiro
 **/.serena
 **/cckiro
