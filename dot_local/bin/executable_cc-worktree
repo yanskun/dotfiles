@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+name="$1"
+plugin="$HOME/.tmux/plugins/tmux-work-dir/scripts/create.sh"
+
+pane_path="${2:-$(tmux display-message -p '#{pane_current_path}')}"
+root=$(git -C "$pane_path" rev-parse --path-format=absolute --git-common-dir)
+root=${root%/.git}
+wt="$root/.claude/worktrees/$name"
+wait="until test -d '$wt'; do sleep 0.5; done; cd '$wt'"
+
+tmux new-window -n "$name" -c "$root"
+ai=$(tmux display-message -p '#{pane_id}')
+
+"$plugin"
+
+panes=$(tmux list-panes -F '#{pane_id} #{pane_left} #{pane_top}')
+editor=$(awk '$3 == 0 && $2 > 0 {print $1}' <<<"$panes")
+term1=$(awk '$3 > 0 {print $2, $1}' <<<"$panes" | sort -n | head -1 | awk '{print $2}')
+term2=$(awk '$3 > 0 {print $2, $1}' <<<"$panes" | sort -n | tail -1 | awk '{print $2}')
+
+tmux send-keys -t "$ai"     "claude --worktree $name" C-m
+tmux send-keys -t "$editor" "$wait" C-m
+tmux send-keys -t "$term1"  "$wait && codex" C-m
+tmux send-keys -t "$term2"  "$wait" C-m
+
+agmsg="$HOME/.agents/skills/agmsg/scripts"
+team=$(basename "$root")
+tmux run-shell -b "until test -d '$wt'; do sleep 0.5; done; \
+  '$agmsg/join.sh' '$team' 'cc-$name'    claude-code '$wt'; \
+  '$agmsg/join.sh' '$team' 'codex-$name' codex       '$wt'; \
+  '$agmsg/delivery.sh' set monitor claude-code '$wt'; \
+  '$agmsg/delivery.sh' set turn    codex       '$wt'"
+
+tmux select-pane -t "$ai"

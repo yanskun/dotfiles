@@ -209,6 +209,16 @@
           }
         ]
       }
+    ],
+    "WorktreeRemove": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/agmsg-cleanup"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -280,5 +290,6 @@
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  }
+  },
+  "skipWorkflowUsageWarning": true
 }

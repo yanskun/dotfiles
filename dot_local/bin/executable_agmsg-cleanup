@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# WorktreeRemove hook: stdin の JSON から worktree パスを取り、agmsg を掃除
+set -euo pipefail
+input=$(cat)
+wt=$(jq -r '.path // .worktree_path // empty' <<<"$input")
+[ -z "$wt" ] && exit 0
+
+name=$(basename "$wt")
+team=$(basename "$(dirname "$(dirname "$(dirname "$wt")")")")  # .../<repo>/.claude/worktrees/<name>
+agmsg="$HOME/.agents/skills/agmsg/scripts"
+
+"$agmsg/leave.sh" "$team" "cc-$name"    >/dev/null 2>&1 || true
+"$agmsg/leave.sh" "$team" "codex-$name" >/dev/null 2>&1 || true
+exit 0

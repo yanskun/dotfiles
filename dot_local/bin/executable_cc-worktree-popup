@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+root=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || exit 0
+root=${root%/.git}
+wt_dir="$root/.claude/worktrees"
+
+name=$(ls -t "$wt_dir" 2>/dev/null \
+  | fzf --print-query \
+        --prompt "worktree> " \
+        --header "$(basename "$root") | Enter=選択 / Ctrl-N=入力名で新規 / Esc=キャンセル" \
+        --height 100% \
+        --bind "ctrl-n:print-query" \
+  | tail -1)
+[ -z "$name" ] && exit 0
+exec "$HOME/.local/bin/cc-worktree" "$name" "$PWD"
