@@ -1,3 +1,7 @@
+# Language Policy
+
+常に日本語で回答してください。
+
 ## Workflow Orchestration
 
 ### 1. Plan Node Default
