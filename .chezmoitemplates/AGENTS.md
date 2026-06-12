@@ -68,3 +68,20 @@ When making edits to files, prefer batch/whole-file operations over many increme
 Always create a feature branch before making changes. Never commit directly to main. Use the pattern: `git checkout -b feature/<description>` before starting work.
 
 Prefer the simplest approach first. Before migrating to a new pattern (e.g., Server Actions, WebWorkers), evaluate whether a simpler solution (middleware, existing patterns) would work. Propose the minimal viable approach and get user confirmation before starting complex refactors.
+
+## chezmoi: Agent / Command / Skill の追加ルール
+
+chezmoi リポジトリ (`~/.local/share/chezmoi`) で agent / command / skill を追加するときの場所ルール。
+
+### Agent
+
+- **複数エージェント (Claude / Codex / Gemini) で共有する agent**
+  1. 実体を `dot_agents/agents/<name>.md` に置く
+  2. `dot_claude/agents/symlink_<name>.md` を作成し、中身は `../../.agents/agents/<name>.md` の1行
+  - 両方を同じ PR で追加すること。片方だけだと Claude から見えない or 共有プールに載らない。
+- **Claude Code 専用 agent**
+  - 実体を `dot_claude/agents/<name>.md` に直接置くだけ。`dot_agents/` には置かない。
+
+### Command / Skill
+
+現状は `dot_claude/symlink_commands` / `dot_claude/symlink_skills` でディレクトリごと共有している。Claude 専用を作る必要が出たら、agent と同じパターン (ディレクトリ化 + 個別 `symlink_<name>`) に切り替えること。
