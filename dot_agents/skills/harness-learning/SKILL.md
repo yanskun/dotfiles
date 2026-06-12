@@ -17,8 +17,7 @@ chezmoi ソース = `~/.local/share/chezmoi`。ソースを編集し `chezmoi ap
 | `dot_agents/skills/<name>/SKILL.md` | `~/.agents/skills/`（`~/.claude/skills` は symlink） |
 | `dot_agents/commands/claude/<name>.md` | `~/.agents/commands/claude/`（`~/.claude/commands` は symlink） |
 | `dot_agents/agents/<name>.md` + `dot_claude/agents/symlink_<name>.md` | `~/.agents/agents/` + `~/.claude/agents/` |
-| `.chezmoitemplates/AGENTS.md` | Claude / Codex / Gemini が include する共有テンプレ |
-| `dot_claude/CLAUDE.md.tmpl` | `~/.claude/CLAUDE.md`（Claude 固有） |
+| `dot_claude/rules/<name>.md` | `~/.claude/rules/`（Claude が全プロジェクトで自動ロードする granular rule。Claude 専用機能） |
 
 ## ステップ
 
@@ -39,14 +38,15 @@ chezmoi ソース = `~/.local/share/chezmoi`。ソースを編集し `chezmoi ap
 
 | 学びの性質 | 種類 | 配置先 |
 |---|---|---|
-| 全エージェント共通の原則 | Rule | `.chezmoitemplates/AGENTS.md` |
-| Claude 固有の原則 | Rule | `dot_claude/CLAUDE.md.tmpl`（共有で足りないときだけ） |
+| グローバルな原則（常時適用） | Rule | `dot_claude/rules/<name>.md`（Claude が全プロジェクトで自動ロード。1ルール1ファイル） |
 | 作業中リポ固有の原則 | Rule | そのリポの `.claude/rules/<name>.md`（chezmoi 外） |
 | 手順・ワークフロー | Skill | `dot_agents/skills/<name>/SKILL.md` |
 | 専門役割・委譲実行者（共有） | Subagent | `dot_agents/agents/<name>.md` + `dot_claude/agents/symlink_<name>.md` |
 | 同上・Claude 専用 | Subagent | `dot_claude/agents/<name>.md` |
 
-**共有ファースト原則**: まず `dot_agents` / `.chezmoitemplates` に入れる。`dot_claude` 側へは Claude 固有の事情があるとき、または symlink 等の構造上必要なときだけ反映する。
+**共有ファースト原則（Skill / Subagent）**: Skill と Subagent は共有レイヤー `dot_agents` にまず入れる（`dot_claude` 側は symlink 等の構造上必要なときだけ）。
+
+**Rule は例外**: rules ディレクトリは Claude 専用機能（Codex / Gemini は単一 AGENTS.md しか読まない）。共有して薄く保つため、グローバル Rule は AGENTS.md には書かず `dot_claude/rules/<name>.md` に直接置く。
 
 既存の同種ファイルがあれば**更新**、なければ**新規作成**する。
 
