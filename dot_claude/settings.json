@@ -296,7 +296,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "tmux-agent-sidebar@hiroppy": true
+    "tmux-agent-sidebar@hiroppy": true,
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "hiroppy": {
