@@ -63,5 +63,5 @@ chezmoi ソース = `~/.local/share/chezmoi`。ソースを編集し `chezmoi ap
 - 問題なければ `chezmoi apply` を実行する。
 - テンプレ（`.chezmoitemplates/AGENTS.md` / `dot_claude/CLAUDE.md.tmpl`）を触った場合は `chezmoi cat ~/.claude/CLAUDE.md` でレンダリングエラーが無いことを確認する。
 
-### 7. コミット（任意）
-ユーザーが望めばコミットする。main 直コミットは禁止。フィーチャーブランチを切ること。
+### 7. コミットしない
+書き込みと `chezmoi apply` までで止め、自動コミットはしない（コミットはユーザーに委ねる）。current branch のまま作業してよく、専用ブランチは作らない。
