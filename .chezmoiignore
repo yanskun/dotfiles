@@ -1,2 +1,13 @@
-# リポジトリ内のドキュメント類は home に展開しない（chezmoi 管理外）
+# home に直接展開したくないリポジトリ内アセット（chezmoi 管理外）。
+# パターンはターゲット（$HOME 相対）にマッチする。
+
+# spec / plan などのドキュメント
 docs
+
+# run_once スクリプトが sourceDir を直接参照するアセット類。
+# home へ ~/vscode ~/images として展開する必要はない。
+vscode
+images
+
+# 参照用の Brewfile（手動 brew bundle 用、home 直置き不要）
+Brewfile
