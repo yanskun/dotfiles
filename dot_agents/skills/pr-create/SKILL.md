@@ -6,6 +6,12 @@ allowed-tools: Bash(gh pr create -a @me:*), Bash(open https://github.com:*), Bas
 
 # PR 作成ルール
 
+## このスキル実行中の commit について
+
+`/pr-create` の起動はブランチ切り → commit → push → PR 作成までの**一連の許可**として扱う。
+commit ごとに承認を取らず、進めた上で PR まで完了させる。push 前のみ別途確認する
+（remote へ出る瞬間は引き続きユーザー判断の境界）。
+
 ## 0. ブランチ名の確認
 
 現在のブランチが [Semantic Branch Names](https://gist.github.com/seunggabi/87f8c722d35cd07deb3f649d45a31082) に沿っていない場合（例: `worktree-xxx`、`main`、`master` など）、PR 作成前に適切なプレフィックス付きのブランチへ切り直すこと。
