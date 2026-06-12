@@ -263,6 +263,15 @@
             "command": "bash ~/.claude/hooks/block-outside-worktree.sh"
           }
         ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/log-skill-usage.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [

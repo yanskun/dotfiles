@@ -1,0 +1,14 @@
+#!/bin/bash
+# PreToolUse(Skill) hook: Skill 呼び出しログを記録
+# 入力: stdin から JSON (tool_input.skill_name, session_id, cwd 等)
+
+LOG_FILE="$HOME/.claude/skill-usage.log"
+
+if command -v jq &> /dev/null; then
+  jq -c '{ts: (now | todate), skill: (.tool_input.skill_name // "unknown"), session: .session_id, cwd: .cwd}' >> "$LOG_FILE"
+else
+  echo "{\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"skill\":\"unknown\"}" >> "$LOG_FILE"
+fi
+
+# PreToolUse hook は非ゼロ終了でツールをブロックしうるため必ず 0 で抜ける
+exit 0
