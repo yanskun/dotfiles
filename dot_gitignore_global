@@ -8,6 +8,9 @@ __debug_bin
 **/.claude/worktrees/
 **/.claude/plans/
 
+# superpowers が各リポジトリに書き出す spec / plan
+**/docs/superpowers/
+
 **/.codex/
 
 **/.kiro
