@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "claude-opus-4-7",
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
@@ -155,7 +154,6 @@
       "Write(/etc/passwd)",
       "Write(/etc/shadow)",
       "Write(/etc/sudoers)",
-
       "Read(~/.aws/**)",
       "Read(~/.ssh/**)",
       "Read(~/.config/gh/**)",
@@ -171,7 +169,6 @@
       "Read(**/id_ed25519)",
       "Read(**/id_ecdsa)",
       "Read(**/*credentials*)",
-
       "Bash(cat ~/.aws/**)",
       "Bash(cat ~/.ssh/**)",
       "Bash(cat ~/.config/gh/**)",
@@ -210,7 +207,6 @@
       "Bash(base64 ~/.aws/**)",
       "Bash(base64 ~/.ssh/**)",
       "Bash(od * ~/.ssh/**)",
-
       "Bash(curl -d *)",
       "Bash(curl --data *)",
       "Bash(curl --data-binary *)",
@@ -363,11 +359,12 @@
     ]
   },
   "effortLevel": "xhigh",
+  "model": "claude-opus-4-7",
+  "skipWorkflowUsageWarning": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  },
-  "skipWorkflowUsageWarning": true
+  }
 }
