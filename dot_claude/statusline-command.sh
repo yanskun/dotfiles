@@ -127,18 +127,19 @@ else
   style_info=""
 fi
 
-# 組み立て
-parts=("$time_info" "$model_info")
-[ -n "$effort_info" ]     && parts+=("$effort_info")
-parts+=("$context_info")
-[ -n "$rl_info" ]         && parts+=("$rl_info")
-[ -n "$agmsg_info" ]      && parts+=("$agmsg_info")
-[ -n "$sub_agent_info" ]  && parts+=("$sub_agent_info")
-[ -n "$session_info" ]    && parts+=("$session_info")
-[ -n "$style_info" ]      && parts+=("$style_info")
+# 組み立て（2行: 1行目=状態, 2行目=識別）
+line1=("$time_info" "$context_info")
+[ -n "$rl_info" ]         && line1+=("$rl_info")
+[ -n "$session_info" ]    && line1+=("$session_info")
+
+line2=("$model_info")
+[ -n "$effort_info" ]     && line2+=("$effort_info")
+[ -n "$agmsg_info" ]      && line2+=("$agmsg_info")
+[ -n "$sub_agent_info" ]  && line2+=("$sub_agent_info")
+[ -n "$style_info" ]      && line2+=("$style_info")
 
 sep="${GRAY} | ${R}"
-printf "%s" "${parts[0]}"
-for ((i=1; i<${#parts[@]}; i++)); do
-  printf "%s%s" "$sep" "${parts[$i]}"
-done
+printf "%s" "${line1[0]}"
+for ((i=1; i<${#line1[@]}; i++)); do printf "%s%s" "$sep" "${line1[$i]}"; done
+printf "\n%s" "${line2[0]}"
+for ((i=1; i<${#line2[@]}; i++)); do printf "%s%s" "$sep" "${line2[$i]}"; done
