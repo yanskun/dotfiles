@@ -1,99 +1,144 @@
 #!/bin/bash
 
-# Claude Code用のカスタムステータスライン
-# JSON入力を読み取る
+# Claude Code statusline
+# - 時刻 / モデル / effort / context / rate limit (5h) / agmsg name / セッション経過 / 出力スタイル
+
 input=$(cat)
 
-# セッション開始時間を取得
-transcript_path=$(echo "$input" | jq -r '.transcript_path')
-if [ -f "$transcript_path" ]; then
-  session_start=$(stat -f %B "$transcript_path" 2>/dev/null || stat -c %W "$transcript_path" 2>/dev/null)
-  if [ -n "$session_start" ]; then
-    current_time=$(date +%s)
-    elapsed=$((current_time - session_start))
-    hours=$((elapsed / 3600))
-    minutes=$(((elapsed % 3600) / 60))
-    if [ $hours -gt 0 ]; then
-      session_time="${hours}h${minutes}m"
-    else
-      session_time="${minutes}m"
-    fi
-  else
-    session_time=""
-  fi
+# ANSI colors
+R=$'\033[0m'
+DIM=$'\033[2m'
+BOLD=$'\033[1m'
+CYAN=$'\033[36m'
+BLUE=$'\033[94m'
+GREEN=$'\033[32m'
+YELLOW=$'\033[33m'
+ORANGE=$'\033[38;5;208m'
+RED=$'\033[31m'
+MAGENTA=$'\033[95m'
+GRAY=$'\033[90m'
+
+# 時刻
+time_info="${CYAN}󰥔 $(date +%H:%M:%S)${R}"
+
+# モデル
+model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"')
+model_info="${BLUE}󰧑 ${model_name}${R}"
+
+# effort（/effort のカラー: low=緑 / medium=黄 / high=橙 / xhigh=赤 / max=マゼンタ）
+effort_level=$(echo "$input" | jq -r '.effort.level // empty')
+if [ -n "$effort_level" ]; then
+  case "$effort_level" in
+    low)    effort_color="$GREEN" ;;
+    medium) effort_color="$YELLOW" ;;
+    high)   effort_color="$ORANGE" ;;
+    xhigh)  effort_color="$RED" ;;
+    max)    effort_color="$MAGENTA" ;;
+    *)      effort_color="$R" ;;
+  esac
+  effort_info="${effort_color}󱐋 ${effort_level}${R}"
 else
-  session_time=""
+  effort_info=""
 fi
 
-# コンテキスト使用率を取得
+# Context 使用率
 used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 if [ -n "$used_pct" ]; then
-  # 小数点以下を切り捨て
   used_pct_int=$(printf "%.0f" "$used_pct")
-
-  # 残量を計算（100% - 使用率）
   remaining=$((100 - used_pct_int))
-
-  # 残量に応じてバッテリーアイコンを選択
-  if [ $remaining -ge 75 ]; then
-    battery_icon="󰁹"  # battery_full
-  elif [ $remaining -ge 50 ]; then
-    battery_icon="󰂀"  # battery_three_quarters
-  elif [ $remaining -ge 25 ]; then
-    battery_icon="󰁾"  # battery_half
-  else
-    battery_icon="󰁻"  # battery_quarter
+  if   [ $remaining -ge 75 ]; then ctx_icon="󰁹"; ctx_color="$GREEN"
+  elif [ $remaining -ge 50 ]; then ctx_icon="󰂀"; ctx_color="$GREEN"
+  elif [ $remaining -ge 25 ]; then ctx_icon="󰁾"; ctx_color="$YELLOW"
+  else                              ctx_icon="󰁻"; ctx_color="$RED"
   fi
-
-  context_info="$battery_icon ${used_pct_int}%"
+  context_info="${ctx_color}${ctx_icon} ${used_pct_int}%${R}"
 else
-  context_info="󰁹 0%"
+  context_info="${GRAY}󰁹 --${R}"
 fi
 
-# エージェント名を取得（存在する場合）
-agent_name=$(echo "$input" | jq -r '.agent.name // empty')
-if [ -n "$agent_name" ]; then
-  agent_info="󰚩 $agent_name"
+# Rate limit (5h window) — Pro/Max のみ、初回 API 応答後に出現
+rl_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+rl_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+if [ -n "$rl_pct" ]; then
+  rl_pct_int=$(printf "%.0f" "$rl_pct")
+  if   [ $rl_pct_int -lt 50 ]; then rl_color="$GREEN"
+  elif [ $rl_pct_int -lt 75 ]; then rl_color="$YELLOW"
+  elif [ $rl_pct_int -lt 90 ]; then rl_color="$ORANGE"
+  else                              rl_color="$RED"
+  fi
+  if [ -n "$rl_resets" ]; then
+    reset_hm=$(date -r "$rl_resets" +%H:%M 2>/dev/null || date -d "@$rl_resets" +%H:%M 2>/dev/null)
+    rl_info="${rl_color}󰓅 ${rl_pct_int}%${R} ${DIM}→${reset_hm}${R}"
+  else
+    rl_info="${rl_color}󰓅 ${rl_pct_int}%${R}"
+  fi
 else
-  agent_info=""
+  rl_info=""
 fi
 
-# モデル名を取得
-model_name=$(echo "$input" | jq -r '.model.display_name // "Claude"')
+# agmsg agent name（トークン消費なし・ローカル SQLite）
+agmsg_info=""
+cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
+whoami_script="$HOME/.agents/skills/agmsg/scripts/whoami.sh"
+if [ -x "$whoami_script" ] && [ -n "$cwd" ]; then
+  whoami_out=$("$whoami_script" "$cwd" claude-code 2>/dev/null)
+  agmsg_name=$(echo "$whoami_out" | grep -oE '(^|[[:space:]])agent=[^[:space:]]+' | head -1 | sed 's/.*agent=//')
+  agmsg_team=$(echo "$whoami_out" | grep -oE '(^|[[:space:]])teams=[^[:space:]]+' | head -1 | sed 's/.*teams=//')
+  if [ -n "$agmsg_name" ]; then
+    if [ -n "$agmsg_team" ]; then
+      agmsg_info="${MAGENTA}󰚩 ${agmsg_name}${R}${DIM}@${agmsg_team}${R}"
+    else
+      agmsg_info="${MAGENTA}󰚩 ${agmsg_name}${R}"
+    fi
+  fi
+fi
 
-# 出力スタイルを取得
+# Claude Code が渡す agent 名（subagent 動作中のみ）
+sub_agent=$(echo "$input" | jq -r '.agent.name // empty')
+if [ -n "$sub_agent" ]; then
+  sub_agent_info="${MAGENTA}󰚩 ${sub_agent}${R}"
+else
+  sub_agent_info=""
+fi
+
+# セッション経過時間
+transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
+session_time=""
+if [ -f "$transcript_path" ]; then
+  session_start=$(stat -f %B "$transcript_path" 2>/dev/null || stat -c %W "$transcript_path" 2>/dev/null)
+  if [ -n "$session_start" ] && [ "$session_start" != "0" ]; then
+    elapsed=$(( $(date +%s) - session_start ))
+    h=$((elapsed / 3600))
+    m=$(((elapsed % 3600) / 60))
+    if [ $h -gt 0 ]; then session_time="${h}h${m}m"; else session_time="${m}m"; fi
+  fi
+fi
+if [ -n "$session_time" ]; then
+  session_info="${GRAY}󰔟 ${session_time}${R}"
+else
+  session_info=""
+fi
+
+# 出力スタイル（default 以外）
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 if [ -n "$output_style" ] && [ "$output_style" != "default" ]; then
-  style_info="󰏘 $output_style"
+  style_info="${GRAY}󰏘 ${output_style}${R}"
 else
   style_info=""
 fi
 
-# 現在時刻を取得
-current_timestamp=$(date +%H:%M:%S)
+# 組み立て
+parts=("$time_info" "$model_info")
+[ -n "$effort_info" ]     && parts+=("$effort_info")
+parts+=("$context_info")
+[ -n "$rl_info" ]         && parts+=("$rl_info")
+[ -n "$agmsg_info" ]      && parts+=("$agmsg_info")
+[ -n "$sub_agent_info" ]  && parts+=("$sub_agent_info")
+[ -n "$session_info" ]    && parts+=("$session_info")
+[ -n "$style_info" ]      && parts+=("$style_info")
 
-# ステータスラインを構築（セパレータで区切る）
-status_parts=()
-status_parts+=("󰥔 $current_timestamp")
-
-if [ -n "$session_time" ]; then
-  status_parts+=("󰔟 $session_time")
-fi
-
-status_parts+=("$context_info")
-
-if [ -n "$agent_info" ]; then
-  status_parts+=("$agent_info")
-fi
-
-status_parts+=("󰧑 $model_name")
-
-if [ -n "$style_info" ]; then
-  status_parts+=("$style_info")
-fi
-
-# 配列を " | " で結合
-printf "%s" "${status_parts[0]}"
-for ((i=1; i<${#status_parts[@]}; i++)); do
-  printf " | %s" "${status_parts[$i]}"
+sep="${GRAY} | ${R}"
+printf "%s" "${parts[0]}"
+for ((i=1; i<${#parts[@]}; i++)); do
+  printf "%s%s" "$sep" "${parts[$i]}"
 done
