@@ -358,7 +358,7 @@
       "make *"
     ]
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "medium",
   "model": "claude-opus-4-7",
   "skipWorkflowUsageWarning": true,
   "skipAutoPermissionPrompt": true,
