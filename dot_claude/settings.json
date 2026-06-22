@@ -269,6 +269,15 @@
             "command": "bash ~/.claude/log-skill-usage.sh"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/naoyayasuda/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -358,9 +367,10 @@
       "make *"
     ]
   },
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "model": "claude-opus-4-7",
   "skipWorkflowUsageWarning": true,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
   "prStatusFooterEnabled": false,
