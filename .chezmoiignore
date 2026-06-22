@@ -3,6 +3,7 @@
 
 # spec / plan などのドキュメント
 docs
+tasks
 
 # run_once スクリプトが sourceDir を直接参照するアセット類。
 # home へ ~/vscode ~/images として展開する必要はない。
