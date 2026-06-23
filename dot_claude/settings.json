@@ -220,6 +220,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-opus-4-7",
   "hooks": {
     "Stop": [
       {
@@ -312,7 +313,8 @@
     "typescript-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "tmux-agent-sidebar@hiroppy": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "hiroppy": {
@@ -368,7 +370,10 @@
     ]
   },
   "effortLevel": "high",
-  "model": "claude-opus-4-7",
+  "voice": {
+    "enabled": true,
+    "mode": "tap"
+  },
   "skipWorkflowUsageWarning": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
