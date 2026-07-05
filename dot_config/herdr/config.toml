@@ -1,0 +1,20 @@
+[theme]
+name = "one-dark"
+
+[ui]
+agent_panel_sort = "spaces"
+
+[keys]
+focus_pane_left  = ["prefix+h", "prefix+ctrl+h"]
+focus_pane_down  = ["prefix+j", "prefix+ctrl+j"]
+focus_pane_up    = ["prefix+k", "prefix+ctrl+k"]
+focus_pane_right = ["prefix+l", "prefix+ctrl+l"]
+
+[[keys.command]]
+key = "prefix+P"
+type = "pane"
+command = "nvim ."
+description = "Open vim in the current pane"
+
+[experimental]
+switch_ascii_input_source_in_prefix = true
