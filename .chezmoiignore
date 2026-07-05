@@ -5,6 +5,9 @@
 docs
 tasks
 
+# リポジトリ用の Claude 指示ファイル（home へ展開しない）
+CLAUDE.md
+
 # run_once スクリプトが sourceDir を直接参照するアセット類。
 # home へ ~/vscode ~/images として展開する必要はない。
 vscode
