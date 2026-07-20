@@ -10,6 +10,7 @@ __debug_bin
 
 # superpowers が各リポジトリに書き出す spec / plan
 **/docs/superpowers/
+**/.superpowers/
 
 **/.codex/
 

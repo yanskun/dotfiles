@@ -1,0 +1,7 @@
+#!/bin/bash
+
+herdr pane read $(herdr pane current | jq -r '.result.pane.pane_id') --source visible --format text \
+  | grep -oE '(https?|ftp)://[a-zA-Z0-9./?=_%:-]+' \
+  | sort -u \
+  | fzf --prompt="Open URL> " --height=40% --layout=reverse \
+  | xargs -I {} open {}

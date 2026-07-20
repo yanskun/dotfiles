@@ -209,6 +209,18 @@
   "model": "sonnet",
   "advisorModel": "fable",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/naoyayasuda/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -279,16 +291,6 @@
           }
         ]
       }
-    ],
-    "WorktreeRemove": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.local/bin/agmsg-cleanup"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
@@ -299,17 +301,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "tmux-agent-sidebar@hiroppy": true,
     "superpowers@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "hiroppy": {
-      "source": {
-        "source": "directory",
-        "path": "~/.tmux/plugins/tmux-agent-sidebar"
-      }
-    }
   },
   "language": "japanese",
   "sandbox": {

@@ -10,16 +10,16 @@ focus_pane_down  = ["prefix+j", "prefix+ctrl+j"]
 focus_pane_up    = ["prefix+k", "prefix+ctrl+k"]
 focus_pane_right = ["prefix+l", "prefix+ctrl+l"]
 
-navigate_workspace_up = "k"
-navigate_workspace_down = "j"
-navigate_workspace_left = "h"
-navigate_workspace_right = "l"
+open_worktree = "prefix+ctrl+o"
 
 [[keys.command]]
-key = "prefix+P"
-type = "pane"
-command = "nvim ."
-description = "Open vim in the current pane"
+key = "prefix+u"
+type = "popup"
+command = "~/.local/bin/herdr-urlview"
+description = "Open URL view"
+
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
