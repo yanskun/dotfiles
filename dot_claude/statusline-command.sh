@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Claude Code statusline
-# - 時刻 / モデル / effort / context / rate limit (5h) / agmsg name / セッション経過 / 出力スタイル
+# - 時刻 / モデル / effort / context / rate limit (5h) / セッション経過 / 出力スタイル
 
 input=$(cat)
 
@@ -76,23 +76,6 @@ else
   rl_info=""
 fi
 
-# agmsg agent name（トークン消費なし・ローカル SQLite）
-agmsg_info=""
-cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
-whoami_script="$HOME/.agents/skills/agmsg/scripts/whoami.sh"
-if [ -x "$whoami_script" ] && [ -n "$cwd" ]; then
-  whoami_out=$("$whoami_script" "$cwd" claude-code 2>/dev/null)
-  agmsg_name=$(echo "$whoami_out" | grep -oE '(^|[[:space:]])agent=[^[:space:]]+' | head -1 | sed 's/.*agent=//')
-  agmsg_team=$(echo "$whoami_out" | grep -oE '(^|[[:space:]])teams=[^[:space:]]+' | head -1 | sed 's/.*teams=//')
-  if [ -n "$agmsg_name" ]; then
-    if [ -n "$agmsg_team" ]; then
-      agmsg_info="${MAGENTA}󰚩 ${agmsg_name}${R}${DIM}@${agmsg_team}${R}"
-    else
-      agmsg_info="${MAGENTA}󰚩 ${agmsg_name}${R}"
-    fi
-  fi
-fi
-
 # Claude Code が渡す agent 名（subagent 動作中のみ）
 sub_agent=$(echo "$input" | jq -r '.agent.name // empty')
 if [ -n "$sub_agent" ]; then
@@ -134,7 +117,6 @@ line1=("$time_info" "$context_info")
 
 line2=("$model_info")
 [ -n "$effort_info" ]     && line2+=("$effort_info")
-[ -n "$agmsg_info" ]      && line2+=("$agmsg_info")
 [ -n "$sub_agent_info" ]  && line2+=("$sub_agent_info")
 [ -n "$style_info" ]      && line2+=("$style_info")
 
