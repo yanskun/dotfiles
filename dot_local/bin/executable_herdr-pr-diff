@@ -1,0 +1,30 @@
+#!/bin/bash
+set -uo pipefail
+
+fail() {
+  echo "herdr-pr-diff: $*" >&2
+  echo
+  read -n 1 -s -r -p "Press any key to close..."
+  exit 1
+}
+
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  fail "not inside a git repository"
+fi
+
+base="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##')"
+base="${base:-main}"
+
+if git rev-parse --verify --quiet "origin/${base}" >/dev/null; then
+  target="origin/${base}"
+elif git rev-parse --verify --quiet "${base}" >/dev/null; then
+  target="${base}"
+else
+  fail "base branch '${base}' not found locally (origin/${base} or ${base})"
+fi
+
+if ! git merge-base "${target}" HEAD >/dev/null 2>&1; then
+  fail "no merge base between ${target} and HEAD (unrelated history / shallow clone?)"
+fi
+
+hunk diff "${target}...HEAD" || fail "hunk diff failed"

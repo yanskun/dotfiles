@@ -7,4 +7,4 @@ rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
-trusted_config_paths = ["~/Projects/github.com"]
+trusted_config_paths = ["~/Projects/github.com", "~/.herdr/worktrees/"]
