@@ -12,14 +12,14 @@ focus_pane_right = ["prefix+l", "prefix+ctrl+l"]
 
 open_worktree = "prefix+ctrl+o"
 
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+
 [[keys.command]]
 key = "prefix+u"
 type = "popup"
 command = "~/.local/bin/herdr-urlview"
 description = "Open URL view"
-
-navigate_workspace_up = "k"
-navigate_workspace_down = "j"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
