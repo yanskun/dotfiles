@@ -221,26 +221,6 @@
         ]
       }
     ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/notify-completion.sh stop"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/notify-completion.sh notification"
-          }
-        ]
-      }
-    ],
     "SubagentStop": [
       {
         "hooks": [
