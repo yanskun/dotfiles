@@ -21,5 +21,11 @@ type = "popup"
 command = "~/.local/bin/herdr-urlview"
 description = "Open URL view"
 
+[[keys.command]]
+key = "prefix+d"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "Toggle reviewr"
+
 [experimental]
 switch_ascii_input_source_in_prefix = true
