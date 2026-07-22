@@ -207,7 +207,6 @@
     "defaultMode": "auto"
   },
   "model": "sonnet",
-  "advisorModel": "fable",
   "hooks": {
     "SessionStart": [
       {
@@ -330,6 +329,7 @@
     ]
   },
   "effortLevel": "high",
+  "advisorModel": "fable",
   "voice": {
     "enabled": true,
     "mode": "tap"
@@ -341,5 +341,13 @@
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
   }
 }
