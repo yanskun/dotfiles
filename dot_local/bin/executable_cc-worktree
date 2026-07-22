@@ -24,12 +24,4 @@ tmux send-keys -t "$editor" "$wait" C-m
 tmux send-keys -t "$term1"  "$wait && codex" C-m
 tmux send-keys -t "$term2"  "$wait" C-m
 
-agmsg="$HOME/.agents/skills/agmsg/scripts"
-team=$(basename "$root")
-tmux run-shell -b "until test -d '$wt'; do sleep 0.5; done; \
-  '$agmsg/join.sh' '$team' 'cc-$name'    claude-code '$wt'; \
-  '$agmsg/join.sh' '$team' 'codex-$name' codex       '$wt'; \
-  '$agmsg/delivery.sh' set monitor claude-code '$wt'; \
-  '$agmsg/delivery.sh' set turn    codex       '$wt'"
-
 tmux select-pane -t "$ai"
