@@ -16,8 +16,6 @@ cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
-initial-command = /bin/zsh -c '/opt/homebrew/bin/tmux attach-session || /opt/homebrew/bin/tmux new-session -s default'
-
 window-decoration = false
 macos-non-native-fullscreen = visible-menu
 fullscreen = true
