@@ -282,7 +282,16 @@
     "typescript-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "codex@openai-codex": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
   },
   "language": "japanese",
   "sandbox": {
@@ -342,13 +351,5 @@
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  },
-  "extraKnownMarketplaces": {
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    }
   }
 }
