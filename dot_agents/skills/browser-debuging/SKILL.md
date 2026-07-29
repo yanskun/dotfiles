@@ -1,5 +1,5 @@
 ---
-name: Chrome DevTools Debugging
+name: chrome-devtools-debugging
 description: Webサイトの解析・デバッグ・ネットワーク監視に関する要件
 allowed-tools: Bash(agent-browser:*)
 ---

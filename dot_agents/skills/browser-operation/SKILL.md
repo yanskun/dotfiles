@@ -1,5 +1,5 @@
 ---
-name: Browser Automation
+name: browser-automation
 description: ブラウザ操作に関する要件
 allowed-tools: Bash(agent-browser:*)
 ---
