@@ -206,7 +206,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "sonnet",
   "switchModelsOnFlag": false,
   "hooks": {
     "SessionStart": [
