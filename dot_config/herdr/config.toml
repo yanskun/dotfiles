@@ -16,6 +16,9 @@ open_worktree = "prefix+ctrl+o"
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
 
+# prefix+p is reassigned to the gcloud project picker below.
+previous_tab = ""
+
 [[keys.command]]
 key = "prefix+u"
 type = "popup"
@@ -27,6 +30,24 @@ key = "prefix+d"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "Toggle reviewr"
+
+[[keys.command]]
+key = "prefix+]"
+type = "popup"
+command = "~/.local/bin/herdr-ghq-cd"
+description = "Jump to ghq repository"
+
+[[keys.command]]
+key = "prefix+p"
+type = "popup"
+command = "~/.local/bin/herdr-gcloud-project"
+description = "Switch gcloud project"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "~/.local/bin/herdr-gcloud-account"
+description = "Switch gcloud account"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true

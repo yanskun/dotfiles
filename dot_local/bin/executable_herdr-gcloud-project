@@ -1,0 +1,19 @@
+#!/bin/bash
+set -uo pipefail
+
+fail() {
+  echo "herdr-gcloud-project: $*" >&2
+  echo
+  read -n 1 -s -r -p "Press any key to close..."
+  exit 1
+}
+
+listing=$(gcloud projects list 2>&1) || fail "$listing"
+
+project=$(printf '%s\n' "$listing" | tail -n +2 \
+  | fzf --height 100% --layout=reverse --prompt "project> " \
+  | awk '{print $1}')
+[ -z "$project" ] && exit 0
+
+pane=$(herdr pane current | jq -r '.result.pane.pane_id')
+herdr pane run "$pane" "gcloud config set project $project"

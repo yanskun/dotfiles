@@ -1,0 +1,21 @@
+#!/bin/bash
+set -uo pipefail
+
+fail() {
+  echo "herdr-ghq-cd: $*" >&2
+  echo
+  read -n 1 -s -r -p "Press any key to close..."
+  exit 1
+}
+
+root=$(ghq root) || fail "ghq root failed"
+list=$(ghq list) || fail "ghq list failed"
+[ -n "$list" ] || fail "no repositories found under $root"
+
+selected=$(printf '%s\n' "$list" | fzf --height 100% --layout=reverse \
+  --prompt "ghq> " \
+  --preview "bat --color=always --style=header,grid --line-range :80 $root/{}/README.*")
+[ -z "$selected" ] && exit 0
+
+pane=$(herdr pane current | jq -r '.result.pane.pane_id')
+herdr pane run "$pane" "cd $root/$selected"

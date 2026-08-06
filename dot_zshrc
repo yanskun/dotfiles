@@ -56,17 +56,6 @@ setopt inc_append_history
 setopt share_history
 
 ########################################
-# cdr
-if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
-    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-    add-zsh-hook chpwd chpwd_recent_dirs
-    zstyle ':completion:*' recent-dirs-insert both
-    zstyle ':chpwd:*' recent-dirs-default true
-    zstyle ':chpwd:*' recent-dirs-max 1000
-    zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
-fi
-
-########################################
 # go
 GOENV_DISABLE_GOPATH=1
 export PATH=$GOPATH/bin:$PATH
@@ -208,27 +197,6 @@ function fzf-open () {
 zle -N fzf-open
 bindkey '^o' fzf-open
 
-### history
-function fzf-history-selection() {
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf-tmux -p --reverse --height 40%`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N fzf-history-selection
-bindkey '^H' fzf-history-selection
-
-## fzf directory selector
-function fzf-directory() {
-    local dir=$(cdr -l | awk '{print $2}' | fzf-tmux -p --reverse --height 40%)
-    if [ -n "$dir" ]; then
-        BUFFER="cd $dir"
-        zle accept-line
-    fi
-}
-zle -N fzf-directory
-bindkey '^D' fzf-directory
-
 ## gcloud project swhich
 function gcloud_prj_switch () {
     local project="$(gcloud projects list | tail -n +2 | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
@@ -254,21 +222,6 @@ function gcloud_auth_switch () {
 }
 zle -N gcloud_auth_switch
 bindkey '^g' gcloud_auth_switch
-
-## tmux window switcher
-function tmux-window-switcher () {
-    local window="$(tmux list-windows -a -F '#S:#W' | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
-
-    if [ -n "$window" ]; then
-      session_name="${window%%:*}"
-      window_name="${window#*:}"
-
-      BUFFER="tmux switch-client -t $session_name && tmux select-window -t $window_name"
-      zle accept-line
-    fi
-}
-zle -N tmux-window-switcher
-bindkey '^w' tmux-window-switcher
 
 ## history by atuin
 function atuin-history-selection() {
@@ -303,3 +256,11 @@ eval "$(zoxide init zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/naoyayasuda/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

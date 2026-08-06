@@ -1,0 +1,19 @@
+#!/bin/bash
+set -uo pipefail
+
+fail() {
+  echo "herdr-gcloud-account: $*" >&2
+  echo
+  read -n 1 -s -r -p "Press any key to close..."
+  exit 1
+}
+
+listing=$(gcloud auth list --format="value(account)" 2>&1) || fail "$listing"
+[ -n "$listing" ] || fail "no authenticated accounts (run: gcloud auth login)"
+
+account=$(printf '%s\n' "$listing" \
+  | fzf --height 100% --layout=reverse --prompt "account> ")
+[ -z "$account" ] && exit 0
+
+pane=$(herdr pane current | jq -r '.result.pane.pane_id')
+herdr pane run "$pane" "gcloud config set account $account"
