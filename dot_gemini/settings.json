@@ -10,7 +10,10 @@
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": ["chrome-devtools-mcp@latest", "--isolated=true"]
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--isolated=true"
+      ]
     },
     "deepWiki": {
       "url": "https://mcp.deepwiki.com/sse"
@@ -21,6 +24,10 @@
     "previewFeatures": true
   },
   "context": {
-    "fileName": ["AGENTS.md", "CONTEXT.md", "GEMINI.md"]
+    "fileName": [
+      "AGENTS.md",
+      "CONTEXT.md",
+      "GEMINI.md"
+    ]
   }
 }
