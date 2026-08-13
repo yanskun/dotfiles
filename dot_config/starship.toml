@@ -1,5 +1,5 @@
 format = """
-$time$directory$golang$nodejs$python$dart$rust$deno$ruby$bun$cmd_duration$fill$git_status$git_branch
+$time$directory$cmd_duration$fill$git_status$git_branch
 $character"""
 
 command_timeout = 600
@@ -32,33 +32,41 @@ disabled = false
 format = "[$duration]($style) "
 style = 'bold cyan'
 
+[character]
+success_symbol = "[-❯](bold green)"
+error_symbol = "[-❯](bold red)"
+
 # languages
 [golang]
+disabled = true
 format = "[$symbol($version )]($style)"
 symbol = " "
 
 [nodejs]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [python]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [dart]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [rust]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [deno]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [ruby]
+disabled = true
 format = "[$symbol($version )]($style)"
 
 [bun]
+disabled = true
 format = "[$symbol($version )]($style)"
 symbol = " "
-
-[character]
-success_symbol = "[-❯](bold green)"
-error_symbol = "[-❯](bold red)"
