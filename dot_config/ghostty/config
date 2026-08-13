@@ -27,7 +27,6 @@ theme = original
 keybind = cmd+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 
-keybind = global:ctrl+y=toggle_visibility
 keybind = global:ctrl+backquote=toggle_quick_terminal
 
 quick-terminal-size = 100%,100%
