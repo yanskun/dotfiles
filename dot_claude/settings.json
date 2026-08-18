@@ -352,6 +352,7 @@
     "mode": "tap"
   },
   "skipWorkflowUsageWarning": true,
+  "autoCompactEnabled": true,
   "switchModelsOnFlag": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
