@@ -16,6 +16,7 @@ cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
+window-save-state = always
 window-decoration = false
 macos-non-native-fullscreen = visible-menu
 fullscreen = true
@@ -27,7 +28,7 @@ theme = original
 keybind = cmd+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 
-keybind = global:ctrl+backquote=toggle_quick_terminal
+# keybind = global:ctrl+backquote=toggle_quick_terminal
 
 quick-terminal-size = 100%,100%
 

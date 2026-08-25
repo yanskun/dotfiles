@@ -4,6 +4,13 @@ name = "one-dark"
 
 [ui]
 agent_panel_sort = "spaces"
+window_title = "{hostname}: {workspace}"
+
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "datetime", format = "%H:%M" },
+]
+tab_bar_right_separator = " | "
 
 [keys]
 focus_pane_left  = ["prefix+h", "prefix+ctrl+h"]
@@ -50,5 +57,6 @@ command = "~/.local/bin/herdr-gcloud-account"
 description = "Switch gcloud account"
 
 [experimental]
+kitty_graphics = true
 switch_ascii_input_source_in_prefix = true
 pane_history = true
