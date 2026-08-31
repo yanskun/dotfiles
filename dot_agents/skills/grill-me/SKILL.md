@@ -8,3 +8,5 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 Ask the questions one at a time.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
+
+Once shared understanding is reached, invoke the superpowers:writing-plans skill to turn it into an implementation plan.
