@@ -361,10 +361,12 @@
   "skipWorkflowUsageWarning": true,
   "autoCompactEnabled": true,
   "switchModelsOnFlag": false,
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  }
+  },
+  "tui": "fullscreen"
 }
