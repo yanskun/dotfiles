@@ -3,3 +3,6 @@ enabled = true
 
 [sync]
 records = true
+
+[ai]
+enabled = true
