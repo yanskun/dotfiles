@@ -354,6 +354,7 @@
   },
   "effortLevel": "high",
   "advisorModel": "fable",
+  "tui": "fullscreen",
   "voice": {
     "enabled": false,
     "mode": "tap"
@@ -367,6 +368,5 @@
   "prStatusFooterEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754085492520
-  },
-  "tui": "fullscreen"
+  }
 }
