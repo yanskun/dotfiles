@@ -11,6 +11,7 @@ tab_bar_right = [
   { type = "datetime", format = "%H:%M" },
 ]
 tab_bar_right_separator = " | "
+status_indicators = "dots"
 
 [keys]
 focus_pane_left  = ["prefix+h", "prefix+ctrl+h"]
