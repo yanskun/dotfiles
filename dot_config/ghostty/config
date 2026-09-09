@@ -4,7 +4,9 @@ font-thicken = true
 font-family = Hiragino Kaku Gothic ProN
 
 background-opacity = 0.8
-background = 1C2021
+background = #000000
+background-blur = false
+
 cursor-opacity = 0.7
 
 mouse-hide-while-typing = true
