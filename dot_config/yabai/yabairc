@@ -49,7 +49,7 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 yabai -m rule --add app="^Alacritty$" manage=off
-yabai -m rule --add app="^Ghostty$" manage=off
+yabai -m rule --add app="^Ghostty$" manage=off layer=above
 yabai -m rule --add app="^WezTerm$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
 yabai -m rule --add app="^LINE$" manage=off
