@@ -1,0 +1,10 @@
+#!/bin/bash
+set -u
+
+state="$(osascript -e 'tell application "Spotify" to player state as string' 2>/dev/null)" || exit 0
+[ "$state" = "playing" ] || exit 0
+
+artist="$(osascript -e 'tell application "Spotify" to artist of current track as string' 2>/dev/null)" || exit 0
+track="$(osascript -e 'tell application "Spotify" to name of current track as string' 2>/dev/null)" || exit 0
+
+[ -n "$artist" ] && [ -n "$track" ] && printf ' %s: %s\n' "$artist" "$track"

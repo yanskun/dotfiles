@@ -8,10 +8,12 @@ window_title = "{hostname}: {workspace}"
 
 tab_bar_right = [
   { type = "zoom" },
+  { type = "command", command = "~/.local/bin/herdr-spotify-now-playing" },
   { type = "datetime", format = "%H:%M" },
 ]
 tab_bar_right_separator = " | "
 status_indicators = "dots"
+sidebar_width = 30
 
 [keys]
 focus_pane_left  = ["prefix+h", "prefix+ctrl+h"]
