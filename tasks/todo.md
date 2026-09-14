@@ -1,17 +1,16 @@
 # 作業計画
 
-- [x] repo 固有ルールと既存 Herdr 設定を確認する
-- [x] `prefix+d` の設定が Herdr config と稼働中 server に認識されるか確認する
-- [x] `persiyanov.reviewr.toggle` が現在の Herdr / plugin action として有効か確認する
-- [x] root cause に対する最小修正を行う
-- [x] `herdr config check` と必要な runtime 確認で検証する
-- [x] 差分と結果をレビュー欄に記録する
+- [x] 既存の gcloud tab bar 表示スクリプトと Herdr 設定を確認する
+- [x] account と project を 1 つの表示にまとめる挙動を RED で確認する
+- [x] `herdr-gcloud-current-account` を account/project 表示に拡張する
+- [x] account が取れない場合は project を取得せず、状態表示を 1 つだけ出す
+- [x] fake `gcloud` で account/project/未ログイン/エラー/不在を検証する
+- [x] `chezmoi diff` と `git diff` / `git status` を確認する
+- [x] commit する
 
 ## レビュー
 
-- 原因は Herdr 本体 config ではなく、reviewr plugin config の `base_branches`。reviewr `0.37.1` はこのキーを受け付けず、`prefix+d` 実行時に `unknown key "base_branches"` で toggle action が失敗していた。
-- `dot_config/herdr/plugins/config/persiyanov.reviewr/config.toml` から `base_branches = ["develop", "main", "master"]` を削除した。
-- `chezmoi apply --source /Users/naoyayasuda/.local/share/chezmoi /Users/naoyayasuda/.config/herdr/plugins/config/persiyanov.reviewr/config.toml` で実環境へ反映した。
-- 検証: `HERDR_CONFIG_PATH=/Users/naoyayasuda/.local/share/chezmoi/dot_config/herdr/config.toml herdr config check` と `herdr config check` はどちらも `config: ok`。
-- 検証: plugin root の `herdr-reviewr --resolve-plugin-config` は成功し、`default_scope`, `navigator_position`, `auto_open` を含む正規化済み config を返した。
-- 検証: `herdr plugin action invoke toggle --plugin persiyanov.reviewr` は修正前 `plugin-log-1..23` で失敗、修正後 `plugin-log-24` 以降は `opened ...` / `closed ...` で成功。
+- `~/.local/bin/herdr-gcloud-current-account` の 1 コマンドで gcloud user と project をまとめて表示する。
+- active user が取れた場合だけ `gcloud config get-value project` を実行し、` user / project` を表示する。
+- active user が取れない場合は project を取りに行かず、` not logged in` または ` auth error` の 1 表示だけにする。
+- project 未設定は ` user / no project`、project 取得失敗は ` user / project error` として表示する。

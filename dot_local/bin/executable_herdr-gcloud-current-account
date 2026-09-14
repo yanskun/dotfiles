@@ -16,4 +16,14 @@ if [ -z "$account" ]; then
   exit 0
 fi
 
-printf ' %s\n' "$account"
+project="$(gcloud config get-value project 2>/dev/null | head -n 1)" || {
+  printf ' %s / project error\n' "$account"
+  exit 0
+}
+
+if [ -z "$project" ] || [ "$project" = "(unset)" ]; then
+  printf ' %s / no project\n' "$account"
+  exit 0
+fi
+
+printf ' %s / %s\n' "$account" "$project"
