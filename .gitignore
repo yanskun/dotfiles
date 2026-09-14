@@ -1,3 +1,4 @@
 dot_zsh/config.d/*
 !dot_zsh/config.d/copilot.zsh
 !dot_zsh/config.d/README.md
+/tasks/
