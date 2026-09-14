@@ -1,4 +1,3 @@
-base_branches = ["develop", "main", "master"]
 default_scope = "branch"
 navigator_position = "left"
 auto_open = false
