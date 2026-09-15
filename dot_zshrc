@@ -264,3 +264,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Added by Antigravity IDE
+export PATH="/Users/naoyayasuda/.antigravity-ide/antigravity-ide/bin:$PATH"
