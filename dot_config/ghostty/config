@@ -2,6 +2,7 @@ font-family = Hack Nerd Font Mono
 font-size = 12
 font-thicken = true
 font-family = Hiragino Kaku Gothic ProN
+font-family = Menlo
 
 background-opacity = 0.8
 background = #000000
