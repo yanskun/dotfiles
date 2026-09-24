@@ -1,6 +1,6 @@
 ---
 name: browser-automation
-description: ブラウザ操作に関する要件
+description: agent-browser CLI で Web ページを開き、要素のクリック・フォーム入力・画面遷移などを自動操作する。「このページを開いて操作して」「フォームに入力して送信して」等で使う。コンソールやネットワークの調査が目的なら browser-debuging を使う。
 allowed-tools: Bash(agent-browser:*)
 ---
 

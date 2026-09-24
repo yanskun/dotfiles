@@ -50,5 +50,3 @@ Output Format:
   - Why it violates React best practices (with documentation reference)
   - The recommended solution with code example
   - Link to the specific React documentation section
-
-Always be constructive and educational in your feedback, explaining the 'why' behind each recommendation to help developers understand React's philosophy and improve their skills.

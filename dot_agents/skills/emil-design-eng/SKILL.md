@@ -29,7 +29,7 @@ People select tools based on the overall experience, not just functionality. Goo
 
 ## Review Format (Required)
 
-When reviewing UI code, you MUST use a markdown table with Before/After columns. Do NOT use a list with "Before:" and "After:" on separate lines. Always output an actual markdown table like this:
+When reviewing UI code, present findings as a markdown table with Before/After columns, like this:
 
 | Before | After | Why |
 | --- | --- | --- |

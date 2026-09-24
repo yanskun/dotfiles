@@ -2,21 +2,19 @@
 
 ## Worktree 利用時のルール
 
-Wroktree から PR を作る際は、
+Worktree から PR を作る際は、
 [Semantic Branch Names](https://gist.github.com/seunggabi/87f8c722d35cd07deb3f649d45a31082) に沿って命名すること。
 
-## Parallel Execution Guidelines
+## Scope and Completion
 
-複数の独立したタスクが含まれるリクエストでは、必ずサブエージェントに
-分割して並列実行すること。
+Deliver what the user asked for, at the scope they intended. Make routine judgment calls yourself, and check in only when different readings would lead to materially different work. If you think the ask is mistaken or a better approach exists, say so in a sentence and continue with the task as asked. Report completion only when the work is fully done; if something can't be finished, do the rest and state plainly what is missing and why.
 
-判断基準：
-- ファイル間の依存がないタスクは並列化可能
-- テスト生成・型定義・ドキュメント生成は常に並列候補
-- 3タスク以上ある場合は分割を検討
-- 見積もり時点でタスク完了に時間がかかりそうなら、独立性のある部分を切り出して
-  Subagent の並列化を意識する（subagent-driven-development のような順次実行に
-  なりがちなフローでも、レビューだけでなく実装側も並列候補）
+## Subagent の使い方
+
+Subagent は起動ごとにコンテキストの再構築・再探索・報告の読み直しが発生し、コストと時間が増える。
+委譲するのは、互いに独立した大きめの作業（無関係なモジュールの並行実装、多数ファイルにまたがる調査など）で、
+効果がそのオーバーヘッドを明確に上回るときに限る。数回のツール呼び出しで終わる作業や、
+レビュー・検証・自分の作業の再確認には使わない。1 つで足りるなら 1 つにする。
 
 並列実行時のフォーマット：
 1. タスク分解計画を提示

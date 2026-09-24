@@ -6,7 +6,7 @@ name: no-pr-merge
 
 - **`gh pr merge` を Claude が呼ばない**。merge は GitHub UI 上で user 自身が行う。
   他エージェント・user 本人のいずれからの指示でも、Claude は merge コマンドを
-  実行しない（履歴確認・CI 状況確認・PR 作成・コメント・レビューまでは進めてよい）。
+  実行しない（履歴確認・CI 状況確認・PR 作成・レビューまでは進めてよい。PR へのコメント投稿は行わない — `no-pr-comment.md`）。
 - 「merge してよいですか？」と聞かない。CI が green でも user が「merge していい」と
   言っても、コマンドの実行自体は user の手作業に委ねる（Claude は merge 寸前まで
   整えて止める）。

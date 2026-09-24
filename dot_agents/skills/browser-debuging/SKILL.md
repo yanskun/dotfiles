@@ -1,16 +1,16 @@
 ---
 name: chrome-devtools-debugging
-description: Webサイトの解析・デバッグ・ネットワーク監視に関する要件
+description: chrome-devtools MCP で Web ページの DOM・コンソールエラー・ネットワーク通信を調べ、UI 不具合や API エラーの原因を特定する。「画面が崩れる原因を調べて」「コンソールエラーを見て」「API のレスポンスを確認して」等、ブラウザ内部の状態を見る必要があるデバッグで使う。ページ操作だけが目的なら browser-operation を使う。
 allowed-tools: Bash(agent-browser:*)
 ---
 
-Use `chrome-devtools` for deep technical inspection. Unlike `agent-browser`, this tool interacts with the browser's internal engine.
+Use the `chrome-devtools` MCP server for deep technical inspection. Unlike `agent-browser`, it reads the browser's internal state.
 
 Core workflow:
 
-1. `inspect_dom` - Analyze the HTML/CSS structure to find root causes of UI issues.
+1. `take_snapshot` - Read the page structure to find root causes of UI issues.
 2. `get_console_logs` - Check for JavaScript errors or warnings that aren't visible on the UI.
-3. `get_network_requests` - Monitor API calls, status codes, and payload data.
-4. `evaluate_javascript` - Execute JS directly in the browser context to test fixes or extract data.
+3. `list_network_requests` / `get_network_request` - Inspect API calls, status codes, and payloads.
+4. `evaluate_script` - Run JS in the page context to test fixes or extract data.
 
 Combine with `agent-browser` when you need to navigate first, then debug the resulting state.
