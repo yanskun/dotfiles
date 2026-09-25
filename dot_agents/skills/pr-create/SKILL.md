@@ -9,8 +9,9 @@ allowed-tools: Bash(gh pr create -a @me:*), Bash(open https://github.com:*), Bas
 ## このスキル実行中の commit について
 
 `/pr-create` の起動はブランチ切り → commit → push → PR 作成までの**一連の許可**として扱う。
-commit ごとに承認を取らず、進めた上で PR まで完了させる。push 前のみ別途確認する
-（remote へ出る瞬間は引き続きユーザー判断の境界）。
+commit・push・PR 作成のいずれでも承認を取らず、PR 作成まで一気に完了させる。
+ただし、ユーザーが `/pr-create` を直接呼んだ場合に限る。他のスキルや agent から
+間接的に呼ばれた場合は、push 前にユーザーへ確認する。
 
 ## 0. ブランチ名の確認
 
