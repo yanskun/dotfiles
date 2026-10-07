@@ -1,58 +1,63 @@
-# Language Policy
+# 言語ポリシー
 
 常に日本語で回答してください。
 
-## Workflow Orchestration
+## ワークフローの進め方
 
-### 1. Plan Node Default
+### 1. 計画モードを基本にする
 
-- Enter plan mode for non-trivial tasks (3+ steps or architectural decisions)
-- If something goes sideways, re-plan instead of pushing on
-- Use plan mode for verification steps, not just building
-- Write detailed specs upfront to reduce ambiguity
+- 3 ステップ以上の作業や設計判断を伴う作業では、plan mode に入ってから進める
+- 途中で想定から外れたら、そのまま押し進めずに計画を立て直す
+- 実装だけでなく、検証の手順も plan mode で計画する
+- 曖昧さを減らすため、最初に詳細な仕様を書く
 
-### 2. Self-Improvement Loop
+### 2. 自己改善ループ
 
-- After ANY correction from the user: update `tasks/lessons.md` with the pattern
-- Write rules for yourself that prevent the same mistake
-- Revise these lessons when the same mistake recurs
-- Review lessons at session start for relevant project
+- ユーザーから修正を受けたら、その都度パターンを `tasks/lessons.md` に記録する
+- 同じミスを繰り返さないためのルールを自分用に書く
+- 同じミスが再発したら、該当する教訓を見直す
+- セッション開始時に、対象プロジェクトに関係する教訓を確認する
 
-### 3. Verification Before Done
+### 3. 完了前に検証する
 
-- Mark a task complete only after tests or logs show it works
+- テストやログで動作を確認できてから、タスクを完了扱いにする
 
-### 4. Elegance
+### 4. 洗練された解決
 
-- If a fix feels hacky, implement the solution you would choose knowing everything you know now
-- Don't over-engineer simple, obvious fixes
+- 修正がその場しのぎに感じたら、今わかっていることをすべて踏まえたうえで選ぶ解決策を実装する
+- 単純で明白な修正を過剰に作り込まない
 
-### 5. Autonomous Bug Fixing
+### 5. バグは自律的に直す
 
-- When given a bug report: just fix it. Don't ask for hand-holding
-- Point at logs, errors, failing tests - then resolve them
-- Zero context switching required from the user
-- Go fix failing CI tests without being told how
+- バグ報告を受けたら、そのまま直す。逐一指示を仰がない
+- ログ・エラー・失敗しているテストを根拠として示し、解決する
+- ユーザーに作業の切り替えを求めない
+- CI のテストが落ちていたら、やり方を指示されなくても直しに行く
 
-## Task Management
+## タスク管理
 
-1. **Plan First**: Write plan to `tasks/todo.md` with checkable items
-2. **Verify Plan**: Check in before starting implementation
-3. **Track Progress**: Mark items complete as you go
-4. **Explain Changes**: High-level summary at each step
-5. **Document Results**: Add review section to `tasks/todo.md`
-6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+1. **まず計画する**: チェックボックス付きの計画を `tasks/todo.md` に書く
+2. **計画を確認する**: 実装を始める前にユーザーに確認を取る
+3. **進捗を記録する**: 終わった項目から完了にしていく
+4. **変更を説明する**: 各ステップで変更内容を大まかに要約する
+5. **結果を残す**: `tasks/todo.md` にレビューのセクションを追加する
+6. **教訓を残す**: 修正を受けたら `tasks/lessons.md` を更新する
 
-## Core Principles
+## 基本原則
 
-- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
-- **Root Causes**: Fix the underlying cause rather than applying temporary patches.
-- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+- **シンプルさ優先**: どの変更もできるだけ単純にし、触るコードを最小限にする
+- **根本原因**: 一時的なパッチを当てるのではなく、根本原因を直す
+- **影響の最小化**: 必要な箇所だけを変更し、新たなバグを持ち込まない
 
-## Roles
+## 何をどこに書くか
 
-When making edits to files, prefer batch/whole-file operations over many incremental line-by-line edits. For translations or large-scale changes, rewrite the entire file at once rather than making 80+ individual edit operations.
+- コードには How
+- テストコードには What
+- コミットログには Why
+- コードコメントには Why not
 
-Always create a feature branch before making changes. Never commit directly to main. Use the pattern: `git checkout -b feature/<description>` before starting work.
+## 作業ルール
 
-Prefer the simplest approach first. Before migrating to a new pattern (e.g., Server Actions, WebWorkers), evaluate whether a simpler solution (middleware, existing patterns) would work. Propose the minimal viable approach and get user confirmation before starting complex refactors.
+ファイルを編集するときは、1 行ずつ細かく何度も編集するより、まとめて編集するかファイル全体を書き換える。翻訳や大規模な変更では、80 回以上の個別編集をするのではなく、ファイル全体を一度に書き直す。
+
+まず最も単純な方法を選ぶ。新しいパターン（Server Actions、WebWorkers など）に移行する前に、より単純な方法（middleware、既存のパターンなど）で足りないかを検討する。複雑なリファクタリングを始める前に、最小限で成り立つ案を提示してユーザーの確認を取る。
