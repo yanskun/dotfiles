@@ -12,7 +12,7 @@ tab_bar_right = [
   { type = "command", command = "~/.local/bin/herdr-gcloud-current-account" },
 ]
 tab_bar_right_separator = " | "
-status_indicators = "dots"
+status_indicators = "symbols"
 sidebar_width = 30
 
 [keys]
@@ -63,3 +63,6 @@ description = "Switch gcloud account"
 kitty_graphics = true
 switch_ascii_input_source_in_prefix = true
 pane_history = true
+
+[ui.toast]
+delivery = "off"
