@@ -206,11 +206,11 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
@@ -353,6 +353,14 @@
     ]
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "advisorModel": "fable",
   "tui": "fullscreen",
   "voice": {
