@@ -231,7 +231,6 @@ cask "slack"
 cask "spotify"
 cask "tableplus"
 cask "visual-studio-code"
-cask "wezterm"
 cask "zoom"
 mas "Klack", id: 6446206067
 mas "LINE", id: 539883307
