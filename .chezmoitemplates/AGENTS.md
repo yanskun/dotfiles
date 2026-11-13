@@ -2,6 +2,10 @@
 
 常に日本語で回答してください。
 
+---
+
+When a repository's documentation and its existing code disagree, follow the conventions used in the existing code, and in your final reply point out each inconsistency you found between the documentation and the code.
+
 ## ワークフローの進め方
 
 ### 1. 先に計画を立てる
