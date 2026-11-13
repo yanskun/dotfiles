@@ -1,6 +1,6 @@
 ---
 name: herdr-agent-message
-description: herdr で管理されている他の agent pane（別 worktree / 別タブで動く Claude Code や Codex 等）にメッセージを送り応答を確認する手順。作業を依頼して結果を受け取る場合も含む。「他の agent に FB して」「herdr 経由で伝えて」「並行作業中の agent に連絡して」「他の agent にレビューを頼んで」等で使う。
+description: herdr で管理されている他の agent pane（別 worktree / 別タブで動く Claude Code や Codex 等）にメッセージを送り応答を確認する手順。作業を依頼して結果を受け取る場合や、新しい worktree に agent を立てて依頼する場合も含む。「他の agent に FB して」「herdr 経由で伝えて」「並行作業中の agent に連絡して」「他の agent にレビューを頼んで」「別 worktree を作って Agent を立てて」「worktree で agent に任せて」等で使う。
 ---
 
 # herdr agent message
@@ -10,6 +10,7 @@ description: herdr で管理されている他の agent pane（別 worktree / �
 - 同じ herdr セッション内の別 pane で動いている agent（Claude Code / Codex 等）に、作業内容の共有・コンフリクト確認・FB を送りたいとき。
 - 別 pane の agent に作業（レビュー・調査・修正等）を**依頼して結果を受け取りたい**とき。
 - ユーザーが「herdr 経由で」「他の agent に伝えて」等と言ったとき。
+- ユーザーが「別 worktree を作って Agent を立てて」等と言ったとき（→「新しい worktree に agent を立てて依頼する」）。
 
 ## 引数
 
@@ -71,6 +72,38 @@ herdr agent read "<pane_id>"
 ### 5. 報告
 
 誰に何を送り、どんな応答があったかをユーザーに簡潔に報告する。
+
+## 新しい worktree に agent を立てて依頼する
+
+「別 worktree を作って Agent を立てて」と言われたら、herdr 上で worktree と agent pane を用意して依頼する。
+Claude Code の Agent ツール（サブエージェント）や EnterWorktree でこのセッションを移すのではない。依頼後もこのセッションは元の worktree に留まる。
+
+1. worktree をワークスペースとして開き、レスポンスの `.result.root_pane.pane_id` を控える。
+
+   ```bash
+   herdr worktree create --cwd "$PWD" --branch <branch> --base origin/develop --label <label> --no-focus
+   # 作成済みの worktree なら
+   herdr worktree open --path <worktree の絶対パス> --label <label> --no-focus
+   ```
+
+2. agent を起動する。
+
+   ```bash
+   herdr agent start <name> --kind claude --pane <root_pane_id>
+   ```
+
+3. 依頼を送る（下の「返信が必要な依頼を送るとき」のテンプレートを使う）。
+   - 本文はヒアドキュメントで変数に入れて渡す。block-outside-worktree hook がスクラッチパッドへの Write を止めるため、ファイル経由では渡せない。
+
+     ```bash
+     P=$(cat <<'EOF'
+     <本文>
+     EOF
+     ); herdr agent prompt <name> "$P"
+     ```
+
+   - 長い作業には `--wait` を付けない。`herdr agent wait <name> --until working --timeout 20000` で着手したことだけ確認する。
+4. 新しい worktree は依存が未インストールのことがあるので、インストールも依頼に含めるか先に済ませる。
 
 ## 返信が必要な依頼を送るとき
 
